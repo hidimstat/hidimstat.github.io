@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>HiDimStat: High-dimensional statistical inference tool for Python &#8212; HiDimStat</title>
+    <title>API &#8212; HiDimStat</title>
   
   
   
@@ -45,10 +45,11 @@
     <script src="_static/documentation_options.js?v=bb6f07c4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API" href="api.html" />
+    <link rel="next" title="hidimstat.quantile_aggregation" href="generated/hidimstat.quantile_aggregation.html" />
+    <link rel="prev" title="HiDimStat: High-dimensional statistical inference tool for Python" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -106,7 +107,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -133,8 +134,8 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="api.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     API
   </a>
 </li>
@@ -239,10 +240,8 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -257,8 +256,8 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="api.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     API
   </a>
 </li>
@@ -328,6 +327,36 @@
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.dcrt_zero.html">hidimstat.dcrt_zero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.dcrt_pvalue.html">hidimstat.dcrt_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.hd_inference.html">hidimstat.hd_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.permutation_test.html">hidimstat.permutation_test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.reid.html">hidimstat.reid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.empirical_thresholding.html">hidimstat.empirical_thresholding</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.BasePerturbation.html">hidimstat.BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.LOCO.html">hidimstat.LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.CPI.html">hidimstat.CPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.PFI.html">hidimstat.PFI</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
       <div class="sidebar-primary-item">
@@ -348,7 +377,31 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none"></div>
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">API</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
               
               
               
@@ -356,144 +409,76 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="hidimstat-high-dimensional-statistical-inference-tool-for-python">
-<h1>HiDimStat: High-dimensional statistical inference tool for Python<a class="headerlink" href="#hidimstat-high-dimensional-statistical-inference-tool-for-python" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://github.com/mind-inria/hidimstat/actions/workflows/build_package.yml)"><img alt="Build" src="https://github.com/mind-inria/hidimstat/actions/workflows/build_package.yml/badge.svg?branch=main" /></a> <a class="reference external" href="https://codecov.io/github/mind-inria/hidimstat"><img alt="codecov" src="https://codecov.io/github/mind-inria/hidimstat/branch/main/graph/badge.svg?token=O1YZDTFTNS" /></a> <a class="reference external" href="https://github.com/psf/black"><img alt="codestyle" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a></p>
-<p>The HiDimStat package provides statistical inference methods to solve the
-problem of support recovery in the context of high-dimensional and
-spatially structured data.</p>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
-<p>HiDimStat working only with Python 3, ideally Python 3.6+. For installation,
-run the following from terminal:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">hidimstat</span>
-</pre></div>
-</div>
-<p>Or if you want the latest version available (for example to contribute to
-the development of this project):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mind</span><span class="o">-</span><span class="n">inria</span><span class="o">/</span><span class="n">hidimstat</span><span class="o">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">hidimstat</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
-</pre></div>
-</div>
+  <section id="api">
+<span id="api-documentation"></span><h1>API<a class="headerlink" href="#api" title="Link to this heading">#</a></h1>
+<section id="estimators">
+<h2>Estimators<a class="headerlink" href="#estimators" title="Link to this heading">#</a></h2>
 </section>
-<section id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h2>
-<p>HiDimStat depends on the following packages:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">joblib</span>
-<span class="n">numpy</span>
-<span class="n">scipy</span>
-<span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
-<span class="n">pandas</span>
-</pre></div>
-</div>
-<p>To run examples it is neccessary to install <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, and to run tests it
-is also needed to install <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
-</section>
-<section id="documentation-examples">
-<h2>Documentation &amp; Examples<a class="headerlink" href="#documentation-examples" title="Link to this heading">#</a></h2>
-<p>Documentation about the main HiDimStat functions is available
-<a class="reference external" href="api.html">here</a> and examples are available <a class="reference external" href="auto_examples/index.html">there</a>.</p>
-<p>As of now, there are three different examples (Python scripts) that
-illustrate how to use the main HiDimStat functions.
-In each example we handle a different kind of dataset:
-<code class="docutils literal notranslate"><span class="pre">plot_2D_simulation_example.py</span></code> handles a simulated dataset with a 2D
-spatial structure,
-<code class="docutils literal notranslate"><span class="pre">plot_fmri_data_example.py</span></code> solves the decoding problem on Haxby fMRI dataset,
-<code class="docutils literal notranslate"><span class="pre">plot_meg_data_example.py</span></code> tackles the source localization problem on several
-MEG/EEG datasets.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># For example run the following command in terminal</span>
-<span class="n">python</span> <span class="n">plot_2D_simulation_example</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-</section>
-<section id="build-the-documentation">
-<h2>Build the documentation<a class="headerlink" href="#build-the-documentation" title="Link to this heading">#</a></h2>
-<p>To build the documentation you will need to run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="o">.</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span>
-<span class="n">cd</span> <span class="n">doc_conf</span>
-<span class="n">make</span> <span class="n">html</span>
-</pre></div>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.quantile_aggregation.html#hidimstat.quantile_aggregation" title="hidimstat.quantile_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantile_aggregation</span></code></a>(pvals[, gamma, n_grid, ...])</p></td>
+<td><p>Implements the quantile aggregation method for p-values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.clustered_inference.html#hidimstat.clustered_inference" title="hidimstat.clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference</span></code></a>(X_init, y, ward, n_clusters)</p></td>
+<td><p>Clustered inference algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.dcrt_zero.html#hidimstat.dcrt_zero" title="hidimstat.dcrt_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcrt_zero</span></code></a>(X, y[, estimated_coef, sigma_X, ...])</p></td>
+<td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.dcrt_pvalue.html#hidimstat.dcrt_pvalue" title="hidimstat.dcrt_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcrt_pvalue</span></code></a>(selection_features, X_res, ...)</p></td>
+<td><p>Calculate p-values and identify significant features using the dCRT test statistics.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso" title="hidimstat.desparsified_lasso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_lasso</span></code></a>(X, y[, dof_ajdustement, ...])</p></td>
+<td><p>Desparsified Lasso</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue" title="hidimstat.desparsified_lasso_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_lasso_pvalue</span></code></a>(n_samples, ...[, ...])</p></td>
+<td><p>Calculate confidence intervals and p-values for desparsified lasso estimators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.desparsified_group_lasso_pvalue.html#hidimstat.desparsified_group_lasso_pvalue" title="hidimstat.desparsified_group_lasso_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_group_lasso_pvalue</span></code></a>(beta_hat, ...)</p></td>
+<td><p>Compute p-values for the desparsified group Lasso estimator using chi-squared or F tests</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.ensemble_clustered_inference.html#hidimstat.ensemble_clustered_inference" title="hidimstat.ensemble_clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference</span></code></a>(X_init, y, ...)</p></td>
+<td><p>Ensemble clustered inference algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.hd_inference.html#hidimstat.hd_inference" title="hidimstat.hd_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hd_inference</span></code></a>(X, y, method[, n_jobs, memory, ...])</p></td>
+<td><p>Wrap-up high-dimensional inference procedures</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff</span></code></a>(X, y[, estimator, ...])</p></td>
+<td><p>Model-X Knockoff</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.permutation_test.html#hidimstat.permutation_test" title="hidimstat.permutation_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permutation_test</span></code></a>(X, y, estimator[, ...])</p></td>
+<td><p>Permutation test</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.reid.html#hidimstat.reid" title="hidimstat.reid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reid</span></code></a>(X, y[, epsilon, tolerance, ...])</p></td>
+<td><p>Residual sum of squares based estimators for noise standard deviation estimation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.empirical_thresholding.html#hidimstat.empirical_thresholding" title="hidimstat.empirical_thresholding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">empirical_thresholding</span></code></a>(X, y[, linear_estimator])</p></td>
+<td><p>Perform empirical thresholding on the input data and target using a linear estimator.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<p>The algorithms developed in this package have been detailed in several
-conference/journal articles that can be downloaded at
-<a class="reference external" href="https://mind-inria.github.io/research.html">https://mind-inria.github.io/</a>.</p>
-<section id="main-references">
-<h3>Main references<a class="headerlink" href="#main-references" title="Link to this heading">#</a></h3>
-<p>Ensemble of Clustered desparsified Lasso (ECDL):</p>
-<ul class="simple">
-<li><p>Chevalier, J. A., Salmon, J., &amp; Thirion, B. (2018). Statistical inference
-with ensemble of clustered desparsified lasso. In International Conference
-on Medical Image Computing and Computer-Assisted Intervention
-(pp. 638-646). Springer, Cham.</p></li>
-<li><p>Chevalier, J. A., Nguyen, T. B., Thirion, B., &amp; Salmon, J. (2021).
-Spatially relaxed inference on high-dimensional linear models.
-arXiv preprint arXiv:2106.02590.</p></li>
-</ul>
-<p>Aggregation of multiple Knockoffs (AKO):</p>
-<ul class="simple">
-<li><p>Nguyen T.-B., Chevalier J.-A., Thirion B., &amp; Arlot S. (2020). Aggregation
-of Multiple Knockoffs. In Proceedings of the 37th International Conference on
-Machine Learning, Vienna, Austria, PMLR 119.</p></li>
-</ul>
-<p>Application to decoding (fMRI data):</p>
-<ul class="simple">
-<li><p>Chevalier, J. A., Nguyen T.-B., Salmon, J., Varoquaux, G. &amp; Thirion, B.
-(2021). Decoding with confidence: Statistical control on decoder maps.
-In NeuroImage, 234, 117921.</p></li>
-</ul>
-<p>Application to source localization (MEG/EEG data):</p>
-<ul class="simple">
-<li><p>Chevalier, J. A., Gramfort, A., Salmon, J., &amp; Thirion, B. (2020).
-Statistical control for spatio-temporal MEG/EEG source imaging with
-desparsified multi-task Lasso. In Proceedings of the 34th Conference on
-Neural Information Processing Systems (NeurIPS 2020), Vancouver, Canada.</p></li>
-</ul>
-<p>Single/Group statistically validated importance using conditional permutations:</p>
-<ul class="simple">
-<li><p>Chamma, A., Engemann, D., &amp; Thirion, B. (2023). Statistically Valid Variable
-Importance Assessment through Conditional Permutations. In Proceedings of the
-37th Conference on Neural Information Processing Systems (NeurIPS 2023), New
-Orleans, USA.</p></li>
-<li><p>Chamma, A., Thirion, B., &amp; Engemann, D. (2024). Variable importance in
-high-dimensional settings requires grouping. In Proceedings of the 38th
-Conference of the Association for the Advancement of Artificial
-Intelligence(AAAI 2024), Vancouver, Canada.</p></li>
-</ul>
-<p>If you use our packages, we would appreciate citations to the relevant
-aforementioned papers.</p>
-</section>
-<section id="other-useful-references">
-<h3>Other useful references<a class="headerlink" href="#other-useful-references" title="Link to this heading">#</a></h3>
-<p>For de-sparsified(or de-biased) Lasso:</p>
-<ul class="simple">
-<li><p>Javanmard, A., &amp; Montanari, A. (2014). Confidence intervals and hypothesis
-testing for high-dimensional regression. The Journal of Machine Learning
-Research, 15(1), 2869-2909.</p></li>
-<li><p>Zhang, C. H., &amp; Zhang, S. S. (2014). Confidence intervals for low dimensional
-parameters in high dimensional linear models. Journal of the Royal
-Statistical Society: Series B: Statistical Methodology, 217-242.</p></li>
-<li><p>Van de Geer, S., Bühlmann, P., Ritov, Y. A., &amp; Dezeure, R. (2014). On
-asymptotically optimal confidence regions and tests for high-dimensional
-models. The Annals of Statistics, 42(3), 1166-1202.</p></li>
-</ul>
-<p>For Knockoffs Inference:</p>
-<ul class="simple">
-<li><p>Barber, R. F; Candès, E. J. (2015). Controlling the false discovery rate
-via knockoffs. Annals of Statistics. 43 , no. 5,
-2055–2085. doi:10.1214/15-AOS1337. https://projecteuclid.org/euclid.aos/1438606853</p></li>
-<li><p>Candès, E., Fan, Y., Janson, L., &amp; Lv, J. (2018). Panning for gold: Model-X
-knockoffs for high dimensional controlled variable selection. Journal of the
-Royal Statistical Society Series B, 80(3), 551-577.</p></li>
-</ul>
-</section>
-</section>
-<section id="id1">
-<h2>References<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<span class="target" id="id2"></span><div class="toctree-wrapper compound">
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation" title="hidimstat.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a>(estimator, loss, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, loss, method, n_jobs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.CPI.html#hidimstat.CPI" title="hidimstat.CPI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CPI</span></code></a>(estimator, loss, method, n_jobs, ...[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, loss, method, n_jobs, ...)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -508,12 +493,21 @@ Royal Statistical Society Series B, 80(3), 551-577.</p></li>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HiDimStat: High-dimensional statistical inference tool for Python</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="api.html"
+       href="generated/hidimstat.quantile_aggregation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">API</p>
+        <p class="prev-next-title">hidimstat.quantile_aggregation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -536,16 +530,9 @@ Royal Statistical Society Series B, 80(3), 551-577.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-examples">Documentation &amp; Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-documentation">Build the documentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-references">Main references</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-references">Other useful references</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimators">Estimators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 </ul>
   </nav></div>
 
@@ -553,7 +540,7 @@ Royal Statistical Society Series B, 80(3), 551-577.</p></li>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
+      <li><a href="_sources/api.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
