@@ -47,6 +47,12 @@ Imports needed for this script
     power = {"Lasso": [], "Forest": []}
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 26-28
 
 Processing the computations
@@ -100,6 +106,27 @@ Processing the computations
         power["Forest"].append(sum(pvals_forest[:n_signal] < alpha) / (n_signal))
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Processing: 1
+    Processing: 2
+    Processing: 3
+    Processing: 4
+    Processing: 5
+    Processing: 6
+    Processing: 7
+    Processing: 8
+    Processing: 9
+    Processing: 10
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 72-74
 
 Plotting the comparison
@@ -123,7 +150,23 @@ Plotting the comparison
 
     plt.show()
 
-**Estimated memory usage:**  0 MB
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_dcrt_example_001.png
+   :alt: Type-I Error, Power
+   :srcset: /auto_examples/images/sphx_glr_plot_dcrt_example_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (1 minutes 26.620 seconds)
+
+**Estimated memory usage:**  203 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_dcrt_example.py:

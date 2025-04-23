@@ -54,6 +54,12 @@ discoveries, i.e., the risk of declaring a variable as important when it is not.
     rng = np.random.RandomState(0)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 34-39
 
 Load the California housing dataset and add a spurious feature
@@ -106,6 +112,23 @@ The spurious feature does not provide any additional information about the targe
     plt.show()
 
 
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_001.png
+   :alt: Correlation Matrix
+   :srcset: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_001.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    The dataset contains 6879 samples and 9 features.
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 79-84
 
 Fit a predictive model
@@ -147,6 +170,18 @@ network model.
         scores.append(r2_score(y_test, y_pred))
 
     print(f"Cross-validation R2 score: {np.mean(scores):.3f} ± {np.std(scores):.3f}")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Cross-validation R2 score: 0.734 ± 0.041
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 115-121
@@ -213,6 +248,17 @@ testing conditional importance, as it identifies the spurious feature as importa
     ax.set_yticks(range(len(feature_names)), labels=feature_names)
     fig.tight_layout()
     plt.show()
+
+
+
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_002.png
+   :alt: plot pitfalls permutation importance
+   :srcset: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_002.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -284,6 +330,17 @@ importance. As shown below, it does not identify the spurious feature as importa
     ax.set_xlabel("-$\\log_{10}(pval)$")
     plt.tight_layout()
     plt.show()
+
+
+
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_003.png
+   :alt: plot pitfalls permutation importance
+   :srcset: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_003.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -387,13 +444,29 @@ permutation that generates perturbed but reasonable values of longitude.
 
 
 
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_004.png
+   :alt: plot pitfalls permutation importance
+   :srcset: /auto_examples/images/sphx_glr_plot_pitfalls_permutation_importance_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 332-335
 
 PFI is likely to generate samples that are unrealistic and outside of the training
 data, leading to extrapolation bias. In contrast, CPI generates samples that respect
 the conditional distribution of the feature of interest.
 
-**Estimated memory usage:**  0 MB
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 7.834 seconds)
+
+**Estimated memory usage:**  205 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_pitfalls_permutation_importance.py:

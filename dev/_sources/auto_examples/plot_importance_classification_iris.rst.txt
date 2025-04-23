@@ -60,6 +60,12 @@ To briefly summarize the two methods:
     from hidimstat import CPI, PFI
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 41-47
 
 Load the iris dataset and add a spurious feature
@@ -81,6 +87,12 @@ contrarily to `CPI`.
     X = np.hstack([X, spurious_feat.reshape(-1, 1)])
 
     dataset.feature_names = dataset.feature_names + ["spurious_feat"]
+
+
+
+
+
+
 
 
 
@@ -144,6 +156,12 @@ function and use joblib to parallelize the computation.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 111-114
 
 We use two different classifiers: LR with cross-validation and SVC with a RBF kernel. We
@@ -170,6 +188,12 @@ combination, in parallel.
         for vim_name in ["CPI", "PFI"]
     )
     df = pd.concat(out_list)
+
+
+
+
+
+
 
 
 
@@ -213,6 +237,12 @@ does not provide type-1 error control.
 
     threshold = 0.05
     df_pval = compute_pval(df, threshold=threshold)
+
+
+
+
+
+
 
 
 
@@ -292,6 +322,17 @@ Visualization of the results
 
 
 
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_importance_classification_iris_001.png
+   :alt: CPI, PFI
+   :srcset: /auto_examples/images/sphx_glr_plot_importance_classification_iris_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 238-247
 
 The boxplot shows the importance of each feature, with colors indicating the
@@ -334,7 +375,23 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
     df_pval = compute_pval(df_grouped, threshold=threshold)
     plot_results(df_grouped, df_pval)
 
-**Estimated memory usage:**  0 MB
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_importance_classification_iris_002.png
+   :alt: CPI, PFI
+   :srcset: /auto_examples/images/sphx_glr_plot_importance_classification_iris_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 6.088 seconds)
+
+**Estimated memory usage:**  196 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_importance_classification_iris.py:

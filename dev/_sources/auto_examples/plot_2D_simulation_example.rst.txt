@@ -70,6 +70,12 @@ References
     import matplotlib.pyplot as plt
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 52-54
 
 Imports needed for this script
@@ -88,6 +94,12 @@ Imports needed for this script
     from hidimstat.ensemble_clustered_inference import ensemble_clustered_inference
     from hidimstat.statistical_tools.p_values import zscore_from_pval
     from hidimstat._utils.scenario import multivariate_simulation
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 65-73
@@ -135,6 +147,12 @@ enfolded by thin tolerance regions.
         beta_extended = w.sum(-1).ravel()
 
         return beta_extended
+
+
+
+
+
+
 
 
 
@@ -187,6 +205,12 @@ supports for every method, we define the two following functions:
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 148-154
 
 Generating the data
@@ -213,6 +237,12 @@ example.
     X_init, y, beta, epsilon, _, _ = multivariate_simulation(
         n_samples, shape, roi_size, sigma, smooth_X, seed=1
     )
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 169-186
@@ -251,6 +281,12 @@ conservative (see Results).
     n_jobs = 1
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 198-208
 
 Computing z-score thresholds for support estimation
@@ -277,6 +313,12 @@ consists in dividing by the number of clusters.
     thr_nc = zscore_from_pval((fwer_target / 2) * correction_no_cluster)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 217-222
 
 Inference with several algorithms
@@ -292,6 +334,12 @@ the theoretical tolerance region.
 
     # compute true support with visible spatial tolerance
     beta_extended = weight_map_2D_extended(shape, roi_size, delta)
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 227-233
@@ -322,6 +370,18 @@ and referred to as Desparsified Lasso.
     selected_dl = np.logical_or(
         pval_corr < fwer_target / 2, one_minus_pval_corr < fwer_target / 2
     )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    'max_iter' has been increased to 8000
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 250-253
@@ -357,6 +417,20 @@ Now, we compute the support estimated using a clustered inference algorithm
     )
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 0
+    Clustered inference {}
+    hd_inference False {}
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 276-281
 
 Finally, we compute the support estimated by an ensembled clustered
@@ -379,6 +453,92 @@ solutions are then aggregated into one.
     selected_ecdl = np.logical_or(
         pval_corr < fwer_target / 2, one_minus_pval_corr < fwer_target / 2
     )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 0
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 1
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 2
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 3
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 4
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 5
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 6
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 7
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 8
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 9
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 10
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 11
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 12
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 13
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 14
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 15
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 16
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 17
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 18
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 19
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 20
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 21
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 22
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 23
+    Clustered inference {}
+    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 24
+    Clustered inference {}
+    hd_inference False {}
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 293-298
@@ -418,6 +578,17 @@ the estimated supports for every method.
     plot(maps, titles)
 
 
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_2D_simulation_example_001.png
+   :alt: True weights, True weights  with tolerance, Desparsified Lasso, CluDL, EnCluDL
+   :srcset: /auto_examples/images/sphx_glr_plot_2D_simulation_example_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 323-336
 
 Analysis of the results
@@ -434,7 +605,12 @@ conservative. In practice, Type-1 Error guarantees seem to hold
 for a lower spatial tolerance. This is an additional benefit of clustering
 randomization.
 
-**Estimated memory usage:**  0 MB
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (1 minutes 38.039 seconds)
+
+**Estimated memory usage:**  255 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_2D_simulation_example.py:

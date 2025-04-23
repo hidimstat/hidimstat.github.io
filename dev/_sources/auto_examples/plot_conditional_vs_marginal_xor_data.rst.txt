@@ -42,6 +42,12 @@ Conditional Permutation Importance (CPI) class and the marginal importance is co
     from hidimstat import CPI
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 22-24
 
 To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radial Basis Function (RBF) kernel. The decision function of
@@ -64,6 +70,12 @@ the fitted model shows that the model is able to separate the two classes.
     model = SVC(kernel="rbf", random_state=0)
     model.fit(X_train, y_train)
     Z = model.decision_function(np.c_[xx.ravel(), yy.ravel()])
+
+
+
+
+
+
 
 
 
@@ -99,6 +111,17 @@ Visualizing the decision function of the SVC
     )
     ax.set_title("Decision function of SVC with RBF kernel")
     plt.show()
+
+
+
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_conditional_vs_marginal_xor_data_001.png
+   :alt: Decision function of SVC with RBF kernel
+   :srcset: /auto_examples/images/sphx_glr_plot_conditional_vs_marginal_xor_data_001.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -143,6 +166,12 @@ are important (therefore rejecting the null hypothesis
         marginal_scores.append(feat_scores)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 102-125
 
 .. code-block:: Python
@@ -168,6 +197,12 @@ are important (therefore rejecting the null hypothesis
         importances.append(vim.importance(X_test, y_test)["importance"])
 
     importances = np.array(importances).T
+
+
+
+
+
+
 
 
 
@@ -212,6 +247,17 @@ We will use boxplots to visualize the distribution of the importance scores.
     plt.show()
 
 
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_conditional_vs_marginal_xor_data_002.png
+   :alt: plot conditional vs marginal xor data
+   :srcset: /auto_examples/images/sphx_glr_plot_conditional_vs_marginal_xor_data_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 160-164
 
 On the left, we can see that both features are not marginally important, since the
@@ -219,7 +265,12 @@ boxplots overlap with the chance level (accuracy = 0.5). On the right, we can se
 both features are conditionally important, since the importance scores are far from
 the null hypothesis (importance = 0.0).
 
-**Estimated memory usage:**  0 MB
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 1.626 seconds)
+
+**Estimated memory usage:**  201 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_conditional_vs_marginal_xor_data.py:

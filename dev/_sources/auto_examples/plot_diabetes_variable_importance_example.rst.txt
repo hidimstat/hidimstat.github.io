@@ -81,6 +81,12 @@ Imports needed for this script
     from hidimstat import CPI, LOCO, PFI
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 61-63
 
 Load the diabetes dataset
@@ -94,6 +100,12 @@ Load the diabetes dataset
     X, y = diabetes.data, diabetes.target
     # Encode sex as binary
     X[:, 1] = (X[:, 1] > 0.0).astype(int)
+
+
+
+
+
+
 
 .. GENERATED FROM PYTHON SOURCE LINES 68-72
 
@@ -123,6 +135,27 @@ diabetes dataset.
         print(f"Fold {i}: {score}")
         print(f"Fold {i}: {mse}")
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Fold 0: 0.33083473382923934
+    Fold 0: 58.578414587141616
+    Fold 1: 0.4612105596220809
+    Fold 1: 53.69203761571651
+    Fold 2: 0.5325803774775466
+    Fold 2: 54.71097678129962
+    Fold 3: 0.5064809104496365
+    Fold 3: 54.272416623817435
+    Fold 4: 0.5979653259033298
+    Fold 4: 52.28738181690228
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 89-93
 
 Fit a baselien model on the diabetes dataset
@@ -150,6 +183,37 @@ diabetes dataset.
 
         print(f"Fold {i}: {score}")
         print(f"Fold {i}: {mse}")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Fold 0: 0.34890711975299304
+    Fold 0: 56.144182594640924
+    Fold 1: 0.2721892039082311
+    Fold 1: 61.35394986028169
+    Fold 2: 0.536661654861091
+    Fold 2: 49.06762118785015
+    Fold 3: 0.3696138811104912
+    Fold 3: 59.01755532549113
+    Fold 4: 0.5855653971692454
+    Fold 4: 51.49494754537288
+    Fold 5: 0.46243581455728044
+    Fold 5: 58.31346323072169
+    Fold 6: 0.5237829173241707
+    Fold 6: 51.342031718189716
+    Fold 7: 0.4852439911493507
+    Fold 7: 56.84140735040956
+    Fold 8: 0.6653054560599455
+    Fold 8: 47.261853043748566
+    Fold 9: 0.5514651857120557
+    Fold 9: 55.72320747332666
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 111-113
@@ -181,6 +245,27 @@ Measure the importance of variables using the CPI method
         cpi_importance_list.append(importance)
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Fold 0
+    Fold 1
+    Fold 2
+    Fold 3
+    Fold 4
+    Fold 5
+    Fold 6
+    Fold 7
+    Fold 8
+    Fold 9
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 133-135
 
 Measure the importance of variables using the LOCO method
@@ -204,6 +289,27 @@ Measure the importance of variables using the LOCO method
         loco.fit(X_train, y_train)
         importance = loco.importance(X_test, y_test)
         loco_importance_list.append(importance)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Fold 0
+    Fold 1
+    Fold 2
+    Fold 3
+    Fold 4
+    Fold 5
+    Fold 6
+    Fold 7
+    Fold 8
+    Fold 9
+
 
 
 
@@ -235,6 +341,27 @@ Measure the importance of variables using the permutation method
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Fold 0
+    Fold 1
+    Fold 2
+    Fold 3
+    Fold 4
+    Fold 5
+    Fold 6
+    Fold 7
+    Fold 8
+    Fold 9
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 173-175
 
 Define a function to compute the p-value from importance values
@@ -249,6 +376,12 @@ Define a function to compute the p-value from importance values
         std_vim = np.std(vim, axis=0)
         pval = norm.sf(mean_vim / std_vim)
         return np.clip(pval, 1e-10, 1 - 1e-10)
+
+
+
+
+
+
 
 
 
@@ -334,7 +467,32 @@ Analyze the results
     ax.set_xticklabels(diabetes.feature_names)
     plt.show()
 
-**Estimated memory usage:**  0 MB
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_plot_diabetes_variable_importance_example_001.png
+   :alt: plot diabetes variable importance example
+   :srcset: /auto_examples/images/sphx_glr_plot_diabetes_variable_importance_example_001.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/circleci/project/examples/plot_diabetes_variable_importance_example.py:239: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
+      colors = plt.cm.get_cmap("tab10", 10)
+    /home/circleci/project/examples/plot_diabetes_variable_importance_example.py:255: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+      ax.set_xticklabels(diabetes.feature_names)
+
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 7.003 seconds)
+
+**Estimated memory usage:**  196 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_diabetes_variable_importance_example.py:
