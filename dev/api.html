@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=9ca5bad0"></script>
+    <script src="_static/documentation_options.js?v=2098e595"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api';</script>
@@ -341,7 +341,9 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.hd_inference.html">hidimstat.hd_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.permutation_test.html">hidimstat.permutation_test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/hidimstat.reid.html">hidimstat.reid</a></li>
@@ -418,11 +420,11 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.quantile_aggregation.html#hidimstat.quantile_aggregation" title="hidimstat.quantile_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantile_aggregation</span></code></a>(pvals[, gamma, n_grid, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.quantile_aggregation.html#hidimstat.quantile_aggregation" title="hidimstat.quantile_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantile_aggregation</span></code></a>(pvals[, gamma, adaptive])</p></td>
 <td><p>Implements the quantile aggregation method for p-values.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.clustered_inference.html#hidimstat.clustered_inference" title="hidimstat.clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference</span></code></a>(X_init, y, ward, n_clusters)</p></td>
-<td><p>Clustered inference algorithm.</p></td>
+<td><p>Clustered inference algorithm for statistical analysis of high-dimensional data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.dcrt_zero.html#hidimstat.dcrt_zero" title="hidimstat.dcrt_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcrt_zero</span></code></a>(X, y[, estimated_coef, sigma_X, ...])</p></td>
 <td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
@@ -440,10 +442,16 @@
 <td><p>Compute p-values for the desparsified group Lasso estimator using chi-squared or F tests</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.ensemble_clustered_inference.html#hidimstat.ensemble_clustered_inference" title="hidimstat.ensemble_clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference</span></code></a>(X_init, y, ...)</p></td>
-<td><p>Ensemble clustered inference algorithm.</p></td>
+<td><p>Ensemble clustered inference algorithm for high-dimensional statistical inference, as described in <span id="id1">[<a class="reference internal" href="index.html#id14" title="Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Bertrand Thirion, and Joseph Salmon. Spatially relaxed inference on high-dimensional linear models. Statistics and Computing, 32(5):83, 2022.">Chevalier <em>et al.</em>, 2022</a>]</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.hd_inference.html#hidimstat.hd_inference" title="hidimstat.hd_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hd_inference</span></code></a>(X, y, method[, n_jobs, memory, ...])</p></td>
-<td><p>Wrap-up high-dimensional inference procedures</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.ensemble_clustered_inference_pvalue.html#hidimstat.ensemble_clustered_inference_pvalue" title="hidimstat.ensemble_clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference_pvalue</span></code></a>(...[, ...])</p></td>
+<td><p>Compute and aggregate p-values across multiple bootstrap iterations using an aggregation method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.clustered_inference.html#hidimstat.clustered_inference" title="hidimstat.clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference</span></code></a>(X_init, y, ward, n_clusters)</p></td>
+<td><p>Clustered inference algorithm for statistical analysis of high-dimensional data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference_pvalue</span></code></a>(n_samples, group, ...)</p></td>
+<td><p>Compute corrected p-values at the cluster level and transform them back to feature level.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff</span></code></a>(X, y[, estimator, ...])</p></td>
 <td><p>Model-X Knockoff</p></td>

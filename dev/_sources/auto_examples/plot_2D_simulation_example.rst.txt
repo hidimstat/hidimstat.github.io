@@ -81,17 +81,27 @@ References
 Imports needed for this script
 ------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-64
+.. GENERATED FROM PYTHON SOURCE LINES 54-74
 
 .. code-block:: Python
 
     import numpy as np
     from sklearn.cluster import FeatureAgglomeration
+    from sklearn.preprocessing import StandardScaler
     from sklearn.feature_extraction import image
 
-    from hidimstat.clustered_inference import clustered_inference
-    from hidimstat.desparsified_lasso import desparsified_lasso, desparsified_lasso_pvalue
-    from hidimstat.ensemble_clustered_inference import ensemble_clustered_inference
+    from hidimstat.desparsified_lasso import (
+        desparsified_lasso,
+        desparsified_lasso_pvalue,
+    )
+    from hidimstat.ensemble_clustered_inference import (
+        clustered_inference,
+        clustered_inference_pvalue,
+    )
+    from hidimstat.ensemble_clustered_inference import (
+        ensemble_clustered_inference,
+        ensemble_clustered_inference_pvalue,
+    )
     from hidimstat.statistical_tools.p_values import zscore_from_pval
     from hidimstat._utils.scenario import multivariate_simulation
 
@@ -102,7 +112,7 @@ Imports needed for this script
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-73
+.. GENERATED FROM PYTHON SOURCE LINES 75-83
 
 Specific plotting functions
 ---------------------------
@@ -113,7 +123,7 @@ you can skip this section.
 The following function builds a 2D map with four active regions that are
 enfolded by thin tolerance regions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-105
+.. GENERATED FROM PYTHON SOURCE LINES 83-115
 
 .. code-block:: Python
 
@@ -156,12 +166,12 @@ enfolded by thin tolerance regions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-108
+.. GENERATED FROM PYTHON SOURCE LINES 116-118
 
 To generate a plot that exhibits the true support and the estimated
 supports for every method, we define the two following functions:
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-147
+.. GENERATED FROM PYTHON SOURCE LINES 118-157
 
 .. code-block:: Python
 
@@ -211,7 +221,7 @@ supports for every method, we define the two following functions:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-154
+.. GENERATED FROM PYTHON SOURCE LINES 158-164
 
 Generating the data
 -------------------
@@ -220,7 +230,7 @@ After setting the simulation parameters, we run the function that generates
 the 2D scenario that we have briefly described in the first section of this
 example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-168
+.. GENERATED FROM PYTHON SOURCE LINES 164-178
 
 .. code-block:: Python
 
@@ -245,7 +255,7 @@ example.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-186
+.. GENERATED FROM PYTHON SOURCE LINES 179-196
 
 Choosing inference parameters
 -----------------------------
@@ -265,7 +275,7 @@ the average cluster radius. In this example, we choose ``n_clusters = 200``,
 leading to a theoretical spatial tolerance ``delta = 6``, which is still
 conservative (see Results).
 
-.. GENERATED FROM PYTHON SOURCE LINES 186-197
+.. GENERATED FROM PYTHON SOURCE LINES 196-207
 
 .. code-block:: Python
 
@@ -287,7 +297,7 @@ conservative (see Results).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 198-208
+.. GENERATED FROM PYTHON SOURCE LINES 208-218
 
 Computing z-score thresholds for support estimation
 ---------------------------------------------------
@@ -300,7 +310,7 @@ consists in dividing the targeted FWER target by the number of features.
 For methods that group features into clusters, the correction
 consists in dividing by the number of clusters.
 
-.. GENERATED FROM PYTHON SOURCE LINES 208-216
+.. GENERATED FROM PYTHON SOURCE LINES 218-226
 
 .. code-block:: Python
 
@@ -319,7 +329,7 @@ consists in dividing by the number of clusters.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-222
+.. GENERATED FROM PYTHON SOURCE LINES 227-232
 
 Inference with several algorithms
 ---------------------------------
@@ -327,7 +337,7 @@ Inference with several algorithms
 First, we compute a reference map that exhibits the true support and
 the theoretical tolerance region.
 
-.. GENERATED FROM PYTHON SOURCE LINES 222-226
+.. GENERATED FROM PYTHON SOURCE LINES 232-236
 
 .. code-block:: Python
 
@@ -342,7 +352,7 @@ the theoretical tolerance region.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 227-233
+.. GENERATED FROM PYTHON SOURCE LINES 237-243
 
 Now, we compute the support estimated by a high-dimensional statistical
 infernece method that does not leverage the data structure. This method
@@ -351,7 +361,7 @@ and Van de Geer, S. et al.. (2014) (full references are available at
 https://mind-inria.github.io/hidimstat/).
 and referred to as Desparsified Lasso.
 
-.. GENERATED FROM PYTHON SOURCE LINES 233-249
+.. GENERATED FROM PYTHON SOURCE LINES 243-259
 
 .. code-block:: Python
 
@@ -384,13 +394,13 @@ and referred to as Desparsified Lasso.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-253
+.. GENERATED FROM PYTHON SOURCE LINES 260-263
 
 Now, we compute the support estimated using a clustered inference algorithm
 (c.f. :footcite:t:`chevalier2022spatially`) called Clustered Desparsified Lasso
 (CluDL) since it uses the Desparsified Lasso technique after clustering the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 253-275
+.. GENERATED FROM PYTHON SOURCE LINES 263-288
 
 .. code-block:: Python
 
@@ -403,8 +413,11 @@ Now, we compute the support estimated using a clustered inference algorithm
     )
 
     # clustered desparsified lasso (CluDL)
-    beta_hat, pval, pval_corr, one_minus_pval, one_minus_pval_corr = clustered_inference(
-        X_init, y, ward, n_clusters
+    ward_, beta_hat, theta_hat, omega_diag = clustered_inference(
+        X_init, y, ward, n_clusters, scaler_sampling=StandardScaler()
+    )
+    beta_hat, pval, pval_corr, one_minus_pval, one_minus_pval_corr = (
+        clustered_inference_pvalue(n_samples, False, ward_, beta_hat, theta_hat, omega_diag)
     )
 
     # compute estimated support (first method)
@@ -424,14 +437,14 @@ Now, we compute the support estimated using a clustered inference algorithm
 
  .. code-block:: none
 
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 0
-    Clustered inference {}
-    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 276-281
+.. GENERATED FROM PYTHON SOURCE LINES 289-294
 
 Finally, we compute the support estimated by an ensembled clustered
 inference algorithm (c.f. :footcite:t:`chevalier2022spatially`). This algorithm is called
@@ -439,19 +452,29 @@ Ensemble of Clustered Desparsified Lasso (EnCluDL) since it runs several
 CluDL algorithms with different clustering choices. The different CluDL
 solutions are then aggregated into one.
 
-.. GENERATED FROM PYTHON SOURCE LINES 281-292
+.. GENERATED FROM PYTHON SOURCE LINES 294-315
 
 .. code-block:: Python
 
 
     # ensemble of clustered desparsified lasso (EnCluDL)
-    beta_hat, pval, pval_corr, one_minus_pval, one_minus_pval_corr = (
-        ensemble_clustered_inference(X_init, y, ward, n_clusters, train_size=0.3)
+    list_ward, list_beta_hat, list_theta_hat, list_omega_diag = (
+        ensemble_clustered_inference(
+            X_init,
+            y,
+            ward,
+            n_clusters,
+            scaler_sampling=StandardScaler(),
+        )
     )
-
-    # compute estimated support
-    selected_ecdl = np.logical_or(
-        pval_corr < fwer_target / 2, one_minus_pval_corr < fwer_target / 2
+    beta_hat, selected_ecdl = ensemble_clustered_inference_pvalue(
+        n_samples,
+        False,
+        list_ward,
+        list_beta_hat,
+        list_theta_hat,
+        list_omega_diag,
+        fdr=fwer_target,
     )
 
 
@@ -462,86 +485,86 @@ solutions are then aggregated into one.
 
  .. code-block:: none
 
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 0
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 1
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 2
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 3
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 4
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 5
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 6
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 7
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 8
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 9
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 10
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 11
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 12
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 13
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 14
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 15
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 16
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 17
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 18
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 19
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 20
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 21
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 22
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 23
-    Clustered inference {}
-    hd_inference False {}
-    Clustered inference: n_clusters = 200, inference method = desparsified-lasso, seed = 24
-    Clustered inference {}
-    hd_inference False {}
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 1,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 2,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 3,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 4,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 5,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 6,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 7,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 8,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 9,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 10,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 11,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 12,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 13,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 14,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 15,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 16,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 17,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 18,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 19,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 20,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 21,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 22,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 23,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 24,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 293-298
+.. GENERATED FROM PYTHON SOURCE LINES 316-321
 
 Results
 -------
@@ -549,7 +572,7 @@ Results
 Now we plot the true support, the theoretical tolerance regions and
 the estimated supports for every method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 298-322
+.. GENERATED FROM PYTHON SOURCE LINES 321-345
 
 .. code-block:: Python
 
@@ -589,7 +612,7 @@ the estimated supports for every method.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 323-336
+.. GENERATED FROM PYTHON SOURCE LINES 346-359
 
 Analysis of the results
 -----------------------
@@ -608,9 +631,9 @@ randomization.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 27.776 seconds)
+   **Total running time of the script:** (1 minutes 47.186 seconds)
 
-**Estimated memory usage:**  263 MB
+**Estimated memory usage:**  251 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_2D_simulation_example.py:

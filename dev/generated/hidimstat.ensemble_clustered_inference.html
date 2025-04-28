@@ -42,13 +42,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9ca5bad0"></script>
+    <script src="../_static/documentation_options.js?v=2098e595"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/hidimstat.ensemble_clustered_inference';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hidimstat.hd_inference" href="hidimstat.hd_inference.html" />
+    <link rel="next" title="hidimstat.ensemble_clustered_inference_pvalue" href="hidimstat.ensemble_clustered_inference_pvalue.html" />
     <link rel="prev" title="hidimstat.desparsified_group_lasso_pvalue" href="hidimstat.desparsified_group_lasso_pvalue.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -341,7 +341,9 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.hd_inference.html">hidimstat.hd_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.permutation_test.html">hidimstat.permutation_test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.reid.html">hidimstat.reid</a></li>
@@ -416,26 +418,30 @@
 <h1>hidimstat.ensemble_clustered_inference<a class="headerlink" href="#hidimstat-ensemble-clustered-inference" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="hidimstat.ensemble_clustered_inference">
-<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">ensemble_clustered_inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ward</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inference_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'desparsified-lasso'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensembling_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantiles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../src/hidimstat/ensemble_clustered_inference.py#L51-L203"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ensemble_clustered_inference" title="Link to this definition">#</a></dt>
-<dd><p>Ensemble clustered inference algorithm.</p>
-<p>For more details, see Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chevalier2021decoding" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">ensemble_clustered_inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ward</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaler_sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../src/hidimstat/ensemble_clustered_inference.py#L345-L494"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ensemble_clustered_inference" title="Link to this definition">#</a></dt>
+<dd><p>Ensemble clustered inference algorithm for high-dimensional
+statistical inference, as described in <span id="id1">[<a class="reference internal" href="../index.html#id14" title="Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Bertrand Thirion, and Joseph Salmon. Spatially relaxed inference on high-dimensional linear models. Statistics and Computing, 32(5):83, 2022.">Chevalier <em>et al.</em>, 2022</a>]</span>.</p>
+<p>This algorithm combines multiple runs of clustered inference with
+different random subsamples to provide more robust statistical estimates.
+It uses the desparsified lasso method for inference.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X_init</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>Original data (uncompressed).</p>
+<dt><strong>X_init</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>Original high-dimensional input data matrix.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">ndarray, shape (n_samples,) or (n_samples, n_times)</span></dt><dd><p>Target.</p>
+<dt><strong>y</strong><span class="classifier">ndarray, shape (n_samples,) or (n_samples, n_times)</span></dt><dd><p>Target variable(s). Can be univariate or multivariate (temporal) data.</p>
 </dd>
-<dt><strong>ward</strong><span class="classifier">sklearn.cluster.FeatureAgglomeration</span></dt><dd><p>Scikit-learn object that computes Ward hierarchical clustering.</p>
+<dt><strong>ward</strong><span class="classifier">sklearn.cluster.FeatureAgglomeration</span></dt><dd><p>Feature agglomeration object implementing Ward hierarchical clustering.</p>
 </dd>
-<dt><strong>n_clusters</strong><span class="classifier">int</span></dt><dd><p>Number of clusters used for the compression.</p>
+<dt><strong>n_clusters</strong><span class="classifier">int</span></dt><dd><p>Number of clusters for dimensionality reduction.</p>
 </dd>
-<dt><strong>train_size</strong><span class="classifier">float, optional (default=0.3)</span></dt><dd><p>Fraction of samples used to compute the clustering.
-If <cite>train_size = 1</cite>, clustering is not random since all samples
-are used to compute the clustering.</p>
+<dt><strong>scaler_sampling</strong><span class="classifier">sklearn.preprocessing object, optional (default=None)</span></dt><dd><p>Scaler to standardize the clustered features.</p>
 </dd>
-<dt><strong>groups</strong><span class="classifier">ndarray, shape (n_samples,), optional (default=None)</span></dt><dd><p>Group labels for each sample. If not None, <cite>groups</cite> is used to build
-the subsamples that serve to compute the clustering.</p>
+<dt><strong>train_size</strong><span class="classifier">float, optional (default=0.3)</span></dt><dd><p>Fraction of samples used for clustering. Using train_size &lt; 1 enables
+random subsampling for better generalization.</p>
+</dd>
+<dt><strong>groups</strong><span class="classifier">ndarray, shape (n_samples,), optional (default=None)</span></dt><dd><p>Sample group labels for stratified subsampling. Ensures balanced
+representation of groups in subsamples.</p>
 </dd>
 <dt><strong>inference_method</strong><span class="classifier">str, optional (default=’desparsified-lasso’)</span></dt><dd><p>Method used for inference.
 Currently, the two available methods are ‘desparsified-lasso’
@@ -452,49 +458,48 @@ are ‘quantiles’ and ‘median’.</p>
 quantile aggregation formula. This parameter is used only if
 <cite>ensembling_method</cite> is ‘quantiles’.</p>
 </dd>
-<dt><strong>n_bootstraps</strong><span class="classifier">int, optional (default=25)</span></dt><dd><p>Number of clustered inference algorithm solutions to compute before
-ensembling.</p>
+<dt><strong>n_bootstraps</strong><span class="classifier">int, optional (default=25)</span></dt><dd><p>Number of bootstrap iterations for ensemble inference.</p>
 </dd>
-<dt><strong>n_jobs</strong><span class="classifier">int or None, optional (default=1)</span></dt><dd><p>Number of CPUs used to compute several clustered inference
-algorithms simultaneously.</p>
+<dt><strong>n_jobs</strong><span class="classifier">int or None, optional (default=None)</span></dt><dd><p>Number of parallel jobs. None means using all processors.</p>
+</dd>
+<dt><strong>verbose: int, optional (default=1)</strong></dt><dd><p>The verbosity level. If <cite>verbose &gt; 0</cite>, a message is printed before
+running the clustered inference.</p>
 </dd>
 <dt><strong>memory</strong><span class="classifier">joblib.Memory or str, optional (default=None)</span></dt><dd><p>Used to cache the output of the clustering and inference computation.
 By default, no caching is done. If provided, it should be the path
 to the caching directory or a joblib.Memory object.</p>
 </dd>
-<dt><strong>verbose: int, optional (default=1)</strong></dt><dd><p>The verbosity level. If <cite>verbose &gt; 0</cite>, a message is printed before
-running the clustered inference.</p>
-</dd>
-<dt><strong>**kwargs:</strong></dt><dd><p>Arguments passed to the statistical inference function.</p>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Additional keyword arguments passed to statistical inference functions.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>beta_hat</strong><span class="classifier">ndarray, shape (n_features,) or (n_features, n_times)</span></dt><dd><p>Estimated parameter vector or matrix.</p>
+<dt><strong>list_ward</strong><span class="classifier">list of FeatureAgglomeration</span></dt><dd><p>List of fitted clustering objects from each bootstrap.</p>
+</dd>
+<dt><strong>list_beta_hat</strong><span class="classifier">list of ndarray</span></dt><dd><p>List of estimated coefficients from each bootstrap.</p>
 </dd>
 <dt><strong>pval</strong><span class="classifier">ndarray, shape (n_features,)</span></dt><dd><p>p-value, with numerically accurate values for
 positive effects (i.e., for p-values close to zero).</p>
 </dd>
-<dt><strong>pval_corr</strong><span class="classifier">ndarray, shape (n_features,)</span></dt><dd><p>p-value corrected for multiple testing.</p>
+<dt><strong>list_theta_hat</strong><span class="classifier">list of ndarray</span></dt><dd><p>List of estimated precision matrices.</p>
+</dd>
+<dt><strong>list_precision_diag</strong><span class="classifier">list of ndarray</span></dt><dd><p>List of diagonal elements of covariance matrices.</p>
 </dd>
 <dt><strong>one_minus_pval</strong><span class="classifier">ndarray, shape (n_features,)</span></dt><dd><p>One minus the p-value, with numerically accurate values
 for negative effects (i.e., for p-values close to one).</p>
 </dd>
-<dt><strong>one_minus_pval_corr</strong><span class="classifier">ndarray, shape (n_features,)</span></dt><dd><p>One minus the p-value corrected for multiple testing.</p>
-</dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The algorithm performs these steps for each bootstrap iteration:
+1. Subsample the data using stratified sampling if groups are provided
+2. Cluster features using Ward’s hierarchical clustering
+3. Transform data to reduced cluster space
+4. Perform statistical inference using desparsified lasso
+5. Aggregate results across all iterations</p>
 <p class="rubric">References</p>
-<div class="docutils container" id="id2">
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="footcite-chevalier2021decoding" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Joseph Salmon, Gaël Varoquaux, and Bertrand Thirion. Decoding with confidence: statistical control on decoder maps. <em>NeuroImage</em>, 234:117921, 2021.</p>
-</aside>
-</aside>
-</div>
 </dd></dl>
 
 <section id="examples-using-hidimstat-ensemble-clustered-inference">
@@ -528,11 +533,11 @@ for negative effects (i.e., for p-values close to one).</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.hd_inference.html"
+       href="hidimstat.ensemble_clustered_inference_pvalue.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">hidimstat.hd_inference</p>
+        <p class="prev-next-title">hidimstat.ensemble_clustered_inference_pvalue</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

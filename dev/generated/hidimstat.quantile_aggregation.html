@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9ca5bad0"></script>
+    <script src="../_static/documentation_options.js?v=2098e595"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/hidimstat.quantile_aggregation';</script>
@@ -341,7 +341,9 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.hd_inference.html">hidimstat.hd_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.permutation_test.html">hidimstat.permutation_test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.reid.html">hidimstat.reid</a></li>
@@ -416,7 +418,7 @@
 <h1>hidimstat.quantile_aggregation<a class="headerlink" href="#hidimstat-quantile-aggregation" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="hidimstat.quantile_aggregation">
-<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">quantile_aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../src/hidimstat/statistical_tools/aggregation.py#L4-L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.quantile_aggregation" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">quantile_aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../src/hidimstat/statistical_tools/aggregation.py#L4-L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.quantile_aggregation" title="Link to this definition">#</a></dt>
 <dd><p>Implements the quantile aggregation method for p-values.</p>
 <p>This method is based on :footcite:t:meinshausen2009pvalues.</p>
 <p>The function aggregates multiple p-values into a single p-value while controlling
@@ -427,12 +429,7 @@ the family-wise error rate. It supports both fixed and adaptive quantile aggrega
 <dt><strong>pvals</strong><span class="classifier">ndarray of shape (n_sampling*2, n_test)</span></dt><dd><p>Matrix of p-values to aggregate. Each row represents a sampling instance
 and each column a hypothesis test.</p>
 </dd>
-<dt><strong>gamma</strong><span class="classifier">float, default=0.05</span></dt><dd><p>The quantile level (between 0 and 1) used for aggregation.
-For non-adaptive aggregation, a single gamma value is used.
-For adaptive aggregation, this is the starting point for the grid search
-over gamma values.</p>
-</dd>
-<dt><strong>n_grid</strong><span class="classifier">int, default=20</span></dt><dd><p>Number of grid points to use for adaptive aggregation. Only used if adaptive=True.</p>
+<dt><strong>gamma</strong><span class="classifier">float, default=0.05</span></dt><dd><p>Quantile level for aggregation. Must be in range (0,1].</p>
 </dd>
 <dt><strong>adaptive</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses adaptive quantile aggregation which optimizes over multiple gamma values.
 If False, uses fixed quantile aggregation with the provided gamma value.</p>
