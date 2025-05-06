@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2098e595"></script>
+    <script src="../_static/documentation_options.js?v=6a8591ca"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/hidimstat.ensemble_clustered_inference_pvalue';</script>
@@ -345,9 +345,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.permutation_test.html">hidimstat.permutation_test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.reid.html">hidimstat.reid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.empirical_thresholding.html">hidimstat.empirical_thresholding</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.BasePerturbation.html">hidimstat.BasePerturbation</a></li>
@@ -498,12 +496,12 @@ Available methods are:
 
 <section id="examples-using-hidimstat-ensemble-clustered-inference-pvalue">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.ensemble_clustered_inference_pvalue</span></code><a class="headerlink" href="#examples-using-hidimstat-ensemble-clustered-inference-pvalue" title="Link to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the advantages of spatially relaxed inference when dealing with high-dimensional spatial data. To do so, we compare several statistical methods that aim at recovering the support, i.e., predictive features. Among those methods some leverage the spatial structure of the data. For more details about the inference algorithms presented in this example or about the generative process used to simulate the data, please refer to :footcitechevalier2022spatially."><img alt="" src="../_images/sphx_glr_plot_2D_simulation_example_thumb.png" />
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example compares methods based on Desparsified Lasso (DL) to estimate voxel activation maps associated with behavior, specifically decoder map support. All methods presented here provide statistical guarantees."><img alt="" src="../_images/sphx_glr_plot_fmri_data_example_thumb.png" />
+<p><a class="reference internal" href="../auto_examples/plot_fmri_data_example.html#sphx-glr-auto-examples-plot-fmri-data-example-py"><span class="std std-ref">Support Recovery on fMRI Data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Support Recovery on fMRI Data</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the advantages of spatially relaxed inference when dealing with high-dimensional spatial data. To do so, we compare several statistical methods that aim at recovering the support, i.e., predictive features. Among those methods some leverage the spatial structure of the data. For more details about the inference algorithms presented in this example or about the generative process used to simulate the data, please refer to :footcitechevalier2022spatially."><img alt="" src="../_images/sphx_glr_plot_2D_simulation_example_thumb.png" />
 <p><a class="reference internal" href="../auto_examples/plot_2D_simulation_example.html#sphx-glr-auto-examples-plot-2d-simulation-example-py"><span class="std std-ref">Support recovery on simulated data (2D)</span></a></p>
   <div class="sphx-glr-thumbnail-title">Support recovery on simulated data (2D)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares several methods that estimate a decoder map support with statistical guarantees. More precisely, we aim at thresholding the weights of some estimated decoder maps according to the confidence we have that they are nonzero. Here, we work with the Haxby dataset and we focus on the &#x27;face vs house&#x27; contrast. Thus, we consider the labeled activation maps of a given subject and try produce a brain map that corresponds to the discriminative pattern that makes the decoding of the two conditions."><img alt="" src="../_images/sphx_glr_plot_fmri_data_example_thumb.png" />
-<p><a class="reference internal" href="../auto_examples/plot_fmri_data_example.html#sphx-glr-auto-examples-plot-fmri-data-example-py"><span class="std std-ref">Support recovery on fMRI data</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Support recovery on fMRI data</div>
 </div></div></section>
 </section>
 

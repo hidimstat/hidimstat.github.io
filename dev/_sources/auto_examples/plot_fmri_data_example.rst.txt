@@ -18,59 +18,57 @@
 .. _sphx_glr_auto_examples_plot_fmri_data_example.py:
 
 
-Support recovery on fMRI data
+Support Recovery on fMRI Data
 =============================
 
-This example compares several methods that estimate a decoder map support
-with statistical guarantees. More precisely, we aim at thresholding the
-weights of some estimated decoder maps according to the confidence we have
-that they are nonzero. Here, we work with the Haxby dataset and we focus on
-the 'face vs house' contrast. Thus, we consider the labeled activation maps
-of a given subject and try produce a brain map that corresponds to the
-discriminative pattern that makes the decoding of the two conditions.
+This example compares methods based on Desparsified Lasso (DL) to estimate
+voxel activation maps associated with behavior, specifically decoder map support.
+All methods presented here provide statistical guarantees.
 
-In this example, we show that standard statistical methods (i.e., method
-such as thresholding by permutation test the SVR or Ridge decoder or the
-algorithm introduced by :footcite:t:`gaonkar_deriving_2012`) are not powerful when applied on
-the uncompressed problem (i.e., the orignal problem in which the activation
-maps are not reduced using compression techniques such as parcellation).
-This is notably due to the high dimensionality (too many voxels) and
-structure of the data (too much correlation between neighboring voxels).
-We also present two methods that offer statistical guarantees but
-with a (small) spatial tolerance on the shape of the support:
-clustered desparsified lasso (CLuDL) combines clustering (parcellation)
-and statistical inference ; ensemble of clustered desparsified lasso (EnCluDL)
-adds a randomization step over the choice of clustering.
+To demonstrate these methods, we use the Haxby dataset, focusing on the
+'face vs house' contrast. We analyze labeled activation maps from a single subject
+to produce a brain map showing the discriminative pattern between these two conditions.
 
-EnCluDL is powerful and does not depend on a unique clustering choice.
-As shown in :footcite:t:`chevalier2021decoding`, for several tasks the estimated
-support (predictive regions) looks relevant.
+This example illustrates that in high-dimensional settings (many voxels),
+DL becomes impractical due to memory constraints. However, we can overcome
+this limitation using feature aggregation methods that leverage the spatial structure
+of the data (high correlation between neighboring voxels).
 
-References
-----------
-.. footbibliography::
+We introduce two feature aggregation methods that maintain statistical guarantees,
+though with a small spatial tolerance in support detection (i.e., they may identify
+null covariates "close" to non-null covariates):
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-39
+* Clustered Desparsified Lasso (CLuDL): combines clustering (parcellation)
+    with statistical inference
+* Ensemble Clustered Desparsified Lasso (EnCluDL): adds randomization
+    to the clustering process
+
+EnCluDL is particularly powerful as it doesn't rely on a single clustering choice.
+As demonstrated in :footcite:t:`chevalier2021decoding`, it produces relevant
+predictive regions across various tasks.
+
+.. GENERATED FROM PYTHON SOURCE LINES 33-35
 
 Imports needed for this script
 ------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-69
+.. GENERATED FROM PYTHON SOURCE LINES 35-75
 
 .. code-block:: Python
 
+    import resource
+    import warnings
+
     import numpy as np
     import pandas as pd
-    from matplotlib.cm import get_cmap
+    from matplotlib.pyplot import get_cmap
     from nilearn import datasets
     from nilearn.image import mean_img
-    from nilearn.input_data import NiftiMasker
+    from nilearn.maskers import NiftiMasker
     from nilearn.plotting import plot_stat_map, show
     from sklearn.cluster import FeatureAgglomeration
     from sklearn.preprocessing import StandardScaler
     from sklearn.feature_extraction import image
-    from sklearn.linear_model import Ridge
-    from sklearn.svm import LinearSVR
     from sklearn.utils import Bunch
 
     from hidimstat.ensemble_clustered_inference import (
@@ -81,27 +79,36 @@ Imports needed for this script
         ensemble_clustered_inference,
         ensemble_clustered_inference_pvalue,
     )
-    from hidimstat.adaptative_permutation_threshold_SVR import ada_svr
-    from hidimstat.empirical_thresholding import empirical_thresholding
-    from hidimstat.permutation_test import permutation_test, permutation_test_pval
-    from hidimstat.statistical_tools.p_values import pval_from_scale, zscore_from_pval
-
-    n_job = None
-
+    from hidimstat.desparsified_lasso import (
+        desparsified_lasso,
+        desparsified_lasso_pvalue,
+    )
+    from hidimstat.statistical_tools.p_values import zscore_from_pval
 
 
+    # Remmove warnings during loading data
+    warnings.filterwarnings(
+        "ignore", message="The provided image has no sform in its header."
+    )
+
+    # Limit the ressoruce use for the example to 5 G.
+    resource.setrlimit(resource.RLIMIT_AS, (int(5 * 1e9), int(5 * 1e9)))
+    n_job = 1
 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-72
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 76-78
 
 Function to fetch and preprocess Haxby dataset
 ----------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-110
+.. GENERATED FROM PYTHON SOURCE LINES 78-118
 
 .. code-block:: Python
 
@@ -114,7 +121,6 @@ Function to fetch and preprocess Haxby dataset
 
         behavioral = pd.read_csv(haxby_dataset.session_target[0], sep=" ")
 
-        # conditions = pd.DataFrame.to_numpy(behavioral['labels'])
         conditions = behavioral["labels"].values
         session_label = behavioral["chunks"].values
 
@@ -125,7 +131,7 @@ Function to fetch and preprocess Haxby dataset
         if haxby_dataset.anat[0] is None:
             bg_img = None
         else:
-            bg_img = mean_img(haxby_dataset.anat)
+            bg_img = mean_img(haxby_dataset.anat, copy_header=True)
 
         # Building target where '1' corresponds to 'face' and '-1' to 'house'
         y = np.asarray((conditions[condition_mask] == "face") * 2 - 1)
@@ -133,7 +139,10 @@ Function to fetch and preprocess Haxby dataset
         # Loading mask
         mask_img = haxby_dataset.mask
         masker = NiftiMasker(
-            mask_img=mask_img, standardize=True, smoothing_fwhm=None, memory=memory
+            mask_img=mask_img,
+            standardize="zscore_sample",
+            smoothing_fwhm=None,
+            memory=memory,
         )
 
         # Computing masked data
@@ -150,7 +159,7 @@ Function to fetch and preprocess Haxby dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-118
+.. GENERATED FROM PYTHON SOURCE LINES 119-126
 
 Gathering and preprocessing Haxby dataset for a given subject
 -------------------------------------------------------------
@@ -160,7 +169,7 @@ it outputs the preprocessed activation maps for the two conditions
 the session labels (in `groups`) and the mask (in `masker`).
 You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-122
+.. GENERATED FROM PYTHON SOURCE LINES 126-130
 
 .. code-block:: Python
 
@@ -185,27 +194,23 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
     [fetch_single_file]  ...done. (0 seconds, 0 min)
 
     [fetch_single_file] Downloading data from http://data.pymvpa.org/datasets/haxby2001/subj2-2010.01.14.tar.gz ...
-    [_chunk_report_]     Downloaded 173342720 of 291168628 bytes (59.5%%,    0.7s remaining)
+    [_chunk_report_]     Downloaded 150822912 of 291168628 bytes (51.8%%,    0.9s remaining)
     [fetch_single_file]  ...done. (2 seconds, 0 min)
 
     [uncompress_file] Extracting data from /home/circleci/nilearn_data/haxby2001/9cabe068089e791ef0c5fe930fc20e30/subj2-2010.01.14.tar.gz...
     [uncompress_file] .. done.
 
-    /home/circleci/project/examples/plot_fmri_data_example.py:92: FutureWarning: From release 0.13.0 onwards, this function will, by default, copy the header of the input image to the output. Currently, the header is reset to the default Nifti1Header. To suppress this warning and use the new behavior, set `copy_header=True`.
-      bg_img = mean_img(haxby_dataset.anat)
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.12/site-packages/nilearn/image/resampling.py:489: UserWarning: The provided image has no sform in its header. Please check the provided file. Results may not be as expected.
-      warnings.warn(
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-126
+.. GENERATED FROM PYTHON SOURCE LINES 131-134
 
 Initializing FeatureAgglomeration object that performs the clustering
 -------------------------------------------------------------------------
 For fMRI data taking 500 clusters is generally a good default choice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-135
+.. GENERATED FROM PYTHON SOURCE LINES 134-143
 
 .. code-block:: Python
 
@@ -225,112 +230,60 @@ For fMRI data taking 500 clusters is generally a good default choice.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-138
+.. GENERATED FROM PYTHON SOURCE LINES 144-146
 
 Making the inference with several algorithms
 --------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-143
+.. GENERATED FROM PYTHON SOURCE LINES 148-153
 
-First, we try to recover the discriminative partern by computing
-p-values from SVR decoder weights and a parametric approximation
-of the distribution of these weights.
+First, we try to recover the discriminative pattern by computing
+p-values from desparsified lasso.
+Due to the size of the X, it's not possible to use this method with a limit
+of 5 G for memory. To handle this problem, the following methods use some
+feature aggregation methods.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-150
-
-.. code-block:: Python
-
-    beta_hat, scale = empirical_thresholding(
-        X,
-        y,
-        linear_estimator=LinearSVR(),
-    )
-    pval_std_svr, _, one_minus_pval_std_svr, _ = pval_from_scale(beta_hat, scale)
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 151-153
-
-Now, we compute p-values thanks to permutation tests applied to
-1/the weights of the SVR decoder or 2/the weights of the Ridge decoder.
-
-.. GENERATED FROM PYTHON SOURCE LINES 153-182
+.. GENERATED FROM PYTHON SOURCE LINES 153-165
 
 .. code-block:: Python
 
-
-    # To derive the p-values from the SVR decoder, you may change the next line by
-    # `SVR_permutation_test_inference = True`. It should take around 15 minutes.
-
-    SVR_permutation_test_inference = False
-    if SVR_permutation_test_inference:
-        # It will be better to associate cross validation with the estimator
-        # but for a sake of time, this is not done.
-        estimator = LinearSVR()
-        weight_svr, weight_svr_distribution = permutation_test(
-            X, y, estimator, n_permutations=50
+    try:
+        beta_hat, sigma_hat, precision_diagonal = desparsified_lasso(
+            X, y, noise_method="median", max_iteration=1000
         )
-        pval_corr_svr_perm_test, one_minus_pval_corr_svr_perm_test = permutation_test_pval(
-            weight_svr, weight_svr_distribution
+        pval_dl, _, one_minus_pval_dl, _, cb_min, cb_max = desparsified_lasso_pvalue(
+            X.shape[0], beta_hat, sigma_hat, precision_diagonal
         )
-
-    # Another method is to compute the p-values by permutation test from the
-    # Ridge decoder. The solution provided by this method should be very close to
-    # the previous one and the computation time is much shorter: around 20 seconds.
-    # We computed the parameter from a cross valisation (alpha = 0.0215)
-    # It will be better to use RidgeCV but for a sake of time, this is not done.
-    estimator = Ridge()
-    weight_ridge, weight_ridge_distribution = permutation_test(
-        X, y, estimator=estimator, n_permutations=200
-    )
-    pval_corr_ridge_perm_test, one_minus_pval_corr_ridge_perm_test = permutation_test_pval(
-        weight_ridge, weight_ridge_distribution
-    )
+    except MemoryError as err:
+        pval_dl = None
+        one_minus_pval_dl = None
+        print("As expected, Desparsified Lasso uses too much memory.")
 
 
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+ .. code-block:: none
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 183-187
-
-Now, let us run the algorithm introduced by Gaonkar et al. (c.f. References).
-Since the estimator they derive is obtained by approximating the hard margin
-SVM formulation, we referred to this method as "ada-SVR" which stands for
-"Adaptive Permutation Threshold SVR". The function is ``ada_svr``.
-
-.. GENERATED FROM PYTHON SOURCE LINES 187-190
-
-.. code-block:: Python
-
-    beta_hat, scale = ada_svr(X, y)
-    pval_ada_svr, _, one_minus_pval_ada_svr, _ = pval_from_scale(beta_hat, scale)
+    'max_iter' has been increased to 199560
+    As expected, Desparsified Lasso uses too much memory.
 
 
 
 
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 191-193
+.. GENERATED FROM PYTHON SOURCE LINES 166-168
 
 Now, the clustered inference algorithm which combines parcellation
 and high-dimensional inference (c.f. References).
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-200
+.. GENERATED FROM PYTHON SOURCE LINES 168-175
 
 .. code-block:: Python
 
     ward_, beta_hat, theta_hat, omega_diag = clustered_inference(
-        X, y, ward, n_clusters, scaler_sampling=StandardScaler()
+        X, y, ward, n_clusters, scaler_sampling=StandardScaler(), tolerance=1e-2
     )
     beta_hat, pval_cdl, _, one_minus_pval_cdl, _ = clustered_inference_pvalue(
         X.shape[0], None, ward_, beta_hat, theta_hat, omega_diag
@@ -345,16 +298,15 @@ and high-dimensional inference (c.f. References).
  .. code-block:: none
 
     Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 0,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.4s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.7s
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.12/site-packages/sklearn/linear_model/_coordinate_descent.py:681: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Duality gap: 1.742225693749198, tolerance: 0.21600000000000003
-      model = cd_fast.enet_coordinate_descent_gram(
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    4.0s
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.1s
+    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.4s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-208
+.. GENERATED FROM PYTHON SOURCE LINES 176-183
 
 Below, we run the ensemble clustered inference algorithm which adds a
 randomization step over the clustered inference algorithm (c.f. References).
@@ -364,7 +316,7 @@ then 5 statistical maps are produced and aggregated into one.
 However you might benefit from clustering randomization taking
 `n_bootstraps=25` or `n_bootstraps=100`, also we set `n_jobs=2`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 208-230
+.. GENERATED FROM PYTHON SOURCE LINES 183-207
 
 .. code-block:: Python
 
@@ -377,6 +329,8 @@ However you might benefit from clustering randomization taking
             groups=groups,
             scaler_sampling=StandardScaler(),
             n_bootstraps=5,
+            max_iteration=6000,
+            tolerance=1e-2,
             n_jobs=2,
         )
     )
@@ -399,12 +353,12 @@ However you might benefit from clustering randomization taking
  .. code-block:: none
 
     [Parallel(n_jobs=2)]: Using backend LokyBackend with 2 concurrent workers.
-    [Parallel(n_jobs=2)]: Done   5 out of   5 | elapsed:   45.7s finished
+    [Parallel(n_jobs=2)]: Done   5 out of   5 | elapsed:   29.0s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 231-239
+.. GENERATED FROM PYTHON SOURCE LINES 208-216
 
 Plotting the results
 --------------------
@@ -415,7 +369,7 @@ inverse survival function.
 
 First, we set theoretical FWER target at 10%.
 
-.. GENERATED FROM PYTHON SOURCE LINES 239-243
+.. GENERATED FROM PYTHON SOURCE LINES 216-220
 
 .. code-block:: Python
 
@@ -430,13 +384,13 @@ First, we set theoretical FWER target at 10%.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 244-247
+.. GENERATED FROM PYTHON SOURCE LINES 221-224
 
 We now translate the FWER target into a z-score target.
 For the permutation test methods we do not need any additional correction
 since the p-values are already adjusted for multiple testing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-250
+.. GENERATED FROM PYTHON SOURCE LINES 224-227
 
 .. code-block:: Python
 
@@ -450,13 +404,13 @@ since the p-values are already adjusted for multiple testing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 251-254
+.. GENERATED FROM PYTHON SOURCE LINES 228-231
 
 Other methods need to be corrected. We consider the Bonferroni correction.
 For methods that do not reduce the feature space, the correction
 consists in dividing by the number of features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 254-258
+.. GENERATED FROM PYTHON SOURCE LINES 231-235
 
 .. code-block:: Python
 
@@ -471,12 +425,12 @@ consists in dividing by the number of features.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 259-261
+.. GENERATED FROM PYTHON SOURCE LINES 236-238
 
 For methods that parcelates the brain into groups of voxels, the correction
 consists in dividing by the number of parcels (or clusters).
 
-.. GENERATED FROM PYTHON SOURCE LINES 261-265
+.. GENERATED FROM PYTHON SOURCE LINES 238-242
 
 .. code-block:: Python
 
@@ -491,14 +445,14 @@ consists in dividing by the number of parcels (or clusters).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 266-270
+.. GENERATED FROM PYTHON SOURCE LINES 243-247
 
 Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called `plot_map` that wraps all these steps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 270-328
+.. GENERATED FROM PYTHON SOURCE LINES 247-289
 
 .. code-block:: Python
 
@@ -514,7 +468,6 @@ called `plot_map` that wraps all these steps.
         vmin=None,
         vmax=None,
     ):
-
         zscore_img = masker.inverse_transform(data)
         plot_stat_map(
             zscore_img,
@@ -529,36 +482,21 @@ called `plot_map` that wraps all these steps.
         )
 
 
-    plot_map(
-        zscore_from_pval(pval_std_svr, one_minus_pval_std_svr),
-        zscore_threshold_no_clust,
-        title="SVR parametric threshold",
-    )
-
-    if SVR_permutation_test_inference:
+    if pval_dl is not None:
         plot_map(
-            zscore_from_pval(pval_corr_svr_perm_test, one_minus_pval_corr_svr_perm_test),
-            zscore_threshold_corr,
-            title="SVR permutation-test thresh.",
+            zscore_from_pval(pval_dl, one_minus_pval_dl),
+            zscore_threshold_no_clust,
+            "Desparsified Lasso",
         )
-
-    plot_map(
-        zscore_from_pval(pval_corr_ridge_perm_test, one_minus_pval_corr_ridge_perm_test),
-        zscore_threshold_corr,
-        title="Ridge permutation-test thresh.",
-    )
-
-    plot_map(
-        zscore_from_pval(pval_ada_svr, one_minus_pval_ada_svr),
-        zscore_threshold_no_clust,
-        title="SVR adaptive perm. tresh.",
-    )
 
     plot_map(
         zscore_from_pval(pval_cdl, one_minus_pval_cdl), zscore_threshold_clust, "CluDL"
     )
 
     plot_map(selected, 0.5, "EnCluDL", vmin=-1, vmax=1)
+    # Finally, calling plotting.show() is necessary to display the figure when
+    # running as a script outside IPython
+    show()
 
 
 
@@ -580,41 +518,11 @@ called `plot_map` that wraps all these steps.
          :srcset: /auto_examples/images/sphx_glr_plot_fmri_data_example_002.png
          :class: sphx-glr-multi-img
 
-    *
-
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_fmri_data_example_003.png
-         :alt: plot fmri data example
-         :srcset: /auto_examples/images/sphx_glr_plot_fmri_data_example_003.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_fmri_data_example_004.png
-         :alt: plot fmri data example
-         :srcset: /auto_examples/images/sphx_glr_plot_fmri_data_example_004.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/images/sphx_glr_plot_fmri_data_example_005.png
-         :alt: plot fmri data example
-         :srcset: /auto_examples/images/sphx_glr_plot_fmri_data_example_005.png
-         :class: sphx-glr-multi-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/project/examples/plot_fmri_data_example.py:291: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
-      cmap=get_cmap("bwr"),
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.12/site-packages/nilearn/plotting/displays/_slicers.py:313: UserWarning: empty mask
-      ims = self._map_show(img, type="imshow", threshold=threshold, **kwargs)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 329-343
+.. GENERATED FROM PYTHON SOURCE LINES 290-304
 
 Analysis of the results
 -----------------------
@@ -631,25 +539,18 @@ Finally, the solution provided by the ensemble clustered inference algorithm
 (EnCluDL) seems realistic as we recover the visual cortex and do not make
 spurious discoveries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 343-345
+.. GENERATED FROM PYTHON SOURCE LINES 307-310
 
-.. code-block:: Python
-
-
-    show()
-
-
-
-
-
-
+References
+----------
+.. footbibliography::
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (2 minutes 8.970 seconds)
+   **Total running time of the script:** (1 minutes 59.151 seconds)
 
-**Estimated memory usage:**  2971 MB
+**Estimated memory usage:**  2968 MB
 
 
 .. _sphx_glr_download_auto_examples_plot_fmri_data_example.py:
