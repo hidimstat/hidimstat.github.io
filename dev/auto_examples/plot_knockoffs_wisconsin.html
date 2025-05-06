@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6a8591ca"></script>
+    <script src="../_static/documentation_options.js?v=b9b06427"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/plot_knockoffs_wisconsin';</script>
@@ -584,7 +584,15 @@ Candes <em>et al.</em><a class="footnote-reference brackets" href="#footcite-can
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Knockoffs make at least </span><span class="si">{</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.int64" title="numpy.int64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">num_false_discoveries</span></a><span class="si">}</span><span class="s2"> False Discoveries&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Knockoffs make at least 0 False Discoveries
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+  warnings.warn(
+/home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+  warnings.warn(
+/home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+  warnings.warn(
+/home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-13.
+  warnings.warn(
+Knockoffs make at least 0 False Discoveries
 </pre></div>
 </div>
 </section>
@@ -667,8 +675,7 @@ with the largest Lasso coefficients.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.181 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  206 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.102 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-knockoffs-wisconsin-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/e9509169326130be30042c37ffec6454/plot_knockoffs_wisconsin.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_knockoffs_wisconsin.ipynb</span></code></a></p>

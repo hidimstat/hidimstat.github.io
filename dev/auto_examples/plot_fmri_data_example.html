@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6a8591ca"></script>
+    <script src="../_static/documentation_options.js?v=b9b06427"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/plot_fmri_data_example';</script>
@@ -546,10 +546,12 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.</p>
 
 [fetch_single_file] Downloading data from http://data.pymvpa.org/datasets/haxby2001/subj2-2010.01.14.tar.gz ...
 [_chunk_report_]
-Downloaded 150822912 of 291168628 bytes (51.8%%,    0.9s remaining)
-[fetch_single_file]  ...done. (2 seconds, 0 min)
+Downloaded 88678400 of 291168628 bytes (30.5%%,    2.3s remaining)
+[_chunk_report_]
+Downloaded 208207872 of 291168628 bytes (71.5%%,    0.8s remaining)
+[fetch_single_file]  ...done. (3 seconds, 0 min)
 
-[uncompress_file] Extracting data from /home/circleci/nilearn_data/haxby2001/9cabe068089e791ef0c5fe930fc20e30/subj2-2010.01.14.tar.gz...
+[uncompress_file] Extracting data from /home/circleci/nilearn_data/haxby2001/3d2c7644e96a21be22fab60f69663a15/subj2-2010.01.14.tar.gz...
 [uncompress_file] .. done.
 </pre></div>
 </div>
@@ -603,9 +605,9 @@ and high-dimensional inference (c.f. References).</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 0,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.1s
-[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.4s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.5s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.7s finished
 </pre></div>
 </div>
 <p>Below, we run the ensemble clustered inference algorithm which adds a
@@ -640,8 +642,33 @@ However you might benefit from clustering randomization taking
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=2)]: Using backend LokyBackend with 2 concurrent workers.
-[Parallel(n_jobs=2)]: Done   5 out of   5 | elapsed:   29.0s finished
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=2)]: Using backend ThreadingBackend with 2 concurrent workers.
+Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 0,groups = True
+Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 1,groups = True
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.6s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.9s finished
+Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 2,groups = True
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.9s
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.5s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.8s finished
+Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 3,groups = True
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    6.5s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    6.8s finished
+Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 4,groups = True
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    1.4s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    2.7s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    4.0s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    4.3s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.6s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.9s finished
+[Parallel(n_jobs=2)]: Done   5 out of   5 | elapsed:   40.5s finished
 </pre></div>
 </div>
 </section>
@@ -750,8 +777,7 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 59.151 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  2968 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 52.796 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/931385a6992917f918857d6a3ee9f780/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>
