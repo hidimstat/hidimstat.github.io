@@ -253,35 +253,15 @@ Measure the importance of variables using the CPI method
  .. code-block:: none
 
     Fold 0
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 1
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 2
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 3
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 4
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 5
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 6
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 7
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 8
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
     Fold 9
-    /home/circleci/project/miniconda/envs/testenv/lib/python3.13/site-packages/sklearn/utils/validation.py:1408: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
 
 
 
@@ -410,7 +390,7 @@ Define a function to compute the p-value from importance values
 Analyze the results
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 185-257
+.. GENERATED FROM PYTHON SOURCE LINES 185-258
 
 .. code-block:: Python
 
@@ -468,7 +448,7 @@ Analyze the results
     df_plot = pd.concat(vim)
     df_plot["pval"] = -np.log10(df_plot["pval"])
     methods = df_plot["method"].unique()
-    colors = plt.cm.get_cmap("tab10", 10)
+    colors = plt.get_cmap("tab10", 10)
 
     for i, method in enumerate(methods):
         subset = df_plot[df_plot["method"] == method]
@@ -484,6 +464,7 @@ Analyze the results
     ax.set_ylabel(r"$-\log_{10}(\text{p-value})$")
     ax.axhline(-np.log10(0.05), color="tab:red", ls="--")
     ax.set_xlabel("Variable")
+    ax.set_xticks(range(len(diabetes.feature_names)))
     ax.set_xticklabels(diabetes.feature_names)
     plt.show()
 
@@ -495,22 +476,13 @@ Analyze the results
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/project/examples/plot_diabetes_variable_importance_example.py:239: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
-      colors = plt.cm.get_cmap("tab10", 10)
-    /home/circleci/project/examples/plot_diabetes_variable_importance_example.py:255: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-      ax.set_xticklabels(diabetes.feature_names)
-
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 14.427 seconds)
+   **Total running time of the script:** (0 minutes 15.667 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_diabetes_variable_importance_example.py:

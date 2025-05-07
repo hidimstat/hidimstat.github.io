@@ -247,7 +247,7 @@ We use the Model-X Knockoff procedure to control the FDR (False Discovery Rate).
 selection of variables is based on the Lasso Coefficient Difference (LCD) statistic
 :footcite:t:`candes2018panning`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-168
+.. GENERATED FROM PYTHON SOURCE LINES 142-169
 
 .. code-block:: Python
 
@@ -268,6 +268,7 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
         ),
         n_bootstraps=1,
         random_state=0,
+        tol_gauss=1e-15,
         preconfigure_estimator=None,
         fdr=fdr,
     )
@@ -285,20 +286,12 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
-      warnings.warn(
-    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
-      warnings.warn(
-    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
-      warnings.warn(
-    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-13.
-      warnings.warn(
     Knockoffs make at least 0 False Discoveries
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-176
+.. GENERATED FROM PYTHON SOURCE LINES 170-177
 
 Visualizing the results
 ----------------------------------------------------
@@ -308,7 +301,7 @@ along with the selection threshold for the knockoffs and the absolute value of t
 Lasso coefficients. We plot the 25 most important features according to the KO
 statistic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-231
+.. GENERATED FROM PYTHON SOURCE LINES 177-232
 
 .. code-block:: Python
 
@@ -379,7 +372,7 @@ statistic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-237
+.. GENERATED FROM PYTHON SOURCE LINES 233-238
 
 We can clearly see that the knockoffs procedure is more conservative than the Lasso
 and rejects the spurious features while many of them are selected by the Lasso. It is
@@ -387,7 +380,7 @@ also interesting to note that some of the selected variables (with the high KO
 statistic (e.g., worst radius, worst area, mean concave points) are also variables
 with the largest Lasso coefficients.
 
-.. GENERATED FROM PYTHON SOURCE LINES 240-243
+.. GENERATED FROM PYTHON SOURCE LINES 241-244
 
 References
 ---------------------------------------------------------------------------
@@ -396,7 +389,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.102 seconds)
+   **Total running time of the script:** (0 minutes 8.294 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_knockoffs_wisconsin.py:
