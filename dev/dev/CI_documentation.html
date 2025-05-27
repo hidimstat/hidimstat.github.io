@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=0dc8c3e1"></script>
+    <script src="../_static/documentation_options.js?v=e358daf8"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dev/CI_documentation';</script>
@@ -419,7 +419,7 @@ Used for testing hidimstat across various platforms (Linux, macOS, Windows).</p>
 <li><p><strong>CircleCI</strong>:
 Builds and verifies the project documentation.</p></li>
 </ul>
-<p>If any of the following markers appears in the commit message, the following
+<p>If any of the following markers appear in the committed message, the following
 actions are taken.</p>
 <blockquote>
 <div><div class="pst-scrollable-table-container"><table class="table">
@@ -427,23 +427,33 @@ actions are taken.</p>
 <tr class="row-odd"><td><p>Commit Message Marker</p></td>
 <td><p>Action Taken by CI</p></td>
 </tr>
-<tr class="row-even"><td><p>[doc skip]</p></td>
+<tr class="row-even"><td><p>[skip tests]</p></td>
+<td><p>The tests are not run</p></td>
+</tr>
+<tr class="row-odd"><td><p>[doc skip]</p></td>
 <td><p>Docs are not built</p></td>
 </tr>
-<tr class="row-odd"><td><p>[doc quick]</p></td>
+<tr class="row-even"><td><p>[doc quick]</p></td>
 <td><p>Docs built, but excludes example gallery plots</p></td>
 </tr>
-<tr class="row-even"><td><p>[doc change]</p></td>
-<td><p>Docs built including only example which has been directly modified</p></td>
+<tr class="row-odd"><td><p>[doc change]</p></td>
+<td><p>Docs built, including only example, which has been directly modified</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div></blockquote>
-<p>Note that by default the documentation is built with all the example are modified.</p>
+<p>There is a dependence on the different parts of the CI. You need to pass the
+static analysis by the linter (Black) before that the example is running.
+The documentation is built only if the tests are succeeding.</p>
+<p>Note that, by default, the documentation is built with all the examples are modified.</p>
+<dl class="simple">
+<dt>For more details, the GitHub Action creates an event on the CircleCI pipeline, which</dt><dd><p>trigger the building of the documentation and the deployment of the documentation.</p>
+</dd>
+</dl>
 <p>CI is testing all possible configurations supported by hidimstat, so tests may fail
 with configurations different from what you are developing with. See with the
-mainteners to identify the cause of this failure.</p>
+maintainers to identify the cause of this failure.</p>
 </section>
 
 
