@@ -1,83 +1,88 @@
-============================== fixture duration top ==============================
-total          name                              num avg            min           
-0:00:00.001561                       grand total   3 0:00:00.000449 0:00:00.000411
-============================= test call duration top =============================
-total          name                              num avg            min           
-0:00:02.236520 test_ensemble_clustered_inference   1 0:00:02.236520 0:00:02.236520
-0:00:01.260285           test_dcrt_RF_regression   1 0:00:01.260285 0:00:01.260285
-0:00:00.862485 test_clustered_inference_temporal   1 0:00:00.862485 0:00:00.862485
-0:00:00.635746     test_desparsified_group_lasso   1 0:00:00.635746 0:00:00.635746
-0:00:00.263916         test_dcrt_lasso_screening   1 0:00:00.263916 0:00:00.263916
-0:00:00.244999           test_desparsified_lasso   1 0:00:00.244999 0:00:00.244999
-0:00:00.243200        test_estimate_distribution   1 0:00:00.243200 0:00:00.243200
-0:00:00.208097        test_dcrt_lasso_with_refit   1 0:00:00.208097 0:00:00.208097
-0:00:00.194767     test_invariant_with_bootstrap   1 0:00:00.194767 0:00:00.194767
-0:00:00.139323   test_model_x_knockoff_estimator   1 0:00:00.139323 0:00:00.139323
-0:00:06.334172                       grand total  18 0:00:00.167045 0:00:00.000190
-============================ test setup duration top =============================
-total          name                              num avg            min           
-0:00:00.004682                       grand total  18 0:00:00.000129 0:00:00.000107
-=========================== test teardown duration top ===========================
-total          name                              num avg            min           
-0:00:00.002765                       grand total  18 0:00:00.000147 0:00:00.000100
 ============================= fixture duration top ==============================
 total          name                             num avg            min           
-0:00:00.002851                      grand total   8 0:00:00.000291 0:00:00.000073
+0:00:00.000904                      grand total   4 0:00:00.000327 0:00:00.000075
 ============================ test call duration top =============================
 total          name                             num avg            min           
-0:00:01.194986 test_knockoff_bootstrap_quantile   1 0:00:01.194986 0:00:01.194986
-0:00:01.175767 test_knockoff_bootstrap_e_values   1 0:00:01.175767 0:00:01.175767
-0:00:01.107430          test_sample_categorical   1 0:00:01.107430 0:00:01.107430
-0:00:00.664893                  test_group_reid   1 0:00:00.664893 0:00:00.664893
-0:00:00.429889                         test_cpi   1 0:00:00.429889 0:00:00.429889
-0:00:00.390697      test_permutation_importance   1 0:00:00.390697 0:00:00.390697
-0:00:00.273191              test_reid_exception   1 0:00:00.273191 0:00:00.273191
-0:00:00.270788            test_model_x_knockoff   1 0:00:00.270788 0:00:00.270788
-0:00:00.243473                 test_binary_case   1 0:00:00.243473 0:00:00.243473
-0:00:00.209507                  test_group_case   1 0:00:00.209507 0:00:00.209507
-0:00:06.865811                      grand total  44 0:00:00.009696 0:00:00.000298
+0:00:01.183069 test_knockoff_bootstrap_quantile   1 0:00:01.183069 0:00:01.183069
+0:00:01.117794          test_dcrt_RF_regression   1 0:00:01.117794 0:00:01.117794
+0:00:00.381992                         test_cpi   1 0:00:00.381992 0:00:00.381992
+0:00:00.379095      test_permutation_importance   1 0:00:00.379095 0:00:00.379095
+0:00:00.263639                  test_group_case   1 0:00:00.263639 0:00:00.263639
+0:00:00.236219       test_estimate_distribution   1 0:00:00.236219 0:00:00.236219
+0:00:00.233641                 test_binary_case   1 0:00:00.233641 0:00:00.233641
+0:00:00.201576           test_dcrt_lasso_center   1 0:00:00.201576 0:00:00.201576
+0:00:00.154797  test_model_x_knockoff_estimator   1 0:00:00.154797 0:00:00.154797
+0:00:00.143532    test_invariant_with_bootstrap   1 0:00:00.143532 0:00:00.143532
+0:00:04.432262                      grand total  28 0:00:00.014885 0:00:00.000248
 ============================ test setup duration top ============================
 total          name                             num avg            min           
-0:00:00.010396                      grand total  44 0:00:00.000154 0:00:00.000103
+0:00:00.005528                      grand total  28 0:00:00.000124 0:00:00.000097
 ========================== test teardown duration top ===========================
 total          name                             num avg            min           
-0:00:00.006886                      grand total  44 0:00:00.000157 0:00:00.000097
+0:00:00.004106                      grand total  28 0:00:00.000132 0:00:00.000090
+=============================== fixture duration top ================================
+total          name                                 num avg            min           
+0:00:00.000512                          grand total   1 0:00:00.000512 0:00:00.000512
+============================== test call duration top ===============================
+total          name                                 num avg            min           
+0:00:02.260493    test_ensemble_clustered_inference   1 0:00:02.260493 0:00:02.260493
+0:00:01.162029     test_knockoff_bootstrap_e_values   1 0:00:01.162029 0:00:01.162029
+0:00:01.076182              test_sample_categorical   1 0:00:01.076182 0:00:01.076182
+0:00:00.622004 test_clustered_inference_no_temporal   1 0:00:00.622004 0:00:00.622004
+0:00:00.574277        test_desparsified_group_lasso   1 0:00:00.574277 0:00:00.574277
+0:00:00.220471              test_desparsified_lasso   1 0:00:00.220471 0:00:00.220471
+0:00:00.191742           test_dcrt_lasso_with_refit   1 0:00:00.191742 0:00:00.191742
+0:00:00.023485       test_dcrt_lasso_fit_with_no_cv   1 0:00:00.023485 0:00:00.023485
+0:00:00.021012                       test_simu_data   1 0:00:00.021012 0:00:00.021012
+0:00:00.009654                 test_continuous_case   1 0:00:00.009654 0:00:00.009654
+0:00:06.193988                          grand total  27 0:00:00.002679 0:00:00.000141
+============================== test setup duration top ==============================
+total          name                                 num avg            min           
+0:00:00.004293                          grand total  27 0:00:00.000116 0:00:00.000098
+============================ test teardown duration top =============================
+total          name                                 num avg            min           
+0:00:00.003760                          grand total  27 0:00:00.000125 0:00:00.000091
 ===================================== fixture duration top =====================================
 total          name                                            num avg            min           
-       0:00:00                                     grand total   0        0:00:00        0:00:00
+0:00:00.002084                                     grand total   6 0:00:00.000279 0:00:00.000087
 ==================================== test call duration top ====================================
 total          name                                            num avg            min           
-0:00:05.249084 test_ensemble_clustered_inference_temporal_data   1 0:00:05.249084 0:00:05.249084
-0:00:01.271407                     test_dcrt_RF_classification   1 0:00:01.271407 0:00:01.271407
-0:00:00.735526     test_clustered_inference_no_temporal_groups   1 0:00:00.735526 0:00:00.735526
-0:00:00.597911            test_clustered_inference_no_temporal   1 0:00:00.597911 0:00:00.597911
-0:00:00.026123                  test_dcrt_lasso_fit_with_no_cv   1 0:00:00.026123 0:00:00.026123
-0:00:07.884667                                     grand total  12 0:00:00.001356 0:00:00.000233
+0:00:05.137272 test_ensemble_clustered_inference_temporal_data   1 0:00:05.137272 0:00:05.137272
+0:00:01.268081                     test_dcrt_RF_classification   1 0:00:01.268081 0:00:01.268081
+0:00:00.967628               test_clustered_inference_temporal   1 0:00:00.967628 0:00:00.967628
+0:00:00.849438     test_clustered_inference_no_temporal_groups   1 0:00:00.849438 0:00:00.849438
+0:00:00.680146                                 test_group_reid   1 0:00:00.680146 0:00:00.680146
+0:00:00.273284                             test_reid_exception   1 0:00:00.273284 0:00:00.273284
+0:00:00.234963                       test_dcrt_lasso_screening   1 0:00:00.234963 0:00:00.234963
+0:00:00.222311                           test_model_x_knockoff   1 0:00:00.222311 0:00:00.222311
+0:00:00.194604                                       test_reid   1 0:00:00.194604 0:00:00.194604
+0:00:00.174207        test_dcrt_lasso_with_estimed_coefficient   1 0:00:00.174207 0:00:00.174207
+0:00:10.209153                                     grand total  19 0:00:00.174207 0:00:00.000395
 =================================== test setup duration top ====================================
 total          name                                            num avg            min           
-0:00:00.002261                                     grand total  12 0:00:00.000143 0:00:00.000099
+0:00:00.005786                                     grand total  19 0:00:00.000173 0:00:00.000116
 ================================== test teardown duration top ==================================
 total          name                                            num avg            min           
-0:00:00.002211                                     grand total  12 0:00:00.000129 0:00:00.000097
+0:00:00.003469                                     grand total  19 0:00:00.000158 0:00:00.000124
 ===================================== fixture duration top =====================================
 total          name                                            num avg            min           
-0:00:00.004412                                     grand total  11 0:00:00.000282 0:00:00.000073
+0:00:00.003500                                     grand total  11 0:00:00.000284 0:00:00.000075
 ==================================== test call duration top ====================================
 total          name                                            num avg            min           
-0:00:05.249084 test_ensemble_clustered_inference_temporal_data   1 0:00:05.249084 0:00:05.249084
-0:00:02.236520               test_ensemble_clustered_inference   1 0:00:02.236520 0:00:02.236520
-0:00:01.271407                     test_dcrt_RF_classification   1 0:00:01.271407 0:00:01.271407
-0:00:01.260285                         test_dcrt_RF_regression   1 0:00:01.260285 0:00:01.260285
-0:00:01.194986                test_knockoff_bootstrap_quantile   1 0:00:01.194986 0:00:01.194986
-0:00:01.175767                test_knockoff_bootstrap_e_values   1 0:00:01.175767 0:00:01.175767
-0:00:01.107430                         test_sample_categorical   1 0:00:01.107430 0:00:01.107430
-0:00:00.862485               test_clustered_inference_temporal   1 0:00:00.862485 0:00:00.862485
-0:00:00.735526     test_clustered_inference_no_temporal_groups   1 0:00:00.735526 0:00:00.735526
-0:00:00.664893                                 test_group_reid   1 0:00:00.664893 0:00:00.664893
-0:00:21.084650                                     grand total  74 0:00:00.017193 0:00:00.000190
+0:00:05.137272 test_ensemble_clustered_inference_temporal_data   1 0:00:05.137272 0:00:05.137272
+0:00:02.260493               test_ensemble_clustered_inference   1 0:00:02.260493 0:00:02.260493
+0:00:01.268081                     test_dcrt_RF_classification   1 0:00:01.268081 0:00:01.268081
+0:00:01.183069                test_knockoff_bootstrap_quantile   1 0:00:01.183069 0:00:01.183069
+0:00:01.162029                test_knockoff_bootstrap_e_values   1 0:00:01.162029 0:00:01.162029
+0:00:01.117794                         test_dcrt_RF_regression   1 0:00:01.117794 0:00:01.117794
+0:00:01.076182                         test_sample_categorical   1 0:00:01.076182 0:00:01.076182
+0:00:00.967628               test_clustered_inference_temporal   1 0:00:00.967628 0:00:00.967628
+0:00:00.849438     test_clustered_inference_no_temporal_groups   1 0:00:00.849438 0:00:00.849438
+0:00:00.680146                                 test_group_reid   1 0:00:00.680146 0:00:00.680146
+0:00:20.835403                                     grand total  74 0:00:00.015546 0:00:00.000141
 =================================== test setup duration top ====================================
 total          name                                            num avg            min           
-0:00:00.017339                                     grand total  74 0:00:00.000152 0:00:00.000099
+0:00:00.015607                                     grand total  74 0:00:00.000127 0:00:00.000097
 ================================== test teardown duration top ==================================
 total          name                                            num avg            min           
-0:00:00.011863                                     grand total  74 0:00:00.000150 0:00:00.000097
+0:00:00.011334                                     grand total  74 0:00:00.000132 0:00:00.000090
