@@ -68,7 +68,7 @@ The California housing dataset is a regression dataset with 8 features. We add a
 spurious feature that is a linear combination of 3 features plus some noise.
 The spurious feature does not provide any additional information about the target.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-78
+.. GENERATED FROM PYTHON SOURCE LINES 39-76
 
 .. code-block:: Python
 
@@ -102,12 +102,10 @@ The spurious feature does not provide any additional information about the targe
         ax=ax,
     )
     ax.set_title("Correlation Matrix")
-    ax.set_yticks(
-        np.arange(len(feature_names)) + 0.5, labels=feature_names, fontsize=10, rotation=45
-    )
-    ax.set_xticks(
-        np.arange(len(feature_names)) + 0.5, labels=feature_names, fontsize=10, rotation=45
-    )
+    ax.set_yticks(np.arange(len(feature_names)) + 0.5)
+    ax.set_yticklabels(labels=feature_names, fontsize=10, rotation=45)
+    ax.set_xticks(np.arange(len(feature_names)) + 0.5)
+    ax.set_xticklabels(labels=feature_names, fontsize=10, rotation=45)
     plt.tight_layout()
     plt.show()
 
@@ -129,7 +127,7 @@ The spurious feature does not provide any additional information about the targe
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-84
+.. GENERATED FROM PYTHON SOURCE LINES 77-82
 
 Fit a predictive model
 ----------------------
@@ -137,7 +135,7 @@ We fit a neural network model to the California housing dataset. PFI is a
 model-agnostic method, we therefore illustrate its behavior when using a neural
 network model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-114
+.. GENERATED FROM PYTHON SOURCE LINES 82-112
 
 .. code-block:: Python
 
@@ -184,7 +182,7 @@ network model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 115-121
+.. GENERATED FROM PYTHON SOURCE LINES 113-119
 
 Measure the importance of variables using the PFI method
 --------------------------------------------------------
@@ -193,7 +191,7 @@ way. We then derive a p-value from importance scores using a one-sample t-test.
 As shown in the figure below, the PFI method does not provide valid p-values for
 testing conditional importance, as it identifies the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-174
+.. GENERATED FROM PYTHON SOURCE LINES 119-172
 
 .. code-block:: Python
 
@@ -262,14 +260,14 @@ testing conditional importance, as it identifies the spurious feature as importa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-179
+.. GENERATED FROM PYTHON SOURCE LINES 173-177
 
 While the most important variables identified by PFI are plausible, such as the
 geographic coordinates or the median income of the block group, it is not robust to
 the presence of spurious features and misleadingly identifies the spurious feature as
 important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-189
+.. GENERATED FROM PYTHON SOURCE LINES 180-187
 
 A valid alternative: Condional permutation importance
 -----------------------------------------------------
@@ -279,7 +277,7 @@ intrinsic information of the feature of interest while leaving the information t
 explained by the other features unchanged. This method is valid for testing conditional
 importance. As shown below, it does not identify the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 189-238
+.. GENERATED FROM PYTHON SOURCE LINES 187-236
 
 .. code-block:: Python
 
@@ -344,11 +342,11 @@ importance. As shown below, it does not identify the spurious feature as importa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 239-240
+.. GENERATED FROM PYTHON SOURCE LINES 237-238
 
 Contrary to PFI, CPI does not identify the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 243-253
+.. GENERATED FROM PYTHON SOURCE LINES 241-251
 
 Extrapolation bias in PFI
 -------------------------
@@ -361,7 +359,7 @@ longitude that fall outside of the borders of California and therefore are by
 definition not in the training data. This is not the case for the conditional
 permutation that generates perturbed but reasonable values of longitude.
 
-.. GENERATED FROM PYTHON SOURCE LINES 253-331
+.. GENERATED FROM PYTHON SOURCE LINES 251-329
 
 .. code-block:: Python
 
@@ -455,7 +453,7 @@ permutation that generates perturbed but reasonable values of longitude.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 332-335
+.. GENERATED FROM PYTHON SOURCE LINES 330-333
 
 PFI is likely to generate samples that are unrealistic and outside of the training
 data, leading to extrapolation bias. In contrast, CPI generates samples that respect
@@ -464,7 +462,7 @@ the conditional distribution of the feature of interest.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 25.987 seconds)
+   **Total running time of the script:** (0 minutes 19.532 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_pitfalls_permutation_importance.py:
