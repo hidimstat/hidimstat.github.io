@@ -31,14 +31,17 @@ the power
 Imports needed for this script
 ------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-25
+.. GENERATED FROM PYTHON SOURCE LINES 14-28
 
 .. code-block:: Python
 
 
     import matplotlib.pyplot as plt
     import numpy as np
-    from hidimstat.dcrt import dcrt_zero, dcrt_pvalue
+    from sklearn.linear_model import LassoCV
+    from sklearn.ensemble import RandomForestRegressor
+
+    from hidimstat.dcrt import D0CRT
     from hidimstat._utils.scenario import multivariate_1D_simulation
 
     plt.rcParams.update({"font.size": 21})
@@ -53,12 +56,12 @@ Imports needed for this script
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-28
+.. GENERATED FROM PYTHON SOURCE LINES 29-31
 
 Processing the computations
 ---------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-71
+.. GENERATED FROM PYTHON SOURCE LINES 31-73
 
 .. code-block:: Python
 
@@ -88,20 +91,19 @@ Processing the computations
         y = np.maximum(0.0, y)
 
         ## dcrt Lasso ##
-        selection_features, X_res, sigma2, y_res = dcrt_zero(X, y, screening=False)
-        variables_important_lasso, pvals_lasso, ts_lasso = dcrt_pvalue(
-            selection_features, X_res, sigma2, y_res
-        )
+        d0crt_lasso = D0CRT(estimator=LassoCV(random_state=42, n_jobs=1), screening=False)
+        d0crt_lasso.fit_importance(X, y)
+        pvals_lasso = d0crt_lasso.pvalues_
         typeI_error["Lasso"].append(sum(pvals_lasso[n_signal:] < alpha) / (p - n_signal))
         power["Lasso"].append(sum(pvals_lasso[:n_signal] < alpha) / (n_signal))
 
         ## dcrt Random Forest ##
-        selection_features, X_res, sigma2, y_res = dcrt_zero(
-            X, y, screening=False, statistic="random_forest"
+        d0crt_random_forest = D0CRT(
+            estimator=RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=1),
+            screening=False,
         )
-        rvariables_important_forest, pvals_forest, ts_forest = dcrt_pvalue(
-            selection_features, X_res, sigma2, y_res
-        )
+        d0crt_random_forest.fit_importance(X, y)
+        pvals_forest = d0crt_random_forest.pvalues_
         typeI_error["Forest"].append(sum(pvals_forest[n_signal:] < alpha) / (p - n_signal))
         power["Forest"].append(sum(pvals_forest[:n_signal] < alpha) / (n_signal))
 
@@ -114,10 +116,6 @@ Processing the computations
  .. code-block:: none
 
     Processing: 1
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
@@ -287,15 +285,7 @@ Processing the computations
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     Processing: 3
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
@@ -465,15 +455,7 @@ Processing the computations
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     Processing: 5
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
@@ -643,15 +625,7 @@ Processing the computations
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     Processing: 7
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
@@ -821,15 +795,7 @@ Processing the computations
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     Processing: 9
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
@@ -999,20 +965,16 @@ Processing the computations
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-74
+.. GENERATED FROM PYTHON SOURCE LINES 74-76
 
 Plotting the comparison
 -----------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-87
+.. GENERATED FROM PYTHON SOURCE LINES 76-89
 
 .. code-block:: Python
 
@@ -1044,7 +1006,7 @@ Plotting the comparison
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 47.491 seconds)
+   **Total running time of the script:** (2 minutes 9.056 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_dcrt_example.py:

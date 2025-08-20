@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=a414cfbf"></script>
+    <script src="../../../_static/documentation_options.js?v=9e423ab2"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.LOCO';</script>
@@ -350,8 +350,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.dcrt_zero.html">hidimstat.dcrt_zero</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.dcrt_pvalue.html">hidimstat.dcrt_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
@@ -361,10 +359,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.reid.html">hidimstat.reid</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.BaseVariableImportance.html">hidimstat.BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.BasePerturbation.html">hidimstat.BasePerturbation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.LOCO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.CPI.html">hidimstat.CPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">hidimstat.PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">hidimstat.D0CRT</a></li>
 </ul>
 </div>
 </nav></div>
@@ -496,7 +496,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCO.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L113-L155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCO.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L114-L156"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCO.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute the importance scores for each group of covariates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -522,7 +522,7 @@ for each group.
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCO.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L88-L111"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCO.predict" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L89-L112"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCO.predict" title="Link to this definition">#</a></dt>
 <dd><p>Compute the predictions after perturbation of the data for each group of
 variables.</p>
 <dl class="field-list simple">
@@ -535,6 +535,34 @@ variables.</p>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>out: array-like of shape (n_groups, n_permutations, n_samples)</dt><dd><p>The predictions after perturbation of the data for each group of variables.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.LOCO.selection">
+<span class="sig-name descname"><span class="pre">selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_variable_importance.py#L38-L124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCO.selection" title="Link to this definition">#</a></dt>
+<dd><p>Selects features based on variable importance.
+In case several arguments are different from None,
+the returned  selection is the conjunction of all of them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k_best</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+</dd>
+<dt><strong>percentile</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
+</dd>
+<dt><strong>threshold</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with importance scores above the specified threshold.</p>
+</dd>
+<dt><strong>threshold_pvalue</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with p-values below the specified threshold.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
 </dd>
 </dl>
 </dd>
@@ -662,6 +690,7 @@ possible to update each component of a nested object.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCO.get_params"><code class="docutils literal notranslate"><span class="pre">LOCO.get_params()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCO.importance"><code class="docutils literal notranslate"><span class="pre">LOCO.importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCO.predict"><code class="docutils literal notranslate"><span class="pre">LOCO.predict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCO.selection"><code class="docutils literal notranslate"><span class="pre">LOCO.selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCO.set_fit_request"><code class="docutils literal notranslate"><span class="pre">LOCO.set_fit_request()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCO.set_params"><code class="docutils literal notranslate"><span class="pre">LOCO.set_params()</span></code></a></li>
 </ul>

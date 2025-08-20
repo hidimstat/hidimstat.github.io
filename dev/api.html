@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=a414cfbf"></script>
+    <script src="_static/documentation_options.js?v=9e423ab2"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api';</script>
@@ -350,8 +350,6 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.dcrt_zero.html">hidimstat.dcrt_zero</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.dcrt_pvalue.html">hidimstat.dcrt_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
@@ -361,10 +359,12 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/function/hidimstat.reid.html">hidimstat.reid</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.BaseVariableImportance.html">hidimstat.BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.BasePerturbation.html">hidimstat.BasePerturbation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html">hidimstat.LOCO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CPI.html">hidimstat.CPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.PFI.html">hidimstat.PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html">hidimstat.D0CRT</a></li>
 </ul>
 </div>
 </nav></div>
@@ -440,12 +440,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/function/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference_pvalue</span></code></a>(n_samples, group, ...)</p></td>
 <td><p>Compute corrected p-values at the cluster level and transform them back to feature level.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/function/hidimstat.dcrt_zero.html#hidimstat.dcrt_zero" title="hidimstat.dcrt_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcrt_zero</span></code></a>(X, y[, estimated_coef, sigma_X, ...])</p></td>
-<td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/function/hidimstat.dcrt_pvalue.html#hidimstat.dcrt_pvalue" title="hidimstat.dcrt_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcrt_pvalue</span></code></a>(selection_features, X_res, ...)</p></td>
-<td><p>Calculate p-values and identify significant features using the dCRT test statistics.</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/function/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso" title="hidimstat.desparsified_lasso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_lasso</span></code></a>(X, y[, dof_ajdustement, ...])</p></td>
 <td><p>Desparsified Lasso</p></td>
 </tr>
@@ -475,17 +469,23 @@
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation" title="hidimstat.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a>(estimator, loss, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.BaseVariableImportance.html#hidimstat.BaseVariableImportance" title="hidimstat.BaseVariableImportance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a>()</p></td>
+<td><p>Base class for variable importance methods.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation" title="hidimstat.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a>(estimator, loss, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, loss, method, n_jobs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, loss, method, n_jobs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CPI.html#hidimstat.CPI" title="hidimstat.CPI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CPI</span></code></a>(estimator, loss, method, n_jobs, ...[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CPI.html#hidimstat.CPI" title="hidimstat.CPI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CPI</span></code></a>(estimator, loss, method, n_jobs, ...[, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, loss, method, n_jobs, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, loss, method, n_jobs, ...)</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT" title="hidimstat.D0CRT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D0CRT</span></code></a>(estimator[, method, estimated_coef, ...])</p></td>
+<td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
 </tr>
 </tbody>
 </table>

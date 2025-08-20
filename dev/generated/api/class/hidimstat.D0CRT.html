@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>hidimstat.D0CRT &#8212; HiDimStat</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9e423ab2"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.D0CRT';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Examples Gallery" href="../../gallery/examples/index.html" />
+    <link rel="prev" title="hidimstat.PFI" href="hidimstat.PFI.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../gallery/examples/index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../gallery/examples/index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.reid.html">hidimstat.reid</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.BaseVariableImportance.html">hidimstat.BaseVariableImportance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.BasePerturbation.html">hidimstat.BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCO.html">hidimstat.LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.CPI.html">hidimstat.CPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">hidimstat.PFI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.D0CRT</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">hidimstat.D0CRT</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="hidimstat-d0crt">
+<h1>hidimstat.D0CRT<a class="headerlink" href="#hidimstat-d0crt" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="hidimstat.D0CRT">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">D0CRT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimated_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_lasso_screening</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'alpha':</span> <span class="pre">None,</span> <span class="pre">'alpha_max_fraction':</span> <span class="pre">0.5,</span> <span class="pre">'alphas':</span> <span class="pre">None,</span> <span class="pre">'cv':</span> <span class="pre">5,</span> <span class="pre">'fit_intercept':</span> <span class="pre">False,</span> <span class="pre">'max_iter':</span> <span class="pre">1000,</span> <span class="pre">'n_alphas':</span> <span class="pre">10,</span> <span class="pre">'selection':</span> <span class="pre">'cyclic',</span> <span class="pre">'tol':</span> <span class="pre">1e-06}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_lasso_distillation_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joblib_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaled_statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2022</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/dcrt.py#L15-L438"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hidimstat.BaseVariableImportance.html#hidimstat.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a></p>
+<p>Implements distilled conditional randomization test (dCRT) without interactions.</p>
+<p>This class provides a fast implementation of the Conditional Randomization
+Test Candes <em>et al.</em><a class="footnote-reference brackets" href="#footcite-candes2018panning" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using the distillation process
+from Liu <em>et al.</em><a class="footnote-reference brackets" href="#footcite-liu2022fast" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. The approach accelerates variable selection
+by combining Lasso-based screening and residual-based test statistics.
+Based on the original implementation at:
+<a class="github reference external" href="https://github.com/moleibobliu/Distillation-CRT/">moleibobliu/Distillation-CRT</a>
+The y-distillation is based on a given estimator and the x-distillation is
+based on a Lasso estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator</strong><span class="classifier">sklearn estimator</span></dt><dd><p>The base estimator used for y-distillation and prediction
+(e.g., Lasso, RandomForest, …).</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str, default=”predict”</span></dt><dd><p>Method of the estimator to use for predictions (“predict”, “predict_proba”, etc.).</p>
+</dd>
+<dt><strong>estimated_coef</strong><span class="classifier">array-like of shape (n_features,) or None, default=None</span></dt><dd><p>Pre-computed feature coefficients. If None, coefficients are estimated via Lasso.</p>
+</dd>
+<dt><strong>sigma_X</strong><span class="classifier">array-like of shape (n_features, n_features) or None, default=None</span></dt><dd><p>Covariance matrix of X. If None, Lasso is used for X distillation.</p>
+</dd>
+<dt><strong>params_lasso_screening</strong><span class="classifier">dict</span></dt><dd><p>Parameters for variable screening Lasso:
+- alpha : float or None - L1 regularization strength. If None, determined by CV.
+- n_alphas : int - Number of alphas for cross-validation (default: 10).
+- alphas : array-like or None - List of alpha values to try in CV (default: None).
+- alpha_max_fraction : float - Scale factor for alpha_max (default: 0.5).
+- cv : int - Cross-validation folds (default: 5).
+- tol : float - Convergence tolerance (default: 1e-6).
+- max_iter : int - Maximum iterations (default: 1000).
+- fit_intercept : bool - Whether to fit intercept (default: False).
+- selection : {‘cyclic’} - Feature selection method (default: ‘cyclic’).</p>
+</dd>
+<dt><strong>params_lasso_distillation_x</strong><span class="classifier">dict or None, default=None</span></dt><dd><p>Parameters for X distillation Lasso. If None, uses params_lasso_screening.</p>
+</dd>
+<dt><strong>refit</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether to refit the model on selected features after screening.</p>
+</dd>
+<dt><strong>screening</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether to perform variable screening step based on Lasso coefficients.</p>
+</dd>
+<dt><strong>screening_threshold</strong><span class="classifier">float, default=10</span></dt><dd><p>Percentile threshold for screening (0-100).
+Larger values include more variables at screening.
+(screening_threshold=100 keeps all variables).</p>
+</dd>
+<dt><strong>centered</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether to center and scale features using StandardScaler.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd><p>Number of parallel jobs.</p>
+</dd>
+<dt><strong>joblib_verbose</strong><span class="classifier">int, default=0</span></dt><dd><p>Verbosity level for parallel jobs.</p>
+</dd>
+<dt><strong>fit_y</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether to fit y using selected features instead of using estimated_coef.</p>
+</dd>
+<dt><strong>scaled_statistics</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether to use scaled statistics when computing importance.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, default=2022</span></dt><dd><p>Random seed for reproducibility.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coefficient_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Estimated feature coefficients after screening/refitting during fit method.</p>
+</dd>
+<dt><strong>clf_x_</strong><span class="classifier">list of estimators of length n_features</span></dt><dd><p>Fitted models for X distillation (Lasso or None if using sigma_X).</p>
+</dd>
+<dt><strong>clf_y_</strong><span class="classifier">list of estimators of length n_features</span></dt><dd><p>Fitted models for y distillation
+(sklearn estimator or None if using estimated_coef and Lasso estimator).</p>
+</dd>
+<dt><strong>clf_screening_</strong><span class="classifier">LassoCV or Lasso</span></dt><dd><p>Fitted screening model if estimated_coef is None.</p>
+</dd>
+<dt><strong>non_selection_</strong><span class="classifier">ndarray</span></dt><dd><p>Indices of features not selected after screening.</p>
+</dd>
+<dt><strong>pvalues_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Computed p-values for each feature.</p>
+</dd>
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Importance scores for each feature.
+Test statistics following standard normal distribution.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The implementation follows Liu et al. (2022), introducing distillation to
+speed up conditional randomization testing. Key steps:
+1. Optional screening using Lasso coefficients to reduce dimensionality.
+2. Distillation to estimate conditional distributions.
+3. Test statistic computation using residual correlations.
+4. P-value calculation assuming Gaussian null distribution.</p>
+<p class="rubric">References</p>
+<div class="docutils container" id="id3">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-candes2018panning" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Emmanuel Candes, Yingying Fan, Lucas Janson, and Jinchi Lv. Panning for gold:’model-x’ knockoffs for high dimensional controlled variable selection. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em>, 80(3):551–577, 2018.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-liu2022fast" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<p>Molei Liu, Eugene Katsevich, Lucas Janson, and Aaditya Ramdas. Fast and powerful conditional randomization testing via distillation. <em>Biometrika</em>, 109(2):277–293, 2022.</p>
+</aside>
+</aside>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/dcrt.py#L151-L274"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.fit" title="Link to this definition">#</a></dt>
+<dd><p>Fit the dCRT model.</p>
+<p>This method fits the Distilled Conditional Randomization Test (DCRT) model
+as described in Liu <em>et al.</em><a class="footnote-reference brackets" href="#footcite-liu2022fast" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. It performs optional feature
+screening using Lasso, computes coefficients, and prepares the model for
+importance and p-value computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Training data matrix.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Returns the fitted instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Main steps:
+1. Optional data centering with StandardScaler
+2. Lasso screening of variables (if no estimated coefficients provided)
+3. Feature selection based on coefficient magnitudes
+4. Model refitting on selected features (if refit=True)
+5. Fit model for future distillation</p>
+<p>The screening threshold controls which features are kept based on their
+Lasso coefficients. Features with coefficients below the threshold are
+set to zero.</p>
+<p class="rubric">References</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.importance">
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/dcrt.py#L302-L406"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.importance" title="Link to this definition">#</a></dt>
+<dd><p>Compute feature importance scores using distilled CRT.</p>
+<p>Calculates test statistics and p-values for each feature using residual
+correlations after the distillation process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Input data matrix.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">same as return value</span></dt><dd></dd>
+<dt><strong>pvalues_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Two-sided p-values for each feature under Gaussian null.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Test statistics/importance scores for each feature. For unselected features,
+the score is set to 0.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For each selected feature j:
+1. Computes residuals from regressing X_j on other features
+2. Computes residuals from regressing y on other features
+3. Calculates test statistic from correlation of residuals
+4. Computes p-value assuming standard normal distribution</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.fit_importance">
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/dcrt.py#L408-L438"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.fit_importance" title="Link to this definition">#</a></dt>
+<dd><p>Fits the model to the data and computes feature importance.</p>
+<p>A convenience method that combines fit() and importance() into a single call.
+First fits the dCRT model to the data, then calculates importance scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Training data matrix.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target values.</p>
+</dd>
+<dt><strong>cv</strong><span class="classifier">None or int, optional (default=None)</span></dt><dd><p>Not used. Included for compatibility. A warning will be issued if provided.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>importance</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Feature importance scores/test statistics.
+For features not selected during screening, scores are set to 0.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Also sets the importances_ and pvalues_ attributes on the instance.
+See fit() and importance() for details on the underlying computations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.get_metadata_routing">
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/utils/_metadata_requests.py#L1532-L1544"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.get_metadata_routing" title="Link to this definition">#</a></dt>
+<dd><p>Get metadata routing of this object.</p>
+<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> on how the routing
+mechanism works.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
+routing information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L233-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.get_params" title="Link to this definition">#</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.selection">
+<span class="sig-name descname"><span class="pre">selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_variable_importance.py#L38-L124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.selection" title="Link to this definition">#</a></dt>
+<dd><p>Selects features based on variable importance.
+In case several arguments are different from None,
+the returned  selection is the conjunction of all of them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k_best</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+</dd>
+<dt><strong>percentile</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
+</dd>
+<dt><strong>threshold</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with importance scores above the specified threshold.</p>
+</dd>
+<dt><strong>threshold_pvalue</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with p-values below the specified threshold.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L317-L359"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.set_params" title="Link to this definition">#</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hidimstat.PFI.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">hidimstat.PFI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../gallery/examples/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Examples Gallery</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT"><code class="docutils literal notranslate"><span class="pre">D0CRT</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.fit"><code class="docutils literal notranslate"><span class="pre">D0CRT.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.importance"><code class="docutils literal notranslate"><span class="pre">D0CRT.importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.fit_importance"><code class="docutils literal notranslate"><span class="pre">D0CRT.fit_importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">D0CRT.get_metadata_routing()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.get_params"><code class="docutils literal notranslate"><span class="pre">D0CRT.get_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.selection"><code class="docutils literal notranslate"><span class="pre">D0CRT.selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.set_params"><code class="docutils literal notranslate"><span class="pre">D0CRT.set_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/generated/api/class/hidimstat.D0CRT.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, The hidimstat developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -42,14 +42,14 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=a414cfbf"></script>
+    <script src="../../../_static/documentation_options.js?v=9e423ab2"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.BasePerturbation';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="hidimstat.LOCO" href="hidimstat.LOCO.html" />
-    <link rel="prev" title="hidimstat.reid" href="../function/hidimstat.reid.html" />
+    <link rel="prev" title="hidimstat.BaseVariableImportance" href="hidimstat.BaseVariableImportance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -350,8 +350,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.dcrt_zero.html">hidimstat.dcrt_zero</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.dcrt_pvalue.html">hidimstat.dcrt_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
@@ -361,10 +359,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.reid.html">hidimstat.reid</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.BaseVariableImportance.html">hidimstat.BaseVariableImportance</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.BasePerturbation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCO.html">hidimstat.LOCO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.CPI.html">hidimstat.CPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">hidimstat.PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">hidimstat.D0CRT</a></li>
 </ul>
 </div>
 </nav></div>
@@ -429,11 +429,11 @@
 <h1>hidimstat.BasePerturbation<a class="headerlink" href="#hidimstat-baseperturbation" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.BasePerturbation">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">BasePerturbation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">root_mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L10-L206"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code></a></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">BasePerturbation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">root_mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L11-L207"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hidimstat.BaseVariableImportance.html#hidimstat.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.BasePerturbation.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L52-L86"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L53-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation.fit" title="Link to this definition">#</a></dt>
 <dd><p>Base fit method for perturbation-based methods. Identifies the groups.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -453,7 +453,7 @@ identified based on the columns of X.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.BasePerturbation.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L88-L111"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation.predict" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L89-L112"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation.predict" title="Link to this definition">#</a></dt>
 <dd><p>Compute the predictions after perturbation of the data for each group of
 variables.</p>
 <dl class="field-list simple">
@@ -474,7 +474,7 @@ variables.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.BasePerturbation.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L113-L155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_perturbation.py#L114-L156"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute the importance scores for each group of covariates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -530,6 +530,34 @@ contained subobjects that are estimators.</p>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.BasePerturbation.selection">
+<span class="sig-name descname"><span class="pre">selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../src/hidimstat/base_variable_importance.py#L38-L124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BasePerturbation.selection" title="Link to this definition">#</a></dt>
+<dd><p>Selects features based on variable importance.
+In case several arguments are different from None,
+the returned  selection is the conjunction of all of them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k_best</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+</dd>
+<dt><strong>percentile</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
+</dd>
+<dt><strong>threshold</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with importance scores above the specified threshold.</p>
+</dd>
+<dt><strong>threshold_pvalue</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with p-values below the specified threshold.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
 </dd>
 </dl>
 </dd>
@@ -615,12 +643,12 @@ possible to update each component of a nested object.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../function/hidimstat.reid.html"
+       href="hidimstat.BaseVariableImportance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">hidimstat.reid</p>
+        <p class="prev-next-title">hidimstat.BaseVariableImportance</p>
       </div>
     </a>
     <a class="right-next"
@@ -657,6 +685,7 @@ possible to update each component of a nested object.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BasePerturbation.importance"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BasePerturbation.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.get_metadata_routing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BasePerturbation.get_params"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.get_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BasePerturbation.selection"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BasePerturbation.set_fit_request"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.set_fit_request()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BasePerturbation.set_params"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.set_params()</span></code></a></li>
 </ul>
