@@ -23,7 +23,7 @@ Conditional vs Marginal Importance on the XOR dataset
 
 This example illustrates on XOR data that variables can be conditionally important even
 if they are not marginally important. The conditional importance is computed using the
-Conditional Permutation Importance (CPI) class and the marginal importance is computed using univariate models.
+Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-21
 
@@ -39,7 +39,7 @@ Conditional Permutation Importance (CPI) class and the marginal importance is co
     from sklearn.model_selection import KFold, train_test_split
     from sklearn.svm import SVC
 
-    from hidimstat import CPI
+    from hidimstat import CFI
 
 
 
@@ -136,7 +136,7 @@ the value of both features is necessary to classify each sample correctly.
 Computing the conditional and marginal importance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 We first compute the marginal importance by fitting univariate models on each feature.
-Then, we compute the conditional importance using the CPI class. The univarariate
+Then, we compute the conditional importance using the CFI class. The univarariate
 models don't perform above chance, since solving the XOR problem requires to use both
 features. Conditional importance, on the other hand, reveals that both features
 are important (therefore rejecting the null hypothesis
@@ -185,7 +185,7 @@ are important (therefore rejecting the null hypothesis
         clf_c = clone(clf)
         clf_c.fit(X_train, y_train)
 
-        vim = CPI(
+        vim = CFI(
             estimator=clf_c,
             method="decision_function",
             loss=hinge_loss,
@@ -268,7 +268,7 @@ the null hypothesis (importance = 0.0).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.497 seconds)
+   **Total running time of the script:** (0 minutes 6.290 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_conditional_vs_marginal_xor_data.py:
