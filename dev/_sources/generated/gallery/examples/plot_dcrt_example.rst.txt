@@ -44,7 +44,7 @@ Imports needed for this script
     from sklearn.linear_model import LassoCV
 
     from hidimstat import D0CRT
-    from hidimstat._utils.scenario import multivariate_1D_simulation
+    from hidimstat._utils.scenario import multivariate_simulation
 
 
 
@@ -58,7 +58,7 @@ Imports needed for this script
 Processing the computations
 ---------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-81
+.. GENERATED FROM PYTHON SOURCE LINES 28-89
 
 .. code-block:: Python
 
@@ -75,14 +75,20 @@ Processing the computations
         # Number of relevant variables
         n_signal = 2
         # Signal-to-noise ratio
-        snr = 4
+        signal_noise_ratio = 4
         # Correlation coefficient
         rho = 0.8
         # Nominal false positive rate
         alpha = 5e-2
 
-        X, y, _, __ = multivariate_1D_simulation(
-            n_samples=n, n_features=p, support_size=n_signal, rho=rho, seed=sim_ind
+        X, y, beta_true, noise = multivariate_simulation(
+            n_samples=n,
+            n_features=p,
+            support_size=n_signal,
+            rho=rho,
+            signal_noise_ratio=signal_noise_ratio,
+            shuffle=True,
+            seed=sim_ind,
         )
 
         # Applying a reLu function on the outcome y to get non-linear relationships
@@ -95,8 +101,9 @@ Processing the computations
         results_list.append(
             {
                 "model": "Lasso",
-                "type-1 error": sum(pvals_lasso[n_signal:] < alpha) / (p - n_signal),
-                "power": sum(pvals_lasso[:n_signal] < alpha) / (n_signal),
+                "type-1 error": sum(pvals_lasso[np.logical_not(beta_true)] < alpha)
+                / (p - n_signal),
+                "power": sum(pvals_lasso[beta_true] < alpha) / (n_signal),
             }
         )
 
@@ -110,8 +117,9 @@ Processing the computations
         results_list.append(
             {
                 "model": "RF",
-                "type-1 error": sum(pvals_forest[n_signal:] < alpha) / (p - n_signal),
-                "power": sum(pvals_forest[:n_signal] < alpha) / (n_signal),
+                "type-1 error": sum(pvals_forest[np.logical_not(beta_true)] < alpha)
+                / (n_signal),
+                "power": sum(pvals_forest[beta_true] < alpha) / (n_signal),
             }
         )
 
@@ -977,12 +985,12 @@ Processing the computations
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-84
+.. GENERATED FROM PYTHON SOURCE LINES 90-92
 
 Plotting the comparison
 -----------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-98
+.. GENERATED FROM PYTHON SOURCE LINES 92-106
 
 .. code-block:: Python
 
@@ -1012,7 +1020,7 @@ Plotting the comparison
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-106
+.. GENERATED FROM PYTHON SOURCE LINES 107-114
 
 Both methods empirically control the type-I error. In addition, it can
 be observed that the power of the Random Forest model is generally higher
@@ -1025,7 +1033,7 @@ outcome.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 34.014 seconds)
+   **Total running time of the script:** (0 minutes 32.105 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_dcrt_example.py:

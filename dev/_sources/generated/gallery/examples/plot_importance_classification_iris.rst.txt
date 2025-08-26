@@ -177,7 +177,7 @@ combination, in parallel.
         GridSearchCV(SVC(kernel="rbf"), {"C": np.logspace(-3, 3, 10)}),
     ]
     cv = KFold(n_splits=5, shuffle=True, random_state=0)
-    groups = {ft: i for i, ft in enumerate(dataset.feature_names)}
+    groups = {ft: [i] for i, ft in enumerate(dataset.feature_names)}
     out_list = Parallel(n_jobs=5)(
         delayed(run_one_fold)(
             X, y, model, train_index, test_index, vim_name=vim_name, groups=groups
@@ -388,7 +388,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 36.075 seconds)
+   **Total running time of the script:** (0 minutes 32.856 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:

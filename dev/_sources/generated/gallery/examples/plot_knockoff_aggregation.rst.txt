@@ -55,7 +55,7 @@ Imports needed for this script
         model_x_knockoff_pvalue,
     )
     from hidimstat.statistical_tools.multiple_testing import fdp_power
-    from hidimstat._utils.scenario import multivariate_1D_simulation_AR
+    from hidimstat._utils.scenario import multivariate_simulation
 
 
 
@@ -86,14 +86,14 @@ We therefore use simulated data with the following parameters:
     # Number of variables
     n_features = 150
     # Correlation parameter
-    rho = 0.4
+    rho = 0.5
     # Ratio of number of variables with non-zero coefficients over total
     # coefficients
     sparsity = 0.2
     # Desired controlled False Discovery Rate (FDR) level
     fdr = 0.1
     # signal noise ration
-    snr = 10
+    signal_noise_ratio = 10
     # number of repetitions for the bootstraps
     n_bootstraps = 25
     # seed for the random generator
@@ -119,15 +119,30 @@ We therefore use simulated data with the following parameters:
 Define the function for running the three procedures on the same data
 ---------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-126
+.. GENERATED FROM PYTHON SOURCE LINES 76-141
 
 .. code-block:: Python
 
-    def single_run(n_samples, n_features, rho, sparsity, snr, fdr, n_bootstraps, seed=None):
+    def single_run(
+        n_samples,
+        n_features,
+        rho,
+        sparsity,
+        signal_noise_ratio,
+        fdr,
+        n_bootstraps,
+        seed=None,
+    ):
         # Generate data
-        X, y, _, non_zero_index = multivariate_1D_simulation_AR(
-            n_samples, n_features, rho=rho, sparsity=sparsity, seed=seed, snr=snr
+        X, y, beta_true, noise = multivariate_simulation(
+            n_samples,
+            n_features,
+            rho=rho,
+            support_size=int(n_features * sparsity),
+            signal_noise_ratio=signal_noise_ratio,
+            seed=seed,
         )
+        non_zero_index = np.where(beta_true)[0]
 
         # Use model-X Knockoffs [1]
         selected, test_scores, threshold, X_tildes = model_x_knockoff(
@@ -180,12 +195,12 @@ Define the function for running the three procedures on the same data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-129
+.. GENERATED FROM PYTHON SOURCE LINES 142-144
 
 Define the function for plotting the result
 -------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-161
+.. GENERATED FROM PYTHON SOURCE LINES 144-176
 
 .. code-block:: Python
 
@@ -228,12 +243,12 @@ Define the function for plotting the result
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-164
+.. GENERATED FROM PYTHON SOURCE LINES 177-179
 
 Define the function for evaluate the effect of the population
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-198
+.. GENERATED FROM PYTHON SOURCE LINES 179-220
 
 .. code-block:: Python
 
@@ -241,7 +256,14 @@ Define the function for evaluate the effect of the population
         parallel = Parallel(n_jobs, verbose=joblib_verbose)
         results = parallel(
             delayed(single_run)(
-                n_samples, n_features, rho, sparsity, snr, fdr, n_bootstraps, seed=seed
+                n_samples,
+                n_features,
+                rho,
+                sparsity,
+                signal_noise_ratio,
+                fdr,
+                n_bootstraps,
+                seed=seed,
             )
             for seed in seed_list
         )
@@ -278,12 +300,12 @@ Define the function for evaluate the effect of the population
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 199-201
+.. GENERATED FROM PYTHON SOURCE LINES 221-223
 
 Aggregation methods provide a more stable inference
 ---------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-203
+.. GENERATED FROM PYTHON SOURCE LINES 223-225
 
 .. code-block:: Python
 
@@ -313,19 +335,19 @@ Aggregation methods provide a more stable inference
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 204-208
+.. GENERATED FROM PYTHON SOURCE LINES 226-230
 
 By repeating the model-X Knockoffs, we can see that instability
 of the inference. Additionally, we can see that the aggregation method
 is more stable. However, the e-values aggregation is more conservative,
 i.e. the exepect variables of importance is not find.
 
-.. GENERATED FROM PYTHON SOURCE LINES 210-212
+.. GENERATED FROM PYTHON SOURCE LINES 232-234
 
 Limitation of the aggregation methods
 -------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-214
+.. GENERATED FROM PYTHON SOURCE LINES 234-236
 
 .. code-block:: Python
 
@@ -356,20 +378,18 @@ Limitation of the aggregation methods
 
  .. code-block:: none
 
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.994e-01, tolerance: 1.456e-01
-      model = cd_fast.enet_coordinate_descent(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.031e-01, tolerance: 1.456e-01
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.628e-01, tolerance: 1.456e-01
       model = cd_fast.enet_coordinate_descent(
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-217
+.. GENERATED FROM PYTHON SOURCE LINES 237-239
 
 One important point of this method is that they require enough samples to
 estimate the distribution of each feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-222
+.. GENERATED FROM PYTHON SOURCE LINES 241-244
 
 References
 ----------
@@ -378,7 +398,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 6.098 seconds)
+   **Total running time of the script:** (1 minutes 1.959 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoff_aggregation.py:
