@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=5829ff25"></script>
+    <script src="../../../_static/documentation_options.js?v=26811c15"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_knockoff_aggregation';</script>
@@ -442,7 +442,7 @@ inference.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state" title="sklearn.utils.check_random_state" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">check_random_state</span></a>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat.knockoffs</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <a href="../../api/function/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">model_x_knockoff</span></a><span class="p">,</span>
+    <a href="../../api/class/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">model_x_knockoff</span></a><span class="p">,</span>
     <span class="n">model_x_knockoff_bootstrap_e_value</span><span class="p">,</span>
     <span class="n">model_x_knockoff_bootstrap_quantile</span><span class="p">,</span>
     <span class="n">model_x_knockoff_pvalue</span><span class="p">,</span>
@@ -511,7 +511,7 @@ We therefore use simulated data with the following parameters:</p>
     <span class="n">non_zero_index</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.where.html#numpy.where" title="numpy.where" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">where</span></a><span class="p">(</span><span class="n">beta_true</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1"># Use model-X Knockoffs [1]</span>
-    <span class="n">selected</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">X_tildes</span> <span class="o">=</span> <a href="../../api/function/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">model_x_knockoff</span></a><span class="p">(</span>
+    <span class="n">selected</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">X_tildes</span> <span class="o">=</span> <a href="../../api/class/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">model_x_knockoff</span></a><span class="p">(</span>
         <span class="n">X</span><span class="p">,</span>
         <span class="n">y</span><span class="p">,</span>
         <span class="n">estimator</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LassoCV</span></a><span class="p">(</span>
@@ -525,7 +525,7 @@ We therefore use simulated data with the following parameters:</p>
     <span class="n">fdp_mx</span><span class="p">,</span> <span class="n">power_mx</span> <span class="o">=</span> <span class="n">fdp_power</span><span class="p">(</span><span class="n">mx_selection</span><span class="p">,</span> <span class="n">non_zero_index</span><span class="p">)</span>
 
     <span class="c1"># Use aggregation model-X Knockoffs [2]</span>
-    <span class="n">selected</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">X_tildes</span> <span class="o">=</span> <a href="../../api/function/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">model_x_knockoff</span></a><span class="p">(</span>
+    <span class="n">selected</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">X_tildes</span> <span class="o">=</span> <a href="../../api/class/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">model_x_knockoff</span></a><span class="p">(</span>
         <span class="n">X</span><span class="p">,</span>
         <span class="n">y</span><span class="p">,</span>
         <span class="n">estimator</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LassoCV</span></a><span class="p">(</span>
@@ -682,7 +682,7 @@ estimate the distribution of each feature.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 1.501 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 6.573 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-knockoff-aggregation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b3b26c6664ca3ba62bddea06e01e82ca/plot_knockoff_aggregation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_knockoff_aggregation.ipynb</span></code></a></p>

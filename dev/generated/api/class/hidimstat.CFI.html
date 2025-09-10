@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=5829ff25"></script>
+    <script src="../../../_static/documentation_options.js?v=26811c15"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.CFI';</script>
@@ -347,24 +347,31 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.reid.html">hidimstat.reid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html">hidimstat.base_variable_importance.BaseVariableImportance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbation.html">hidimstat.base_perturbation.BasePerturbation</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.BaseVariableImportance.html">hidimstat.BaseVariableImportance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.BasePerturbation.html">hidimstat.BasePerturbation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCO.html">hidimstat.LOCO</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.CFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">hidimstat.PFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">hidimstat.D0CRT</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.conditional_sampling.ConditionalSampler.html">hidimstat.conditional_sampling.ConditionalSampler</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.reid.html">hidimstat.reid</a></li>
 </ul>
 </div>
 </nav></div>
@@ -430,7 +437,61 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.CFI">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">CFI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">root_mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imputation_model_continuous=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imputation_model_categorical=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_max_cardinality:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/conditional_feature_importance.py#L11-L190"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.CFI" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hidimstat.BasePerturbation.html#hidimstat.BasePerturbation" title="hidimstat.base_perturbation.BasePerturbation"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation" title="hidimstat.base_perturbation.BasePerturbation"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.CFI.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">root_mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imputation_model_continuous=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imputation_model_categorical=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_max_cardinality:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/conditional_feature_importance.py#L12-L83"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.CFI.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Conditional Feature Importance (CFI) algorithm.
+Chamma <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chamma-neurips2023" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and for group-level see
+Chamma <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chamma-aaai2024" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator</strong><span class="classifier">sklearn compatible estimator, optional</span></dt><dd><p>The estimator to use for the prediction.</p>
+</dd>
+<dt><strong>loss</strong><span class="classifier">callable, default=root_mean_squared_error</span></dt><dd><p>The loss function to use when comparing the perturbed model to the full
+model.</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str, default=”predict”</span></dt><dd><p>The method to use for the prediction. This determines the predictions passed
+to the loss function. Supported methods are “predict”, “predict_proba” or
+“decision_function”.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd><p>The number of jobs to run in parallel. Parallelization is done over the
+variables or groups of variables.</p>
+</dd>
+<dt><strong>n_permutations</strong><span class="classifier">int, default=50</span></dt><dd><p>The number of permutations to perform. For each variable/group of variables,
+the mean of the losses over the <cite>n_permutations</cite> is computed.</p>
+</dd>
+<dt><strong>imputation_model_continuous</strong><span class="classifier">sklearn compatible estimator, optional</span></dt><dd><p>The model used to estimate the conditional distribution of a given
+continuous variable/group of variables given the others.</p>
+</dd>
+<dt><strong>imputation_model_categorical</strong><span class="classifier">sklearn compatible estimator, optional</span></dt><dd><p>The model used to estimate the conditional distribution of a given
+categorical variable/group of variables given the others. Binary is
+considered as a special case of categorical.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, default=None</span></dt><dd><p>The random state to use for sampling.</p>
+</dd>
+<dt><strong>categorical_max_cardinality</strong><span class="classifier">int, default=10</span></dt><dd><p>The maximum cardinality of a variable to be considered as categorical
+when the variable type is inferred (set to “auto” or not provided).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div class="docutils container" id="id3">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-chamma-neurips2023" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Ahmad Chamma, Denis A. Engemann, and Bertrand Thirion. Statistically valid variable importance assessment through conditional permutations. In A. Oh, T. Naumann, A. Globerson, K. Saenko, M. Hardt, and S. Levine, editors, <em>Advances in Neural Information Processing Systems</em>, volume 36, 67662–67685. Curran Associates, Inc., 2023. URL: <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2023/file/d60e14c19cd6e0fc38556ad29ac8fbc9-Paper-Conference.pdf">https://proceedings.neurips.cc/paper_files/paper/2023/file/d60e14c19cd6e0fc38556ad29ac8fbc9-Paper-Conference.pdf</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-chamma-aaai2024" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Ahmad Chamma, Bertrand Thirion, and Denis Engemann. Variable importance in high-dimensional settings requires grouping. <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>, 38(10):11195–11203, 2024. URL: <a class="reference external" href="https://ojs.aaai.org/index.php/AAAI/article/view/28997">https://ojs.aaai.org/index.php/AAAI/article/view/28997</a>, <a class="reference external" href="https://doi.org/10.1609/aaai.v38i10.28997">doi:10.1609/aaai.v38i10.28997</a>.</p>
+</aside>
+</aside>
+</div>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.CFI.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/conditional_feature_importance.py#L85-L142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.CFI.fit" title="Link to this definition">#</a></dt>
@@ -576,8 +637,7 @@ the returned  selection is the conjunction of all of them.</p>
 <dt class="sig sig-object py" id="hidimstat.CFI.set_fit_request">
 <span class="sig-name descname"><span class="pre">set_fit_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'$UNCHANGED$'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'$UNCHANGED$'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#hidimstat.CFI" title="hidimstat.conditional_feature_importance.CFI"><span class="pre">CFI</span></a></span></span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/utils/_metadata_requests.py#L1285-L1330"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.CFI.set_fit_request" title="Link to this definition">#</a></dt>
 <dd><p>Configure whether metadata should be requested to be passed to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
-<blockquote>
-<div><p>Note that this method is only relevant when this estimator is used as a
+<p>Note that this method is only relevant when this estimator is used as a
 sub-estimator within a <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-meta-estimator" title="(in scikit-learn v1.7)"><span class="xref std std-term">meta-estimator</span></a> and metadata routing is enabled
 with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.set_config.html#sklearn.set_config" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code></a>).
 Please check the <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> on how the routing
@@ -595,7 +655,6 @@ parameters and not others.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 1.3.</span></p>
 </div>
-</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -640,6 +699,21 @@ possible to update each component of a nested object.</p>
 
 </dd></dl>
 
+<section id="examples-using-hidimstat-cfi">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.CFI</span></code><a class="headerlink" href="#examples-using-hidimstat-cfi" title="Link to this heading">#</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates on XOR data that variables can be conditionally important even if they are not marginally important. The conditional importance is computed using the Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models."><img alt="" src="../../../_images/sphx_glr_plot_conditional_vs_marginal_xor_data_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_conditional_vs_marginal_xor_data.html#sphx-glr-generated-gallery-examples-plot-conditional-vs-marginal-xor-data-py"><span class="std std-ref">Conditional vs Marginal Importance on the XOR dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Conditional vs Marginal Importance on the XOR dataset</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Variable Importance estimates the influence of a given input variable to the prediction made by a model. To assess variable importance in a prediction problem, :footcitebreimanRandomForests2001 introduced the permutation approach where the values are shuffled for one variable/column at a time. This permutation breaks the relationship between the variable of interest and the outcome. Following, the loss score is checked before and after this substitution for any significant drop in the performance which reflects the significance of this variable to predict the outcome. This ease-to-use solution is demonstrated, in the work by :footcitestroblConditionalVariableImportance2008, to be affected by the degree of correlation between the variables, thus biased towards truly non-significant variables highly correlated with the significant ones and creating fake significant variables. They introduced a solution for the Random Forest estimator based on conditional sampling by performing sub-groups permutation when bisecting the space using the conditioning variables of the buiding process. However, this solution is exclusive to the Random Forest and is costly with high-dimensional settings. :footciteChamma_NeurIPS2023 introduced a new model-agnostic solution to bypass the limitations of the permutation approach under the use of the conditional schemes. The variable of interest does contain two types of information: 1) the relationship with the remaining variables and 2) the relationship with the outcome. The standard permutation, while breaking the relationship with the outcome, is also destroying the dependency with the remaining variables. Therefore, instead of directly permuting the variable of interest, the variable of interest is predicted by the remaining variables and the residuals of this prediction are permuted before reconstructing the new version of the variable. This solution preserves the dependency with the remaining variables."><img alt="" src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_diabetes_variable_importance_example.html#sphx-glr-generated-gallery-examples-plot-diabetes-variable-importance-example-py"><span class="std std-ref">Variable Importance on diabetes dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Variable Importance on diabetes dataset</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show on the Iris dataset how to measure variable importance for classification tasks. We use two different variable importance methods: Conditional Feature importance (CFI) and Permutation Feature Importance (PFI) with two different classifiers: Logistic Regression (LR) and Support Vector Classifier (SVC). We start by measuring the importance of individual variables and then show how to measure the importance of groups of variables."><img alt="" src="../../../_images/sphx_glr_plot_importance_classification_iris_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_importance_classification_iris.html#sphx-glr-generated-gallery-examples-plot-importance-classification-iris-py"><span class="std std-ref">Measuring Individual and Group Variable Importance for Classification</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Measuring Individual and Group Variable Importance for Classification</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the pitfalls of using permutation feature importance (PFI) on the California housing dataset. PFI measures the importance of a variable. However, it does not measure conditional importance and does not provide statistical control over the risk of making false discoveries, i.e., the risk of declaring a variable as important when it is not."><img alt="" src="../../../_images/sphx_glr_plot_pitfalls_permutation_importance_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_pitfalls_permutation_importance.html#sphx-glr-generated-gallery-examples-plot-pitfalls-permutation-importance-py"><span class="std std-ref">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</div>
+</div></div><div style='clear:both'></div></section>
 </section>
 
 
@@ -690,6 +764,7 @@ possible to update each component of a nested object.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.CFI"><code class="docutils literal notranslate"><span class="pre">CFI</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.CFI.__init__"><code class="docutils literal notranslate"><span class="pre">CFI.__init__()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.CFI.fit"><code class="docutils literal notranslate"><span class="pre">CFI.fit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.CFI.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">CFI.get_metadata_routing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.CFI.get_params"><code class="docutils literal notranslate"><span class="pre">CFI.get_params()</span></code></a></li>
@@ -700,6 +775,7 @@ possible to update each component of a nested object.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.CFI.set_params"><code class="docutils literal notranslate"><span class="pre">CFI.set_params()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-cfi">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.CFI</span></code></a></li>
 </ul>
   </nav></div>
 

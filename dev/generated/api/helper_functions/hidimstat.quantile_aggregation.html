@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>hidimstat.BaseVariableImportance &#8212; HiDimStat</title>
+    <title>hidimstat.quantile_aggregation &#8212; HiDimStat</title>
   
   
   
@@ -42,14 +42,14 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=5829ff25"></script>
+    <script src="../../../_static/documentation_options.js?v=26811c15"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.BaseVariableImportance';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/helper_functions/hidimstat.quantile_aggregation';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="hidimstat.BasePerturbation" href="hidimstat.BasePerturbation.html" />
-    <link rel="prev" title="hidimstat.reid" href="../function/hidimstat.reid.html" />
+    <link rel="next" title="hidimstat.reid" href="hidimstat.reid.html" />
+    <link rel="prev" title="hidimstat.conditional_sampling.ConditionalSampler" href="../class/hidimstat.conditional_sampling.ConditionalSampler.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -347,24 +347,31 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.quantile_aggregation.html">hidimstat.quantile_aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../function/hidimstat.reid.html">hidimstat.reid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html">hidimstat.base_variable_importance.BaseVariableImportance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbation.html">hidimstat.base_perturbation.BasePerturbation</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCO.html">hidimstat.LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.CFI.html">hidimstat.CFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.PFI.html">hidimstat.PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.D0CRT.html">hidimstat.D0CRT</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference.html">hidimstat.clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference_pvalue.html">hidimstat.clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.desparsified_lasso.html">hidimstat.desparsified_lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.desparsified_lasso_pvalue.html">hidimstat.desparsified_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.desparsified_group_lasso_pvalue.html">hidimstat.desparsified_group_lasso_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference.html">hidimstat.ensemble_clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference_pvalue.html">hidimstat.ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.model_x_knockoff.html">hidimstat.model_x_knockoff</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.conditional_sampling.ConditionalSampler.html">hidimstat.conditional_sampling.ConditionalSampler</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.BaseVariableImportance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.BasePerturbation.html">hidimstat.BasePerturbation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCO.html">hidimstat.LOCO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.CFI.html">hidimstat.CFI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">hidimstat.PFI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">hidimstat.D0CRT</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.reid.html">hidimstat.reid</a></li>
 </ul>
 </div>
 </nav></div>
@@ -408,7 +415,7 @@
     
     <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">hidimstat.BaseVariableImportance</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">hidimstat.quantile_aggregation</span></li>
   </ul>
 </nav>
 </div>
@@ -425,129 +432,39 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="hidimstat-basevariableimportance">
-<h1>hidimstat.BaseVariableImportance<a class="headerlink" href="#hidimstat-basevariableimportance" title="Link to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="hidimstat.BaseVariableImportance">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">BaseVariableImportance</span></span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L7-L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BaseVariableImportance" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code></a></p>
-<p>Base class for variable importance methods.</p>
-<p>This class provides a foundation for implementing variable importance methods,
-including feature selection based on importance scores and p-values.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>importances_</strong><span class="classifier">array-like of shape (n_features,), default=None</span></dt><dd><p>The computed importance scores for each feature.</p>
-</dd>
-<dt><strong>pvalues_</strong><span class="classifier">array-like of shape (n_features,), default=None</span></dt><dd><p>The computed p-values for each feature.</p>
-</dd>
-<dt><strong>selections_</strong><span class="classifier">array-like of shape (n_features,), default=None</span></dt><dd><p>Binary mask indicating selected features.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>selection(k_best=None, percentile=None, threshold=None, threshold_pvalue=None)</strong></p></td>
-<td><p>Selects features based on importance scores and/or p-values using various criteria.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>_check_importance()</strong></p></td>
-<td><p>Checks if importance scores and p-values have been computed.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.BaseVariableImportance.selection">
-<span class="sig-name descname"><span class="pre">selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L38-L124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BaseVariableImportance.selection" title="Link to this definition">#</a></dt>
-<dd><p>Selects features based on variable importance.
-In case several arguments are different from None,
-the returned  selection is the conjunction of all of them.</p>
+  <section id="hidimstat-quantile-aggregation">
+<h1>hidimstat.quantile_aggregation<a class="headerlink" href="#hidimstat-quantile-aggregation" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="hidimstat.quantile_aggregation">
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">quantile_aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/aggregation.py#L4-L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.quantile_aggregation" title="Link to this definition">#</a></dt>
+<dd><p>Implements the quantile aggregation method for p-values.</p>
+<p>This method is based on :footcite:t:meinshausen2009pvalues.</p>
+<p>The function aggregates multiple p-values into a single p-value while controlling
+the family-wise error rate. It supports both fixed and adaptive quantile aggregation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>k_best</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+<dt><strong>pvals</strong><span class="classifier">ndarray of shape (n_sampling*2, n_test)</span></dt><dd><p>Matrix of p-values to aggregate. Each row represents a sampling instance
+and each column a hypothesis test.</p>
 </dd>
-<dt><strong>percentile</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
+<dt><strong>gamma</strong><span class="classifier">float, default=0.05</span></dt><dd><p>Quantile level for aggregation. Must be in range (0,1].</p>
 </dd>
-<dt><strong>threshold</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with importance scores above the specified threshold.</p>
-</dd>
-<dt><strong>threshold_pvalue</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with p-values below the specified threshold.</p>
+<dt><strong>adaptive</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses adaptive quantile aggregation which optimizes over multiple gamma values.
+If False, uses fixed quantile aggregation with the provided gamma value.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
+<dt>ndarray of shape (n_test,)</dt><dd><p>Vector of aggregated p-values, one for each hypothesis test.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.BaseVariableImportance.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/utils/_metadata_requests.py#L1532-L1544"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BaseVariableImportance.get_metadata_routing" title="Link to this definition">#</a></dt>
-<dd><p>Get metadata routing of this object.</p>
-<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> on how the routing
-mechanism works.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
-routing information.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.BaseVariableImportance.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L233-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BaseVariableImportance.get_params" title="Link to this definition">#</a></dt>
-<dd><p>Get parameters for this estimator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
-contained subobjects that are estimators.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.BaseVariableImportance.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L317-L359"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.BaseVariableImportance.set_params" title="Link to this definition">#</a></dt>
-<dd><p>Set the parameters of this estimator.</p>
-<p>The method works on simple estimators as well as on nested objects
-(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
-parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
-possible to update each component of a nested object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
+<p class="rubric">Notes</p>
+<p>The aggregated p-values are guaranteed to be valid p-values in [0,1].
+When adaptive=True, gamma is treated as the minimum gamma value to consider.</p>
+<p class="rubric">References</p>
 </dd></dl>
 
 </section>
@@ -563,20 +480,20 @@ possible to update each component of a nested object.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../function/hidimstat.reid.html"
+       href="../class/hidimstat.conditional_sampling.ConditionalSampler.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">hidimstat.reid</p>
+        <p class="prev-next-title">hidimstat.conditional_sampling.ConditionalSampler</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.BasePerturbation.html"
+       href="hidimstat.reid.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">hidimstat.BasePerturbation</p>
+        <p class="prev-next-title">hidimstat.reid</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -599,13 +516,7 @@ possible to update each component of a nested object.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BaseVariableImportance"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BaseVariableImportance.selection"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.selection()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BaseVariableImportance.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.get_metadata_routing()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BaseVariableImportance.get_params"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.get_params()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.BaseVariableImportance.set_params"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.set_params()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.quantile_aggregation"><code class="docutils literal notranslate"><span class="pre">quantile_aggregation()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -613,7 +524,7 @@ possible to update each component of a nested object.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/generated/api/class/hidimstat.BaseVariableImportance.rst.txt"
+      <li><a href="../../../_sources/generated/api/helper_functions/hidimstat.quantile_aggregation.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
