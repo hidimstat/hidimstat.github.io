@@ -58,7 +58,7 @@ where :math:`\psi_{j}` is the LOCO importance of the j-th variable.
     from sklearn.model_selection import KFold
     from sklearn.svm import SVC
 
-    from hidimstat import LOCO, D0CRT
+    from hidimstat import D0CRT, LOCO
 
 
 
@@ -137,11 +137,11 @@ in the presence of non-linear relationships.
 
 .. code-block:: Python
 
-    d0crt_linear = D0CRT(estimator=clone(linear_model), screening=False)
+    d0crt_linear = D0CRT(estimator=clone(linear_model), screening_threshold=None)
     d0crt_linear.fit_importance(X, y)
     pval_dcrt_linear = d0crt_linear.pvalues_
 
-    d0crt_non_linear = D0CRT(estimator=clone(non_linear_model), screening=False)
+    d0crt_non_linear = D0CRT(estimator=clone(non_linear_model), screening_threshold=None)
     d0crt_non_linear.fit_importance(X, y)
     pval_dcrt_non_linear = d0crt_non_linear.pvalues_
 
@@ -155,19 +155,11 @@ in the presence of non-linear relationships.
 
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
-      warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1641: FutureWarning: 'alphas=None' is deprecated and will be removed in 1.9, at which point the default value will be set to 100. Set 'alphas=100' to silence this warning.
       warnings.warn(
 
 
@@ -297,14 +289,15 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-166
+.. GENERATED FROM PYTHON SOURCE LINES 162-167
 
 As expected, when using linear models (d0CRT and LOCO-linear) that are misspecified,
 the varibles are not selected. This highlights the benefit of using model-agnostic
 methods such as LOCO, which allows for the use of models that are expressive enough
-to explain the data.
+to explain the data. While d0CRT can use any estimator, its distillation step
+restricts it from capturing variable interactions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-172
+.. GENERATED FROM PYTHON SOURCE LINES 170-173
 
 References
 ---------------------------------------------------------------------------
@@ -313,7 +306,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.617 seconds)
+   **Total running time of the script:** (0 minutes 7.714 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_model_agnostic_importance.py:
