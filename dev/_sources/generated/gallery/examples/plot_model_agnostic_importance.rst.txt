@@ -70,7 +70,7 @@ where :math:`\psi_{j}` is the LOCO importance of the j-th variable.
 .. GENERATED FROM PYTHON SOURCE LINES 41-43
 
 Generate data where classes are not linearly separable
---------------------------------------------------------------
+------------------------------------------------------
 
 .. GENERATED FROM PYTHON SOURCE LINES 43-60
 
@@ -127,7 +127,7 @@ Define a linear and a non-linear estimator
 .. GENERATED FROM PYTHON SOURCE LINES 67-73
 
 Compute p-values using d0CRT
----------------------------------------------------------------------------
+----------------------------
 We first compute the p-values using d0CRT which performs a conditional independence
 test (:math:`H_0: X_j \perp\!\!\!\perp y | X_{-j}`) for each variable. However,
 this test is based on a linear model (LogisticRegression) and fails to reject the null
@@ -168,7 +168,7 @@ in the presence of non-linear relationships.
 .. GENERATED FROM PYTHON SOURCE LINES 82-89
 
 Compute p-values using LOCO
----------------------------------------------------------------------------
+---------------------------
 We then compute the p-values using LOCO
 with a linear, and then a non-linear model. When using a
 misspecified model, such as a linear model for this dataset, LOCO fails to reject the null
@@ -254,7 +254,7 @@ importance scores.
 .. GENERATED FROM PYTHON SOURCE LINES 142-144
 
 Plot the :math:`-log_{10}(pval)` for each method and variable
----------------------------------------------------------------------------
+-------------------------------------------------------------
 
 .. GENERATED FROM PYTHON SOURCE LINES 144-161
 
@@ -300,13 +300,13 @@ restricts it from capturing variable interactions.
 .. GENERATED FROM PYTHON SOURCE LINES 170-173
 
 References
----------------------------------------------------------------------------
+----------
 .. footbibliography::
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.872 seconds)
+   **Total running time of the script:** (0 minutes 6.547 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_model_agnostic_importance.py:

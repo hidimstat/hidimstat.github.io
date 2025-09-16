@@ -49,7 +49,7 @@ Knockoffs (KO) method is able to address this issue.
 .. GENERATED FROM PYTHON SOURCE LINES 20-26
 
 Load the breast cancer dataset
-------------------------------------------------------
+------------------------------
 There are 569 samples and 30 features that correspond to tumor attributes.
 The downstream task is to classify tumors as benign or malignant. We leave out 10% of
 the data to evaluate the performance of the Logistic Lasso (Logistic Regression with
@@ -89,7 +89,7 @@ L1 regularization) on the prediction task.
 .. GENERATED FROM PYTHON SOURCE LINES 47-53
 
 Selecting variables with the Logistic Lasso
------------------------------------------------------------
+-------------------------------------------
 We want to select variables that are relevant to the outcome, i.e. tumor
 charateristics that are associated with tumor malignance. We start off by applying a
 classical method using Lasso logistic regression and retaining variables with non-null
@@ -143,7 +143,7 @@ coefficients:
 .. GENERATED FROM PYTHON SOURCE LINES 71-79
 
 Evaluating the rejection set
-------------------------------------------
+----------------------------
 Since we do not have the ground truth for the selected variables (i.e. we do not know
 the relationship between the tumor characteristics and the the malignance of the tumor
 ), we cannot evaluate this selection set directly. To investigate the reliability of
@@ -242,7 +242,7 @@ Discoveries is below a certain bound set by the user in all scenarios.
 .. GENERATED FROM PYTHON SOURCE LINES 137-142
 
 Controlled variable selection with Knockoffs
-----------------------------------------------------
+--------------------------------------------
 We use the Model-X Knockoff procedure to control the FDR (False Discovery Rate). The
 selection of variables is based on the Lasso Coefficient Difference (LCD) statistic
 :footcite:t:`candes2018panning`.
@@ -294,7 +294,7 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 .. GENERATED FROM PYTHON SOURCE LINES 170-177
 
 Visualizing the results
-----------------------------------------------------
+-----------------------
 We can compare the selection sets obtained by the two methods. In addition to the
 binary selection (selected or not), we can also visualize the the KO statistic
 along with the selection threshold for the knockoffs and the absolute value of the
@@ -383,13 +383,13 @@ with the largest Lasso coefficients.
 .. GENERATED FROM PYTHON SOURCE LINES 241-244
 
 References
----------------------------------------------------------------------------
+----------
 .. footbibliography::
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.410 seconds)
+   **Total running time of the script:** (0 minutes 9.523 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:

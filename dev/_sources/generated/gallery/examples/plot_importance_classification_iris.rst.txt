@@ -68,7 +68,7 @@ To briefly summarize the two methods:
 .. GENERATED FROM PYTHON SOURCE LINES 40-46
 
 Load the iris dataset and add a spurious feature
-----------------------------------------------------------------------
+------------------------------------------------
 We load the iris dataset and add a spurious feature that is a linear combination of
 the petal length, width amd some noise but not related to the target. The spurious feature
 allows to illustrate that `PFI` is not robust to spurious features,
@@ -98,7 +98,7 @@ contrarily to `CFI`.
 .. GENERATED FROM PYTHON SOURCE LINES 57-63
 
 Measure variable importance
---------------------------------------------------------------------------
+---------------------------
 Since both methods compute variable importance as a loss difference, they
 require a K-fold cross-fitting. Computing the importance for each fold is
 embarassingly parallel. For this reason, we encapsulate the main computations in a
@@ -248,7 +248,7 @@ does not provide type-1 error control.
 .. GENERATED FROM PYTHON SOURCE LINES 168-170
 
 Visualization of the results
---------------------------------------------------------------------------
+----------------------------
 
 .. GENERATED FROM PYTHON SOURCE LINES 170-236
 
@@ -347,7 +347,7 @@ kernel, which would be feasible with more data.
 .. GENERATED FROM PYTHON SOURCE LINES 249-258
 
 Measuring the importance of groups of features
------------------------------------------------------------------------
+----------------------------------------------
 In the example above, CFI did not select some features. This is because it
 measures conditional importance, which is the additional independent information a
 feature provides knowing all the other features. When features are highly correlated,
@@ -388,7 +388,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 35.638 seconds)
+   **Total running time of the script:** (0 minutes 36.069 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:
