@@ -47,14 +47,10 @@ EnCluDL is particularly powerful as it doesn't rely on a single clustering choic
 As demonstrated in :footcite:t:`chevalier2021decoding`, it produces relevant
 predictive regions across various tasks.
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-35
-
-Imports needed for this script
-------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 35-79
+.. GENERATED FROM PYTHON SOURCE LINES 31-70
 
 .. code-block:: Python
+
 
     import resource
     import warnings
@@ -67,24 +63,18 @@ Imports needed for this script
     from nilearn.maskers import NiftiMasker
     from nilearn.plotting import plot_stat_map, show
     from sklearn.cluster import FeatureAgglomeration
-    from sklearn.preprocessing import StandardScaler
     from sklearn.feature_extraction import image
+    from sklearn.preprocessing import StandardScaler
     from sklearn.utils import Bunch
 
+    from hidimstat.desparsified_lasso import desparsified_lasso, desparsified_lasso_pvalue
     from hidimstat.ensemble_clustered_inference import (
         clustered_inference,
         clustered_inference_pvalue,
-    )
-    from hidimstat.ensemble_clustered_inference import (
         ensemble_clustered_inference,
         ensemble_clustered_inference_pvalue,
     )
-    from hidimstat.desparsified_lasso import (
-        desparsified_lasso,
-        desparsified_lasso_pvalue,
-    )
     from hidimstat.statistical_tools.p_values import zscore_from_pval
-
 
     # Remmove warnings during loading data
     warnings.filterwarnings(
@@ -107,12 +97,12 @@ Imports needed for this script
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-82
+.. GENERATED FROM PYTHON SOURCE LINES 71-73
 
 Function to fetch and preprocess Haxby dataset
 ----------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-122
+.. GENERATED FROM PYTHON SOURCE LINES 73-113
 
 .. code-block:: Python
 
@@ -163,7 +153,7 @@ Function to fetch and preprocess Haxby dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-130
+.. GENERATED FROM PYTHON SOURCE LINES 114-121
 
 Gathering and preprocessing Haxby dataset for a given subject
 -------------------------------------------------------------
@@ -173,7 +163,7 @@ it outputs the preprocessed activation maps for the two conditions
 the session labels (in `groups`) and the mask (in `masker`).
 You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-134
+.. GENERATED FROM PYTHON SOURCE LINES 121-125
 
 .. code-block:: Python
 
@@ -194,13 +184,13 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-138
+.. GENERATED FROM PYTHON SOURCE LINES 126-129
 
 Initializing FeatureAgglomeration object that performs the clustering
 ---------------------------------------------------------------------
 For fMRI data taking 500 clusters is generally a good default choice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-147
+.. GENERATED FROM PYTHON SOURCE LINES 129-138
 
 .. code-block:: Python
 
@@ -220,7 +210,7 @@ For fMRI data taking 500 clusters is generally a good default choice.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-157
+.. GENERATED FROM PYTHON SOURCE LINES 139-148
 
 Making the inference with several algorithms
 --------------------------------------------
@@ -232,7 +222,7 @@ of 5 G for memory. To handle this problem, the following methods use some
 feature aggregation methods.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-169
+.. GENERATED FROM PYTHON SOURCE LINES 148-160
 
 .. code-block:: Python
 
@@ -262,12 +252,12 @@ feature aggregation methods.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-172
+.. GENERATED FROM PYTHON SOURCE LINES 161-163
 
 Now, the clustered inference algorithm which combines parcellation
 and high-dimensional inference (c.f. References).
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-179
+.. GENERATED FROM PYTHON SOURCE LINES 163-170
 
 .. code-block:: Python
 
@@ -287,15 +277,15 @@ and high-dimensional inference (c.f. References).
  .. code-block:: none
 
     Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 0,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.7s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.0s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
+    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.8s
+    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.1s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-187
+.. GENERATED FROM PYTHON SOURCE LINES 171-178
 
 Below, we run the ensemble clustered inference algorithm which adds a
 randomization step over the clustered inference algorithm (c.f. References).
@@ -305,7 +295,7 @@ then 5 statistical maps are produced and aggregated into one.
 However you might benefit from clustering randomization taking
 `n_bootstraps=25` or `n_bootstraps=100`, also we set `n_jobs=2`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-211
+.. GENERATED FROM PYTHON SOURCE LINES 178-202
 
 .. code-block:: Python
 
@@ -342,37 +332,37 @@ However you might benefit from clustering randomization taking
  .. code-block:: none
 
     [Parallel(n_jobs=2)]: Using backend ThreadingBackend with 2 concurrent workers.
-    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 0,groups = True 
     Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 1,groups = True 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.3s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.6s finished
-    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 2,groups = True 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    1.1s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    3.6s
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    5.3s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    5.8s finished
-    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 3,groups = True 
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    2.2s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    8.1s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    8.4s finished
-    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 4,groups = True 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    1.4s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    4.4s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    7.8s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    8.2s finished
+    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 0,groups = True 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
     [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.0s
     [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.3s finished
-    [Parallel(n_jobs=2)]: Done   5 out of   5 | elapsed:   51.2s finished
+    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 2,groups = True 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.8s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    3.7s
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    5.2s
+    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    5.6s finished
+    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 3,groups = True 
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    2.4s
+    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    7.3s
+    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    7.6s finished
+    Clustered inference: n_clusters = 500, inference method desparsified lasso, seed = 4,groups = True 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.9s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    4.1s
+    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    7.6s
+    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    8.0s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.8s
+    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.1s finished
+    [Parallel(n_jobs=2)]: Done   5 out of   5 | elapsed:   45.4s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-220
+.. GENERATED FROM PYTHON SOURCE LINES 203-211
 
 Plotting the results
 --------------------
@@ -383,7 +373,7 @@ inverse survival function.
 
 First, we set theoretical FWER target at 10%.
 
-.. GENERATED FROM PYTHON SOURCE LINES 220-224
+.. GENERATED FROM PYTHON SOURCE LINES 211-215
 
 .. code-block:: Python
 
@@ -398,13 +388,13 @@ First, we set theoretical FWER target at 10%.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 225-228
+.. GENERATED FROM PYTHON SOURCE LINES 216-219
 
 We now translate the FWER target into a z-score target.
 For the permutation test methods we do not need any additional correction
 since the p-values are already adjusted for multiple testing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 228-231
+.. GENERATED FROM PYTHON SOURCE LINES 219-222
 
 .. code-block:: Python
 
@@ -418,13 +408,13 @@ since the p-values are already adjusted for multiple testing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-235
+.. GENERATED FROM PYTHON SOURCE LINES 223-226
 
 Other methods need to be corrected. We consider the Bonferroni correction.
 For methods that do not reduce the feature space, the correction
 consists in dividing by the number of features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 235-239
+.. GENERATED FROM PYTHON SOURCE LINES 226-230
 
 .. code-block:: Python
 
@@ -439,12 +429,12 @@ consists in dividing by the number of features.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 240-242
+.. GENERATED FROM PYTHON SOURCE LINES 231-233
 
 For methods that parcelates the brain into groups of voxels, the correction
 consists in dividing by the number of parcels (or clusters).
 
-.. GENERATED FROM PYTHON SOURCE LINES 242-246
+.. GENERATED FROM PYTHON SOURCE LINES 233-237
 
 .. code-block:: Python
 
@@ -459,14 +449,14 @@ consists in dividing by the number of parcels (or clusters).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-251
+.. GENERATED FROM PYTHON SOURCE LINES 238-242
 
 Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called `plot_map` that wraps all these steps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 251-295
+.. GENERATED FROM PYTHON SOURCE LINES 242-286
 
 .. code-block:: Python
 
@@ -538,7 +528,7 @@ called `plot_map` that wraps all these steps.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 296-310
+.. GENERATED FROM PYTHON SOURCE LINES 287-301
 
 Analysis of the results
 -----------------------
@@ -555,7 +545,7 @@ Finally, the solution provided by the ensemble clustered inference algorithm
 (EnCluDL) seems realistic as we recover the visual cortex and do not make
 spurious discoveries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 313-316
+.. GENERATED FROM PYTHON SOURCE LINES 304-307
 
 References
 ----------
@@ -564,7 +554,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 0.998 seconds)
+   **Total running time of the script:** (3 minutes 6.589 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:

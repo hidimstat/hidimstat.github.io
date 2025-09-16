@@ -31,23 +31,19 @@ This example exhibits the two aggregation procedures described
 by :footcite:t:`pmlr-v119-nguyen20a` and :footcite:t:`Ren_2023` to derandomize
 inference.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-19
-
-Imports needed for this script
-------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 19-37
+.. GENERATED FROM PYTHON SOURCE LINES 15-32
 
 .. code-block:: Python
 
 
-    from joblib import Parallel, delayed
     import matplotlib.pyplot as plt
     import numpy as np
+    from joblib import Parallel, delayed
     from sklearn.linear_model import LassoCV
     from sklearn.model_selection import KFold
     from sklearn.utils import check_random_state
 
+    from hidimstat._utils.scenario import multivariate_simulation
     from hidimstat.knockoffs import (
         model_x_knockoff,
         model_x_knockoff_bootstrap_e_value,
@@ -55,7 +51,6 @@ Imports needed for this script
         model_x_knockoff_pvalue,
     )
     from hidimstat.statistical_tools.multiple_testing import fdp_power
-    from hidimstat._utils.scenario import multivariate_simulation
 
 
 
@@ -64,8 +59,7 @@ Imports needed for this script
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 38-44
+.. GENERATED FROM PYTHON SOURCE LINES 33-39
 
 Data simulation
 ---------------
@@ -74,7 +68,7 @@ False Discovery Proportion (FDP) and statistical power. Assessing these
 metrics requires knowledge of the actual data-generating process.
 We therefore use simulated data with the following parameters:
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-73
+.. GENERATED FROM PYTHON SOURCE LINES 39-68
 
 .. code-block:: Python
 
@@ -114,12 +108,12 @@ We therefore use simulated data with the following parameters:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-76
+.. GENERATED FROM PYTHON SOURCE LINES 69-71
 
 Define the function for running the three procedures on the same data
 ---------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-141
+.. GENERATED FROM PYTHON SOURCE LINES 71-136
 
 .. code-block:: Python
 
@@ -195,12 +189,12 @@ Define the function for running the three procedures on the same data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-144
+.. GENERATED FROM PYTHON SOURCE LINES 137-139
 
 Define the function for plotting the result
 -------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-176
+.. GENERATED FROM PYTHON SOURCE LINES 139-171
 
 .. code-block:: Python
 
@@ -243,12 +237,12 @@ Define the function for plotting the result
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-179
+.. GENERATED FROM PYTHON SOURCE LINES 172-174
 
 Define the function for evaluate the effect of the population
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-220
+.. GENERATED FROM PYTHON SOURCE LINES 174-215
 
 .. code-block:: Python
 
@@ -300,12 +294,12 @@ Define the function for evaluate the effect of the population
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 221-223
+.. GENERATED FROM PYTHON SOURCE LINES 216-218
 
 Aggregation methods provide a more stable inference
 ---------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-225
+.. GENERATED FROM PYTHON SOURCE LINES 218-220
 
 .. code-block:: Python
 
@@ -335,19 +329,19 @@ Aggregation methods provide a more stable inference
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-230
+.. GENERATED FROM PYTHON SOURCE LINES 221-225
 
 By repeating the model-X Knockoffs, we can see that instability
 of the inference. Additionally, we can see that the aggregation method
 is more stable. However, the e-values aggregation is more conservative,
 i.e. the exepect variables of importance is not find.
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-234
+.. GENERATED FROM PYTHON SOURCE LINES 227-229
 
 Limitation of the aggregation methods
 -------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 234-236
+.. GENERATED FROM PYTHON SOURCE LINES 229-231
 
 .. code-block:: Python
 
@@ -384,12 +378,12 @@ Limitation of the aggregation methods
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 237-239
+.. GENERATED FROM PYTHON SOURCE LINES 232-234
 
 One important point of this method is that they require enough samples to
 estimate the distribution of each feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 241-244
+.. GENERATED FROM PYTHON SOURCE LINES 236-239
 
 References
 ----------
@@ -398,7 +392,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 4.661 seconds)
+   **Total running time of the script:** (1 minutes 17.782 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoff_aggregation.py:
