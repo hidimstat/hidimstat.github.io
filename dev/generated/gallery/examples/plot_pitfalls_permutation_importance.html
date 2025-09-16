@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=b047bab9"></script>
+    <script src="../../../_static/documentation_options.js?v=9fa08cdb"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_pitfalls_permutation_importance';</script>
@@ -615,8 +615,8 @@ geographic coordinates or the median income of the block group, it is not robust
 the presence of spurious features and misleadingly identifies the spurious feature as
 important.</p>
 </section>
-<section id="a-valid-alternative-condional-feature-importance">
-<h2>A valid alternative: Condional Feature Importance<a class="headerlink" href="#a-valid-alternative-condional-feature-importance" title="Link to this heading">#</a></h2>
+<section id="a-valid-alternative-conditional-feature-importance">
+<h2>A valid alternative: Conditional Feature Importance<a class="headerlink" href="#a-valid-alternative-conditional-feature-importance" title="Link to this heading">#</a></h2>
 <p>The <cite>ConditionalFeatureImportance</cite> class computes permutations of the feature of
 interest while conditioning on the other features. In other words, it shuffles the
 intrinsic information of the feature of interest while leaving the information that is
@@ -764,7 +764,7 @@ permutation that generates perturbed but reasonable values of longitude.</p>
 <img src="../../../_images/sphx_glr_plot_pitfalls_permutation_importance_004.png" srcset="../../../_images/sphx_glr_plot_pitfalls_permutation_importance_004.png" alt="plot pitfalls permutation importance" class = "sphx-glr-single-img"/><p>PFI is likely to generate samples that are unrealistic and outside of the training
 data, leading to extrapolation bias. In contrast, CFI generates samples that respect
 the conditional distribution of the feature of interest.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.005 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 17.088 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-pitfalls-permutation-importance-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/41526c41170c073599b403a24136e28d/plot_pitfalls_permutation_importance.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_pitfalls_permutation_importance.ipynb</span></code></a></p>
@@ -830,7 +830,7 @@ the conditional distribution of the feature of interest.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-california-housing-dataset-and-add-a-spurious-feature">Load the California housing dataset and add a spurious feature</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-a-predictive-model">Fit a predictive model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-the-importance-of-variables-using-the-pfi-method">Measure the importance of variables using the PFI method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-valid-alternative-condional-feature-importance">A valid alternative: Condional Feature Importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-valid-alternative-conditional-feature-importance">A valid alternative: Conditional Feature Importance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrapolation-bias-in-pfi">Extrapolation bias in PFI</a></li>
 </ul>
   </nav></div>
