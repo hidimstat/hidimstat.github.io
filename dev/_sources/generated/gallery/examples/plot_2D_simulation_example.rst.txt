@@ -257,21 +257,31 @@ the theoretical tolerance region.
 .. GENERATED FROM PYTHON SOURCE LINES 178-184
 
 Now, we compute the support estimated by a high-dimensional statistical
-infernece method that does not leverage the data structure. This method
-was introduced by Javanmard, A. et al. (2014), Zhang, C. H. et al. (2014)
-and Van de Geer, S. et al.. (2014) (full references are available at
-https://mind-inria.github.io/hidimstat/).
+inference method that does not leverage the data structure.
+This method was introduced by :footcite:t:`javanmard2014confidence`,
+:footcite:p:`zhang2014confidence` and
+:footcite:p:`van2014asymptotically`
 and referred to as Desparsified Lasso.
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-200
+.. GENERATED FROM PYTHON SOURCE LINES 184-210
 
 .. code-block:: Python
 
 
+
     # compute desparsified lasso
-    beta_hat, sigma_hat, precision_diagonal = desparsified_lasso(X_init, y, n_jobs=n_jobs)
+    beta_hat, sigma_hat, precision_diagonal = desparsified_lasso(
+        X_init,
+        y,
+        n_jobs=n_jobs,
+    )
     pval, pval_corr, one_minus_pval, one_minus_pval_corr, cb_min, cb_max = (
-        desparsified_lasso_pvalue(X_init.shape[0], beta_hat, sigma_hat, precision_diagonal)
+        desparsified_lasso_pvalue(
+            X_init.shape[0],
+            beta_hat,
+            sigma_hat,
+            precision_diagonal,
+        )
     )
 
     # compute estimated support (first method)
@@ -296,13 +306,13 @@ and referred to as Desparsified Lasso.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-204
+.. GENERATED FROM PYTHON SOURCE LINES 211-214
 
 Now, we compute the support estimated using a clustered inference algorithm
 (c.f. :footcite:t:`chevalier2022spatially`) called Clustered Desparsified Lasso
 (CluDL) since it uses the Desparsified Lasso technique after clustering the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 204-229
+.. GENERATED FROM PYTHON SOURCE LINES 214-246
 
 .. code-block:: Python
 
@@ -319,7 +329,14 @@ Now, we compute the support estimated using a clustered inference algorithm
         X_init, y, ward, n_clusters, scaler_sampling=StandardScaler()
     )
     beta_hat, pval, pval_corr, one_minus_pval, one_minus_pval_corr = (
-        clustered_inference_pvalue(n_samples, False, ward_, beta_hat, theta_hat, omega_diag)
+        clustered_inference_pvalue(
+            n_samples,
+            False,
+            ward_,
+            beta_hat,
+            theta_hat,
+            omega_diag,
+        )
     )
 
     # compute estimated support (first method)
@@ -341,13 +358,13 @@ Now, we compute the support estimated using a clustered inference algorithm
 
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 230-235
+.. GENERATED FROM PYTHON SOURCE LINES 247-252
 
 Finally, we compute the support estimated by an ensembled clustered
 inference algorithm (c.f. :footcite:t:`chevalier2022spatially`). This algorithm is called
@@ -355,7 +372,7 @@ Ensemble of Clustered Desparsified Lasso (EnCluDL) since it runs several
 CluDL algorithms with different clustering choices. The different CluDL
 solutions are then aggregated into one.
 
-.. GENERATED FROM PYTHON SOURCE LINES 235-256
+.. GENERATED FROM PYTHON SOURCE LINES 252-273
 
 .. code-block:: Python
 
@@ -410,7 +427,7 @@ solutions are then aggregated into one.
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 5,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 6,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
@@ -442,32 +459,32 @@ solutions are then aggregated into one.
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 13,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 14,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 15,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 16,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 17,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 18,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 19,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 20,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
@@ -488,12 +505,12 @@ solutions are then aggregated into one.
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-    [Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   26.4s finished
+    [Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   26.7s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 257-262
+.. GENERATED FROM PYTHON SOURCE LINES 274-279
 
 Results
 -------
@@ -501,7 +518,7 @@ Results
 Now we plot the true support, the theoretical tolerance regions and
 the estimated supports for every method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 262-327
+.. GENERATED FROM PYTHON SOURCE LINES 279-344
 
 .. code-block:: Python
 
@@ -582,7 +599,7 @@ the estimated supports for every method.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 328-341
+.. GENERATED FROM PYTHON SOURCE LINES 345-358
 
 Analysis of the results
 -----------------------
@@ -598,10 +615,16 @@ conservative. In practice, Type-1 Error guarantees seem to hold
 for a lower spatial tolerance. This is an additional benefit of clustering
 randomization.
 
+.. GENERATED FROM PYTHON SOURCE LINES 361-364
+
+References
+----------
+.. footbibliography::
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (2 minutes 38.442 seconds)
+   **Total running time of the script:** (2 minutes 36.745 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_2D_simulation_example.py:

@@ -184,7 +184,7 @@ There are 180 features, 30 of them are real and 150 of them are fake and indepen
 of the outcome. We now apply the Lasso (with cross-validation to select the best
 regularization parameter) to the noisy dataset and observe the results:
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-129
+.. GENERATED FROM PYTHON SOURCE LINES 99-132
 
 .. code-block:: Python
 
@@ -198,7 +198,10 @@ regularization parameter) to the noisy dataset and observe the results:
     lasso_noisy.fit(noisy_train, y_train)
     y_pred_noisy = lasso_noisy.predict(noisy_test)
     print(
-        f"Accuracy of Lasso on test set with noise: {lasso_noisy.score(noisy_test, y_test):.3f}"
+        (
+            "Accuracy of Lasso on test set with noise: "
+            f"{lasso_noisy.score(noisy_test, y_test):.3f}"
+        )
     )
 
     selected_mask = [
@@ -232,14 +235,14 @@ regularization parameter) to the noisy dataset and observe the results:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-134
+.. GENERATED FROM PYTHON SOURCE LINES 133-137
 
 The Lasso selects many spurious variables that are not directly related to the outcome.
 To mitigate this problem, we can use one of the statistically controlled variable
 selection methods implemented in hidimstat. This ensures that the proportion of False
 Discoveries is below a certain bound set by the user in all scenarios.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-142
+.. GENERATED FROM PYTHON SOURCE LINES 140-145
 
 Controlled variable selection with Knockoffs
 --------------------------------------------
@@ -247,7 +250,7 @@ We use the Model-X Knockoff procedure to control the FDR (False Discovery Rate).
 selection of variables is based on the Lasso Coefficient Difference (LCD) statistic
 :footcite:t:`candes2018panning`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-169
+.. GENERATED FROM PYTHON SOURCE LINES 145-172
 
 .. code-block:: Python
 
@@ -291,7 +294,7 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-177
+.. GENERATED FROM PYTHON SOURCE LINES 173-180
 
 Visualizing the results
 -----------------------
@@ -301,7 +304,7 @@ along with the selection threshold for the knockoffs and the absolute value of t
 Lasso coefficients. We plot the 25 most important features according to the KO
 statistic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-232
+.. GENERATED FROM PYTHON SOURCE LINES 180-235
 
 .. code-block:: Python
 
@@ -372,7 +375,7 @@ statistic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 233-238
+.. GENERATED FROM PYTHON SOURCE LINES 236-241
 
 We can clearly see that the knockoffs procedure is more conservative than the Lasso
 and rejects the spurious features while many of them are selected by the Lasso. It is
@@ -380,7 +383,7 @@ also interesting to note that some of the selected variables (with the high KO
 statistic (e.g., worst radius, worst area, mean concave points) are also variables
 with the largest Lasso coefficients.
 
-.. GENERATED FROM PYTHON SOURCE LINES 241-244
+.. GENERATED FROM PYTHON SOURCE LINES 244-247
 
 References
 ----------
@@ -389,7 +392,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.819 seconds)
+   **Total running time of the script:** (0 minutes 11.017 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:

@@ -53,7 +53,7 @@ Conditional Feature Importance (CFI) class and the marginal importance is comput
 To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radial Basis Function (RBF) kernel. The decision function of
 the fitted model shows that the model is able to separate the two classes.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-39
+.. GENERATED FROM PYTHON SOURCE LINES 24-44
 
 .. code-block:: Python
 
@@ -66,7 +66,12 @@ the fitted model shows that the model is able to separate the two classes.
         np.linspace(np.min(X[:, 1]), np.max(X[:, 1]), 100),
     )
 
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        Y,
+        test_size=0.2,
+        random_state=0,
+    )
     model = SVC(kernel="rbf", random_state=0)
     model.fit(X_train, y_train)
     Z = model.decision_function(np.c_[xx.ravel(), yy.ravel()])
@@ -79,12 +84,12 @@ the fitted model shows that the model is able to separate the two classes.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-42
+.. GENERATED FROM PYTHON SOURCE LINES 45-47
 
 Visualizing the decision function of the SVC
 --------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-67
+.. GENERATED FROM PYTHON SOURCE LINES 47-72
 
 .. code-block:: Python
 
@@ -125,13 +130,13 @@ Visualizing the decision function of the SVC
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-71
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 The decision function of the SVC shows that the model is able to learn the
 non-linear decision boundary of the XOR problem. It also highlights that knowing
 the value of both features is necessary to classify each sample correctly.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-82
+.. GENERATED FROM PYTHON SOURCE LINES 79-87
 
 Computing the conditional and marginal importance
 -------------------------------------------------
@@ -142,7 +147,7 @@ features. Conditional importance, on the other hand, reveals that both features
 are important (therefore rejecting the null hypothesis
 :math:`Y \perp\!\!\!\perp X^1 | X^2`).
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-101
+.. GENERATED FROM PYTHON SOURCE LINES 87-106
 
 .. code-block:: Python
 
@@ -172,7 +177,7 @@ are important (therefore rejecting the null hypothesis
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-125
+.. GENERATED FROM PYTHON SOURCE LINES 107-130
 
 .. code-block:: Python
 
@@ -206,13 +211,13 @@ are important (therefore rejecting the null hypothesis
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 131-134
 
 Visualizing the importance scores
 ---------------------------------
 We will use boxplots to visualize the distribution of the importance scores.
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-159
+.. GENERATED FROM PYTHON SOURCE LINES 134-164
 
 .. code-block:: Python
 
@@ -258,7 +263,7 @@ We will use boxplots to visualize the distribution of the importance scores.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-164
+.. GENERATED FROM PYTHON SOURCE LINES 165-169
 
 On the left, we can see that both features are not marginally important, since the
 boxplots overlap with the chance level (accuracy = 0.5). On the right, we can see that
@@ -268,7 +273,7 @@ the null hypothesis (importance = 0.0).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.929 seconds)
+   **Total running time of the script:** (0 minutes 7.473 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_conditional_vs_marginal_xor_data.py:

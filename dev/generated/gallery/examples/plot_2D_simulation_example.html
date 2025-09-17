@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=7bd02dba"></script>
+    <script src="../../../_static/documentation_options.js?v=13bddfc4"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_2D_simulation_example';</script>
@@ -479,7 +479,7 @@ algorithms which consider only one spatial compression.</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="footcite-chevalier2022spatially" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>,<a role="doc-backlink" href="#id5">4</a>,<a role="doc-backlink" href="#id6">5</a>,<a role="doc-backlink" href="#id7">6</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>,<a role="doc-backlink" href="#id5">4</a>,<a role="doc-backlink" href="#id9">5</a>,<a role="doc-backlink" href="#id10">6</a>)</span>
 <p>Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Bertrand Thirion, and Joseph Salmon. Spatially relaxed inference on high-dimensional linear models. <em>Statistics and Computing</em>, 32(5):83, 2022.</p>
 </aside>
 </aside>
@@ -608,15 +608,24 @@ the theoretical tolerance region.</p>
 </pre></div>
 </div>
 <p>Now, we compute the support estimated by a high-dimensional statistical
-infernece method that does not leverage the data structure. This method
-was introduced by Javanmard, A. et al. (2014), Zhang, C. H. et al. (2014)
-and Van de Geer, S. et al.. (2014) (full references are available at
-<a class="reference external" href="https://mind-inria.github.io/hidimstat/">https://mind-inria.github.io/hidimstat/</a>).
+inference method that does not leverage the data structure.
+This method was introduced by Javanmard and Montanari<a class="footnote-reference brackets" href="#footcite-javanmard2014confidence" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>,
+<a class="footnote-reference brackets" href="#footcite-zhang2014confidence" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> and
+<a class="footnote-reference brackets" href="#footcite-van2014asymptotically" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>
 and referred to as Desparsified Lasso.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute desparsified lasso</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">sigma_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">precision_diagonal</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso" title="hidimstat.desparsified_lasso" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">desparsified_lasso</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">sigma_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">precision_diagonal</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso" title="hidimstat.desparsified_lasso" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">desparsified_lasso</span></a><span class="p">(</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="p">,</span>
+<span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval_corr</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval_corr</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cb_min</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cb_max</span></a> <span class="o">=</span> <span class="p">(</span>
-    <a href="../../api/class/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue" title="hidimstat.desparsified_lasso_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">desparsified_lasso_pvalue</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span><span class="o">.</span><span class="n">shape</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">sigma_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">precision_diagonal</span></a><span class="p">)</span>
+    <a href="../../api/class/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue" title="hidimstat.desparsified_lasso_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">desparsified_lasso_pvalue</span></a><span class="p">(</span>
+        <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span><span class="o">.</span><span class="n">shape</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span>
+        <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">sigma_hat</span></a><span class="p">,</span>
+        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">precision_diagonal</span></a><span class="p">,</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># compute estimated support (first method)</span>
@@ -633,7 +642,7 @@ and referred to as Desparsified Lasso.</p>
 </pre></div>
 </div>
 <p>Now, we compute the support estimated using a clustered inference algorithm
-(c.f. Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chevalier2022spatially" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>) called Clustered Desparsified Lasso
+(c.f. Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chevalier2022spatially" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>) called Clustered Desparsified Lasso
 (CluDL) since it uses the Desparsified Lasso technique after clustering the data.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the FeatureAgglomeration object that performs the clustering.</span>
 <span class="c1"># This object is necessary to run the current algorithm and the following one.</span>
@@ -647,7 +656,14 @@ and referred to as Desparsified Lasso.</p>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">,</span> <span class="n">scaler_sampling</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">()</span>
 <span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval_corr</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval_corr</span></a> <span class="o">=</span> <span class="p">(</span>
-    <a href="../../api/class/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">clustered_inference_pvalue</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward_</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">theta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">omega_diag</span></a><span class="p">)</span>
+    <a href="../../api/class/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">clustered_inference_pvalue</span></a><span class="p">(</span>
+        <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">,</span>
+        <span class="kc">False</span><span class="p">,</span>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward_</span></a><span class="p">,</span>
+        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span>
+        <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">theta_hat</span></a><span class="p">,</span>
+        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">omega_diag</span></a><span class="p">,</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># compute estimated support (first method)</span>
@@ -662,12 +678,12 @@ and referred to as Desparsified Lasso.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 </pre></div>
 </div>
 <p>Finally, we compute the support estimated by an ensembled clustered
-inference algorithm (c.f. Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chevalier2022spatially" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>). This algorithm is called
+inference algorithm (c.f. Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chevalier2022spatially" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>). This algorithm is called
 Ensemble of Clustered Desparsified Lasso (EnCluDL) since it runs several
 CluDL algorithms with different clustering choices. The different CluDL
 solutions are then aggregated into one.</p>
@@ -714,7 +730,7 @@ Clustered inference: n_clusters = 200, inference method desparsified lasso, seed
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 5,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 6,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
@@ -746,32 +762,32 @@ Clustered inference: n_clusters = 200, inference method desparsified lasso, seed
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 13,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 14,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 15,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 16,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 17,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 18,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 19,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 20,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
@@ -792,7 +808,7 @@ Clustered inference: n_clusters = 200, inference method desparsified lasso, seed
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-[Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   26.4s finished
+[Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   26.7s finished
 </pre></div>
 </div>
 </section>
@@ -878,7 +894,26 @@ Also, one can note that the theoretical spatial tolerance is quite
 conservative. In practice, Type-1 Error guarantees seem to hold
 for a lower spatial tolerance. This is an additional benefit of clustering
 randomization.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 38.442 seconds)</p>
+</section>
+<section id="id11">
+<h2>References<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id12">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-javanmard2014confidence" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>Adel Javanmard and Andrea Montanari. Confidence intervals and hypothesis testing for high-dimensional regression. <em>The Journal of Machine Learning Research</em>, 15(1):2869–2909, 2014.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-zhang2014confidence" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">3</a><span class="fn-bracket">]</span></span>
+<p>Cun-Hui Zhang and Stephanie S Zhang. Confidence intervals for low dimensional parameters in high dimensional linear models. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em>, 76(1):217–242, 2014.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-van2014asymptotically" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">4</a><span class="fn-bracket">]</span></span>
+<p>Sara van de Geer, Peter Bühlmann, Ya’acov Ritov, and Ruben Dezeure. On asymptotically optimal confidence regions and tests for high-dimensional models. <em>The Annals of Statistics</em>, pages 1166–1202, 2014.</p>
+</aside>
+</aside>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 36.745 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-2d-simulation-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/59b9ef2de24bb63af60069439f8c75cd/plot_2D_simulation_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_2D_simulation_example.ipynb</span></code></a></p>
@@ -948,6 +983,7 @@ randomization.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-with-several-algorithms">Inference with several algorithms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-results">Analysis of the results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">References</a></li>
 </ul>
   </nav></div>
 

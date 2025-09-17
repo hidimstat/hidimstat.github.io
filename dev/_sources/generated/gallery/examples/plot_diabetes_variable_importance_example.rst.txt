@@ -219,7 +219,7 @@ diabetes dataset.
 Measure the importance of variables using the CFI method
 --------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-131
+.. GENERATED FROM PYTHON SOURCE LINES 112-133
 
 .. code-block:: Python
 
@@ -232,7 +232,9 @@ Measure the importance of variables using the CFI method
         cfi = CFI(
             estimator=regressor_list[i],
             imputation_model_continuous=RidgeCV(alphas=np.logspace(-3, 3, 10)),
-            imputation_model_categorical=LogisticRegressionCV(Cs=np.logspace(-2, 2, 10)),
+            imputation_model_categorical=LogisticRegressionCV(
+                Cs=np.logspace(-2, 2, 10),
+            ),
             # covariate_estimator=HistGradientBoostingRegressor(random_state=0,),
             n_permutations=50,
             random_state=0,
@@ -264,12 +266,12 @@ Measure the importance of variables using the CFI method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 132-134
+.. GENERATED FROM PYTHON SOURCE LINES 134-136
 
 Measure the importance of variables using the LOCO method
 ---------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-150
+.. GENERATED FROM PYTHON SOURCE LINES 136-152
 
 .. code-block:: Python
 
@@ -311,12 +313,12 @@ Measure the importance of variables using the LOCO method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-153
+.. GENERATED FROM PYTHON SOURCE LINES 153-155
 
 Measure the importance of variables using the permutation method
 ----------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-171
+.. GENERATED FROM PYTHON SOURCE LINES 155-173
 
 .. code-block:: Python
 
@@ -360,12 +362,12 @@ Measure the importance of variables using the permutation method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-174
+.. GENERATED FROM PYTHON SOURCE LINES 174-176
 
 Define a function to compute the p-value from importance values
 ---------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-181
+.. GENERATED FROM PYTHON SOURCE LINES 176-183
 
 .. code-block:: Python
 
@@ -383,12 +385,12 @@ Define a function to compute the p-value from importance values
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-184
+.. GENERATED FROM PYTHON SOURCE LINES 184-186
 
 Analyze the results
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-256
+.. GENERATED FROM PYTHON SOURCE LINES 186-258
 
 .. code-block:: Python
 
@@ -479,7 +481,7 @@ Analyze the results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 15.937 seconds)
+   **Total running time of the script:** (0 minutes 18.280 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:

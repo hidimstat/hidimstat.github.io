@@ -133,7 +133,7 @@ test (:math:`H_0: X_j \perp\!\!\!\perp y | X_{-j}`) for each variable. However,
 this test is based on a linear model (LogisticRegression) and fails to reject the null
 in the presence of non-linear relationships.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-81
+.. GENERATED FROM PYTHON SOURCE LINES 73-84
 
 .. code-block:: Python
 
@@ -141,7 +141,10 @@ in the presence of non-linear relationships.
     d0crt_linear.fit_importance(X, y)
     pval_dcrt_linear = d0crt_linear.pvalues_
 
-    d0crt_non_linear = D0CRT(estimator=clone(non_linear_model), screening_threshold=None)
+    d0crt_non_linear = D0CRT(
+        estimator=clone(non_linear_model),
+        screening_threshold=None,
+    )
     d0crt_non_linear.fit_importance(X, y)
     pval_dcrt_non_linear = d0crt_non_linear.pvalues_
 
@@ -165,7 +168,7 @@ in the presence of non-linear relationships.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-89
+.. GENERATED FROM PYTHON SOURCE LINES 85-92
 
 Compute p-values using LOCO
 ---------------------------
@@ -175,7 +178,7 @@ misspecified model, such as a linear model for this dataset, LOCO fails to rejec
 similarly to d0CRT. However, when using a non-linear model (SVC), LOCO is able to
 identify the important variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-117
+.. GENERATED FROM PYTHON SOURCE LINES 92-125
 
 .. code-block:: Python
 
@@ -190,7 +193,10 @@ identify the important variables.
         linear_model_.fit(X[train], y[train])
 
         vim_linear = LOCO(
-            estimator=linear_model_, loss=log_loss, method="predict_proba", n_jobs=2
+            estimator=linear_model_,
+            loss=log_loss,
+            method="predict_proba",
+            n_jobs=2,
         )
         vim_non_linear = LOCO(
             estimator=non_linear_model_,
@@ -201,7 +207,9 @@ identify the important variables.
         vim_linear.fit(X[train], y[train])
         vim_non_linear.fit(X[train], y[train])
 
-        importances_linear.append(vim_linear.importance(X[test], y[test])["importance"])
+        importances_linear.append(
+            vim_linear.importance(X[test], y[test])["importance"],
+        )
         importances_non_linear.append(
             vim_non_linear.importance(X[test], y[test])["importance"]
         )
@@ -214,17 +222,22 @@ identify the important variables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-120
+.. GENERATED FROM PYTHON SOURCE LINES 126-128
 
 To select variables using LOCO, we compute the p-values using a t-test over the
 importance scores.
 
-.. GENERATED FROM PYTHON SOURCE LINES 120-141
+.. GENERATED FROM PYTHON SOURCE LINES 128-159
 
 .. code-block:: Python
 
 
-    _, pval_linear = ttest_1samp(importances_linear, 0, axis=0, alternative="greater")
+    _, pval_linear = ttest_1samp(
+        importances_linear,
+        0,
+        axis=0,
+        alternative="greater",
+    )
     _, pval_non_linear = ttest_1samp(
         importances_non_linear, 0, axis=0, alternative="greater"
     )
@@ -232,7 +245,12 @@ importance scores.
     df_pval = pd.DataFrame(
         {
             "pval": np.hstack(
-                [pval_dcrt_linear, pval_dcrt_non_linear, pval_linear, pval_non_linear]
+                [
+                    pval_dcrt_linear,
+                    pval_dcrt_non_linear,
+                    pval_linear,
+                    pval_non_linear,
+                ]
             ),
             "method": ["d0CRT-linear"] * 2
             + ["d0CRT-non-linear"] * 2
@@ -251,12 +269,12 @@ importance scores.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-144
+.. GENERATED FROM PYTHON SOURCE LINES 160-162
 
 Plot the :math:`-log_{10}(pval)` for each method and variable
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-161
+.. GENERATED FROM PYTHON SOURCE LINES 162-183
 
 .. code-block:: Python
 
@@ -271,7 +289,11 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
     )
     ax.set_xlabel("-$\\log_{10}(pval)$")
     ax.axvline(
-        -np.log10(0.05), color="k", lw=3, linestyle="--", label="-$\\log_{10}(0.05)$"
+        -np.log10(0.05),
+        color="k",
+        lw=3,
+        linestyle="--",
+        label="-$\\log_{10}(0.05)$",
     )
     ax.legend()
     plt.show()
@@ -289,7 +311,7 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-167
+.. GENERATED FROM PYTHON SOURCE LINES 184-189
 
 As expected, when using linear models (d0CRT and LOCO-linear) that are misspecified,
 the variables are not selected. This highlights the benefit of using model-agnostic
@@ -297,7 +319,7 @@ methods such as LOCO, which allows for the use of models that are expressive eno
 to explain the data. While d0CRT can use any estimator, its distillation step
 restricts it from capturing variable interactions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-173
+.. GENERATED FROM PYTHON SOURCE LINES 192-195
 
 References
 ----------
@@ -306,7 +328,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.987 seconds)
+   **Total running time of the script:** (0 minutes 7.888 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_model_agnostic_importance.py:
