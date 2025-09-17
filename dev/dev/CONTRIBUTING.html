@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9fa08cdb"></script>
+    <script src="../_static/documentation_options.js?v=7ec70bba"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dev/CONTRIBUTING';</script>
@@ -451,6 +451,17 @@
 </pre></div>
 </div>
 </section>
+<section id="style-guide">
+<h2>Style guide<a class="headerlink" href="#style-guide" title="Link to this heading">#</a></h2>
+<p>The code is formatted <a class="reference external" href="https://black.readthedocs.io/en/stable/">black</a>
+and <a class="reference external" href="https://pycqa.github.io/isort/">isort</a>.</p>
+<p>To apply the required dependencies and style your code:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[style]&#39;</span>
+isort<span class="w"> </span>.
+black<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <p>To run the examples, we recommend you install the example dependencies with pip:</p>
@@ -527,6 +538,7 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">Source code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-suite">Test suite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-guide">Style guide</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Documentation</a></li>
 </ul>
