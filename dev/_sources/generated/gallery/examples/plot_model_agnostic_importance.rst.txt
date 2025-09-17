@@ -133,13 +133,14 @@ test (:math:`H_0: X_j \perp\!\!\!\perp y | X_{-j}`) for each variable. However,
 this test is based on a linear model (LogisticRegression) and fails to reject the null
 in the presence of non-linear relationships.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-84
+.. GENERATED FROM PYTHON SOURCE LINES 73-86
 
 .. code-block:: Python
 
     d0crt_linear = D0CRT(estimator=clone(linear_model), screening_threshold=None)
     d0crt_linear.fit_importance(X, y)
     pval_dcrt_linear = d0crt_linear.pvalues_
+    print(f"{pval_dcrt_linear=}")
 
     d0crt_non_linear = D0CRT(
         estimator=clone(non_linear_model),
@@ -147,6 +148,7 @@ in the presence of non-linear relationships.
     )
     d0crt_non_linear.fit_importance(X, y)
     pval_dcrt_non_linear = d0crt_non_linear.pvalues_
+    print(f"{pval_dcrt_non_linear=}")
 
 
 
@@ -160,15 +162,17 @@ in the presence of non-linear relationships.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
+    pval_dcrt_linear=array([0.85466386, 0.87648488])
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
+    pval_dcrt_non_linear=array([0.94866693, 0.81833807])
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-92
+.. GENERATED FROM PYTHON SOURCE LINES 87-94
 
 Compute p-values using LOCO
 ---------------------------
@@ -178,7 +182,7 @@ misspecified model, such as a linear model for this dataset, LOCO fails to rejec
 similarly to d0CRT. However, when using a non-linear model (SVC), LOCO is able to
 identify the important variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-125
+.. GENERATED FROM PYTHON SOURCE LINES 94-127
 
 .. code-block:: Python
 
@@ -222,12 +226,12 @@ identify the important variables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-128
+.. GENERATED FROM PYTHON SOURCE LINES 128-130
 
 To select variables using LOCO, we compute the p-values using a t-test over the
 importance scores.
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-159
+.. GENERATED FROM PYTHON SOURCE LINES 130-145
 
 .. code-block:: Python
 
@@ -241,6 +245,34 @@ importance scores.
     _, pval_non_linear = ttest_1samp(
         importances_non_linear, 0, axis=0, alternative="greater"
     )
+
+    print(f"{pval_linear=}")
+    print(f"{pval_non_linear=}")
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    pval_linear=array([0.88188065, 0.73512222])
+    pval_non_linear=array([4.81594402e-05, 5.47336113e-05])
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 146-148
+
+Plot the :math:`-log_{10}(pval)` for each method and variable
+-------------------------------------------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 148-169
+
+.. code-block:: Python
+
 
     df_pval = pd.DataFrame(
         {
@@ -269,12 +301,12 @@ importance scores.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-162
+.. GENERATED FROM PYTHON SOURCE LINES 170-172
 
 Plot the :math:`-log_{10}(pval)` for each method and variable
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-183
+.. GENERATED FROM PYTHON SOURCE LINES 172-193
 
 .. code-block:: Python
 
@@ -311,7 +343,7 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-189
+.. GENERATED FROM PYTHON SOURCE LINES 194-199
 
 As expected, when using linear models (d0CRT and LOCO-linear) that are misspecified,
 the variables are not selected. This highlights the benefit of using model-agnostic
@@ -319,7 +351,7 @@ methods such as LOCO, which allows for the use of models that are expressive eno
 to explain the data. While d0CRT can use any estimator, its distillation step
 restricts it from capturing variable interactions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-195
+.. GENERATED FROM PYTHON SOURCE LINES 202-205
 
 References
 ----------
@@ -328,7 +360,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.201 seconds)
+   **Total running time of the script:** (0 minutes 6.999 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_model_agnostic_importance.py:

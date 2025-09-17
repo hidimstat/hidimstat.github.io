@@ -88,12 +88,13 @@ References
 Load the diabetes dataset
 -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-65
+.. GENERATED FROM PYTHON SOURCE LINES 60-66
 
 .. code-block:: Python
 
     diabetes = load_diabetes()
     X, y = diabetes.data, diabetes.target
+
     # Encode sex as binary
     X[:, 1] = (X[:, 1] > 0.0).astype(int)
 
@@ -104,14 +105,14 @@ Load the diabetes dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-70
+.. GENERATED FROM PYTHON SOURCE LINES 67-71
 
 Fit a baseline model on the diabetes dataset
 --------------------------------------------
 We use a Ridge regression model with a 10-fold cross-validation to fit the
 diabetes dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-87
+.. GENERATED FROM PYTHON SOURCE LINES 71-88
 
 .. code-block:: Python
 
@@ -129,8 +130,8 @@ diabetes dataset.
             y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
         )
 
-        print(f"Fold {i}: {score}")
-        print(f"Fold {i}: {mse}")
+        print(f"Fold {i}: {score=}")
+        print(f"Fold {i}: {mse=}")
 
 
 
@@ -140,28 +141,28 @@ diabetes dataset.
 
  .. code-block:: none
 
-    Fold 0: 0.33083473382923934
-    Fold 0: 58.578414587141616
-    Fold 1: 0.4612105596220809
-    Fold 1: 53.69203761571651
-    Fold 2: 0.5325803774775466
-    Fold 2: 54.71097678129963
-    Fold 3: 0.5064809104496365
-    Fold 3: 54.272416623817435
-    Fold 4: 0.5979653259033298
-    Fold 4: 52.28738181690228
+    Fold 0: score=0.33083473382923934
+    Fold 0: mse=58.578414587141616
+    Fold 1: score=0.4612105596220809
+    Fold 1: mse=53.69203761571651
+    Fold 2: score=0.5325803774775466
+    Fold 2: mse=54.71097678129963
+    Fold 3: score=0.5064809104496365
+    Fold 3: mse=54.272416623817435
+    Fold 4: score=0.5979653259033298
+    Fold 4: mse=52.28738181690228
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-92
+.. GENERATED FROM PYTHON SOURCE LINES 89-93
 
 Fit a baselien model on the diabetes dataset
 --------------------------------------------
 We use a Ridge regression model with a 10-fold cross-validation to fit the
 diabetes dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-109
+.. GENERATED FROM PYTHON SOURCE LINES 93-110
 
 .. code-block:: Python
 
@@ -179,8 +180,8 @@ diabetes dataset.
             y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
         )
 
-        print(f"Fold {i}: {score}")
-        print(f"Fold {i}: {mse}")
+        print(f"Fold {i}: {score=}")
+        print(f"Fold {i}: {mse=}")
 
 
 
@@ -190,36 +191,36 @@ diabetes dataset.
 
  .. code-block:: none
 
-    Fold 0: 0.34890711975299304
-    Fold 0: 56.144182594640924
-    Fold 1: 0.2721892039082311
-    Fold 1: 61.35394986028169
-    Fold 2: 0.536661654861091
-    Fold 2: 49.06762118785015
-    Fold 3: 0.3696138811104912
-    Fold 3: 59.01755532549113
-    Fold 4: 0.5855653971692454
-    Fold 4: 51.49494754537288
-    Fold 5: 0.46243581455728044
-    Fold 5: 58.31346323072169
-    Fold 6: 0.5237829173241707
-    Fold 6: 51.342031718189716
-    Fold 7: 0.4852439911493507
-    Fold 7: 56.84140735040956
-    Fold 8: 0.6653054560599455
-    Fold 8: 47.261853043748566
-    Fold 9: 0.5514651857120557
-    Fold 9: 55.72320747332666
+    Fold 0: score=0.34890711975299304
+    Fold 0: mse=56.144182594640924
+    Fold 1: score=0.2721892039082311
+    Fold 1: mse=61.35394986028169
+    Fold 2: score=0.536661654861091
+    Fold 2: mse=49.06762118785015
+    Fold 3: score=0.3696138811104912
+    Fold 3: mse=59.01755532549113
+    Fold 4: score=0.5855653971692454
+    Fold 4: mse=51.49494754537288
+    Fold 5: score=0.46243581455728044
+    Fold 5: mse=58.31346323072169
+    Fold 6: score=0.5237829173241707
+    Fold 6: mse=51.342031718189716
+    Fold 7: score=0.4852439911493507
+    Fold 7: mse=56.84140735040956
+    Fold 8: score=0.6653054560599455
+    Fold 8: mse=47.261853043748566
+    Fold 9: score=0.5514651857120557
+    Fold 9: mse=55.72320747332666
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-112
+.. GENERATED FROM PYTHON SOURCE LINES 111-113
 
 Measure the importance of variables using the CFI method
 --------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-133
+.. GENERATED FROM PYTHON SOURCE LINES 113-134
 
 .. code-block:: Python
 
@@ -266,12 +267,12 @@ Measure the importance of variables using the CFI method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-136
+.. GENERATED FROM PYTHON SOURCE LINES 135-137
 
 Measure the importance of variables using the LOCO method
 ---------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-152
+.. GENERATED FROM PYTHON SOURCE LINES 137-153
 
 .. code-block:: Python
 
@@ -313,12 +314,12 @@ Measure the importance of variables using the LOCO method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-155
+.. GENERATED FROM PYTHON SOURCE LINES 154-156
 
 Measure the importance of variables using the permutation method
 ----------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-173
+.. GENERATED FROM PYTHON SOURCE LINES 156-174
 
 .. code-block:: Python
 
@@ -362,12 +363,12 @@ Measure the importance of variables using the permutation method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-176
+.. GENERATED FROM PYTHON SOURCE LINES 175-177
 
 Define a function to compute the p-value from importance values
 ---------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-183
+.. GENERATED FROM PYTHON SOURCE LINES 177-184
 
 .. code-block:: Python
 
@@ -385,12 +386,12 @@ Define a function to compute the p-value from importance values
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-186
+.. GENERATED FROM PYTHON SOURCE LINES 185-187
 
 Analyze the results
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 186-258
+.. GENERATED FROM PYTHON SOURCE LINES 187-259
 
 .. code-block:: Python
 
@@ -481,7 +482,7 @@ Analyze the results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 15.180 seconds)
+   **Total running time of the script:** (0 minutes 15.038 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:

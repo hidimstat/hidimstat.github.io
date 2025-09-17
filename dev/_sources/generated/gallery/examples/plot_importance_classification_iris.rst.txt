@@ -30,13 +30,13 @@ importance of groups of variables.
 
 To briefly summarize the two methods:
 
- - PFI (Permutation Feature Importance) shuffles the values of a feature and measures
-   the increase in the loss when predicting (using om the same full model) on the
-   shuffled data.
+- PFI (Permutation Feature Importance) shuffles the values of a feature and measures
+  the increase in the loss when predicting (using om the same full model) on the
+  shuffled data.
 
- - CFI (Conditional Feature Importance) is a conditional version of PFI that
-   preserves the conditional distribution of the feature. It introduces a second model to
-   estimate this conditional distribution.
+- CFI (Conditional Feature Importance) is a conditional version of PFI that
+  preserves the conditional distribution of the feature. It introduces a second model to
+  estimate this conditional distribution.
 
 .. GENERATED FROM PYTHON SOURCE LINES 23-39
 
@@ -74,9 +74,10 @@ the petal length, width amd some noise but not related to the target. The spurio
 allows to illustrate that `PFI` is not robust to spurious features,
 contrarily to `CFI`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-56
+.. GENERATED FROM PYTHON SOURCE LINES 46-57
 
 .. code-block:: Python
+
 
     dataset = load_iris()
     rng = np.random.RandomState(0)
@@ -95,7 +96,7 @@ contrarily to `CFI`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-63
+.. GENERATED FROM PYTHON SOURCE LINES 58-64
 
 Measure variable importance
 ---------------------------
@@ -104,7 +105,7 @@ require a K-fold cross-fitting. Computing the importance for each fold is
 embarrassingly parallel. For this reason, we encapsulate the main computations in a
 function and use joblib to parallelize the computation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-120
+.. GENERATED FROM PYTHON SOURCE LINES 64-121
 
 .. code-block:: Python
 
@@ -172,13 +173,13 @@ function and use joblib to parallelize the computation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-124
+.. GENERATED FROM PYTHON SOURCE LINES 122-125
 
 We use two different classifiers: LR with cross-validation and SVC with a RBF kernel. We
 then compute the importance for each (importance method, classifier, fold)
 combination, in parallel.
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-142
+.. GENERATED FROM PYTHON SOURCE LINES 125-143
 
 .. code-block:: Python
 
@@ -207,13 +208,13 @@ combination, in parallel.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-146
+.. GENERATED FROM PYTHON SOURCE LINES 144-147
 
 Using the importance values, we can compute the p-value of each feature. As we will
 see, the p-values computed with `PFI` are not valid since the method
 does not provide type-1 error control.
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-178
+.. GENERATED FROM PYTHON SOURCE LINES 147-179
 
 .. code-block:: Python
 
@@ -256,12 +257,12 @@ does not provide type-1 error control.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-181
+.. GENERATED FROM PYTHON SOURCE LINES 180-182
 
 Visualization of the results
 ----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-247
+.. GENERATED FROM PYTHON SOURCE LINES 182-248
 
 .. code-block:: Python
 
@@ -343,7 +344,7 @@ Visualization of the results
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 248-257
+.. GENERATED FROM PYTHON SOURCE LINES 249-258
 
 The boxplot shows the importance of each feature, with colors indicating the
 classifier used. A star marks the features that have a p-value (computed with a
@@ -355,7 +356,7 @@ additional flexibility of the SVC model. The SVC model could benefit from a more
 extensive hyperparameter search, especially optimizing the gamma parameter of the RBF
 kernel, which would be feasible with more data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 260-269
+.. GENERATED FROM PYTHON SOURCE LINES 261-270
 
 Measuring the importance of groups of features
 ----------------------------------------------
@@ -367,7 +368,7 @@ mitigate this issue, we can group correlated features together and measure the
 importance of these feature groups. For instance, we can group 'sepal width' with
 'sepal length' and 'petal length' with 'petal width' and the spurious feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 269-282
+.. GENERATED FROM PYTHON SOURCE LINES 270-283
 
 .. code-block:: Python
 
@@ -399,7 +400,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 36.808 seconds)
+   **Total running time of the script:** (0 minutes 35.333 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:

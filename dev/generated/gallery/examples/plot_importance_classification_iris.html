@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8605f7f9"></script>
+    <script src="../../../_static/documentation_options.js?v=2fe3e10f"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_importance_classification_iris';</script>
@@ -445,8 +445,7 @@ classifiers: Logistic Regression (LR) and Support Vector Classifier (SVC). We st
 measuring the importance of individual variables and then show how to measure the
 importance of groups of variables.</p>
 <p>To briefly summarize the two methods:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>PFI (Permutation Feature Importance) shuffles the values of a feature and measures
 the increase in the loss when predicting (using om the same full model) on the
 shuffled data.</p></li>
@@ -454,7 +453,6 @@ shuffled data.</p></li>
 preserves the conditional distribution of the feature. It introduces a second model to
 estimate this conditional distribution.</p></li>
 </ul>
-</div></blockquote>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -709,7 +707,7 @@ importance of these feature groups. For instance, we can group ‘sepal width’
 <span class="n">plot_results</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df_grouped</span></a><span class="p">,</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df_pval</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" srcset="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" alt="CFI, PFI" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 36.808 seconds)</p>
+<img src="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" srcset="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" alt="CFI, PFI" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 35.333 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-importance-classification-iris-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/685dfd9a93754f17fef7a8e26ecab26c/plot_importance_classification_iris.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_importance_classification_iris.ipynb</span></code></a></p>
