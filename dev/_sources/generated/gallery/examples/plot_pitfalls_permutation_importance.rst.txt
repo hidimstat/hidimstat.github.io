@@ -27,7 +27,7 @@ PFI measures the importance of a variable. However, it does not measure conditio
 importance and does not provide statistical control over the risk of making false
 discoveries, i.e., the risk of declaring a variable as important when it is not.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-33
+.. GENERATED FROM PYTHON SOURCE LINES 11-34
 
 .. code-block:: Python
 
@@ -51,7 +51,8 @@ discoveries, i.e., the risk of declaring a variable as important when it is not.
     from hidimstat import CFI, PFI
     from hidimstat.conditional_sampling import ConditionalSampler
 
-    rng = np.random.RandomState(0)
+    # Define the seeds for the reproducibility of the example
+    rng = np.random.default_rng(0)
 
 
 
@@ -60,7 +61,7 @@ discoveries, i.e., the risk of declaring a variable as important when it is not.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-39
+.. GENERATED FROM PYTHON SOURCE LINES 35-40
 
 Load the California housing dataset and add a spurious feature
 --------------------------------------------------------------
@@ -68,7 +69,7 @@ The California housing dataset is a regression dataset with 8 features. We add a
 spurious feature that is a linear combination of 3 features plus some noise.
 The spurious feature does not provide any additional information about the target.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-82
+.. GENERATED FROM PYTHON SOURCE LINES 40-83
 
 .. code-block:: Python
 
@@ -133,7 +134,7 @@ The spurious feature does not provide any additional information about the targe
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-88
+.. GENERATED FROM PYTHON SOURCE LINES 84-89
 
 Fit a predictive model
 ----------------------
@@ -141,7 +142,7 @@ We fit a neural network model to the California housing dataset. PFI is a
 model-agnostic method, we therefore illustrate its behavior when using a neural
 network model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-118
+.. GENERATED FROM PYTHON SOURCE LINES 89-119
 
 .. code-block:: Python
 
@@ -151,7 +152,7 @@ network model.
         regressor=make_pipeline(
             StandardScaler(),
             MLPRegressor(
-                random_state=0,
+                random_state=2,
                 hidden_layer_sizes=(32, 16, 8),
                 early_stopping=True,
                 learning_rate_init=0.01,
@@ -162,7 +163,7 @@ network model.
     )
 
 
-    kf = KFold(n_splits=5, shuffle=True, random_state=0)
+    kf = KFold(n_splits=5, shuffle=True, random_state=3)
     for train_index, test_index in kf.split(X):
         X_train, X_test = X[train_index], X[test_index]
         y_train, y_test = y[train_index], y[test_index]
@@ -183,12 +184,12 @@ network model.
 
  .. code-block:: none
 
-    Cross-validation R2 score: 0.734 ± 0.041
+    Cross-validation R2 score: 0.667 ± 0.156
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-125
+.. GENERATED FROM PYTHON SOURCE LINES 120-126
 
 Measure the importance of variables using the PFI method
 --------------------------------------------------------
@@ -197,12 +198,13 @@ way. We then derive a p-value from importance scores using a one-sample t-test.
 As shown in the figure below, the PFI method does not provide valid p-values for
 testing conditional importance, as it identifies the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-178
+.. GENERATED FROM PYTHON SOURCE LINES 126-176
 
 .. code-block:: Python
 
     permutation_importances = []
     conditional_permutation_importances = []
+    kf = KFold(n_splits=5)
     for i, (train_index, test_index) in enumerate(kf.split(X)):
         X_train, X_test = X[train_index], X[test_index]
         y_train, y_test = y[train_index], y[test_index]
@@ -213,7 +215,8 @@ testing conditional importance, as it identifies the spurious feature as importa
         pfi = PFI(
             model_c,
             n_permutations=50,
-            random_state=0,
+            n_jobs=5,
+            random_state=4,
         )
         pfi.fit(X_test, y_test)
 
@@ -228,12 +231,7 @@ testing conditional importance, as it identifies the spurious feature as importa
     pval_threshold = 0.05
     # Create a horizontal boxplot of permutation importances
     fig, ax = plt.subplots()
-    sns.barplot(
-        permutation_importances,
-        orient="h",
-        color="tab:blue",
-        capsize=0.2,
-    )
+    sns.barplot(permutation_importances, orient="h", color="tab:blue", capsize=0.2, seed=5)
     ax.set_xlabel("Permutation Importance")
     # Add asterisks for features with p-values below the threshold
     for i, pval in enumerate(pval_pfi):
@@ -266,14 +264,14 @@ testing conditional importance, as it identifies the spurious feature as importa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-183
+.. GENERATED FROM PYTHON SOURCE LINES 177-181
 
 While the most important variables identified by PFI are plausible, such as the
 geographic coordinates or the median income of the block group, it is not robust to
 the presence of spurious features and misleadingly identifies the spurious feature as
 important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 186-193
+.. GENERATED FROM PYTHON SOURCE LINES 184-191
 
 A valid alternative: Conditional Feature Importance
 -----------------------------------------------------
@@ -283,11 +281,12 @@ intrinsic information of the feature of interest while leaving the information t
 explained by the other features unchanged. This method is valid for testing conditional
 importance. As shown below, it does not identify the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-242
+.. GENERATED FROM PYTHON SOURCE LINES 191-244
 
 .. code-block:: Python
 
     conditional_importances = []
+    kf = KFold(n_splits=5)
     for i, (train_index, test_index) in enumerate(kf.split(X)):
         X_train, X_test = X[train_index], X[test_index]
         y_train, y_test = y[train_index], y[test_index]
@@ -297,8 +296,11 @@ importance. As shown below, it does not identify the spurious feature as importa
         # Compute conditional feature importance
         cfi = CFI(
             model_c,
-            imputation_model_continuous=RidgeCV(alphas=np.logspace(-3, 3, 5)),
-            random_state=0,
+            imputation_model_continuous=RidgeCV(
+                alphas=np.logspace(-3, 3, 5),
+                cv=KFold(n_splits=3),
+            ),
+            random_state=7,
             n_jobs=5,
         )
         cfi.fit(X_test, y_test)
@@ -348,11 +350,11 @@ importance. As shown below, it does not identify the spurious feature as importa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 243-244
+.. GENERATED FROM PYTHON SOURCE LINES 245-246
 
 Contrary to PFI, CFI does not identify the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-257
+.. GENERATED FROM PYTHON SOURCE LINES 249-259
 
 Extrapolation bias in PFI
 -------------------------
@@ -365,19 +367,19 @@ longitude that fall outside of the borders of California and therefore are by
 definition not in the training data. This is not the case for the conditional
 permutation that generates perturbed but reasonable values of longitude.
 
-.. GENERATED FROM PYTHON SOURCE LINES 257-335
+.. GENERATED FROM PYTHON SOURCE LINES 259-337
 
 .. code-block:: Python
 
     X_train, X_test = train_test_split(
         X,
         test_size=0.3,
-        random_state=0,
+        random_state=8,
     )
 
     conditional_sampler = ConditionalSampler(
-        model_regression=RidgeCV(alphas=np.logspace(-3, 3, 5)),
-        random_state=0,
+        model_regression=RidgeCV(alphas=np.logspace(-3, 3, 5), cv=KFold(n_splits=3)),
+        random_state=10,
     )
 
 
@@ -459,7 +461,7 @@ permutation that generates perturbed but reasonable values of longitude.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 336-339
+.. GENERATED FROM PYTHON SOURCE LINES 338-341
 
 PFI is likely to generate samples that are unrealistic and outside of the training
 data, leading to extrapolation bias. In contrast, CFI generates samples that respect
@@ -468,7 +470,7 @@ the conditional distribution of the feature of interest.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.681 seconds)
+   **Total running time of the script:** (0 minutes 25.499 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_pitfalls_permutation_importance.py:

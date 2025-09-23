@@ -35,8 +35,8 @@ Knockoffs (KO) method is able to address this issue.
     import numpy as np
     import pandas as pd
 
-    seed = 0
-    rng = np.random.RandomState(seed)
+    # Define the seeds for the reproducibility of the example
+    rng = np.random.default_rng(43)
 
 
 
@@ -68,7 +68,7 @@ L1 regularization) on the prediction task.
     y = data.target
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.1, random_state=seed
+        X, y, test_size=0.1, random_state=16
     )
 
     scaler = StandardScaler()
@@ -102,7 +102,7 @@ coefficients:
     from sklearn.linear_model import LogisticRegressionCV
 
     clf = LogisticRegressionCV(
-        Cs=np.logspace(-3, 3, 10), penalty="l1", solver="liblinear", random_state=rng
+        Cs=np.logspace(-3, 3, 10), penalty="l1", solver="liblinear", random_state=17
     )
     clf.fit(X_train, y_train)
     print(f"Accuracy of Lasso on test set: {clf.score(X_test, y_test):.3f}")
@@ -125,17 +125,16 @@ coefficients:
  .. code-block:: none
 
     Accuracy of Lasso on test set: 1.000
-    The Lasso selects 8 variables:
+    The Lasso selects 7 variables:
     Variable name                  | Coefficient
     ---------------------------------------------
-    mean concave points            |     -0.438
-    radius error                   |     -0.572
-    worst radius                   |     -2.274
-    worst texture                  |     -0.603
-    worst smoothness               |     -0.223
-    worst concavity                |     -0.062
-    worst concave points           |     -0.939
-    worst symmetry                 |     -0.147
+    mean concave points            |     -0.550
+    radius error                   |     -0.487
+    worst radius                   |     -2.263
+    worst texture                  |     -0.674
+    worst smoothness               |     -0.219
+    worst concave points           |     -0.860
+    worst symmetry                 |     -0.178
 
 
 
@@ -163,8 +162,8 @@ related to the outcome.
     for k in range(repeats_noise):
         X_train_c = X_train.copy()
         X_test_c = X_test.copy()
-        noises_train.append(X_train_c + 2 * rng.randn(n_train, p))
-        noises_test.append(X_test_c + 2 * rng.randn(n_test, p))
+        noises_train.append(X_train_c + 2 * rng.standard_normal((n_train, p)))
+        noises_test.append(X_test_c + 2 * rng.standard_normal((n_test, p)))
         feature_names_noise += [f"spurious #{k*p+i}" for i in range(p)]
 
     noisy_train = np.concatenate(noises_train, axis=1)
@@ -192,7 +191,7 @@ regularization parameter) to the noisy dataset and observe the results:
         Cs=np.logspace(-3, 3, 10),
         penalty="l1",
         solver="liblinear",
-        random_state=rng,
+        random_state=18,
         n_jobs=1,
     )
     lasso_noisy.fit(noisy_train, y_train)
@@ -229,8 +228,8 @@ regularization parameter) to the noisy dataset and observe the results:
 
  .. code-block:: none
 
-    Accuracy of Lasso on test set with noise: 0.947
-    The Lasso makes at least 109 False Discoveries!!
+    Accuracy of Lasso on test set with noise: 0.982
+    The Lasso makes at least 46 False Discoveries!!
 
 
 
@@ -265,12 +264,12 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
             solver="liblinear",
             penalty="l1",
             Cs=np.logspace(-3, 3, 10),
-            random_state=rng,
+            random_state=19,
             tol=1e-3,
             max_iter=1000,
         ),
         n_bootstraps=1,
-        random_state=0,
+        random_state=20,
         tol_gauss=1e-15,
         preconfigure_estimator=None,
         fdr=fdr,
@@ -289,6 +288,10 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 
  .. code-block:: none
 
+    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+      warnings.warn(
+    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+      warnings.warn(
     Knockoffs make at least 0 False Discoveries
 
 
@@ -392,7 +395,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.700 seconds)
+   **Total running time of the script:** (0 minutes 9.778 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:

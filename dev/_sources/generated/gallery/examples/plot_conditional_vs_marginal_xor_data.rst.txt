@@ -57,8 +57,8 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
 
 .. code-block:: Python
 
-    rng = np.random.RandomState(0)
-    X = rng.randn(400, 2)
+    rng = np.random.default_rng(0)
+    X = rng.standard_normal((400, 2))
     Y = np.logical_xor(X[:, 0] > 0, X[:, 1] > 0).astype(int)
 
     xx, yy = np.meshgrid(
@@ -70,9 +70,9 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
         X,
         Y,
         test_size=0.2,
-        random_state=0,
+        random_state=1,
     )
-    model = SVC(kernel="rbf", random_state=0)
+    model = SVC(kernel="rbf", random_state=2)
     model.fit(X_train, y_train)
 
 
@@ -561,7 +561,7 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
         height: 14px;
         cursor: pointer;
     }
-    </style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>SVC</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.svm.SVC.html">?<span>Documentation for SVC</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+    </style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(random_state=2)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>SVC</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.svm.SVC.html">?<span>Documentation for SVC</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -714,7 +714,7 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
                               this.parentElement.nextElementSibling)"
                 ></i></td>
                 <td class="param">random_state&nbsp;</td>
-                <td class="value">0</td>
+                <td class="value">2</td>
             </tr>
     
                       </tbody>
@@ -840,8 +840,8 @@ are important (therefore rejecting the null hypothesis
 
 .. code-block:: Python
 
-    cv = KFold(n_splits=5, shuffle=True, random_state=0)
-    clf = SVC(kernel="rbf", random_state=0)
+    cv = KFold(n_splits=5, shuffle=True, random_state=3)
+    clf = SVC(kernel="rbf", random_state=4)
 
 
 
@@ -904,7 +904,7 @@ Compute the conditional importance using the CFI class.
             loss=hinge_loss,
             imputation_model_continuous=RidgeCV(np.logspace(-3, 3, 10)),
             n_permutations=50,
-            random_state=0,
+            random_state=5,
         )
         vim.fit(X_train, y_train)
         importances.append(vim.importance(X_test, y_test)["importance"])
@@ -982,7 +982,7 @@ the null hypothesis (importance = 0.0).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.699 seconds)
+   **Total running time of the script:** (0 minutes 7.801 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_conditional_vs_marginal_xor_data.py:

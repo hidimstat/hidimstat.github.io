@@ -112,15 +112,18 @@ Fit a baseline model on the diabetes dataset
 We use a Ridge regression model with a 10-fold cross-validation to fit the
 diabetes dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-88
+.. GENERATED FROM PYTHON SOURCE LINES 71-91
 
 .. code-block:: Python
 
 
     n_folds = 5
-    regressor = RidgeCV(alphas=np.logspace(-3, 3, 10))
+    regressor = RidgeCV(
+        alphas=np.logspace(-3, 3, 10),
+        cv=KFold(shuffle=True, random_state=20),
+    )
     regressor_list = [clone(regressor) for _ in range(n_folds)]
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=0)
+    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
     for i, (train_index, test_index) in enumerate(kf.split(X)):
         regressor_list[i].fit(X[train_index], y[train_index])
         score = r2_score(
@@ -141,28 +144,28 @@ diabetes dataset.
 
  .. code-block:: none
 
-    Fold 0: score=0.33083473382923934
-    Fold 0: mse=58.578414587141616
-    Fold 1: score=0.4612105596220809
-    Fold 1: mse=53.69203761571651
-    Fold 2: score=0.5325803774775466
-    Fold 2: mse=54.71097678129963
-    Fold 3: score=0.5064809104496365
-    Fold 3: mse=54.272416623817435
-    Fold 4: score=0.5979653259033298
-    Fold 4: mse=52.28738181690228
+    Fold 0: score=0.42498602106170535
+    Fold 0: mse=56.42055334073377
+    Fold 1: score=0.4576508881883167
+    Fold 1: mse=58.423308135994034
+    Fold 2: score=0.5351768182569143
+    Fold 2: mse=54.730052311563774
+    Fold 3: score=0.48890245901647933
+    Fold 3: mse=53.411951707073335
+    Fold 4: score=0.5377531849343379
+    Fold 4: mse=51.2067043978449
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-93
+.. GENERATED FROM PYTHON SOURCE LINES 92-96
 
-Fit a baselien model on the diabetes dataset
+Fit a baseline model on the diabetes dataset
 --------------------------------------------
 We use a Ridge regression model with a 10-fold cross-validation to fit the
 diabetes dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-110
+.. GENERATED FROM PYTHON SOURCE LINES 96-113
 
 .. code-block:: Python
 
@@ -170,7 +173,7 @@ diabetes dataset.
     n_folds = 10
     regressor = RidgeCV(alphas=np.logspace(-3, 3, 10))
     regressor_list = [clone(regressor) for _ in range(n_folds)]
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=0)
+    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
     for i, (train_index, test_index) in enumerate(kf.split(X)):
         regressor_list[i].fit(X[train_index], y[train_index])
         score = r2_score(
@@ -191,54 +194,56 @@ diabetes dataset.
 
  .. code-block:: none
 
-    Fold 0: score=0.34890711975299304
-    Fold 0: mse=56.144182594640924
-    Fold 1: score=0.2721892039082311
-    Fold 1: mse=61.35394986028169
-    Fold 2: score=0.536661654861091
-    Fold 2: mse=49.06762118785015
-    Fold 3: score=0.3696138811104912
-    Fold 3: mse=59.01755532549113
-    Fold 4: score=0.5855653971692454
-    Fold 4: mse=51.49494754537288
-    Fold 5: score=0.46243581455728044
-    Fold 5: mse=58.31346323072169
-    Fold 6: score=0.5237829173241707
-    Fold 6: mse=51.342031718189716
-    Fold 7: score=0.4852439911493507
-    Fold 7: mse=56.84140735040956
-    Fold 8: score=0.6653054560599455
-    Fold 8: mse=47.261853043748566
-    Fold 9: score=0.5514651857120557
-    Fold 9: mse=55.72320747332666
+    Fold 0: score=0.4361943429807299
+    Fold 0: mse=58.30611745007488
+    Fold 1: score=0.4063975917197913
+    Fold 1: mse=55.10180750195186
+    Fold 2: score=0.38237427998171714
+    Fold 2: mse=60.694664715901354
+    Fold 3: score=0.5200300533571036
+    Fold 3: mse=56.267235231022376
+    Fold 4: score=0.4353560840814107
+    Fold 4: mse=56.6124433295757
+    Fold 5: score=0.5770124594421959
+    Fold 5: mse=54.653972727402525
+    Fold 6: score=0.48498087732043804
+    Fold 6: mse=53.84575248391907
+    Fold 7: score=0.48408594262922977
+    Fold 7: mse=52.72466887666228
+    Fold 8: score=0.5900230534486699
+    Fold 8: mse=48.171522340170974
+    Fold 9: score=0.4566082341834987
+    Fold 9: mse=55.34246211082451
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-113
+.. GENERATED FROM PYTHON SOURCE LINES 114-116
 
 Measure the importance of variables using the CFI method
 --------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-134
+.. GENERATED FROM PYTHON SOURCE LINES 116-139
 
 .. code-block:: Python
 
 
     cfi_importance_list = []
+    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
     for i, (train_index, test_index) in enumerate(kf.split(X)):
         print(f"Fold {i}")
         X_train, X_test = X[train_index], X[test_index]
         y_train, y_test = y[train_index], y[test_index]
         cfi = CFI(
             estimator=regressor_list[i],
-            imputation_model_continuous=RidgeCV(alphas=np.logspace(-3, 3, 10)),
+            imputation_model_continuous=RidgeCV(alphas=np.logspace(-3, 3, 10), cv=KFold()),
             imputation_model_categorical=LogisticRegressionCV(
                 Cs=np.logspace(-2, 2, 10),
+                cv=KFold(),
             ),
             # covariate_estimator=HistGradientBoostingRegressor(random_state=0,),
             n_permutations=50,
-            random_state=0,
+            random_state=24,
             n_jobs=4,
         )
         cfi.fit(X_train, y_train)
@@ -267,18 +272,18 @@ Measure the importance of variables using the CFI method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-137
+.. GENERATED FROM PYTHON SOURCE LINES 140-142
 
 Measure the importance of variables using the LOCO method
 ---------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-153
+.. GENERATED FROM PYTHON SOURCE LINES 142-158
 
 .. code-block:: Python
 
 
     loco_importance_list = []
-
+    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
     for i, (train_index, test_index) in enumerate(kf.split(X)):
         print(f"Fold {i}")
         X_train, X_test = X[train_index], X[test_index]
@@ -314,18 +319,18 @@ Measure the importance of variables using the LOCO method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-156
+.. GENERATED FROM PYTHON SOURCE LINES 159-161
 
 Measure the importance of variables using the permutation method
 ----------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-174
+.. GENERATED FROM PYTHON SOURCE LINES 161-179
 
 .. code-block:: Python
 
 
     pfi_importance_list = []
-
+    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
     for i, (train_index, test_index) in enumerate(kf.split(X)):
         print(f"Fold {i}")
         X_train, X_test = X[train_index], X[test_index]
@@ -333,7 +338,7 @@ Measure the importance of variables using the permutation method
         pfi = PFI(
             estimator=regressor_list[i],
             n_permutations=50,
-            random_state=0,
+            random_state=25,
             n_jobs=4,
         )
         pfi.fit(X_train, y_train)
@@ -363,12 +368,12 @@ Measure the importance of variables using the permutation method
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-177
+.. GENERATED FROM PYTHON SOURCE LINES 180-182
 
 Define a function to compute the p-value from importance values
 ---------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-184
+.. GENERATED FROM PYTHON SOURCE LINES 182-189
 
 .. code-block:: Python
 
@@ -386,12 +391,12 @@ Define a function to compute the p-value from importance values
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 185-187
+.. GENERATED FROM PYTHON SOURCE LINES 190-192
 
 Analyze the results
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-259
+.. GENERATED FROM PYTHON SOURCE LINES 192-264
 
 .. code-block:: Python
 
@@ -482,7 +487,7 @@ Analyze the results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 15.145 seconds)
+   **Total running time of the script:** (0 minutes 39.922 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:

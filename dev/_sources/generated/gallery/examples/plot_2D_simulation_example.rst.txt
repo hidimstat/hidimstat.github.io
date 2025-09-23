@@ -114,7 +114,7 @@ example.
 
     # generating the data
     X_init, y, beta, epsilon = multivariate_simulation_spatial(
-        n_samples, shape, roi_size, signal_noise_ratio, smooth_X, seed=1
+        n_samples, shape, roi_size, signal_noise_ratio, smooth_X, seed=0
     )
 
 
@@ -263,7 +263,7 @@ This method was introduced by :footcite:t:`javanmard2014confidence`,
 :footcite:p:`van2014asymptotically`
 and referred to as Desparsified Lasso.
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-210
+.. GENERATED FROM PYTHON SOURCE LINES 184-211
 
 .. code-block:: Python
 
@@ -274,6 +274,7 @@ and referred to as Desparsified Lasso.
         X_init,
         y,
         n_jobs=n_jobs,
+        seed=0,
     )
     pval, pval_corr, one_minus_pval, one_minus_pval_corr, cb_min, cb_max = (
         desparsified_lasso_pvalue(
@@ -306,13 +307,13 @@ and referred to as Desparsified Lasso.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 211-214
+.. GENERATED FROM PYTHON SOURCE LINES 212-215
 
 Now, we compute the support estimated using a clustered inference algorithm
 (c.f. :footcite:t:`chevalier2022spatially`) called Clustered Desparsified Lasso
 (CluDL) since it uses the Desparsified Lasso technique after clustering the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-246
+.. GENERATED FROM PYTHON SOURCE LINES 215-247
 
 .. code-block:: Python
 
@@ -326,7 +327,7 @@ Now, we compute the support estimated using a clustered inference algorithm
 
     # clustered desparsified lasso (CluDL)
     ward_, beta_hat, theta_hat, omega_diag = clustered_inference(
-        X_init, y, ward, n_clusters, scaler_sampling=StandardScaler()
+        X_init, y, ward, n_clusters, scaler_sampling=StandardScaler(), seed=0
     )
     beta_hat, pval, pval_corr, one_minus_pval, one_minus_pval_corr = (
         clustered_inference_pvalue(
@@ -357,14 +358,14 @@ Now, we compute the support estimated using a clustered inference algorithm
  .. code-block:: none
 
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-252
+.. GENERATED FROM PYTHON SOURCE LINES 248-253
 
 Finally, we compute the support estimated by an ensembled clustered
 inference algorithm (c.f. :footcite:t:`chevalier2022spatially`). This algorithm is called
@@ -372,7 +373,7 @@ Ensemble of Clustered Desparsified Lasso (EnCluDL) since it runs several
 CluDL algorithms with different clustering choices. The different CluDL
 solutions are then aggregated into one.
 
-.. GENERATED FROM PYTHON SOURCE LINES 252-273
+.. GENERATED FROM PYTHON SOURCE LINES 253-270
 
 .. code-block:: Python
 
@@ -380,11 +381,7 @@ solutions are then aggregated into one.
     # ensemble of clustered desparsified lasso (EnCluDL)
     list_ward, list_beta_hat, list_theta_hat, list_omega_diag = (
         ensemble_clustered_inference(
-            X_init,
-            y,
-            ward,
-            n_clusters,
-            scaler_sampling=StandardScaler(),
+            X_init, y, ward, n_clusters, scaler_sampling=StandardScaler(), seed=0
         )
     )
     beta_hat, selected_ecdl = ensemble_clustered_inference_pvalue(
@@ -406,89 +403,89 @@ solutions are then aggregated into one.
  .. code-block:: none
 
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.5s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.5s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 1,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.4s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.4s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 2,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.4s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.4s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 3,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.3s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 4,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 5,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 6,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 7,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 8,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 9,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 10,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 11,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
-    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 12,groups = False 
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 10,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 13,groups = False 
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 11,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 12,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.3s finished
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 13,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 14,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 15,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 16,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 17,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 18,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 19,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 20,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 21,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
@@ -496,21 +493,21 @@ solutions are then aggregated into one.
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 22,groups = False 
     [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
     Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 23,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 24,groups = False 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
     [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
     [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
-    [Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   27.6s finished
+    Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 24,groups = False 
+    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+    [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+    [Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   33.1s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 274-279
+.. GENERATED FROM PYTHON SOURCE LINES 271-276
 
 Results
 -------
@@ -518,7 +515,7 @@ Results
 Now we plot the true support, the theoretical tolerance regions and
 the estimated supports for every method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 279-344
+.. GENERATED FROM PYTHON SOURCE LINES 276-341
 
 .. code-block:: Python
 
@@ -599,7 +596,7 @@ the estimated supports for every method.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 345-358
+.. GENERATED FROM PYTHON SOURCE LINES 342-355
 
 Analysis of the results
 -----------------------
@@ -615,7 +612,7 @@ conservative. In practice, Type-1 Error guarantees seem to hold
 for a lower spatial tolerance. This is an additional benefit of clustering
 randomization.
 
-.. GENERATED FROM PYTHON SOURCE LINES 361-364
+.. GENERATED FROM PYTHON SOURCE LINES 358-361
 
 References
 ----------
@@ -624,7 +621,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 19.053 seconds)
+   **Total running time of the script:** (2 minutes 28.074 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_2D_simulation_example.py:

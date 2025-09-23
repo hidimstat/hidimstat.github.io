@@ -42,14 +42,14 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=969a7e60"></script>
+    <script src="../../../_static/documentation_options.js?v=57fb1886"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_2D_simulation_example';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset" href="plot_pitfalls_permutation_importance.html" />
-    <link rel="prev" title="Measuring Individual and Group Variable Importance for Classification" href="plot_importance_classification_iris.html" />
+    <link rel="next" title="Measuring Individual and Group Variable Importance for Classification" href="plot_importance_classification_iris.html" />
+    <link rel="prev" title="Support Recovery on fMRI Data" href="plot_fmri_data_example.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -362,14 +362,14 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation on simulated data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Variable Importance on diabetes dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Support recovery on simulated data (2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_pitfalls_permutation_importance.html">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</a></li>
 </ul>
 </div>
@@ -517,7 +517,7 @@ example.</p>
 
 <span class="c1"># generating the data</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">epsilon</span></a> <span class="o">=</span> <span class="n">multivariate_simulation_spatial</span><span class="p">(</span>
-    <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shape</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">roi_size</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_noise_ratio</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">smooth_X</span></a><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span>
+    <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_samples</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shape</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">roi_size</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal_noise_ratio</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">smooth_X</span></a><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -618,6 +618,7 @@ and referred to as Desparsified Lasso.</p>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span>
     <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval_corr</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval_corr</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cb_min</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cb_max</span></a> <span class="o">=</span> <span class="p">(</span>
     <a href="../../api/class/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue" title="hidimstat.desparsified_lasso_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">desparsified_lasso_pvalue</span></a><span class="p">(</span>
@@ -653,7 +654,7 @@ and referred to as Desparsified Lasso.</p>
 
 <span class="c1"># clustered desparsified lasso (CluDL)</span>
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward_</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">theta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">omega_diag</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.clustered_inference.html#hidimstat.clustered_inference" title="hidimstat.clustered_inference" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">clustered_inference</span></a><span class="p">(</span>
-    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">,</span> <span class="n">scaler_sampling</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">()</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">,</span> <span class="n">scaler_sampling</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">(),</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span>
 <span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval_corr</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval_corr</span></a> <span class="o">=</span> <span class="p">(</span>
     <a href="../../api/class/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">clustered_inference_pvalue</span></a><span class="p">(</span>
@@ -677,9 +678,9 @@ and referred to as Desparsified Lasso.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
 </pre></div>
 </div>
 <p>Finally, we compute the support estimated by an ensembled clustered
@@ -690,11 +691,7 @@ solutions are then aggregated into one.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ensemble of clustered desparsified lasso (EnCluDL)</span>
 <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">list_ward</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">list_beta_hat</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">list_theta_hat</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">list_omega_diag</span></a> <span class="o">=</span> <span class="p">(</span>
     <a href="../../api/class/hidimstat.ensemble_clustered_inference.html#hidimstat.ensemble_clustered_inference" title="hidimstat.ensemble_clustered_inference" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">ensemble_clustered_inference</span></a><span class="p">(</span>
-        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span>
-        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span>
-        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a><span class="p">,</span>
-        <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">,</span>
-        <span class="n">scaler_sampling</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">(),</span>
+        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">,</span> <span class="n">scaler_sampling</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">(),</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span>
     <span class="p">)</span>
 <span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected_ecdl</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.ensemble_clustered_inference_pvalue.html#hidimstat.ensemble_clustered_inference_pvalue" title="hidimstat.ensemble_clustered_inference_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">ensemble_clustered_inference_pvalue</span></a><span class="p">(</span>
@@ -709,89 +706,89 @@ solutions are then aggregated into one.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 0,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.5s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.5s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 1,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.4s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.4s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 2,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.4s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.4s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 3,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.3s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 4,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 5,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 6,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 7,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 8,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 9,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 10,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 11,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
-Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 12,groups = False
+Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 10,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 13,groups = False
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
+Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 11,groups = False
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 12,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.3s finished
+Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 13,groups = False
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 14,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 15,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 16,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 17,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 18,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 19,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 20,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 21,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
@@ -799,16 +796,16 @@ Clustered inference: n_clusters = 200, inference method desparsified lasso, seed
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 22,groups = False
 [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.2s finished
 Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 23,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 24,groups = False
-[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.0s finished
-[Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   27.6s finished
+Clustered inference: n_clusters = 200, inference method desparsified lasso, seed = 24,groups = False
+[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    1.1s finished
+[Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   33.1s finished
 </pre></div>
 </div>
 </section>
@@ -913,7 +910,7 @@ randomization.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (3 minutes 19.053 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 28.074 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-2d-simulation-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/59b9ef2de24bb63af60069439f8c75cd/plot_2D_simulation_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_2D_simulation_example.ipynb</span></code></a></p>
@@ -940,20 +937,20 @@ randomization.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_importance_classification_iris.html"
+       href="plot_fmri_data_example.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Measuring Individual and Group Variable Importance for Classification</p>
+        <p class="prev-next-title">Support Recovery on fMRI Data</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_pitfalls_permutation_importance.html"
+       href="plot_importance_classification_iris.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</p>
+        <p class="prev-next-title">Measuring Individual and Group Variable Importance for Classification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

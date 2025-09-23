@@ -31,7 +31,7 @@ This example exhibits the two aggregation procedures described
 by :footcite:t:`pmlr-v119-nguyen20a` and :footcite:t:`Ren_2023` to derandomize
 inference.
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-32
+.. GENERATED FROM PYTHON SOURCE LINES 15-31
 
 .. code-block:: Python
 
@@ -41,7 +41,6 @@ inference.
     from joblib import Parallel, delayed
     from sklearn.linear_model import LassoCV
     from sklearn.model_selection import KFold
-    from sklearn.utils import check_random_state
 
     from hidimstat._utils.scenario import multivariate_simulation
     from hidimstat.knockoffs import (
@@ -59,7 +58,7 @@ inference.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-39
+.. GENERATED FROM PYTHON SOURCE LINES 32-38
 
 Data simulation
 ---------------
@@ -68,7 +67,7 @@ False Discovery Proportion (FDP) and statistical power. Assessing these
 metrics requires knowledge of the actual data-generating process.
 We therefore use simulated data with the following parameters:
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-68
+.. GENERATED FROM PYTHON SOURCE LINES 38-64
 
 .. code-block:: Python
 
@@ -90,16 +89,12 @@ We therefore use simulated data with the following parameters:
     signal_noise_ratio = 10
     # number of repetitions for the bootstraps
     n_bootstraps = 25
-    # seed for the random generator
-    seed = 45
     # number of jobs for repetition of the method
     n_jobs = 2
     # verbosity of the joblib
     joblib_verbose = 0
-
-    rng = check_random_state(seed)
-    seed_list = rng.randint(1, np.iinfo(np.int32).max, runs)
-
+    # Define the seeds for the reproducibility of the example
+    rng = np.random.default_rng(42)
 
 
 
@@ -108,12 +103,13 @@ We therefore use simulated data with the following parameters:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-71
+
+.. GENERATED FROM PYTHON SOURCE LINES 65-67
 
 Define the function for running the three procedures on the same data
 ---------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-136
+.. GENERATED FROM PYTHON SOURCE LINES 67-134
 
 .. code-block:: Python
 
@@ -145,9 +141,10 @@ Define the function for running the three procedures on the same data
             estimator=LassoCV(
                 n_jobs=1,
                 cv=KFold(n_splits=5, shuffle=True, random_state=0),
+                random_state=1,
             ),
             n_bootstraps=1,
-            random_state=seed,
+            random_state=2,
         )
         mx_selection, _ = model_x_knockoff_pvalue(test_scores, fdr=fdr)
         fdp_mx, power_mx = fdp_power(mx_selection, non_zero_index)
@@ -158,11 +155,12 @@ Define the function for running the three procedures on the same data
             y,
             estimator=LassoCV(
                 n_jobs=1,
-                cv=KFold(n_splits=5, shuffle=True, random_state=0),
+                cv=KFold(n_splits=5, shuffle=True, random_state=3),
+                random_state=4,
             ),
             n_bootstraps=n_bootstraps,
             n_jobs=1,
-            random_state=seed,
+            random_state=5,
         )
 
         # Use p-values aggregation [2]
@@ -189,12 +187,12 @@ Define the function for running the three procedures on the same data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-139
+.. GENERATED FROM PYTHON SOURCE LINES 135-137
 
 Define the function for plotting the result
 -------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 139-171
+.. GENERATED FROM PYTHON SOURCE LINES 137-169
 
 .. code-block:: Python
 
@@ -203,7 +201,7 @@ Define the function for plotting the result
         for nb in range(len(bounds)):
             for i in range(len(bounds[nb])):
                 y = bounds[nb][i]
-                x = np.random.normal(nb + 1, 0.05)
+                x = rng.normal(nb + 1, 0.05)
                 plt.scatter(x, y, alpha=0.65, c="blue")
 
         plt.boxplot(bounds, sym="")
@@ -237,12 +235,12 @@ Define the function for plotting the result
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-174
+.. GENERATED FROM PYTHON SOURCE LINES 170-172
 
 Define the function for evaluate the effect of the population
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-215
+.. GENERATED FROM PYTHON SOURCE LINES 172-213
 
 .. code-block:: Python
 
@@ -259,7 +257,7 @@ Define the function for evaluate the effect of the population
                 n_bootstraps,
                 seed=seed,
             )
-            for seed in seed_list
+            for seed in range(runs)
         )
 
         fdps_mx = []
@@ -294,12 +292,12 @@ Define the function for evaluate the effect of the population
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-218
+.. GENERATED FROM PYTHON SOURCE LINES 214-216
 
 Aggregation methods provide a more stable inference
 ---------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-220
+.. GENERATED FROM PYTHON SOURCE LINES 216-218
 
 .. code-block:: Python
 
@@ -329,19 +327,19 @@ Aggregation methods provide a more stable inference
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 221-225
+.. GENERATED FROM PYTHON SOURCE LINES 219-223
 
 By repeating the model-X Knockoffs, we can see that instability
 of the inference. Additionally, we can see that the aggregation method
 is more stable. However, the e-values aggregation is more conservative,
 i.e. the expect variables of importance is not find.
 
-.. GENERATED FROM PYTHON SOURCE LINES 227-229
+.. GENERATED FROM PYTHON SOURCE LINES 225-227
 
 Limitation of the aggregation methods
 -------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 229-231
+.. GENERATED FROM PYTHON SOURCE LINES 227-229
 
 .. code-block:: Python
 
@@ -372,18 +370,18 @@ Limitation of the aggregation methods
 
  .. code-block:: none
 
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.628e-01, tolerance: 1.456e-01
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.672e-01, tolerance: 1.637e-01
       model = cd_fast.enet_coordinate_descent(
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-234
+.. GENERATED FROM PYTHON SOURCE LINES 230-232
 
 One important point of this method is that they require enough samples to
 estimate the distribution of each feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 236-239
+.. GENERATED FROM PYTHON SOURCE LINES 234-237
 
 References
 ----------
@@ -392,7 +390,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 3.732 seconds)
+   **Total running time of the script:** (1 minutes 30.994 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoff_aggregation.py:

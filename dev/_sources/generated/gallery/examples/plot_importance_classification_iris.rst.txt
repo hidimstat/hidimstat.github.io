@@ -38,7 +38,7 @@ To briefly summarize the two methods:
   preserves the conditional distribution of the feature. It introduces a second model to
   estimate this conditional distribution.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-39
+.. GENERATED FROM PYTHON SOURCE LINES 23-41
 
 .. code-block:: Python
 
@@ -58,6 +58,8 @@ To briefly summarize the two methods:
 
     from hidimstat import CFI, PFI
 
+    # Define the seeds for the reproducibility of the example
+    rng = np.random.default_rng(0)
 
 
 
@@ -65,7 +67,7 @@ To briefly summarize the two methods:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-46
+.. GENERATED FROM PYTHON SOURCE LINES 42-48
 
 Load the iris dataset and add a spurious feature
 ------------------------------------------------
@@ -74,13 +76,12 @@ the petal length, width amd some noise but not related to the target. The spurio
 allows to illustrate that `PFI` is not robust to spurious features,
 contrarily to `CFI`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-57
+.. GENERATED FROM PYTHON SOURCE LINES 48-58
 
 .. code-block:: Python
 
 
     dataset = load_iris()
-    rng = np.random.RandomState(0)
     X, y = dataset.data, dataset.target
     spurious_feat = X[:, 2] + X[:, 3]
     spurious_feat += rng.normal(size=X.shape[0], scale=np.std(spurious_feat) / 2)
@@ -96,7 +97,7 @@ contrarily to `CFI`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-64
+.. GENERATED FROM PYTHON SOURCE LINES 59-65
 
 Measure variable importance
 ---------------------------
@@ -105,7 +106,7 @@ require a K-fold cross-fitting. Computing the importance for each fold is
 embarrassingly parallel. For this reason, we encapsulate the main computations in a
 function and use joblib to parallelize the computation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-121
+.. GENERATED FROM PYTHON SOURCE LINES 65-124
 
 .. code-block:: Python
 
@@ -134,9 +135,11 @@ function and use joblib to parallelize the computation.
         if vim_name == "CFI":
             vim = CFI(
                 estimator=model_c,
-                imputation_model_continuous=RidgeCV(alphas=np.logspace(-3, 3, 10)),
+                imputation_model_continuous=RidgeCV(
+                    alphas=np.logspace(-3, 3, 10), cv=KFold(shuffle=True, random_state=1)
+                ),
                 n_permutations=50,
-                random_state=0,
+                random_state=2,
                 method=method,
                 loss=loss,
             )
@@ -144,7 +147,7 @@ function and use joblib to parallelize the computation.
             vim = PFI(
                 estimator=model_c,
                 n_permutations=50,
-                random_state=0,
+                random_state=3,
                 method=method,
                 loss=loss,
             )
@@ -173,22 +176,31 @@ function and use joblib to parallelize the computation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-125
+.. GENERATED FROM PYTHON SOURCE LINES 125-128
 
 We use two different classifiers: LR with cross-validation and SVC with a RBF kernel. We
 then compute the importance for each (importance method, classifier, fold)
 combination, in parallel.
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-143
+.. GENERATED FROM PYTHON SOURCE LINES 128-155
 
 .. code-block:: Python
 
 
     models = [
-        LogisticRegressionCV(Cs=np.logspace(-3, 3, 10), tol=1e-3, max_iter=1000),
-        GridSearchCV(SVC(kernel="rbf"), {"C": np.logspace(-3, 3, 10)}),
+        LogisticRegressionCV(
+            Cs=np.logspace(-3, 3, 10),
+            tol=1e-3,
+            max_iter=1000,
+            cv=KFold(shuffle=True, random_state=4),
+        ),
+        GridSearchCV(
+            SVC(kernel="rbf"),
+            {"C": np.logspace(-3, 3, 10)},
+            cv=KFold(shuffle=True, random_state=5),
+        ),
     ]
-    cv = KFold(n_splits=5, shuffle=True, random_state=0)
+    cv = KFold(n_splits=5, shuffle=True, random_state=6)
     groups = {ft: [i] for i, ft in enumerate(dataset.feature_names)}
     out_list = Parallel(n_jobs=5)(
         delayed(run_one_fold)(
@@ -208,13 +220,13 @@ combination, in parallel.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-147
+.. GENERATED FROM PYTHON SOURCE LINES 156-159
 
 Using the importance values, we can compute the p-value of each feature. As we will
 see, the p-values computed with `PFI` are not valid since the method
 does not provide type-1 error control.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-179
+.. GENERATED FROM PYTHON SOURCE LINES 159-191
 
 .. code-block:: Python
 
@@ -257,12 +269,12 @@ does not provide type-1 error control.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-182
+.. GENERATED FROM PYTHON SOURCE LINES 192-194
 
 Visualization of the results
 ----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-248
+.. GENERATED FROM PYTHON SOURCE LINES 194-260
 
 .. code-block:: Python
 
@@ -344,7 +356,7 @@ Visualization of the results
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 249-258
+.. GENERATED FROM PYTHON SOURCE LINES 261-270
 
 The boxplot shows the importance of each feature, with colors indicating the
 classifier used. A star marks the features that have a p-value (computed with a
@@ -356,7 +368,7 @@ additional flexibility of the SVC model. The SVC model could benefit from a more
 extensive hyperparameter search, especially optimizing the gamma parameter of the RBF
 kernel, which would be feasible with more data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 261-270
+.. GENERATED FROM PYTHON SOURCE LINES 273-282
 
 Measuring the importance of groups of features
 ----------------------------------------------
@@ -368,7 +380,7 @@ mitigate this issue, we can group correlated features together and measure the
 importance of these feature groups. For instance, we can group 'sepal width' with
 'sepal length' and 'petal length' with 'petal width' and the spurious feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 270-283
+.. GENERATED FROM PYTHON SOURCE LINES 282-295
 
 .. code-block:: Python
 
@@ -400,7 +412,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 35.405 seconds)
+   **Total running time of the script:** (1 minutes 0.771 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:
