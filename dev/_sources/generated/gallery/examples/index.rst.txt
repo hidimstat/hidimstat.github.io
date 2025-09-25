@@ -87,23 +87,6 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show an example of variable selection using model-X Knockoffs introduced by :footcitecandes2018panning. A notable drawback of this procedure is the randomness associated with generating knockoff variables. This can result in fluctuations of the statistical power and false discovery proportion, and consequently, unstable inference.">
-
-.. only:: html
-
-  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_knockoff_aggregation_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_generated_gallery_examples_plot_knockoff_aggregation.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Knockoff aggregation on simulated data</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="Variable Importance estimates the influence of a given input variable to the prediction made by a model. To assess variable importance in a prediction problem, :footcitebreimanRandomForests2001 introduced the permutation approach where the values are shuffled for one variable/column at a time. This permutation breaks the relationship between the variable of interest and the outcome. Following, the loss score is checked before and after this substitution for any significant drop in the performance which reflects the significance of this variable to predict the outcome. This ease-to-use solution is demonstrated, in the work by :footcitestroblConditionalVariableImportance2008, to be affected by the degree of correlation between the variables, thus biased towards truly non-significant variables highly correlated with the significant ones and creating fake significant variables. They introduced a solution for the Random Forest estimator based on conditional sampling by performing sub-groups permutation when bisecting the space using the conditioning variables of the building process. However, this solution is exclusive to the Random Forest and is costly with high-dimensional settings. :footciteChamma_NeurIPS2023 introduced a new model-agnostic solution to bypass the limitations of the permutation approach under the use of the conditional schemes. The variable of interest does contain two types of information: 1) the relationship with the remaining variables and 2) the relationship with the outcome. The standard permutation, while breaking the relationship with the outcome, is also destroying the dependency with the remaining variables. Therefore, instead of directly permuting the variable of interest, the variable of interest is predicted by the remaining variables and the residuals of this prediction are permuted before reconstructing the new version of the variable. This solution preserves the dependency with the remaining variables.">
 
 .. only:: html
@@ -116,6 +99,23 @@ Examples Gallery
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Variable Importance on diabetes dataset</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show an example of variable selection using model-X Knockoffs introduced by :footcitecandes2018panning. A notable drawback of this procedure is the randomness associated with generating knockoff variables. This can result in fluctuations of the statistical power and false discovery proportion, and consequently, unstable inference.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_knockoff_aggregation_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_knockoff_aggregation.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Knockoff aggregation on simulated data</div>
     </div>
 
 
@@ -201,8 +201,8 @@ Examples Gallery
    /generated/gallery/examples/plot_conditional_vs_marginal_xor_data
    /generated/gallery/examples/plot_model_agnostic_importance
    /generated/gallery/examples/plot_knockoffs_wisconsin
-   /generated/gallery/examples/plot_knockoff_aggregation
    /generated/gallery/examples/plot_diabetes_variable_importance_example
+   /generated/gallery/examples/plot_knockoff_aggregation
    /generated/gallery/examples/plot_fmri_data_example
    /generated/gallery/examples/plot_2D_simulation_example
    /generated/gallery/examples/plot_importance_classification_iris

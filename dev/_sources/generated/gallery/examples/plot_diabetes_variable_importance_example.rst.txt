@@ -59,38 +59,17 @@ References
 ----------
 .. footbibliography::
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-57
-
-.. code-block:: Python
-
-
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import pandas as pd
-    from scipy.stats import norm
-    from sklearn.base import clone
-    from sklearn.datasets import load_diabetes
-    from sklearn.linear_model import LogisticRegressionCV, RidgeCV
-    from sklearn.metrics import r2_score, root_mean_squared_error
-    from sklearn.model_selection import KFold
-
-    from hidimstat import CFI, LOCO, PFI
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 58-60
+.. GENERATED FROM PYTHON SOURCE LINES 46-48
 
 Load the diabetes dataset
 -------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-66
+.. GENERATED FROM PYTHON SOURCE LINES 48-57
 
 .. code-block:: Python
+
+
+    from sklearn.datasets import load_diabetes
 
     diabetes = load_diabetes()
     X, y = diabetes.data, diabetes.target
@@ -105,17 +84,23 @@ Load the diabetes dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-71
+.. GENERATED FROM PYTHON SOURCE LINES 58-62
 
 Fit a baseline model on the diabetes dataset
 --------------------------------------------
-We use a Ridge regression model with a 10-fold cross-validation to fit the
+We use a Ridge regression model with a 5-fold cross-validation to fit the
 diabetes dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-91
+.. GENERATED FROM PYTHON SOURCE LINES 62-89
 
 .. code-block:: Python
 
+
+    import numpy as np
+    from sklearn.base import clone
+    from sklearn.linear_model import LogisticRegressionCV, RidgeCV
+    from sklearn.metrics import r2_score, root_mean_squared_error
+    from sklearn.model_selection import KFold
 
     n_folds = 5
     regressor = RidgeCV(
@@ -140,6 +125,7 @@ diabetes dataset.
 
 
 
+
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
@@ -158,75 +144,17 @@ diabetes dataset.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-96
-
-Fit a baseline model on the diabetes dataset
---------------------------------------------
-We use a Ridge regression model with a 10-fold cross-validation to fit the
-diabetes dataset.
-
-.. GENERATED FROM PYTHON SOURCE LINES 96-113
-
-.. code-block:: Python
-
-
-    n_folds = 10
-    regressor = RidgeCV(alphas=np.logspace(-3, 3, 10))
-    regressor_list = [clone(regressor) for _ in range(n_folds)]
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
-    for i, (train_index, test_index) in enumerate(kf.split(X)):
-        regressor_list[i].fit(X[train_index], y[train_index])
-        score = r2_score(
-            y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
-        )
-        mse = root_mean_squared_error(
-            y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
-        )
-
-        print(f"Fold {i}: {score=}")
-        print(f"Fold {i}: {mse=}")
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Fold 0: score=0.4361943429807299
-    Fold 0: mse=58.30611745007488
-    Fold 1: score=0.4063975917197913
-    Fold 1: mse=55.10180750195186
-    Fold 2: score=0.38237427998171714
-    Fold 2: mse=60.694664715901354
-    Fold 3: score=0.5200300533571036
-    Fold 3: mse=56.267235231022376
-    Fold 4: score=0.4353560840814107
-    Fold 4: mse=56.6124433295757
-    Fold 5: score=0.5770124594421959
-    Fold 5: mse=54.653972727402525
-    Fold 6: score=0.48498087732043804
-    Fold 6: mse=53.84575248391907
-    Fold 7: score=0.48408594262922977
-    Fold 7: mse=52.72466887666228
-    Fold 8: score=0.5900230534486699
-    Fold 8: mse=48.171522340170974
-    Fold 9: score=0.4566082341834987
-    Fold 9: mse=55.34246211082451
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 114-116
+.. GENERATED FROM PYTHON SOURCE LINES 90-92
 
 Measure the importance of variables using the CFI method
 --------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-139
+.. GENERATED FROM PYTHON SOURCE LINES 92-117
 
 .. code-block:: Python
 
+
+    from hidimstat import CFI
 
     cfi_importance_list = []
     kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
@@ -263,24 +191,21 @@ Measure the importance of variables using the CFI method
     Fold 2
     Fold 3
     Fold 4
-    Fold 5
-    Fold 6
-    Fold 7
-    Fold 8
-    Fold 9
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-142
+.. GENERATED FROM PYTHON SOURCE LINES 118-120
 
 Measure the importance of variables using the LOCO method
 ---------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-158
+.. GENERATED FROM PYTHON SOURCE LINES 120-138
 
 .. code-block:: Python
 
+
+    from hidimstat import LOCO
 
     loco_importance_list = []
     kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
@@ -310,24 +235,21 @@ Measure the importance of variables using the LOCO method
     Fold 2
     Fold 3
     Fold 4
-    Fold 5
-    Fold 6
-    Fold 7
-    Fold 8
-    Fold 9
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-161
+.. GENERATED FROM PYTHON SOURCE LINES 139-141
 
 Measure the importance of variables using the permutation method
 ----------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-179
+.. GENERATED FROM PYTHON SOURCE LINES 141-161
 
 .. code-block:: Python
 
+
+    from hidimstat import PFI
 
     pfi_importance_list = []
     kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
@@ -359,50 +281,26 @@ Measure the importance of variables using the permutation method
     Fold 2
     Fold 3
     Fold 4
-    Fold 5
-    Fold 6
-    Fold 7
-    Fold 8
-    Fold 9
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-182
-
-Define a function to compute the p-value from importance values
----------------------------------------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 182-189
-
-.. code-block:: Python
-
-    def compute_pval(vim):
-        mean_vim = np.mean(vim, axis=0)
-        std_vim = np.std(vim, axis=0)
-        pval = norm.sf(mean_vim / std_vim)
-        return np.clip(pval, 1e-10, 1 - 1e-10)
-
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 190-192
+.. GENERATED FROM PYTHON SOURCE LINES 162-164
 
 Analyze the results
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-264
+.. GENERATED FROM PYTHON SOURCE LINES 164-240
 
 .. code-block:: Python
 
 
+    import matplotlib.pyplot as plt
+    import pandas as pd
+    from scipy.stats import ttest_1samp
+
     cfi_vim_arr = np.array([x["importance"] for x in cfi_importance_list]) / 2
-    cfi_pval = compute_pval(cfi_vim_arr)
+    cfi_pval = ttest_1samp(cfi_vim_arr, 0, alternative="greater").pvalue
 
     vim = [
         pd.DataFrame(
@@ -418,7 +316,7 @@ Analyze the results
     ]
 
     loco_vim_arr = np.array([x["importance"] for x in loco_importance_list])
-    loco_pval = compute_pval(loco_vim_arr)
+    loco_pval = ttest_1samp(loco_vim_arr, 0, alternative="greater").pvalue
 
     vim += [
         pd.DataFrame(
@@ -434,7 +332,7 @@ Analyze the results
     ]
 
     pfi_vim_arr = np.array([x["importance"] for x in pfi_importance_list])
-    pfi_pval = compute_pval(pfi_vim_arr)
+    pfi_pval = ttest_1samp(pfi_vim_arr, 0, alternative="greater").pvalue
 
     vim += [
         pd.DataFrame(
@@ -487,7 +385,7 @@ Analyze the results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 50.228 seconds)
+   **Total running time of the script:** (0 minutes 34.640 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:
