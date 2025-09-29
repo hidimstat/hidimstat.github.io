@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=771f2fd7"></script>
+    <script src="../../../_static/documentation_options.js?v=fa44c454"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_fmri_data_example';</script>
@@ -587,7 +587,7 @@ of 5 G for memory. To handle this problem, the following methods use some
 feature aggregation methods.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <span class="n">sigma_hat</span><span class="p">,</span> <span class="n">precision_diagonal</span> <span class="o">=</span> <a href="../../api/class/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso" title="hidimstat.desparsified_lasso" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">desparsified_lasso</span></a><span class="p">(</span>
-        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">noise_method</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="n">max_iteration</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a>
+        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">noise_method</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="n">max_iteration</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a>
     <span class="p">)</span>
     <span class="n">pval_dl</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a><span class="p">,</span> <span class="n">one_minus_pval_dl</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a><span class="p">,</span> <span class="n">cb_min</span><span class="p">,</span> <span class="n">cb_max</span> <span class="o">=</span> <a href="../../api/class/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue" title="hidimstat.desparsified_lasso_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">desparsified_lasso_pvalue</span></a><span class="p">(</span>
         <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span><span class="o">.</span><span class="n">shape</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <span class="n">sigma_hat</span><span class="p">,</span> <span class="n">precision_diagonal</span>
@@ -610,7 +610,7 @@ and high-dimensional inference (c.f. References).</p>
     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a><span class="p">,</span>
     <span class="n">scaler_sampling</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">(),</span>
     <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span>
-    <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pval_cdl</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">one_minus_pval_cdl</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-function"><span class="n">clustered_inference_pvalue</span></a><span class="p">(</span>
     <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span><span class="o">.</span><span class="n">shape</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward_</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">beta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">theta_hat</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">omega_diag</span></a>
@@ -618,9 +618,9 @@ and high-dimensional inference (c.f. References).</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.4s
-[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.7s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.1s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.3s finished
 </pre></div>
 </div>
 <p>Below, we run the ensemble clustered inference algorithm which adds a
@@ -640,7 +640,7 @@ However you might benefit from clustering randomization taking
         <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">max_iteration</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span>
         <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span>
-        <span class="n">seed</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
         <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -656,33 +656,33 @@ However you might benefit from clustering randomization taking
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/5 [00:00&lt;?, ?it/s][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.4s
-[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.8s finished
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.0s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.3s finished
 
- 20%|██        | 1/5 [00:09&lt;00:38,  9.59s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.5s
-[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.8s finished
+ 20%|██        | 1/5 [00:12&lt;00:50, 12.71s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.1s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.4s finished
 
- 40%|████      | 2/5 [00:18&lt;00:28,  9.47s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.6s
-[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.9s finished
+ 40%|████      | 2/5 [00:22&lt;00:32, 11.00s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.3s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.6s finished
 
- 60%|██████    | 3/5 [00:30&lt;00:20, 10.43s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.1s
-[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.6s
-[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.9s finished
+ 60%|██████    | 3/5 [00:32&lt;00:21, 10.65s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.2s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.5s finished
 
- 80%|████████  | 4/5 [00:39&lt;00:09,  9.99s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.5s
-[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.9s finished
+ 80%|████████  | 4/5 [00:44&lt;00:11, 11.09s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.2s
+[Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.5s finished
 
-100%|██████████| 5/5 [00:48&lt;00:00,  9.63s/it]
-100%|██████████| 5/5 [00:48&lt;00:00,  9.77s/it]
-[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:   48.9s finished
+100%|██████████| 5/5 [00:52&lt;00:00, 10.03s/it]
+100%|██████████| 5/5 [00:52&lt;00:00, 10.53s/it]
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:   52.7s finished
 </pre></div>
 </div>
 </section>
@@ -793,7 +793,7 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 50.969 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 46.010 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b6c6a679d257e221e442c55b925ef0bf/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>

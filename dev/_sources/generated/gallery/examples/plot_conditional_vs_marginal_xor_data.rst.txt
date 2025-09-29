@@ -25,10 +25,9 @@ This example illustrates on XOR data that variables can be conditionally importa
 if they are not marginally important. The conditional importance is computed using the
 Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models.
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-21
+.. GENERATED FROM PYTHON SOURCE LINES 11-22
 
 .. code-block:: Python
-
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -48,15 +47,16 @@ Conditional Feature Importance (CFI) class and the marginal importance is comput
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-24
+.. GENERATED FROM PYTHON SOURCE LINES 23-24
 
 To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radial Basis Function (RBF) kernel.
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 24-43
+.. GENERATED FROM PYTHON SOURCE LINES 24-45
 
 .. code-block:: Python
 
+
+    # Random seed for reproducibility
     rng = np.random.default_rng(0)
     X = rng.standard_normal((400, 2))
     Y = np.logical_xor(X[:, 0] > 0, X[:, 1] > 0).astype(int)
@@ -70,7 +70,7 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
         X,
         Y,
         test_size=0.2,
-        random_state=1,
+        random_state=0,
     )
     model = SVC(kernel="rbf", random_state=2)
     model.fit(X_train, y_train)
@@ -768,14 +768,14 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-48
+.. GENERATED FROM PYTHON SOURCE LINES 46-50
 
 Visualizing the decision function of the SVC
 --------------------------------------------
 Let's plot the decision function of the fitted model
 to confirm that the model is able to separate the two classes.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-76
+.. GENERATED FROM PYTHON SOURCE LINES 50-78
 
 .. code-block:: Python
 
@@ -819,13 +819,13 @@ to confirm that the model is able to separate the two classes.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-80
+.. GENERATED FROM PYTHON SOURCE LINES 79-82
 
 The decision function of the SVC shows that the model is able to learn the
 non-linear decision boundary of the XOR problem. It also highlights that knowing
 the value of both features is necessary to classify each sample correctly.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-91
+.. GENERATED FROM PYTHON SOURCE LINES 85-93
 
 Computing the conditional and marginal importance
 -------------------------------------------------
@@ -836,12 +836,12 @@ features. Conditional importance, on the other hand, reveals that both features
 are important (therefore rejecting the null hypothesis
 :math:`Y \perp\!\!\!\perp X^1 | X^2`).
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-94
+.. GENERATED FROM PYTHON SOURCE LINES 93-96
 
 .. code-block:: Python
 
-    cv = KFold(n_splits=5, shuffle=True, random_state=3)
-    clf = SVC(kernel="rbf", random_state=4)
+    cv = KFold(n_splits=5, shuffle=True, random_state=0)
+    clf = SVC(kernel="rbf", random_state=0)
 
 
 
@@ -850,11 +850,11 @@ are important (therefore rejecting the null hypothesis
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-96
+.. GENERATED FROM PYTHON SOURCE LINES 97-98
 
 Compute marginal importance using univariate models.
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-113
+.. GENERATED FROM PYTHON SOURCE LINES 98-115
 
 .. code-block:: Python
 
@@ -882,11 +882,11 @@ Compute marginal importance using univariate models.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-115
+.. GENERATED FROM PYTHON SOURCE LINES 116-117
 
 Compute the conditional importance using the CFI class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 115-137
+.. GENERATED FROM PYTHON SOURCE LINES 117-139
 
 .. code-block:: Python
 
@@ -904,7 +904,7 @@ Compute the conditional importance using the CFI class.
             loss=hinge_loss,
             imputation_model_continuous=RidgeCV(np.logspace(-3, 3, 10)),
             n_permutations=50,
-            random_state=5,
+            random_state=0,
         )
         vim.fit(X_train, y_train)
         importances.append(vim.importance(X_test, y_test)["importance"])
@@ -919,13 +919,13 @@ Compute the conditional importance using the CFI class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-141
+.. GENERATED FROM PYTHON SOURCE LINES 140-143
 
 Visualizing the importance scores
 ---------------------------------
 We will use boxplots to visualize the distribution of the importance scores.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-172
+.. GENERATED FROM PYTHON SOURCE LINES 143-174
 
 .. code-block:: Python
 
@@ -972,7 +972,7 @@ We will use boxplots to visualize the distribution of the importance scores.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-177
+.. GENERATED FROM PYTHON SOURCE LINES 175-179
 
 On the left, we can see that both features are not marginally important, since the
 boxplots overlap with the chance level (accuracy = 0.5). On the right, we can see that
@@ -982,7 +982,7 @@ the null hypothesis (importance = 0.0).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.599 seconds)
+   **Total running time of the script:** (0 minutes 7.002 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_conditional_vs_marginal_xor_data.py:

@@ -27,26 +27,7 @@ selection methods: the Lasso and the Model-X Knockoffs :footcite:t:`candes2018pa
 We show how the Lasso is not robust to the presence of irrelevant variables, while the
 Knockoffs (KO) method is able to address this issue.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-19
-
-.. code-block:: Python
-
-
-    import numpy as np
-    import pandas as pd
-
-    # Define the seeds for the reproducibility of the example
-    rng = np.random.default_rng(43)
-
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 20-26
+.. GENERATED FROM PYTHON SOURCE LINES 13-19
 
 Load the breast cancer dataset
 ------------------------------
@@ -55,7 +36,7 @@ The downstream task is to classify tumors as benign or malignant. We leave out 1
 the data to evaluate the performance of the Logistic Lasso (Logistic Regression with
 L1 regularization) on the prediction task.
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-46
+.. GENERATED FROM PYTHON SOURCE LINES 19-38
 
 .. code-block:: Python
 
@@ -66,10 +47,9 @@ L1 regularization) on the prediction task.
     data = load_breast_cancer()
     X = data.data
     y = data.target
+    # Random seed for reproducibility
 
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.1, random_state=16
-    )
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=0)
 
     scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
@@ -86,7 +66,7 @@ L1 regularization) on the prediction task.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-53
+.. GENERATED FROM PYTHON SOURCE LINES 39-45
 
 Selecting variables with the Logistic Lasso
 -------------------------------------------
@@ -95,14 +75,16 @@ characteristics that are associated with tumor malignance. We start off by apply
 classical method using Lasso logistic regression and retaining variables with non-null
 coefficients:
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-70
+.. GENERATED FROM PYTHON SOURCE LINES 45-64
 
 .. code-block:: Python
 
+
+    import numpy as np
     from sklearn.linear_model import LogisticRegressionCV
 
     clf = LogisticRegressionCV(
-        Cs=np.logspace(-3, 3, 10), penalty="l1", solver="liblinear", random_state=17
+        Cs=np.logspace(-3, 3, 10), penalty="l1", solver="liblinear", random_state=0
     )
     clf.fit(X_train, y_train)
     print(f"Accuracy of Lasso on test set: {clf.score(X_test, y_test):.3f}")
@@ -125,21 +107,22 @@ coefficients:
  .. code-block:: none
 
     Accuracy of Lasso on test set: 1.000
-    The Lasso selects 7 variables:
+    The Lasso selects 8 variables:
     Variable name                  | Coefficient
     ---------------------------------------------
-    mean concave points            |     -0.550
-    radius error                   |     -0.487
-    worst radius                   |     -2.263
-    worst texture                  |     -0.674
-    worst smoothness               |     -0.219
-    worst concave points           |     -0.860
-    worst symmetry                 |     -0.178
+    mean concave points            |     -0.439
+    radius error                   |     -0.570
+    worst radius                   |     -2.274
+    worst texture                  |     -0.603
+    worst smoothness               |     -0.223
+    worst concavity                |     -0.061
+    worst concave points           |     -0.937
+    worst symmetry                 |     -0.148
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-79
+.. GENERATED FROM PYTHON SOURCE LINES 65-73
 
 Evaluating the rejection set
 ----------------------------
@@ -150,9 +133,15 @@ this method, we artificially increase the number of variables by adding noisy co
 of the features. These are correlated with the variables in the dataset, but are not
 related to the outcome.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-95
+.. GENERATED FROM PYTHON SOURCE LINES 73-95
 
 .. code-block:: Python
+
+
+
+    # Define the seeds for the reproducibility of the example
+    rng = np.random.default_rng(0)
+
 
     repeats_noise = 5  # Number of synthetic noisy sets to add
 
@@ -183,15 +172,18 @@ There are 180 features, 30 of them are real and 150 of them are fake and indepen
 of the outcome. We now apply the Lasso (with cross-validation to select the best
 regularization parameter) to the noisy dataset and observe the results:
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-132
+.. GENERATED FROM PYTHON SOURCE LINES 99-135
 
 .. code-block:: Python
+
+
+    import pandas as pd
 
     lasso_noisy = LogisticRegressionCV(
         Cs=np.logspace(-3, 3, 10),
         penalty="l1",
         solver="liblinear",
-        random_state=18,
+        random_state=0,
         n_jobs=1,
     )
     lasso_noisy.fit(noisy_train, y_train)
@@ -228,20 +220,20 @@ regularization parameter) to the noisy dataset and observe the results:
 
  .. code-block:: none
 
-    Accuracy of Lasso on test set with noise: 0.982
-    The Lasso makes at least 46 False Discoveries!!
+    Accuracy of Lasso on test set with noise: 0.965
+    The Lasso makes at least 42 False Discoveries!!
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-137
+.. GENERATED FROM PYTHON SOURCE LINES 136-140
 
 The Lasso selects many spurious variables that are not directly related to the outcome.
 To mitigate this problem, we can use one of the statistically controlled variable
 selection methods implemented in hidimstat. This ensures that the proportion of False
 Discoveries is below a certain bound set by the user in all scenarios.
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-145
+.. GENERATED FROM PYTHON SOURCE LINES 143-148
 
 Controlled variable selection with Knockoffs
 --------------------------------------------
@@ -249,7 +241,7 @@ We use the Model-X Knockoff procedure to control the FDR (False Discovery Rate).
 selection of variables is based on the Lasso Coefficient Difference (LCD) statistic
 :footcite:t:`candes2018panning`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-172
+.. GENERATED FROM PYTHON SOURCE LINES 148-174
 
 .. code-block:: Python
 
@@ -264,12 +256,12 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
             solver="liblinear",
             penalty="l1",
             Cs=np.logspace(-3, 3, 10),
-            random_state=19,
+            random_state=0,
             tol=1e-3,
             max_iter=1000,
         ),
         n_bootstraps=1,
-        random_state=20,
+        random_state=0,
         tol_gauss=1e-15,
         preconfigure_estimator=None,
         fdr=fdr,
@@ -283,21 +275,22 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 
 
 
-
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:179: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
       warnings.warn(
-    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:183: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:179: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
       warnings.warn(
-    Knockoffs make at least 0 False Discoveries
+    /home/circleci/project/src/hidimstat/gaussian_knockoff.py:179: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+      warnings.warn(
+    Knockoffs make at least 3 False Discoveries
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-180
+.. GENERATED FROM PYTHON SOURCE LINES 175-182
 
 Visualizing the results
 -----------------------
@@ -307,7 +300,7 @@ along with the selection threshold for the knockoffs and the absolute value of t
 Lasso coefficients. We plot the 25 most important features according to the KO
 statistic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-235
+.. GENERATED FROM PYTHON SOURCE LINES 182-237
 
 .. code-block:: Python
 
@@ -378,13 +371,11 @@ statistic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 236-241
+.. GENERATED FROM PYTHON SOURCE LINES 238-241
 
-We can clearly see that the knockoffs procedure is more conservative than the Lasso
-and rejects the spurious features while many of them are selected by the Lasso. It is
-also interesting to note that some of the selected variables (with the high KO
-statistic (e.g., worst radius, worst area, mean concave points) are also variables
-with the largest Lasso coefficients.
+The plot shows that the knockoffs procedure is more conservative than the Lasso,
+selecting far fewer spurious features. At the same time, it successfully identifies
+relevant true features.
 
 .. GENERATED FROM PYTHON SOURCE LINES 244-247
 
@@ -395,7 +386,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.572 seconds)
+   **Total running time of the script:** (0 minutes 10.129 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:
