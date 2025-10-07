@@ -31,6 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -42,9 +43,11 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=cdf46c8e"></script>
+    <script src="_static/documentation_options.js?v=9b9a1f7c"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=97f0b27d"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -362,10 +365,25 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">1. Definition of concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methods_list.html">2. List of methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization.html">3. Tools for visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grouping.html">4. Measuring the importance of feature groups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dimension.html">5. Inference in high dimension</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="glm_methods.html">2. GLM methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="glm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glm_methods/knockoffs.html">2.2. Knockoffs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="model_agnostic_methods.html">3. Model-agnostic methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/total_sobol_index.html">3.1. Total Sobol Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html">3.3. Conditional Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/permutation_feature_importance.html">3.4. Permutation Feature Importance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="marginal_methods.html">4. Marginal methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="marginal_methods/leave_one_covariate_in.html">4.1. Leave-One-Covariate-In</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">5. Tools for visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grouping.html">6. Measuring the importance of feature groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="high_dimension.html">7. Inference in high dimension</a></li>
 </ul>
 </div>
 </nav></div>
@@ -431,10 +449,33 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">1. Definition of concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methods_list.html">2. List of methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization.html">3. Tools for visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grouping.html">4. Measuring the importance of feature groups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dimension.html">5. Inference in high dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glm_methods.html">2. GLM methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glm_methods/knockoffs.html">2.2. Knockoffs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_agnostic_methods.html">3. Model-agnostic methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/total_sobol_index.html">3.1. Total Sobol Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html">3.3. Conditional Feature Importance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#theoretical-index">3.3.1. Theoretical index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#estimation-procedure">3.3.2. Estimation procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#inference">3.3.3. Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#regression-example">3.3.4. Regression example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#classification-example">3.3.5. Classification example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#references">3.3.6. References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/permutation_feature_importance.html">3.4. Permutation Feature Importance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_methods.html">4. Marginal methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="marginal_methods/leave_one_covariate_in.html">4.1. Leave-One-Covariate-In</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">5. Tools for visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grouping.html">6. Measuring the importance of feature groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="high_dimension.html">7. Inference in high dimension</a></li>
 </ul>
 </div>
 </section>

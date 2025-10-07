@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. List of methods &#8212; HiDimStat</title>
+    <title>3.1. Total Sobol Index &#8212; HiDimStat</title>
   
   
   
@@ -27,29 +27,33 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=cdf46c8e"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'methods_list';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Tools for visualization" href="visualization.html" />
-    <link rel="prev" title="1. Definition of concepts" href="concepts.html" />
+    <script src="../_static/documentation_options.js?v=9b9a1f7c"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=97f0b27d"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'model_agnostic_methods/total_sobol_index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.2. Leave-One-Covariate-Out" href="leave_one_covariate_out.html" />
+    <link rel="prev" title="3. Model-agnostic methods" href="../model_agnostic_methods.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -71,7 +75,7 @@
   <dialog id="pst-search-dialog">
     
 <form class="bd-search d-flex align-items-center"
-      action="search.html"
+      action="../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -107,7 +111,7 @@
     
   
 
-<a class="navbar-brand logo" href="index.html">
+<a class="navbar-brand logo" href="../index.html">
   
   
   
@@ -118,8 +122,8 @@
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
-    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
   
   
 </a></div>
@@ -135,28 +139,28 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="api.html">
+  <a class="nav-link nav-internal" href="../api.html">
     API
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="user_guide.html">
+  <a class="nav-link nav-internal" href="../user_guide.html">
     User guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="generated/gallery/examples/index.html">
+  <a class="nav-link nav-internal" href="../generated/gallery/examples/index.html">
     Examples Gallery
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="dev/index.html">
+  <a class="nav-link nav-internal" href="../dev/index.html">
     Developer Documentation
   </a>
 </li>
@@ -271,28 +275,28 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="api.html">
+  <a class="nav-link nav-internal" href="../api.html">
     API
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="user_guide.html">
+  <a class="nav-link nav-internal" href="../user_guide.html">
     User guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="generated/gallery/examples/index.html">
+  <a class="nav-link nav-internal" href="../generated/gallery/examples/index.html">
     Examples Gallery
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="dev/index.html">
+  <a class="nav-link nav-internal" href="../dev/index.html">
     Developer Documentation
   </a>
 </li>
@@ -361,11 +365,26 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">1. Definition of concepts</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. List of methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization.html">3. Tools for visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grouping.html">4. Measuring the importance of feature groups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dimension.html">5. Inference in high dimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">1. Definition of concepts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../glm_methods.html">2. GLM methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../glm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glm_methods/knockoffs.html">2.2. Knockoffs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../model_agnostic_methods.html">3. Model-agnostic methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Total Sobol Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conditional_feature_importance.html">3.3. Conditional Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="permutation_feature_importance.html">3.4. Permutation Feature Importance</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marginal_methods.html">4. Marginal methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marginal_methods/leave_one_covariate_in.html">4.1. Leave-One-Covariate-In</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization.html">5. Tools for visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grouping.html">6. Measuring the importance of feature groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../high_dimension.html">7. Inference in high dimension</a></li>
 </ul>
 </div>
 </nav></div>
@@ -402,14 +421,17 @@
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="index.html" class="nav-link" aria-label="Home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="user_guide.html" class="nav-link">User guide</a></li>
+    <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">2. </span>List of methods</span></li>
+    
+    <li class="breadcrumb-item"><a href="../model_agnostic_methods.html" class="nav-link"><span class="section-number">3. </span>Model-agnostic methods</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">3.1. </span>Total Sobol Index</span></li>
   </ul>
 </nav>
 </div>
@@ -426,8 +448,18 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="list-of-methods">
-<span id="methods-list"></span><h1><span class="section-number">2. </span>List of methods<a class="headerlink" href="#list-of-methods" title="Link to this heading">#</a></h1>
+  <section id="total-sobol-index">
+<span id="id1"></span><h1><span class="section-number">3.1. </span>Total Sobol Index<a class="headerlink" href="#total-sobol-index" title="Link to this heading">#</a></h1>
+<p>The Total Sobol Index (TSI) Sobol<a class="footnote-reference brackets" href="#footcite-sobol1993sensitivity" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> is a widely used measure of feature importance that is
+rooted in sensitivity analysis. It can intuitively be defined by the performance drop
+of a predictive model when a feature is removed, similarly to an ablation study. In general, the TSI can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\psi_j^{TSI} = \mathbb{E} \left[\mathcal{L}\left(y, \mu(X)\right)\right] - \mathbb{E} \left[\mathcal{L}\left(y, \mu_{-j}(X^{-j})\right)\right],\]</div>
+<p>where <span class="math notranslate nohighlight">\(X^{-j}\)</span> denotes the feature vector without the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature, and
+<span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j})\)</span> is the same predictive model as <span class="math notranslate nohighlight">\(\mu(X)\)</span> but retrained
+on the reduced feature set <span class="math notranslate nohighlight">\(X^{-j}\)</span>. When <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the squared loss,
+for a regression task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j}) = \mathbb{E}[y | X^{-j}]\)</span> and when
+<span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the log-loss, for a classification task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j}) = P(y | X^{-j})\)</span>.</p>
 </section>
 
 
@@ -441,20 +473,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="concepts.html"
+       href="../model_agnostic_methods.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Definition of concepts</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Model-agnostic methods</p>
       </div>
     </a>
     <a class="right-next"
-       href="visualization.html"
+       href="leave_one_covariate_out.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Tools for visualization</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Leave-One-Covariate-Out</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -473,7 +505,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/methods_list.rst.txt"
+      <li><a href="../_sources/model_agnostic_methods/total_sobol_index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
@@ -491,8 +523,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">

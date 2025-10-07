@@ -31,6 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -42,9 +43,11 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=cdf46c8e"></script>
+    <script src="_static/documentation_options.js?v=9b9a1f7c"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=97f0b27d"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -456,7 +459,7 @@ conference/journal articles that can be downloaded at
 <h3>Main references<a class="headerlink" href="#main-references" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Ensemble of Clustered desparsified Lasso (ECDL): <span id="id1">Chevalier <em>et al.</em> [<a class="reference internal" href="#id23" title="Jérôme-Alexis Chevalier, Joseph Salmon, and Bertrand Thirion. Statistical inference with ensemble of clustered desparsified lasso. In International Conference on Medical Image Computing and Computer-Assisted Intervention, 638–646. Springer, 2018.">2018</a>]</span>, <span id="id2">Chevalier <em>et al.</em> [<a class="reference internal" href="#id27" title="Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Bertrand Thirion, and Joseph Salmon. Spatially relaxed inference on high-dimensional linear models. Statistics and Computing, 32(5):83, 2022.">2022</a>]</span></p></li>
-<li><p>Aggregation of multiple Knockoffs (AKO): <span id="id3">Nguyen <em>et al.</em> [<a class="reference internal" href="#id38" title="Tuan-Binh Nguyen, Jerome-Alexis Chevalier, Bertrand Thirion, and Sylvain Arlot. Aggregation of multiple knockoffs. In Hal Daumé III and Aarti Singh, editors, Proceedings of the 37th International Conference on Machine Learning, volume 119 of Proceedings of Machine Learning Research, 7283–7293. PMLR, 2020.">2020</a>]</span></p></li>
+<li><p>Aggregation of multiple Knockoffs (AKO): <span id="id3">Nguyen <em>et al.</em> [<a class="reference internal" href="#id39" title="Tuan-Binh Nguyen, Jerome-Alexis Chevalier, Bertrand Thirion, and Sylvain Arlot. Aggregation of multiple knockoffs. In Hal Daumé III and Aarti Singh, editors, Proceedings of the 37th International Conference on Machine Learning, volume 119 of Proceedings of Machine Learning Research, 7283–7293. PMLR, 2020.">2020</a>]</span></p></li>
 <li><p>Application to decoding (fMRI data): <span id="id4">Chevalier <em>et al.</em> [<a class="reference internal" href="#id26" title="Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Joseph Salmon, Gaël Varoquaux, and Bertrand Thirion. Decoding with confidence: statistical control on decoder maps. NeuroImage, 234:117921, 2021.">2021</a>]</span></p></li>
 <li><p>Application to source localization (MEG/EEG data): <span id="id5">Chevalier <em>et al.</em> [<a class="reference internal" href="#id24" title="Jérôme-Alexis Chevalier, Joseph Salmon, Alexandre Gramfort, and Bertrand Thirion. Statistical control for spatio-temporal meg/eeg source imaging with desparsified mutli-task lasso. Advances in Neural Information Processing Systems, 33:1759–1770, 2020.">2020</a>]</span></p></li>
 <li><p>Single/Group statistically validated importance using conditional permutations: <span id="id6">Chamma <em>et al.</em> [<a class="reference internal" href="#id22" title="Ahmad Chamma, Denis A. Engemann, and Bertrand Thirion. Statistically valid variable importance assessment through conditional permutations. In A. Oh, T. Naumann, A. Globerson, K. Saenko, M. Hardt, and S. Levine, editors, Advances in Neural Information Processing Systems, volume 36, 67662–67685. Curran Associates, Inc., 2023.">2023</a>]</span>, <span id="id7">Chamma <em>et al.</em> [<a class="reference internal" href="#id21" title="Ahmad Chamma, Bertrand Thirion, and Denis Engemann. Variable importance in high-dimensional settings requires grouping. Proceedings of the AAAI Conference on Artificial Intelligence, 38(10):11195-11203, 2024. doi:10.1609/aaai.v38i10.28997.">2024</a>]</span></p></li>
@@ -467,7 +470,7 @@ aforementioned papers.</p>
 <section id="other-useful-references">
 <h3>Other useful references<a class="headerlink" href="#other-useful-references" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>For de-sparsified (or de-biased) Lasso: <span id="id8">Javanmard and Montanari [<a class="reference internal" href="#id33" title="Adel Javanmard and Andrea Montanari. Confidence intervals and hypothesis testing for high-dimensional regression. The Journal of Machine Learning Research, 15(1):2869–2909, 2014.">2014</a>]</span>, <span id="id9">[<a class="reference internal" href="#id48" title="Cun-Hui Zhang and Stephanie S Zhang. Confidence intervals for low dimensional parameters in high dimensional linear models. Journal of the Royal Statistical Society Series B: Statistical Methodology, 76(1):217–242, 2014.">Zhang and Zhang, 2014</a>]</span>, <span id="id10">van de Geer <em>et al.</em> [<a class="reference internal" href="#id43" title="Sara van de Geer, Peter Bühlmann, Ya'acov Ritov, and Ruben Dezeure. On asymptotically optimal confidence regions and tests for high-dimensional models. The Annals of Statistics, pages 1166–1202, 2014.">2014</a>]</span></p></li>
+<li><p>For de-sparsified (or de-biased) Lasso: <span id="id8">Javanmard and Montanari [<a class="reference internal" href="#id33" title="Adel Javanmard and Andrea Montanari. Confidence intervals and hypothesis testing for high-dimensional regression. The Journal of Machine Learning Research, 15(1):2869–2909, 2014.">2014</a>]</span>, <span id="id9">[<a class="reference internal" href="#id50" title="Cun-Hui Zhang and Stephanie S Zhang. Confidence intervals for low dimensional parameters in high dimensional linear models. Journal of the Royal Statistical Society Series B: Statistical Methodology, 76(1):217–242, 2014.">Zhang and Zhang, 2014</a>]</span>, <span id="id10">van de Geer <em>et al.</em> [<a class="reference internal" href="#id45" title="Sara van de Geer, Peter Bühlmann, Ya'acov Ritov, and Ruben Dezeure. On asymptotically optimal confidence regions and tests for high-dimensional models. The Annals of Statistics, pages 1166–1202, 2014.">2014</a>]</span></p></li>
 <li><p>For Knockoffs Inference: <span id="id11">Barber and Candès [<a class="reference internal" href="#id15" title="Rina Foygel Barber and Emmanuel J Candès. Controlling the false discovery rate via knockoffs. The Annals of statistics, pages 2055–2085, 2015.">2015</a>]</span>, <span id="id12">Candes <em>et al.</em> [<a class="reference internal" href="#id20" title="Emmanuel Candes, Yingying Fan, Lucas Janson, and Jinchi Lv. Panning for gold:'model-x' knockoffs for high dimensional controlled variable selection. Journal of the Royal Statistical Society Series B: Statistical Methodology, 80(3):551–577, 2018.">2018</a>]</span></p></li>
 </ul>
 </section>
@@ -512,15 +515,15 @@ aforementioned papers.</p>
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">JM14</a><span class="fn-bracket">]</span></span>
 <p>Adel Javanmard and Andrea Montanari. Confidence intervals and hypothesis testing for high-dimensional regression. <em>The Journal of Machine Learning Research</em>, 15(1):2869–2909, 2014.</p>
 </div>
-<div class="citation" id="id38" role="doc-biblioentry">
+<div class="citation" id="id39" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">NCTA20</a><span class="fn-bracket">]</span></span>
 <p>Tuan-Binh Nguyen, Jerome-Alexis Chevalier, Bertrand Thirion, and Sylvain Arlot. Aggregation of multiple knockoffs. In Hal Daumé III and Aarti Singh, editors, <em>Proceedings of the 37th International Conference on Machine Learning</em>, volume 119 of Proceedings of Machine Learning Research, 7283–7293. PMLR, 2020.</p>
 </div>
-<div class="citation" id="id43" role="doc-biblioentry">
+<div class="citation" id="id45" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">vdGBuhlmannRD14</a><span class="fn-bracket">]</span></span>
 <p>Sara van de Geer, Peter Bühlmann, Ya'acov Ritov, and Ruben Dezeure. On asymptotically optimal confidence regions and tests for high-dimensional models. <em>The Annals of Statistics</em>, pages 1166–1202, 2014.</p>
 </div>
-<div class="citation" id="id48" role="doc-biblioentry">
+<div class="citation" id="id50" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">ZZ14</a><span class="fn-bracket">]</span></span>
 <p>Cun-Hui Zhang and Stephanie S Zhang. Confidence intervals for low dimensional parameters in high dimensional linear models. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em>, 76(1):217–242, 2014.</p>
 </div>
