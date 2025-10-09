@@ -106,7 +106,7 @@ require a K-fold cross-fitting. Computing the importance for each fold is
 embarrassingly parallel. For this reason, we encapsulate the main computations in a
 function and use joblib to parallelize the computation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-124
+.. GENERATED FROM PYTHON SOURCE LINES 65-126
 
 .. code-block:: Python
 
@@ -117,7 +117,7 @@ function and use joblib to parallelize the computation.
         train_index,
         test_index,
         vim_name="CFI",
-        groups=None,
+        features_groups=None,
     ):
         model_c = clone(model)
         model_c.fit(X[train_index], y[train_index])
@@ -142,6 +142,7 @@ function and use joblib to parallelize the computation.
                 random_state=2,
                 method=method,
                 loss=loss,
+                features_groups=features_groups,
             )
         elif vim_name == "PFI":
             vim = PFI(
@@ -150,14 +151,15 @@ function and use joblib to parallelize the computation.
                 random_state=3,
                 method=method,
                 loss=loss,
+                features_groups=features_groups,
             )
 
-        vim.fit(X[train_index], y[train_index], groups=groups)
+        vim.fit(X[train_index], y[train_index])
         importance = vim.importance(X[test_index], y[test_index])["importance"]
 
         return pd.DataFrame(
             {
-                "feature": groups.keys(),
+                "feature": features_groups.keys(),
                 "importance": importance,
                 "vim": vim_name,
                 "model": model_name,
@@ -176,13 +178,13 @@ function and use joblib to parallelize the computation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-128
+.. GENERATED FROM PYTHON SOURCE LINES 127-130
 
 We use two different classifiers: LR with cross-validation and SVC with a RBF kernel. We
 then compute the importance for each (importance method, classifier, fold)
 combination, in parallel.
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-155
+.. GENERATED FROM PYTHON SOURCE LINES 130-163
 
 .. code-block:: Python
 
@@ -201,10 +203,16 @@ combination, in parallel.
         ),
     ]
     cv = KFold(n_splits=5, shuffle=True, random_state=6)
-    groups = {ft: [i] for i, ft in enumerate(dataset.feature_names)}
+    features_groups = {ft: [i] for i, ft in enumerate(dataset.feature_names)}
     out_list = Parallel(n_jobs=5)(
         delayed(run_one_fold)(
-            X, y, model, train_index, test_index, vim_name=vim_name, groups=groups
+            X,
+            y,
+            model,
+            train_index,
+            test_index,
+            vim_name=vim_name,
+            features_groups=features_groups,
         )
         for train_index, test_index in cv.split(X)
         for model in models
@@ -220,13 +228,13 @@ combination, in parallel.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-159
+.. GENERATED FROM PYTHON SOURCE LINES 164-167
 
 Using the importance values, we can compute the p-value of each feature. As we will
 see, the p-values computed with `PFI` are not valid since the method
 does not provide type-1 error control.
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-191
+.. GENERATED FROM PYTHON SOURCE LINES 167-199
 
 .. code-block:: Python
 
@@ -269,12 +277,12 @@ does not provide type-1 error control.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-194
+.. GENERATED FROM PYTHON SOURCE LINES 200-202
 
 Visualization of the results
 ----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 194-260
+.. GENERATED FROM PYTHON SOURCE LINES 202-268
 
 .. code-block:: Python
 
@@ -356,7 +364,7 @@ Visualization of the results
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 261-270
+.. GENERATED FROM PYTHON SOURCE LINES 269-278
 
 The boxplot shows the importance of each feature, with colors indicating the
 classifier used. A star marks the features that have a p-value (computed with a
@@ -368,7 +376,7 @@ additional flexibility of the SVC model. The SVC model could benefit from a more
 extensive hyperparameter search, especially optimizing the gamma parameter of the RBF
 kernel, which would be feasible with more data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 273-282
+.. GENERATED FROM PYTHON SOURCE LINES 281-290
 
 Measuring the importance of groups of features
 ----------------------------------------------
@@ -380,23 +388,29 @@ mitigate this issue, we can group correlated features together and measure the
 importance of these feature groups. For instance, we can group 'sepal width' with
 'sepal length' and 'petal length' with 'petal width' and the spurious feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-295
+.. GENERATED FROM PYTHON SOURCE LINES 290-309
 
 .. code-block:: Python
 
-    groups = {"sepal features": [0, 1], "petal features": [2, 3, 4]}
+    features_groups = {"sepal features": [0, 1], "petal features": [2, 3, 4]}
     out_list = Parallel(n_jobs=5)(
         delayed(run_one_fold)(
-            X, y, model, train_index, test_index, vim_name=vim_name, groups=groups
+            X,
+            y,
+            model,
+            train_index,
+            test_index,
+            vim_name=vim_name,
+            features_groups=features_groups,
         )
         for train_index, test_index in cv.split(X)
         for model in models
         for vim_name in ["CFI", "PFI"]
     )
 
-    df_grouped = pd.concat(out_list)
-    df_pval = compute_pval(df_grouped, threshold=threshold)
-    plot_results(df_grouped, df_pval)
+    df_features_grouped = pd.concat(out_list)
+    df_pval = compute_pval(df_features_grouped, threshold=threshold)
+    plot_results(df_features_grouped, df_pval)
 
 
 
@@ -412,7 +426,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 52.314 seconds)
+   **Total running time of the script:** (0 minutes 50.840 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:

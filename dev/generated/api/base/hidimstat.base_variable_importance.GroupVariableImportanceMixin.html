@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>hidimstat.base_variable_importance.BaseVariableImportance &#8212; HiDimStat</title>
+    <title>hidimstat.base_variable_importance.GroupVariableImportanceMixin &#8212; HiDimStat</title>
   
   
   
@@ -48,11 +48,11 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="hidimstat.base_perturbation.BasePerturbation" href="hidimstat.base_perturbation.BasePerturbation.html" />
-    <link rel="prev" title="API" href="../../../api.html" />
+    <link rel="next" title="hidimstat.LOCO" href="../class/hidimstat.LOCO.html" />
+    <link rel="prev" title="hidimstat.base_perturbation.BasePerturbation" href="hidimstat.base_perturbation.BasePerturbation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -364,9 +364,9 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.base_variable_importance.BaseVariableImportance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.base_variable_importance.BaseVariableImportance.html">hidimstat.base_variable_importance.BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.base_perturbation.BasePerturbation.html">hidimstat.base_perturbation.BasePerturbation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">hidimstat.base_variable_importance.GroupVariableImportanceMixin</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">hidimstat.base_variable_importance.GroupVariableImportanceMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCO.html">hidimstat.LOCO</a></li>
@@ -433,7 +433,7 @@
     
     <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">hidimstat.base_variable_importance.BaseVariableImportance</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">hidimstat.base_variable_importance.GroupVariableImportanceMixin</span></li>
   </ul>
 </nav>
 </div>
@@ -450,23 +450,28 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="hidimstat-base-variable-importance-basevariableimportance">
-<h1>hidimstat.base_variable_importance.BaseVariableImportance<a class="headerlink" href="#hidimstat-base-variable-importance-basevariableimportance" title="Link to this heading">#</a></h1>
+  <section id="hidimstat-base-variable-importance-groupvariableimportancemixin">
+<h1>hidimstat.base_variable_importance.GroupVariableImportanceMixin<a class="headerlink" href="#hidimstat-base-variable-importance-groupvariableimportancemixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="hidimstat.base_variable_importance.BaseVariableImportance">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.base_variable_importance.</span></span><span class="sig-name descname"><span class="pre">BaseVariableImportance</span></span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L11-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.BaseVariableImportance" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code></a></p>
-<p>Base class for variable importance methods.</p>
-<p>This class provides a foundation for implementing variable importance methods,
-including feature selection based on importance scores and p-values.</p>
+<dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.base_variable_importance.</span></span><span class="sig-name descname"><span class="pre">GroupVariableImportanceMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L217-L366"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Mixin class for adding group functionality to variable importance methods.
+This class provides functionality for handling grouped features in variable
+importance calculations, enabling group-wise selection and importance evaluation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>importances_</strong><span class="classifier">array-like of shape (n_features,), default=None</span></dt><dd><p>The computed importance scores for each feature.</p>
+<dt><strong>features_groups: dict or None, default=None</strong></dt><dd><p>Dictionary mapping group names to lists of feature column names/indices.
+If None, each feature is treated as its own group.</p>
 </dd>
-<dt><strong>pvalues_</strong><span class="classifier">array-like of shape (n_features,), default=None</span></dt><dd><p>The computed p-values for each feature.</p>
+</dl>
 </dd>
-<dt><strong>selections_</strong><span class="classifier">array-like of shape (n_features,), default=None</span></dt><dd><p>Binary mask indicating selected features.</p>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>n_features_groups_</strong><span class="classifier">int</span></dt><dd><p>Number of feature groups.</p>
+</dd>
+<dt><strong>_features_groups_ids</strong><span class="classifier">array-like</span></dt><dd><p>List of feature indices for each group.</p>
 </dd>
 </dl>
 </dd>
@@ -474,129 +479,39 @@ including feature selection based on importance scores and p-values.</p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <tbody>
-<tr class="row-odd"><td><p><strong>selection(k_best=None, percentile=None, threshold=None, threshold_pvalue=None)</strong></p></td>
-<td><p>Selects features based on importance scores and/or p-values using various criteria.</p></td>
+<tr class="row-odd"><td><p><strong>fit(X, y=None)</strong></p></td>
+<td><p>Identifies feature groups and validates input data structure.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>_check_importance()</strong></p></td>
-<td><p>Checks if importance scores and p-values have been computed.</p></td>
+<tr class="row-even"><td><p><strong>_check_fit()</strong></p></td>
+<td><p>Verifies if the instance has been fitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_check_compatibility(X)</strong></p></td>
+<td><p>Validates compatibility between input data and fitted groups.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_variable_importance.BaseVariableImportance.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L36-L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.BaseVariableImportance.__init__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L246-L250"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_variable_importance.BaseVariableImportance.selection">
-<span class="sig-name descname"><span class="pre">selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L42-L128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.BaseVariableImportance.selection" title="Link to this definition">#</a></dt>
-<dd><p>Selects features based on variable importance.
-In case several arguments are different from None,
-the returned  selection is the conjunction of all of them.</p>
+<dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L252-L294"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit" title="Link to this definition">#</a></dt>
+<dd><p>Base fit method for perturbation-based methods. Identifies the groups.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>k_best</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+<dt><strong>X: array-like of shape (n_samples, n_features)</strong></dt><dd><p>The input samples.</p>
 </dd>
-<dt><strong>percentile</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
-</dd>
-<dt><strong>threshold</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with importance scores above the specified threshold.</p>
-</dd>
-<dt><strong>threshold_pvalue</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with p-values below the specified threshold.</p>
+<dt><strong>y: array-like of shape (n_samples,)</strong></dt><dd><p>Not used, only present for consistency with the sklearn API.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_variable_importance.BaseVariableImportance.plot_importance">
-<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L139-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.BaseVariableImportance.plot_importance" title="Link to this definition">#</a></dt>
-<dd><p>Plot feature importances as a horizontal bar plot.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes or None, (default=None)</span></dt><dd><p>Axes object to draw the plot onto, otherwise uses the current Axes.</p>
-</dd>
-<dt><strong>ascending: bool, default=False</strong></dt><dd><p>Whether to sort features by ascending importance.</p>
-</dd>
-<dt><strong>**seaborn_barplot_kwargs</strong><span class="classifier">additional keyword arguments</span></dt><dd><p>Additional arguments passed to seaborn.barplot.
-<a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.barplot.html">https://seaborn.pydata.org/generated/seaborn.barplot.html</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes</span></dt><dd><p>The Axes object with the plot.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_variable_importance.BaseVariableImportance.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/utils/_metadata_requests.py#L1532-L1544"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.BaseVariableImportance.get_metadata_routing" title="Link to this definition">#</a></dt>
-<dd><p>Get metadata routing of this object.</p>
-<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> on how the routing
-mechanism works.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
-routing information.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_variable_importance.BaseVariableImportance.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L233-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.BaseVariableImportance.get_params" title="Link to this definition">#</a></dt>
-<dd><p>Get parameters for this estimator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
-contained subobjects that are estimators.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_variable_importance.BaseVariableImportance.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L317-L359"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.BaseVariableImportance.set_params" title="Link to this definition">#</a></dt>
-<dd><p>Set the parameters of this estimator.</p>
-<p>The method works on simple estimators as well as on nested objects
-(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
-parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
-possible to update each component of a nested object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Returns the instance itself.</p>
 </dd>
 </dl>
 </dd>
@@ -605,17 +520,14 @@ possible to update each component of a nested object.</p>
 
 </dd></dl>
 
-<section id="examples-using-hidimstat-base-variable-importance-basevariableimportance">
-<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.base_variable_importance.BaseVariableImportance</span></code><a class="headerlink" href="#examples-using-hidimstat-base-variable-importance-basevariableimportance" title="Link to this heading">#</a></h2>
+<section id="examples-using-hidimstat-base-variable-importance-groupvariableimportancemixin">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.base_variable_importance.GroupVariableImportanceMixin</span></code><a class="headerlink" href="#examples-using-hidimstat-base-variable-importance-groupvariableimportancemixin" title="Link to this heading">#</a></h2>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [:footciteChamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier."><img alt="" src="../../../_images/sphx_glr_plot_cfi_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_cfi.html#sphx-glr-generated-gallery-examples-plot-cfi-py"><span class="std std-ref">Conditional Feature Importance (CFI) on the wine dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional Feature Importance (CFI) on the wine dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield."><img alt="" src="../../../_images/sphx_glr_plot_loco_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_loco.html#sphx-glr-generated-gallery-examples-plot-loco-py"><span class="std std-ref">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</span></a></p>
   <div class="sphx-glr-thumbnail-title">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares the performance of d0crt based on the lasso (1) and random forest (2) implementations. The number of repetitions is set to 10. The metrics used are the type-I error and the power"><img alt="" src="../../../_images/sphx_glr_plot_dcrt_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_dcrt_example.html#sphx-glr-generated-gallery-examples-plot-dcrt-example-py"><span class="std std-ref">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates on XOR data that variables can be conditionally important even if they are not marginally important. The conditional importance is computed using the Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models."><img alt="" src="../../../_images/sphx_glr_plot_conditional_vs_marginal_xor_data_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_conditional_vs_marginal_xor_data.html#sphx-glr-generated-gallery-examples-plot-conditional-vs-marginal-xor-data-py"><span class="std std-ref">Conditional vs Marginal Importance on the XOR dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional vs Marginal Importance on the XOR dataset</div>
@@ -645,20 +557,20 @@ possible to update each component of a nested object.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../../api.html"
+       href="hidimstat.base_perturbation.BasePerturbation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API</p>
+        <p class="prev-next-title">hidimstat.base_perturbation.BasePerturbation</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.base_perturbation.BasePerturbation.html"
+       href="../class/hidimstat.LOCO.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">hidimstat.base_perturbation.BasePerturbation</p>
+        <p class="prev-next-title">hidimstat.LOCO</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -681,16 +593,12 @@ possible to update each component of a nested object.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.BaseVariableImportance"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.BaseVariableImportance.__init__"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.__init__()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.BaseVariableImportance.selection"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.selection()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.BaseVariableImportance.plot_importance"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.plot_importance()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.BaseVariableImportance.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.get_metadata_routing()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.BaseVariableImportance.get_params"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.get_params()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.BaseVariableImportance.set_params"><code class="docutils literal notranslate"><span class="pre">BaseVariableImportance.set_params()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin"><code class="docutils literal notranslate"><span class="pre">GroupVariableImportanceMixin</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__"><code class="docutils literal notranslate"><span class="pre">GroupVariableImportanceMixin.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit"><code class="docutils literal notranslate"><span class="pre">GroupVariableImportanceMixin.fit()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-base-variable-importance-basevariableimportance">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.base_variable_importance.BaseVariableImportance</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-base-variable-importance-groupvariableimportancemixin">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.base_variable_importance.GroupVariableImportanceMixin</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -698,7 +606,7 @@ possible to update each component of a nested object.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.rst.txt"
+      <li><a href="../../../_sources/generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>

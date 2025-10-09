@@ -113,7 +113,7 @@ model to estimate the conditional expectation :math:`\mathbb{E}[X^j | X^{-j}]`.
 Since this is a classification task, we use log_loss and specify the "predict_proba"
 method of our estimator.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-85
+.. GENERATED FROM PYTHON SOURCE LINES 64-87
 
 .. code-block:: Python
 
@@ -128,12 +128,14 @@ method of our estimator.
         loss=log_loss,
         method="predict_proba",
         imputation_model_continuous=RidgeCV(),
+        features_groups={
+            feat_name: [i] for i, feat_name in enumerate(load_wine().feature_names)
+        },
         random_state=0,
     )
     cfi.fit(
         X_train,
         y_train,
-        groups={feat_name: [i] for i, feat_name in enumerate(load_wine().feature_names)},
     )
     importances = cfi.importance(X_test, y_test)
 
@@ -145,13 +147,13 @@ method of our estimator.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 88-91
 
 Visualization of CFI feature importance
 ----------------------------------------
 Finally, we visualize the importance of each feature using a bar plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-98
+.. GENERATED FROM PYTHON SOURCE LINES 91-100
 
 .. code-block:: Python
 
@@ -176,7 +178,7 @@ Finally, we visualize the importance of each feature using a bar plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-105
+.. GENERATED FROM PYTHON SOURCE LINES 101-107
 
 Variable importance analysis is meant to help scientific understanding, in particular
 to identify which features are important to differentiate Barolo, Grignolino, and
@@ -185,7 +187,7 @@ Note: Despite very large marginal importance, the features 'flavanoids' and '
 total_phenols' are not picked by CFI, probably due to their high correlation
 (0.86 between these two) and their redundancy with other features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 110-113
 
 References
 ----------
@@ -194,7 +196,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.039 seconds)
+   **Total running time of the script:** (0 minutes 8.418 seconds)
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_cfi.py:

@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=9b9a1f7c"></script>
+    <script src="_static/documentation_options.js?v=70bf8996"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -366,6 +366,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html">hidimstat.base_variable_importance.BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html">hidimstat.base_perturbation.BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">hidimstat.base_variable_importance.GroupVariableImportanceMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html">hidimstat.LOCO</a></li>
@@ -458,6 +459,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation" title="hidimstat.base_perturbation.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_perturbation.BasePerturbation</span></code></a>(...[, ...])</p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="hidimstat.base_variable_importance.GroupVariableImportanceMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_variable_importance.GroupVariableImportanceMixin</span></code></a>([...])</p></td>
+<td><p>Mixin class for adding group functionality to variable importance methods.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -466,13 +470,13 @@
 <h2>Feature Importance Classes<a class="headerlink" href="#feature-importance-classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, loss, method, n_jobs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, loss, method[, features_groups])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFI</span></code></a>(estimator, loss, method, n_jobs, ...[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFI</span></code></a>(estimator, loss, method, n_permutations)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, loss, method, n_jobs, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, loss, method, n_permutations)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT" title="hidimstat.D0CRT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D0CRT</span></code></a>(estimator[, method, estimated_coef, ...])</p></td>
