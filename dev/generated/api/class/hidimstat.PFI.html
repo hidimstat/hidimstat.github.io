@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=70bf8996"></script>
+    <script src="../../../_static/documentation_options.js?v=322849cd"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -507,6 +507,46 @@ features or groups of features.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.PFI.fdr_selection">
+<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L224-L302"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.fdr_selection" title="Link to this definition">#</a></dt>
+<dd><p>Performs feature selection based on False Discovery Rate (FDR) control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fdr</strong><span class="classifier">float</span></dt><dd><p>The target false discovery rate level (between 0 and 1)</p>
+</dd>
+<dt><strong>fdr_control: {‘bhq’, ‘bhy’}, default=’bhq’</strong></dt><dd><p>The FDR control method to use:
+- ‘bhq’: Benjamini-Hochberg procedure
+- ‘bhy’: Benjamini-Hochberg-Yekutieli procedure</p>
+</dd>
+<dt><strong>reshaping_function: callable or None, default=None</strong></dt><dd><p>Optional reshaping function for FDR control methods.
+If None, defaults to sum of reciprocals for ‘bhy’.</p>
+</dd>
+<dt><strong>alternative_hippothesis: bool or None, default=False</strong></dt><dd><p>If False, selects features with small p-values.
+If True, selects features with large p-values (close to 1).
+If None, selects features that have either small or large p-values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selected</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Boolean mask of selected features.
+True indicates selected features, False indicates non-selected features.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If <cite>importances_</cite> haven’t been computed yet</p>
+</dd>
+<dt>AssertionError</dt><dd><p>If <cite>pvalues_</cite> are missing or fdr_control is invalid</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.PFI.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L66-L88"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.fit" title="Link to this definition">#</a></dt>
 <dd><p>Initialize feature groups based on input data.</p>
@@ -601,8 +641,34 @@ for each group.
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.PFI.importance_selection">
+<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L141-L170"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.importance_selection" title="Link to this definition">#</a></dt>
+<dd><p>Selects features based on variable importance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k_best</strong><span class="classifier">int, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+</dd>
+<dt><strong>percentile</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
+</dd>
+<dt><strong>threshold_max</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features with importance scores below the specified maximum threshold.</p>
+</dd>
+<dt><strong>threshold_min</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features with importance scores above the specified minimum threshold.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.PFI.plot_importance">
-<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L139-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.plot_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L304-L379"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.plot_importance" title="Link to this definition">#</a></dt>
 <dd><p>Plot feature importances as a horizontal bar plot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -647,27 +713,27 @@ variables.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFI.selection">
-<span class="sig-name descname"><span class="pre">selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L42-L128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.selection" title="Link to this definition">#</a></dt>
-<dd><p>Selects features based on variable importance.
-In case several arguments are different from None,
-the returned  selection is the conjunction of all of them.</p>
+<dt class="sig sig-object py" id="hidimstat.PFI.pvalue_selection">
+<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L172-L222"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.pvalue_selection" title="Link to this definition">#</a></dt>
+<dd><p>Selects features based on p-values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>k_best</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+<dt><strong>k_lowest</strong><span class="classifier">int, default=None</span></dt><dd><p>Selects the k features with lowest p-values.</p>
 </dd>
-<dt><strong>percentile</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
+<dt><strong>percentile</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features based on a specified percentile of p-values.</p>
 </dd>
-<dt><strong>threshold</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with importance scores above the specified threshold.</p>
+<dt><strong>threshold_max</strong><span class="classifier">float, default=0.05</span></dt><dd><p>Selects features with p-values below the specified maximum threshold (0 to 1).</p>
 </dd>
-<dt><strong>threshold_pvalue</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>Selects features with p-values below the specified threshold.</p>
+<dt><strong>threshold_min</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features with p-values above the specified minimum threshold (0 to 1).</p>
+</dd>
+<dt><strong>alternative_hypothesis</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, selects based on 1-pvalues instead of p-values.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
+<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features (True for selected).</p>
 </dd>
 </dl>
 </dd>
@@ -763,13 +829,15 @@ possible to update each component of a nested object.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI"><code class="docutils literal notranslate"><span class="pre">PFI</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.__init__"><code class="docutils literal notranslate"><span class="pre">PFI.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.fdr_selection"><code class="docutils literal notranslate"><span class="pre">PFI.fdr_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.fit"><code class="docutils literal notranslate"><span class="pre">PFI.fit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">PFI.get_metadata_routing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.get_params"><code class="docutils literal notranslate"><span class="pre">PFI.get_params()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.importance"><code class="docutils literal notranslate"><span class="pre">PFI.importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.importance_selection"><code class="docutils literal notranslate"><span class="pre">PFI.importance_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.plot_importance"><code class="docutils literal notranslate"><span class="pre">PFI.plot_importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.predict"><code class="docutils literal notranslate"><span class="pre">PFI.predict()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.selection"><code class="docutils literal notranslate"><span class="pre">PFI.selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.pvalue_selection"><code class="docutils literal notranslate"><span class="pre">PFI.pvalue_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFI.set_params"><code class="docutils literal notranslate"><span class="pre">PFI.set_params()</span></code></a></li>
 </ul>
 </li>
