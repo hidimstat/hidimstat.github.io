@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cfe9af98"></script>
+    <script src="../../../_static/documentation_options.js?v=3eee7a3d"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -657,6 +657,28 @@ We therefore use simulated data with the following parameters:</p>
 <li><img src="../../../_images/sphx_glr_plot_knockoff_aggregation_001.png" srcset="../../../_images/sphx_glr_plot_knockoff_aggregation_001.png" alt="FDR = 0.1, n = 200, p = 150" class = "sphx-glr-multi-img"/></li>
 <li><img src="../../../_images/sphx_glr_plot_knockoff_aggregation_002.png" srcset="../../../_images/sphx_glr_plot_knockoff_aggregation_002.png" alt="FDR = 0.1, n = 200, p = 150" class = "sphx-glr-multi-img"/></li>
 </ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.560e+01, tolerance: 7.027e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.562e+01, tolerance: 7.841e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 7.030e+00, tolerance: 7.985e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 9.975e+00, tolerance: 6.992e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 6.626e+00, tolerance: 7.474e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.974e+01, tolerance: 8.503e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.784e+01, tolerance: 8.269e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.034e+01, tolerance: 7.897e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.468e+01, tolerance: 9.686e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.881e+01, tolerance: 9.932e-01
+  model = cd_fast.enet_coordinate_descent(
+</pre></div>
+</div>
 <p>By repeating the model-X Knockoffs, we can see that instability
 of the inference. Additionally, we can see that the aggregation method
 is more stable. However, the e-values aggregation is more conservative,
@@ -671,11 +693,13 @@ i.e. the expect variables of importance is not find.</p>
 <li><img src="../../../_images/sphx_glr_plot_knockoff_aggregation_003.png" srcset="../../../_images/sphx_glr_plot_knockoff_aggregation_003.png" alt="FDR = 0.1, n = 50, p = 150" class = "sphx-glr-multi-img"/></li>
 <li><img src="../../../_images/sphx_glr_plot_knockoff_aggregation_004.png" srcset="../../../_images/sphx_glr_plot_knockoff_aggregation_004.png" alt="FDR = 0.1, n = 50, p = 150" class = "sphx-glr-multi-img"/></li>
 </ul>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.947e-01, tolerance: 1.637e-01
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 5.070e-01, tolerance: 1.637e-01
   model = cd_fast.enet_coordinate_descent(
-/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.552e-01, tolerance: 2.001e-01
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.888e-01, tolerance: 1.637e-01
   model = cd_fast.enet_coordinate_descent(
-/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.111e-01, tolerance: 2.001e-01
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 4.456e-01, tolerance: 2.001e-01
+  model = cd_fast.enet_coordinate_descent(
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:695: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.725e-01, tolerance: 2.001e-01
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
@@ -700,7 +724,7 @@ estimate the distribution of each feature.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 44.090 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 1.026 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-knockoff-aggregation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b3b26c6664ca3ba62bddea06e01e82ca/plot_knockoff_aggregation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_knockoff_aggregation.ipynb</span></code></a></p>
