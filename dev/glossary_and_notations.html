@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Continuous Integration (CI) &#8212; HiDimStat</title>
+    <title>Glossary and Notations &#8212; HiDimStat</title>
   
   
   
@@ -27,31 +27,33 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=4d0c3015"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=97f0b27d"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'dev/CI_documentation';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Building the documentation" href="building_documentation.html" />
+    <script src="_static/documentation_options.js?v=4d0c3015"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=97f0b27d"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'glossary_and_notations';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developer Documentation" href="dev/index.html" />
+    <link rel="prev" title="Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset" href="generated/gallery/examples/plot_pitfalls_permutation_importance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -73,7 +75,7 @@
   <dialog id="pst-search-dialog">
     
 <form class="bd-search d-flex align-items-center"
-      action="../search.html"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -109,7 +111,7 @@
     
   
 
-<a class="navbar-brand logo" href="../index.html">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -120,8 +122,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
+    <img src="_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
   
   
 </a></div>
@@ -137,28 +139,28 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../api.html">
+  <a class="nav-link nav-internal" href="api.html">
     API
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../user_guide.html">
+  <a class="nav-link nav-internal" href="user_guide.html">
     User guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../generated/gallery/examples/index.html">
+  <a class="nav-link nav-internal" href="generated/gallery/examples/index.html">
     Examples Gallery
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../glossary_and_notations.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     Glossary and Notations
   </a>
 </li>
@@ -171,8 +173,8 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" current active">
-  <a class="nav-link dropdown-item nav-internal" href="index.html">
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="dev/index.html">
     Developer Documentation
   </a>
 </li>
@@ -290,35 +292,35 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../api.html">
+  <a class="nav-link nav-internal" href="api.html">
     API
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../user_guide.html">
+  <a class="nav-link nav-internal" href="user_guide.html">
     User guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../generated/gallery/examples/index.html">
+  <a class="nav-link nav-internal" href="generated/gallery/examples/index.html">
     Examples Gallery
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../glossary_and_notations.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     Glossary and Notations
   </a>
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="index.html">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="dev/index.html">
     Developer Documentation
   </a>
 </li>
@@ -386,18 +388,7 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Quick start for contributing</a></li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how_to_contribute.html">How to contribute to HiDimStat?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="building_documentation.html">Building the documentation</a></li>
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Continuous Integration (CI)</a></li>
-
-</ul>
-</div>
+  <div class="bd-toc-item navbar-nav"></div>
 </nav></div>
     </div>
   
@@ -432,14 +423,11 @@
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../index.html" class="nav-link" aria-label="Home">
+      <a href="index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Developer Documentation</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Continuous Integration (CI)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Glossary and Notations</span></li>
   </ul>
 </nav>
 </div>
@@ -456,63 +444,60 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="continuous-integration-ci">
-<span id="developer-documentation-ci"></span><h1>Continuous Integration (CI)<a class="headerlink" href="#continuous-integration-ci" title="Link to this heading">#</a></h1>
-<p>After creating your PR, CI tools will run proceed to run all the tests on all
-configurations supported by hidimstat.</p>
-<ul class="simple">
-<li><p><strong>Github Actions</strong>:
-Used for testing hidimstat across various platforms (Linux, macOS, Windows).</p></li>
-<li><p><strong>CircleCI</strong>:
-Builds and verifies the project documentation.</p></li>
-</ul>
-<p>If any of the following markers appear in the committed message, the following
-actions are taken.</p>
-<blockquote>
-<div><div class="pst-scrollable-table-container"><table class="table">
-<tbody>
-<tr class="row-odd"><td><p>Commit Message Marker</p></td>
-<td><p>Action Taken by CI</p></td>
-</tr>
-<tr class="row-even"><td><p>[skip tests]</p></td>
-<td><p>The tests are not run</p></td>
-</tr>
-<tr class="row-odd"><td><p>[doc skip]</p></td>
-<td><p>Docs are not built</p></td>
-</tr>
-<tr class="row-even"><td><p>[doc quick]</p></td>
-<td><p>Docs built, but excludes example gallery plots</p></td>
-</tr>
-<tr class="row-odd"><td><p>[doc change]</p></td>
-<td><p>Docs built, including only example, which has been directly modified</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></blockquote>
-<p>There is a dependence on the different parts of the CI. You need to pass the
-static analysis by the linter (Black) before that the example is running.
-The documentation is built only if the tests are succeeding.</p>
-<p>Note that, by default, the documentation is built with all the examples are modified.</p>
-<dl class="simple">
-<dt>For more details, the GitHub Action creates an event on the CircleCI pipeline, which</dt><dd><p>trigger the building of the documentation and the deployment of the documentation.</p>
+  <section id="glossary-and-notations">
+<span id="id1"></span><h1>Glossary and Notations<a class="headerlink" href="#glossary-and-notations" title="Link to this heading">#</a></h1>
+<section id="notations">
+<h2>Notations<a class="headerlink" href="#notations" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-minus-index">minus index<a class="headerlink" href="#term-minus-index" title="Link to this term">#</a></dt><dt id="term-X-j"><span class="math notranslate nohighlight">\(X^{-j}\)</span><a class="headerlink" href="#term-X-j" title="Link to this term">#</a></dt><dd><p>The minus index notation is used to denote all features except the one with the
+given index. For instance, <span class="math notranslate nohighlight">\(X_{-j}\)</span> denotes all features except the
+<span class="math notranslate nohighlight">\(j^{th}\)</span> one.</p>
+</dd>
+<dt id="term-minus-group">minus group<a class="headerlink" href="#term-minus-group" title="Link to this term">#</a></dt><dt id="term-X_-G"><span class="math notranslate nohighlight">\(X_{-G}\)</span><a class="headerlink" href="#term-X_-G" title="Link to this term">#</a></dt><dd><p>Similar to the <a class="reference internal" href="#term-minus-index"><span class="xref std std-term">minus index</span></a> notation for individual features, we use the minus
+index notation to denote the complement of a group of features. For instance,
+<span class="math notranslate nohighlight">\(X_{-G}\)</span> denotes all features except the ones in the group <span class="math notranslate nohighlight">\(G\)</span>.</p>
 </dd>
 </dl>
-<p>CI is testing all possible configurations supported by hidimstat, so tests may fail
-with configurations different from what you are developing with. See with the
-maintainers to identify the cause of this failure.</p>
 </section>
-<section id="modification-continuous-integration-ci">
-<h1>Modification Continuous Integration (CI)<a class="headerlink" href="#modification-continuous-integration-ci" title="Link to this heading">#</a></h1>
-<p>Actually, only the workflow on the main branch is used for running the CI. This is
-done for security reasons.
-In consequence, for testing a modification of the actual workflow or a new workflow,
-it requires creating a pull request, which is modified .github/workflow/ci_test.yml for
-allowing the running of this modification. You need to add the label <cite>testCI</cite>
-to automatically trigger the test of the CI. You can also trigger the workflow
-using with the [HTTP POST request](<a class="reference external" href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#repository_dispatch">https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#repository_dispatch</a>).</p>
-<p>Once this modification is merged into main, it should be important to clean ci_test.yml
-for having an empty workflow.</p>
+<section id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<dl class="glossary">
+<dt id="term-CFI">CFI<a class="headerlink" href="#term-CFI" title="Link to this term">#</a></dt><dt id="term-Conditional-Feature-Importance">Conditional Feature Importance<a class="headerlink" href="#term-Conditional-Feature-Importance" title="Link to this term">#</a></dt><dd><p>Conditional Feature Importance (CFI) is a measure of feature importance that
+consists in sampling a feature of interest from the conditional distribution
+of that feature given all other features, and measuring the performance drop
+triggered by this perturbation.</p>
+</dd>
+<dt id="term-CluDL">CluDL<a class="headerlink" href="#term-CluDL" title="Link to this term">#</a></dt><dt id="term-Clustered-Desparsified-Lasso">Clustered Desparsified Lasso<a class="headerlink" href="#term-Clustered-Desparsified-Lasso" title="Link to this term">#</a></dt><dd><p>Clustered Desparsified Lasso (CluDL) is an extension of the Desparsified
+Lasso to clusters of features. It aims at overcoming the limitations of
+the Desparsified Lasso when the number of features is large and the
+correlations between them are strong.</p>
+</dd>
+<dt id="term-D0CRT">D0CRT<a class="headerlink" href="#term-D0CRT" title="Link to this term">#</a></dt><dt id="term-Distilled-Conditional-Randomization-Testing">Distilled Conditional Randomization Testing<a class="headerlink" href="#term-Distilled-Conditional-Randomization-Testing" title="Link to this term">#</a></dt><dd><p>Distilled Conditional Randomization Testing (dCRT) is a method for feature
+selection based on conditional independence testing, which uses a distillation
+step to reduce computational cost.</p>
+</dd>
+<dt id="term-EnCluDL">EnCluDL<a class="headerlink" href="#term-EnCluDL" title="Link to this term">#</a></dt><dt id="term-Ensemble-Clustered-Desparsified-Lasso">Ensemble Clustered Desparsified Lasso<a class="headerlink" href="#term-Ensemble-Clustered-Desparsified-Lasso" title="Link to this term">#</a></dt><dd><p>Ensemble Clustered Desparsified Lasso (EnCluDL) is an extension of the
+Clustered Desparsified Lasso that combines multiple clusterings to de-randomize
+the procedure and improve robustness.</p>
+</dd>
+<dt id="term-FDP">FDP<a class="headerlink" href="#term-FDP" title="Link to this term">#</a></dt><dt id="term-False-Discovery-Proportion">False Discovery Proportion<a class="headerlink" href="#term-False-Discovery-Proportion" title="Link to this term">#</a></dt><dd><p>The False Discovery Proportion (FDP) is the ratio between the number of false
+discoveries and the total number of discoveries. Denoting <span class="math notranslate nohighlight">\(\hat S\)</span> the
+estimated set of important features, and <span class="math notranslate nohighlight">\(S^*\)</span> the true set of important
+features, the FDP is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\text{FDP} = \frac{|\hat S \cap \hat S \setminus S^*|}{|\hat S|}.\]</div>
+<p>where <span class="math notranslate nohighlight">\(|\cdot|\)</span> denotes the cardinality of a set.</p>
+</dd>
+<dt id="term-LOCO">LOCO<a class="headerlink" href="#term-LOCO" title="Link to this term">#</a></dt><dt id="term-Leave-One-Covariate-Out">Leave-One-Covariate-Out<a class="headerlink" href="#term-Leave-One-Covariate-Out" title="Link to this term">#</a></dt><dd><p>The Leave-One-Covariate-Out (LOCO) is a measure of feature importance that
+consists in retraining a predictive model without the feature of interest and
+measuring performance drop triggered by this ablation.</p>
+</dd>
+<dt id="term-PFI">PFI<a class="headerlink" href="#term-PFI" title="Link to this term">#</a></dt><dt id="term-Permutation-Feature-Importance">Permutation Feature Importance<a class="headerlink" href="#term-Permutation-Feature-Importance" title="Link to this term">#</a></dt><dd><p>The Permutation Feature Importance (PFI) is a measure of feature importance
+that consists in permuting the values of the feature of interest and measuring
+the performance drop triggered by this perturbation.</p>
+</dd>
+</dl>
+</section>
 </section>
 
 
@@ -526,13 +511,22 @@ for having an empty workflow.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="building_documentation.html"
+       href="generated/gallery/examples/plot_pitfalls_permutation_importance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Building the documentation</p>
+        <p class="prev-next-title">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="dev/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Developer Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -553,17 +547,16 @@ for having an empty workflow.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Continuous Integration (CI)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modification-continuous-integration-ci">Modification Continuous Integration (CI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">Glossary</a></li>
 </ul>
-
   </nav></div>
 
   <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/dev/CI_documentation.rst.txt"
+      <li><a href="_sources/glossary_and_notations.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
@@ -581,8 +574,8 @@ for having an empty workflow.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
