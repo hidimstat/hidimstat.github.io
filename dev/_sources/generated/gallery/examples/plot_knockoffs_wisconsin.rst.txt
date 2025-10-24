@@ -36,7 +36,7 @@ The downstream task is to classify tumors as benign or malignant. We leave out 1
 the data to evaluate the performance of the Logistic Lasso (Logistic Regression with
 L1 regularization) on the prediction task.
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-38
+.. GENERATED FROM PYTHON SOURCE LINES 19-37
 
 .. code-block:: Python
 
@@ -47,7 +47,6 @@ L1 regularization) on the prediction task.
     data = load_breast_cancer()
     X = data.data
     y = data.target
-    # Random seed for reproducibility
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=0)
 
@@ -66,7 +65,7 @@ L1 regularization) on the prediction task.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-45
+.. GENERATED FROM PYTHON SOURCE LINES 38-44
 
 Selecting variables with the Logistic Lasso
 -------------------------------------------
@@ -75,7 +74,7 @@ characteristics that are associated with tumor malignance. We start off by apply
 classical method using Lasso logistic regression and retaining variables with non-null
 coefficients:
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-64
+.. GENERATED FROM PYTHON SOURCE LINES 44-63
 
 .. code-block:: Python
 
@@ -122,7 +121,7 @@ coefficients:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-73
+.. GENERATED FROM PYTHON SOURCE LINES 64-72
 
 Evaluating the rejection set
 ----------------------------
@@ -133,7 +132,7 @@ this method, we artificially increase the number of variables by adding noisy co
 of the features. These are correlated with the variables in the dataset, but are not
 related to the outcome.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-95
+.. GENERATED FROM PYTHON SOURCE LINES 72-94
 
 .. code-block:: Python
 
@@ -166,13 +165,13 @@ related to the outcome.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-99
+.. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 There are 180 features, 30 of them are real and 150 of them are fake and independent
 of the outcome. We now apply the Lasso (with cross-validation to select the best
 regularization parameter) to the noisy dataset and observe the results:
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-135
+.. GENERATED FROM PYTHON SOURCE LINES 98-134
 
 .. code-block:: Python
 
@@ -226,14 +225,14 @@ regularization parameter) to the noisy dataset and observe the results:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-140
+.. GENERATED FROM PYTHON SOURCE LINES 135-139
 
 The Lasso selects many spurious variables that are not directly related to the outcome.
 To mitigate this problem, we can use one of the statistically controlled variable
 selection methods implemented in hidimstat. This ensures that the proportion of False
 Discoveries is below a certain bound set by the user in all scenarios.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-148
+.. GENERATED FROM PYTHON SOURCE LINES 142-147
 
 Controlled variable selection with Knockoffs
 --------------------------------------------
@@ -241,7 +240,7 @@ We use the Model-X Knockoff procedure to control the FDR (False Discovery Rate).
 selection of variables is based on the Lasso Coefficient Difference (LCD) statistic
 :footcite:t:`candes2018panning`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-174
+.. GENERATED FROM PYTHON SOURCE LINES 147-174
 
 .. code-block:: Python
 
@@ -265,6 +264,7 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
         tol_gauss=1e-15,
         preconfigure_estimator=None,
         fdr=fdr,
+        n_jobs=3,
     )
 
     # Count how many selected features are actually noise
@@ -386,7 +386,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.982 seconds)
+   **Total running time of the script:** (0 minutes 47.488 seconds)
+
+**Estimated memory usage:**  905 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:

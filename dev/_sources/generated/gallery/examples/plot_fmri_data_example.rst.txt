@@ -47,12 +47,11 @@ EnCluDL is particularly powerful as it doesn't rely on a single clustering choic
 As demonstrated in :footcite:t:`chevalier2021decoding`, it produces relevant
 predictive regions across various tasks.
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-70
+.. GENERATED FROM PYTHON SOURCE LINES 31-64
 
 .. code-block:: Python
 
 
-    import resource
     import warnings
 
     import numpy as np
@@ -81,13 +80,8 @@ predictive regions across various tasks.
         "ignore", message="The provided image has no sform in its header."
     )
 
-    # Limit the ressoruce use for the example to 5 G or maximum of possible.
-    limit_5G = int(5 * 1e9)
-    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
-    new_soft_limit = limit_5G if soft < 0 else min(limit_5G, soft)
-    new_hard_limit = limit_5G if hard < 0 else min(limit_5G, hard)
-    resource.setrlimit(resource.RLIMIT_AS, (new_soft_limit, new_hard_limit))
-    n_jobs = 1
+    # number of worker
+    n_jobs = 3
 
 
 
@@ -97,12 +91,12 @@ predictive regions across various tasks.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-73
+.. GENERATED FROM PYTHON SOURCE LINES 65-67
 
 Function to fetch and preprocess Haxby dataset
 ----------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-113
+.. GENERATED FROM PYTHON SOURCE LINES 67-107
 
 .. code-block:: Python
 
@@ -153,7 +147,7 @@ Function to fetch and preprocess Haxby dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-121
+.. GENERATED FROM PYTHON SOURCE LINES 108-115
 
 Gathering and preprocessing Haxby dataset for a given subject
 -------------------------------------------------------------
@@ -163,7 +157,7 @@ it outputs the preprocessed activation maps for the two conditions
 the session labels (in `groups`) and the mask (in `masker`).
 You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-125
+.. GENERATED FROM PYTHON SOURCE LINES 115-119
 
 .. code-block:: Python
 
@@ -184,13 +178,13 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 120-123
 
 Initializing FeatureAgglomeration object that performs the clustering
 ---------------------------------------------------------------------
 For fMRI data taking 500 clusters is generally a good default choice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-140
+.. GENERATED FROM PYTHON SOURCE LINES 123-134
 
 .. code-block:: Python
 
@@ -212,22 +206,31 @@ For fMRI data taking 500 clusters is generally a good default choice.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-150
+.. GENERATED FROM PYTHON SOURCE LINES 135-139
 
 Making the inference with several algorithms
 --------------------------------------------
-
-First, we try to recover the discriminative pattern by computing
-p-values from desparsified lasso.
-Due to the size of the X, it's not possible to use this method with a limit
-of 5 G for memory. To handle this problem, the following methods use some
-feature aggregation methods.
+Limit the resource use for the algorithm to 5 G or maximum of possible.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-162
+.. GENERATED FROM PYTHON SOURCE LINES 139-165
 
 .. code-block:: Python
 
+    import resource
+
+    limit_5G = int(5 * 1e9)
+    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+    new_soft_limit = limit_5G if soft < 0 else min(limit_5G, soft)
+    new_hard_limit = limit_5G if hard < 0 else min(limit_5G, hard)
+    resource.setrlimit(resource.RLIMIT_AS, (new_soft_limit, new_hard_limit))
+
+    # First, we try to recover the discriminative pattern by computing
+    # p-values from desparsified lasso.
+    # Due to the size of the X, it's not possible to use this method with a limit
+    # of 5 G for memory. To handle this problem, the following methods use some
+    # feature aggregation methods.
+    #
     try:
         beta_hat, sigma_hat, precision_diagonal = desparsified_lasso(
             X, y, noise_method="median", max_iteration=1000, random_state=0, n_jobs=n_jobs
@@ -254,12 +257,12 @@ feature aggregation methods.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-165
+.. GENERATED FROM PYTHON SOURCE LINES 166-168
 
 Now, the clustered inference algorithm which combines parcellation
 and high-dimensional inference (c.f. References).
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-177
+.. GENERATED FROM PYTHON SOURCE LINES 168-181
 
 .. code-block:: Python
 
@@ -270,6 +273,7 @@ and high-dimensional inference (c.f. References).
         scaler_sampling=StandardScaler(),
         tolerance=1e-2,
         random_state=1,
+        n_jobs=n_jobs,
     )
     beta_hat, pval_cdl, _, one_minus_pval_cdl, _ = clustered_inference_pvalue(
         X.shape[0], None, ward_, beta_hat, theta_hat, omega_diag
@@ -283,15 +287,14 @@ and high-dimensional inference (c.f. References).
 
  .. code-block:: none
 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.5s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.9s finished
+    [Parallel(n_jobs=3)]: Using backend LokyBackend with 3 concurrent workers.
+    [Parallel(n_jobs=3)]: Done 185 tasks      | elapsed:    1.9s
+    [Parallel(n_jobs=3)]: Done 500 out of 500 | elapsed:    2.8s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-185
+.. GENERATED FROM PYTHON SOURCE LINES 182-189
 
 Below, we run the ensemble clustered inference algorithm which adds a
 randomization step over the clustered inference algorithm (c.f. References).
@@ -301,7 +304,7 @@ then 5 statistical maps are produced and aggregated into one.
 However you might benefit from clustering randomization taking
 `n_bootstraps=25` or `n_bootstraps=100`, also we set `n_jobs`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 185-209
+.. GENERATED FROM PYTHON SOURCE LINES 189-213
 
 .. code-block:: Python
 
@@ -337,33 +340,14 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-      0%|          | 0/5 [00:00<?, ?it/s][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.8s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.1s finished
-     20%|██        | 1/5 [00:16<01:05, 16.37s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.2s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.6s finished
-     40%|████      | 2/5 [00:30<00:44, 14.85s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.1s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.5s finished
-     60%|██████    | 3/5 [00:44<00:29, 14.55s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.9s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.3s finished
-     80%|████████  | 4/5 [01:00<00:15, 15.07s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.4s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.4s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.8s finished
-    100%|██████████| 5/5 [01:13<00:00, 14.35s/it]    100%|██████████| 5/5 [01:13<00:00, 14.66s/it]
-    [Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:  1.2min finished
+      0%|          | 0/5 [00:00<?, ?it/s][Parallel(n_jobs=3)]: Using backend LokyBackend with 3 concurrent workers.
+    100%|██████████| 5/5 [00:00<00:00, 143.51it/s]
+    [Parallel(n_jobs=3)]: Done   5 out of   5 | elapsed:   24.1s finished
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 210-218
+.. GENERATED FROM PYTHON SOURCE LINES 214-222
 
 Plotting the results
 --------------------
@@ -374,7 +358,7 @@ inverse survival function.
 
 First, we set theoretical FWER target at 10%.
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-222
+.. GENERATED FROM PYTHON SOURCE LINES 222-226
 
 .. code-block:: Python
 
@@ -389,13 +373,13 @@ First, we set theoretical FWER target at 10%.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-226
+.. GENERATED FROM PYTHON SOURCE LINES 227-230
 
 We now translate the FWER target into a z-score target.
 For the permutation test methods we do not need any additional correction
 since the p-values are already adjusted for multiple testing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-229
+.. GENERATED FROM PYTHON SOURCE LINES 230-233
 
 .. code-block:: Python
 
@@ -409,13 +393,13 @@ since the p-values are already adjusted for multiple testing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 230-233
+.. GENERATED FROM PYTHON SOURCE LINES 234-237
 
 Other methods need to be corrected. We consider the Bonferroni correction.
 For methods that do not reduce the feature space, the correction
 consists in dividing by the number of features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 233-237
+.. GENERATED FROM PYTHON SOURCE LINES 237-241
 
 .. code-block:: Python
 
@@ -430,12 +414,12 @@ consists in dividing by the number of features.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-240
+.. GENERATED FROM PYTHON SOURCE LINES 242-244
 
 For methods that parcelates the brain into groups of voxels, the correction
 consists in dividing by the number of parcels (or clusters).
 
-.. GENERATED FROM PYTHON SOURCE LINES 240-244
+.. GENERATED FROM PYTHON SOURCE LINES 244-248
 
 .. code-block:: Python
 
@@ -450,14 +434,14 @@ consists in dividing by the number of parcels (or clusters).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 245-249
+.. GENERATED FROM PYTHON SOURCE LINES 249-253
 
 Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called `plot_map` that wraps all these steps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 249-293
+.. GENERATED FROM PYTHON SOURCE LINES 253-297
 
 .. code-block:: Python
 
@@ -529,7 +513,7 @@ called `plot_map` that wraps all these steps.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 294-308
+.. GENERATED FROM PYTHON SOURCE LINES 298-312
 
 Analysis of the results
 -----------------------
@@ -546,7 +530,7 @@ Finally, the solution provided by the ensemble clustered inference algorithm
 (EnCluDL) seems realistic as we recover the visual cortex and do not make
 spurious discoveries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 311-314
+.. GENERATED FROM PYTHON SOURCE LINES 315-318
 
 References
 ----------
@@ -555,7 +539,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 14.206 seconds)
+   **Total running time of the script:** (2 minutes 46.514 seconds)
+
+**Estimated memory usage:**  3010 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:
