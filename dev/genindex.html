@@ -30,6 +30,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -41,9 +42,11 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=f9242778"></script>
+    <script src="_static/documentation_options.js?v=86cd40d7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=97f0b27d"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -139,11 +142,42 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="auto_examples/index.html">
+  <a class="nav-link nav-internal" href="user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="generated/gallery/examples/index.html">
     Examples Gallery
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
       
@@ -259,8 +293,29 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="auto_examples/index.html">
+  <a class="nav-link nav-internal" href="user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="generated/gallery/examples/index.html">
     Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="dev/index.html">
+    Developer Documentation
   </a>
 </li>
 
@@ -361,27 +416,38 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
- | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#X"><strong>X</strong></a>
  
 </div>
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.__init__">__init__() (hidimstat.BasePerturbation method)</a>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.__init__">__init__() (hidimstat.base_perturbation.BasePerturbation method)</a>
 
       <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.__init__">(hidimstat.CPI method)</a>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.__init__">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.__init__">(hidimstat.LOCO method)</a>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__">(hidimstat.base_variable_importance.GroupVariableImportanceMixin method)</a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.__init__">(hidimstat.PFI method)</a>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.__init__">(hidimstat.CFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.__init__">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.__init__">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.__init__">(hidimstat.PFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html#hidimstat.statistical_tools.ConditionalSampler.__init__">(hidimstat.statistical_tools.ConditionalSampler method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html#hidimstat.statistical_tools.GaussianKnockoffs.__init__">(hidimstat.statistical_tools.GaussianKnockoffs method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -390,7 +456,11 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation">BasePerturbation (class in hidimstat)</a>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation">BasePerturbation (class in hidimstat.base_perturbation)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance">BaseVariableImportance (class in hidimstat.base_variable_importance)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -398,11 +468,25 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.clustered_inference.html#hidimstat.clustered_inference">clustered_inference() (in module hidimstat)</a>
+      <li><a href="glossary_and_notations.html#term-CFI"><strong>CFI</strong></a>
+
+      <ul>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI">(class in hidimstat)</a>
+</li>
+      </ul></li>
+      <li><a href="glossary_and_notations.html#term-CluDL"><strong>CluDL</strong></a>
+</li>
+      <li><a href="glossary_and_notations.html#term-Clustered-Desparsified-Lasso"><strong>Clustered Desparsified Lasso</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI">CPI (class in hidimstat)</a>
+      <li><a href="generated/api/class/hidimstat.clustered_inference.html#hidimstat.clustered_inference">clustered_inference() (in module hidimstat)</a>
+</li>
+      <li><a href="generated/api/class/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue">clustered_inference_pvalue() (in module hidimstat)</a>
+</li>
+      <li><a href="glossary_and_notations.html#term-Conditional-Feature-Importance"><strong>Conditional Feature Importance</strong></a>
+</li>
+      <li><a href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html#hidimstat.statistical_tools.ConditionalSampler">ConditionalSampler (class in hidimstat.statistical_tools)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -410,17 +494,21 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.dcrt_pvalue.html#hidimstat.dcrt_pvalue">dcrt_pvalue() (in module hidimstat)</a>
+      <li><a href="glossary_and_notations.html#term-D0CRT"><strong>D0CRT</strong></a>
+
+      <ul>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT">(class in hidimstat)</a>
 </li>
-      <li><a href="generated/hidimstat.dcrt_zero.html#hidimstat.dcrt_zero">dcrt_zero() (in module hidimstat)</a>
+      </ul></li>
+      <li><a href="generated/api/class/hidimstat.desparsified_group_lasso_pvalue.html#hidimstat.desparsified_group_lasso_pvalue">desparsified_group_lasso_pvalue() (in module hidimstat)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.desparsified_group_lasso_pvalue.html#hidimstat.desparsified_group_lasso_pvalue">desparsified_group_lasso_pvalue() (in module hidimstat)</a>
+      <li><a href="generated/api/class/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso">desparsified_lasso() (in module hidimstat)</a>
 </li>
-      <li><a href="generated/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso">desparsified_lasso() (in module hidimstat)</a>
+      <li><a href="generated/api/class/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue">desparsified_lasso_pvalue() (in module hidimstat)</a>
 </li>
-      <li><a href="generated/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue">desparsified_lasso_pvalue() (in module hidimstat)</a>
+      <li><a href="glossary_and_notations.html#term-Distilled-Conditional-Randomization-Testing"><strong>Distilled Conditional Randomization Testing</strong></a>
 </li>
   </ul></td>
 </tr></table>
@@ -428,11 +516,15 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.empirical_thresholding.html#hidimstat.empirical_thresholding">empirical_thresholding() (in module hidimstat)</a>
+      <li><a href="glossary_and_notations.html#term-EnCluDL"><strong>EnCluDL</strong></a>
+</li>
+      <li><a href="glossary_and_notations.html#term-Ensemble-Clustered-Desparsified-Lasso"><strong>Ensemble Clustered Desparsified Lasso</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.ensemble_clustered_inference.html#hidimstat.ensemble_clustered_inference">ensemble_clustered_inference() (in module hidimstat)</a>
+      <li><a href="generated/api/class/hidimstat.ensemble_clustered_inference.html#hidimstat.ensemble_clustered_inference">ensemble_clustered_inference() (in module hidimstat)</a>
+</li>
+      <li><a href="generated/api/class/hidimstat.ensemble_clustered_inference_pvalue.html#hidimstat.ensemble_clustered_inference_pvalue">ensemble_clustered_inference_pvalue() (in module hidimstat)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -440,51 +532,85 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.fit">fit() (hidimstat.BasePerturbation method)</a>
+      <li><a href="glossary_and_notations.html#term-False-Discovery-Proportion"><strong>False Discovery Proportion</strong></a>
+</li>
+      <li><a href="glossary_and_notations.html#term-FDP"><strong>FDP</strong></a>
+</li>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.fdr_selection">fdr_selection() (hidimstat.base_perturbation.BasePerturbation method)</a>
 
       <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.fit">(hidimstat.CPI method)</a>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.fdr_selection">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.fit">(hidimstat.LOCO method)</a>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.fdr_selection">(hidimstat.CFI method)</a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.fit">(hidimstat.PFI method)</a>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.fdr_selection">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.fdr_selection">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.fdr_selection">(hidimstat.PFI method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.fit">fit() (hidimstat.base_perturbation.BasePerturbation method)</a>
+
+      <ul>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit">(hidimstat.base_variable_importance.GroupVariableImportanceMixin method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.fit">(hidimstat.CFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.fit">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.fit">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.fit">(hidimstat.PFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html#hidimstat.statistical_tools.ConditionalSampler.fit">(hidimstat.statistical_tools.ConditionalSampler method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html#hidimstat.statistical_tools.GaussianKnockoffs.fit">(hidimstat.statistical_tools.GaussianKnockoffs method)</a>
+</li>
+      </ul></li>
+      <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.fit_importance">fit_importance() (hidimstat.D0CRT method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.get_metadata_routing">get_metadata_routing() (hidimstat.BasePerturbation method)</a>
+      <li><a href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html#hidimstat.statistical_tools.GaussianKnockoffs">GaussianKnockoffs (class in hidimstat.statistical_tools)</a>
+</li>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.get_metadata_routing">get_metadata_routing() (hidimstat.base_perturbation.BasePerturbation method)</a>
 
       <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.get_metadata_routing">(hidimstat.CPI method)</a>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.get_metadata_routing">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.get_metadata_routing">(hidimstat.LOCO method)</a>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.get_metadata_routing">(hidimstat.CFI method)</a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.get_metadata_routing">(hidimstat.PFI method)</a>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.get_metadata_routing">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.get_metadata_routing">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.get_metadata_routing">(hidimstat.PFI method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.get_params">get_params() (hidimstat.BasePerturbation method)</a>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.get_params">get_params() (hidimstat.base_perturbation.BasePerturbation method)</a>
 
       <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.get_params">(hidimstat.CPI method)</a>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.get_params">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.get_params">(hidimstat.LOCO method)</a>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.get_params">(hidimstat.CFI method)</a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.get_params">(hidimstat.PFI method)</a>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.get_params">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.get_params">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.get_params">(hidimstat.PFI method)</a>
 </li>
       </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="H">H</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.hd_inference.html#hidimstat.hd_inference">hd_inference() (in module hidimstat)</a>
+      <li><a href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin">GroupVariableImportanceMixin (class in hidimstat.base_variable_importance)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -492,14 +618,32 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.importance">importance() (hidimstat.BasePerturbation method)</a>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.importance">importance() (hidimstat.base_perturbation.BasePerturbation method)</a>
 
       <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.importance">(hidimstat.CPI method)</a>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.importance">(hidimstat.CFI method)</a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.importance">(hidimstat.LOCO method)</a>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.importance">(hidimstat.D0CRT method)</a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.importance">(hidimstat.PFI method)</a>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.importance">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.importance">(hidimstat.PFI method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.importance_selection">importance_selection() (hidimstat.base_perturbation.BasePerturbation method)</a>
+
+      <ul>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.importance_selection">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.importance_selection">(hidimstat.CFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.importance_selection">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.importance_selection">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.importance_selection">(hidimstat.PFI method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -508,15 +652,37 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO">LOCO (class in hidimstat)</a>
+      <li><a href="glossary_and_notations.html#term-Leave-One-Covariate-Out"><strong>Leave-One-Covariate-Out</strong></a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary_and_notations.html#term-LOCO"><strong>LOCO</strong></a>
+
+      <ul>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO">(class in hidimstat)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff">model_x_knockoff() (in module hidimstat)</a>
+      <li><a href="glossary_and_notations.html#term-minus-group"><strong>minus group</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary_and_notations.html#term-minus-index"><strong>minus index</strong></a>
+</li>
+      <li><a href="generated/api/class/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff">model_x_knockoff() (in module hidimstat)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html#hidimstat.statistical_tools.nadeau_bengio_ttest">nadeau_bengio_ttest() (in module hidimstat.statistical_tools)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -524,18 +690,52 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.permutation_test.html#hidimstat.permutation_test">permutation_test() (in module hidimstat)</a>
+      <li><a href="glossary_and_notations.html#term-Permutation-Feature-Importance"><strong>Permutation Feature Importance</strong></a>
 </li>
-      <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI">PFI (class in hidimstat)</a>
-</li>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.predict">predict() (hidimstat.BasePerturbation method)</a>
+      <li><a href="glossary_and_notations.html#term-PFI"><strong>PFI</strong></a>
 
       <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.predict">(hidimstat.CPI method)</a>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI">(class in hidimstat)</a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.predict">(hidimstat.LOCO method)</a>
+      </ul></li>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.plot_importance">plot_importance() (hidimstat.base_perturbation.BasePerturbation method)</a>
+
+      <ul>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.plot_importance">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.predict">(hidimstat.PFI method)</a>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.plot_importance">(hidimstat.CFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.plot_importance">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.plot_importance">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.plot_importance">(hidimstat.PFI method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.predict">predict() (hidimstat.base_perturbation.BasePerturbation method)</a>
+
+      <ul>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.predict">(hidimstat.CFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.predict">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.predict">(hidimstat.PFI method)</a>
+</li>
+      </ul></li>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.pvalue_selection">pvalue_selection() (hidimstat.base_perturbation.BasePerturbation method)</a>
+
+      <ul>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.pvalue_selection">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.pvalue_selection">(hidimstat.CFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.pvalue_selection">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.pvalue_selection">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.pvalue_selection">(hidimstat.PFI method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -544,7 +744,7 @@
 <h2 id="Q">Q</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.quantile_aggregation.html#hidimstat.quantile_aggregation">quantile_aggregation() (in module hidimstat)</a>
+      <li><a href="generated/api/helper_functions/hidimstat.quantile_aggregation.html#hidimstat.quantile_aggregation">quantile_aggregation() (in module hidimstat)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -552,7 +752,7 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.reid.html#hidimstat.reid">reid() (in module hidimstat)</a>
+      <li><a href="generated/api/helper_functions/hidimstat.reid.html#hidimstat.reid">reid() (in module hidimstat)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -560,28 +760,38 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.set_fit_request">set_fit_request() (hidimstat.BasePerturbation method)</a>
+      <li><a href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html#hidimstat.statistical_tools.ConditionalSampler.sample">sample() (hidimstat.statistical_tools.ConditionalSampler method)</a>
 
       <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.set_fit_request">(hidimstat.CPI method)</a>
+        <li><a href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html#hidimstat.statistical_tools.GaussianKnockoffs.sample">(hidimstat.statistical_tools.GaussianKnockoffs method)</a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.set_fit_request">(hidimstat.LOCO method)</a>
+      </ul></li>
+      <li><a href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation.set_params">set_params() (hidimstat.base_perturbation.BasePerturbation method)</a>
+
+      <ul>
+        <li><a href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.set_params">(hidimstat.base_variable_importance.BaseVariableImportance method)</a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.set_fit_request">(hidimstat.PFI method)</a>
+        <li><a href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI.set_params">(hidimstat.CFI method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT.set_params">(hidimstat.D0CRT method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO.set_params">(hidimstat.LOCO method)</a>
+</li>
+        <li><a href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI.set_params">(hidimstat.PFI method)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/hidimstat.BasePerturbation.html#hidimstat.BasePerturbation.set_params">set_params() (hidimstat.BasePerturbation method)</a>
+</tr></table>
 
-      <ul>
-        <li><a href="generated/hidimstat.CPI.html#hidimstat.CPI.set_params">(hidimstat.CPI method)</a>
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary_and_notations.html#term-X-j"><strong>X^{-j}</strong></a>
 </li>
-        <li><a href="generated/hidimstat.LOCO.html#hidimstat.LOCO.set_params">(hidimstat.LOCO method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary_and_notations.html#term-X_-G"><strong>X_{-G}</strong></a>
 </li>
-        <li><a href="generated/hidimstat.PFI.html#hidimstat.PFI.set_params">(hidimstat.PFI method)</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 

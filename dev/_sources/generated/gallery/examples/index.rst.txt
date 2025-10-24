@@ -1,0 +1,265 @@
+:orphan:
+
+.. _general_examples:
+
+Examples Gallery
+================
+
+.. contents:: Contents
+   :local:
+   :depth: 3
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [:footciteChamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_cfi_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_cfi.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Conditional Feature Importance (CFI) on the wine dataset</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_loco_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_loco.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example compares the performance of d0crt based on the lasso (1) and random forest (2) implementations. The number of repetitions is set to 10. The metrics used are the type-I error and the power">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_dcrt_example_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_dcrt_example.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates on XOR data that variables can be conditionally important even if they are not marginally important. The conditional importance is computed using the Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_conditional_vs_marginal_xor_data_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_conditional_vs_marginal_xor_data.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Conditional vs Marginal Importance on the XOR dataset</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the limitations of variable selection methods based on linear models using the circles dataset. We first use the distilled conditional randomization test (d0CRT), which is based on linear models :footciteliu2022fast and then demonstrate how model-agnostic methods, such as Leave-One-Covariate-Out (LOCO), can identify important variables even when classes are not linearly separable.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_model_agnostic_importance_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_model_agnostic_importance.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Variable Selection Under Model Misspecification</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs :footcitecandes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_knockoffs_wisconsin_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_knockoffs_wisconsin.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Variable Importance estimates the influence of a given input variable to the prediction made by a model. To assess variable importance in a prediction problem, :footcitebreimanRandomForests2001 introduced the permutation approach where the values are shuffled for one variable/column at a time. This permutation breaks the relationship between the variable of interest and the outcome. Following, the loss score is checked before and after this substitution for any significant drop in the performance which reflects the significance of this variable to predict the outcome. This ease-to-use solution is demonstrated, in the work by :footcitestroblConditionalVariableImportance2008, to be affected by the degree of correlation between the variables, thus biased towards truly non-significant variables highly correlated with the significant ones and creating fake significant variables. They introduced a solution for the Random Forest estimator based on conditional sampling by performing sub-groups permutation when bisecting the space using the conditioning variables of the building process. However, this solution is exclusive to the Random Forest and is costly with high-dimensional settings. :footciteChamma_NeurIPS2023 introduced a new model-agnostic solution to bypass the limitations of the permutation approach under the use of the conditional schemes. The variable of interest does contain two types of information: 1) the relationship with the remaining variables and 2) the relationship with the outcome. The standard permutation, while breaking the relationship with the outcome, is also destroying the dependency with the remaining variables. Therefore, instead of directly permuting the variable of interest, the variable of interest is predicted by the remaining variables and the residuals of this prediction are permuted before reconstructing the new version of the variable. This solution preserves the dependency with the remaining variables.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_diabetes_variable_importance_example_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_diabetes_variable_importance_example.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Variable Importance on diabetes dataset</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show an example of variable selection using model-X Knockoffs introduced by :footcitecandes2018panning. A notable drawback of this procedure is the randomness associated with generating knockoff variables. This can result in fluctuations of the statistical power and false discovery proportion, and consequently, unstable inference.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_knockoff_aggregation_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_knockoff_aggregation.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Knockoff aggregation on simulated data</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example compares methods based on Desparsified Lasso (DL) to estimate voxel activation maps associated with behavior, specifically decoder map support. All methods presented here provide statistical guarantees.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_fmri_data_example_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_fmri_data_example.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Support Recovery on fMRI Data</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows the advantages of spatially relaxed inference when dealing with high-dimensional spatial data. To do so, we compare several statistical methods that aim at recovering the support, i.e., predictive features. Among those methods some leverage the spatial structure of the data. For more details about the inference algorithms presented in this example or about the generative process used to simulate the data, please refer to :footcitechevalier2022spatially.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_2D_simulation_example_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_2D_simulation_example.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Support recovery on simulated data (2D)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show on the Iris dataset how to measure variable importance for classification tasks. We use two different variable importance methods: Conditional Feature importance (CFI) and Permutation Feature Importance (PFI) with two different classifiers: Logistic Regression (LR) and Support Vector Classifier (SVC). We start by measuring the importance of individual variables and then show how to measure the importance of groups of variables.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_importance_classification_iris_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_importance_classification_iris.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Measuring Individual and Group Variable Importance for Classification</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the pitfalls of using permutation feature importance (PFI) on the California housing dataset. PFI measures the importance of a variable. However, it does not measure conditional importance and does not provide statistical control over the risk of making false discoveries, i.e., the risk of declaring a variable as important when it is not.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_pitfalls_permutation_importance_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_generated_gallery_examples_plot_pitfalls_permutation_importance.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /generated/gallery/examples/plot_cfi
+   /generated/gallery/examples/plot_loco
+   /generated/gallery/examples/plot_dcrt_example
+   /generated/gallery/examples/plot_conditional_vs_marginal_xor_data
+   /generated/gallery/examples/plot_model_agnostic_importance
+   /generated/gallery/examples/plot_knockoffs_wisconsin
+   /generated/gallery/examples/plot_diabetes_variable_importance_example
+   /generated/gallery/examples/plot_knockoff_aggregation
+   /generated/gallery/examples/plot_fmri_data_example
+   /generated/gallery/examples/plot_2D_simulation_example
+   /generated/gallery/examples/plot_importance_classification_iris
+   /generated/gallery/examples/plot_pitfalls_permutation_importance
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: examples_python.zip </generated/gallery/examples/examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: examples_jupyter.zip </generated/gallery/examples/examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_
