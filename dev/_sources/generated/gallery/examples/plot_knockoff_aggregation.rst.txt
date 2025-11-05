@@ -58,8 +58,8 @@ correlated features.
 
     from hidimstat._utils.scenario import multivariate_simulation
 
-    n_features = 300
-    n_samples = 100
+    n_features = 100
+    n_samples = 300
     # Correlation
     rho = 0.5
     # Sparsity of the support
@@ -125,6 +125,17 @@ the inference.
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+      warnings.warn(
+    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+      warnings.warn(
+    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+      warnings.warn(
 
 
 
@@ -301,9 +312,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 25.834 seconds)
+   **Total running time of the script:** (0 minutes 4.948 seconds)
 
-**Estimated memory usage:**  240 MB
+**Estimated memory usage:**  226 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoff_aggregation.py:
