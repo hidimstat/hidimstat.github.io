@@ -41,40 +41,20 @@ expressed as:
 
 where :math:`\psi_{j}` is the LOCO importance of the j-th variable.
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-40
+.. GENERATED FROM PYTHON SOURCE LINES 27-29
+
+Generate data where classes are not linearly separable
+------------------------------------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 29-57
 
 .. code-block:: Python
 
 
     import matplotlib.pyplot as plt
     import numpy as np
-    import pandas as pd
     import seaborn as sns
-    from scipy.stats import ttest_1samp
-    from sklearn.base import clone
     from sklearn.datasets import make_circles
-    from sklearn.linear_model import LogisticRegressionCV
-    from sklearn.metrics import hinge_loss, log_loss
-    from sklearn.model_selection import KFold
-    from sklearn.svm import SVC
-
-    from hidimstat import D0CRT, LOCO
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 41-43
-
-Generate data where classes are not linearly separable
-------------------------------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 43-65
-
-.. code-block:: Python
 
     rng = np.random.default_rng(0)
     X, y = make_circles(
@@ -110,17 +90,25 @@ Generate data where classes are not linearly separable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-68
+.. GENERATED FROM PYTHON SOURCE LINES 58-60
 
 Define a linear and a non-linear estimator
 ------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-71
+.. GENERATED FROM PYTHON SOURCE LINES 60-71
 
 .. code-block:: Python
 
-    non_linear_model = SVC(kernel="rbf", random_state=2)
-    linear_model = LogisticRegressionCV(Cs=np.logspace(-3, 3, 5), random_state=3)
+
+    from sklearn.linear_model import LogisticRegressionCV
+    from sklearn.svm import SVC
+
+    non_linear_model = SVC(kernel="rbf", random_state=0)
+    linear_model = LogisticRegressionCV(
+        penalty="l1",
+        solver="liblinear",
+        max_iter=1000,
+    )
 
 
 
@@ -138,19 +126,25 @@ test (:math:`H_0: X_j \perp\!\!\!\perp y | X_{-j}`) for each variable. However,
 this test is based on a linear model (LogisticRegression) and fails to reject the null
 in the presence of non-linear relationships.
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-92
+.. GENERATED FROM PYTHON SOURCE LINES 78-98
 
 .. code-block:: Python
 
+
+
+    from sklearn.base import clone
+
+    from hidimstat import D0CRT
+
     d0crt_linear = D0CRT(
-        estimator=clone(linear_model), screening_threshold=None, random_state=4
+        estimator=clone(linear_model), screening_threshold=None, random_state=0
     )
     d0crt_linear.fit_importance(X, y)
     pval_dcrt_linear = d0crt_linear.pvalues_
     print(f"{pval_dcrt_linear=}")
 
     d0crt_non_linear = D0CRT(
-        estimator=clone(non_linear_model), screening_threshold=None, random_state=5
+        estimator=clone(non_linear_model), screening_threshold=None, random_state=0
     )
     d0crt_non_linear.fit_importance(X, y)
     pval_dcrt_non_linear = d0crt_non_linear.pvalues_
@@ -168,7 +162,7 @@ in the presence of non-linear relationships.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
-    pval_dcrt_linear=array([0.96627862, 0.66418924])
+    pval_dcrt_linear=array([0.79358069, 0.96922984])
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:1622: FutureWarning: 'n_alphas' was deprecated in 1.7 and will be removed in 1.9. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.9. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
@@ -178,7 +172,7 @@ in the presence of non-linear relationships.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-100
+.. GENERATED FROM PYTHON SOURCE LINES 99-106
 
 Compute p-values using LOCO
 ---------------------------
@@ -188,11 +182,17 @@ misspecified model, such as a linear model for this dataset, LOCO fails to rejec
 similarly to d0CRT. However, when using a non-linear model (SVC), LOCO is able to
 identify the important variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-133
+.. GENERATED FROM PYTHON SOURCE LINES 106-145
 
 .. code-block:: Python
 
-    cv = KFold(n_splits=5, shuffle=True, random_state=6)
+
+    from sklearn.metrics import hinge_loss, log_loss
+    from sklearn.model_selection import KFold
+
+    from hidimstat import LOCO
+
+    cv = KFold(n_splits=5, shuffle=True, random_state=0)
 
     importances_linear = []
     importances_non_linear = []
@@ -232,15 +232,17 @@ identify the important variables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-136
+.. GENERATED FROM PYTHON SOURCE LINES 146-148
 
 To select variables using LOCO, we compute the p-values using a t-test over the
 importance scores.
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-151
+.. GENERATED FROM PYTHON SOURCE LINES 148-165
 
 .. code-block:: Python
 
+
+    from scipy.stats import ttest_1samp
 
     _, pval_linear = ttest_1samp(
         importances_linear,
@@ -264,21 +266,23 @@ importance scores.
 
  .. code-block:: none
 
-    pval_linear=array([0.82518504, 0.84067582])
-    pval_non_linear=array([6.54333898e-06, 2.36737737e-04])
+    pval_linear=array([0.79044063, 0.39558337])
+    pval_non_linear=array([9.45765879e-05, 6.55666251e-04])
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-154
+.. GENERATED FROM PYTHON SOURCE LINES 166-168
 
 Plot the :math:`-log_{10}(pval)` for each method and variable
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-175
+.. GENERATED FROM PYTHON SOURCE LINES 168-191
 
 .. code-block:: Python
 
+
+    import pandas as pd
 
     df_pval = pd.DataFrame(
         {
@@ -307,14 +311,16 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-178
+.. GENERATED FROM PYTHON SOURCE LINES 192-194
 
 Plot the :math:`-log_{10}(pval)` for each method and variable
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-199
+.. GENERATED FROM PYTHON SOURCE LINES 194-217
 
 .. code-block:: Python
+
+
 
     fig, ax = plt.subplots()
     sns.barplot(
@@ -349,7 +355,7 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-205
+.. GENERATED FROM PYTHON SOURCE LINES 218-223
 
 As expected, when using linear models (d0CRT and LOCO-linear) that are misspecified,
 the variables are not selected. This highlights the benefit of using model-agnostic
@@ -357,7 +363,7 @@ methods such as LOCO, which allows for the use of models that are expressive eno
 to explain the data. While d0CRT can use any estimator, its distillation step
 restricts it from capturing variable interactions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 208-211
+.. GENERATED FROM PYTHON SOURCE LINES 226-229
 
 References
 ----------
@@ -366,9 +372,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.945 seconds)
+   **Total running time of the script:** (0 minutes 3.088 seconds)
 
-**Estimated memory usage:**  217 MB
+**Estimated memory usage:**  218 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_model_agnostic_importance.py:
