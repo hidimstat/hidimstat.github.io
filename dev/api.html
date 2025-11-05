@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=2c6c6e3b"></script>
+    <script src="_static/documentation_options.js?v=dff799b0"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -397,6 +397,7 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CFI.html">CFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.PFI.html">PFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html">D0CRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference.html">clustered_inference</a></li>
@@ -406,7 +407,6 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.desparsified_group_lasso_pvalue.html">desparsified_group_lasso_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff.html">model_x_knockoff</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html">ConditionalSampler</a></li>
@@ -508,6 +508,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT" title="hidimstat.D0CRT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D0CRT</span></code></a>(estimator[, method, estimated_coef, ...])</p></td>
 <td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ModelXKnockoff.html#hidimstat.ModelXKnockoff" title="hidimstat.ModelXKnockoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelXKnockoff</span></code></a>([estimator, max_iter, ...])</p></td>
+<td><p>Model-X Knockoff</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -537,9 +540,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference_pvalue.html#hidimstat.ensemble_clustered_inference_pvalue" title="hidimstat.ensemble_clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference_pvalue</span></code></a>(...[, ...])</p></td>
 <td><p>Compute and aggregate p-values across multiple bootstrap iterations using an aggregation method.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff</span></code></a>(X, y[, estimator, ...])</p></td>
-<td><p>Model-X Knockoff</p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -551,7 +551,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html#hidimstat.statistical_tools.ConditionalSampler" title="hidimstat.statistical_tools.ConditionalSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConditionalSampler</span></code></a>([model_regression, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html#hidimstat.statistical_tools.GaussianKnockoffs" title="hidimstat.statistical_tools.GaussianKnockoffs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GaussianKnockoffs</span></code></a>(cov_estimator[, tol])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html#hidimstat.statistical_tools.GaussianKnockoffs" title="hidimstat.statistical_tools.GaussianKnockoffs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GaussianKnockoffs</span></code></a>([cov_estimator, tol])</p></td>
 <td><p>Generator for second-order Gaussian variables using the equi-correlated method.</p></td>
 </tr>
 </tbody>

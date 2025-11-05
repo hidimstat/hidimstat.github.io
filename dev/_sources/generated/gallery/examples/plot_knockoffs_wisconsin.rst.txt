@@ -183,7 +183,7 @@ regularization parameter) to the noisy dataset and observe the results:
         penalty="l1",
         solver="liblinear",
         random_state=0,
-        n_jobs=1,
+        n_jobs=4,
     )
     lasso_noisy.fit(noisy_train, y_train)
     y_pred_noisy = lasso_noisy.predict(noisy_test)
@@ -240,17 +240,19 @@ We use the Model-X Knockoff procedure to control the FDR (False Discovery Rate).
 selection of variables is based on the Lasso Coefficient Difference (LCD) statistic
 :footcite:t:`candes2018panning`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-174
+.. GENERATED FROM PYTHON SOURCE LINES 147-178
 
 .. code-block:: Python
 
-    from hidimstat import model_x_knockoff
+    from sklearn.covariance import LedoitWolf
 
-    fdr = 0.2
+    from hidimstat import ModelXKnockoff
+    from hidimstat.statistical_tools.gaussian_knockoffs import GaussianKnockoffs
 
-    selected, test_scores, threshold, X_tildes = model_x_knockoff(
-        noisy_train,
-        y_train,
+    model_x_knockoff = ModelXKnockoff(
+        ko_generator=GaussianKnockoffs(
+            cov_estimator=LedoitWolf(assume_centered=True), tol=1e-15
+        ),
         estimator=LogisticRegressionCV(
             solver="liblinear",
             penalty="l1",
@@ -259,16 +261,18 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
             tol=1e-3,
             max_iter=1000,
         ),
-        n_bootstraps=1,
         random_state=0,
-        tol_gauss=1e-15,
-        preconfigure_estimator=None,
-        fdr=fdr,
-        n_jobs=3,
+        preconfigure_lasso_path=False,
     )
+    importance = model_x_knockoff.fit_importance(
+        noisy_train,
+        y_train,
+    )
+    selected = model_x_knockoff.fdr_selection(fdr=0.2)
+
 
     # Count how many selected features are actually noise
-    num_false_discoveries = np.sum(selected >= p)
+    num_false_discoveries = np.sum(selected[p:])
     print(f"Knockoffs make at least {num_false_discoveries} False Discoveries")
 
 
@@ -279,18 +283,18 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:204: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
       warnings.warn(
-    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:204: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
       warnings.warn(
-    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:204: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
       warnings.warn(
-    Knockoffs make at least 1 False Discoveries
+    Knockoffs make at least 2 False Discoveries
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-182
+.. GENERATED FROM PYTHON SOURCE LINES 179-186
 
 Visualizing the results
 -----------------------
@@ -300,18 +304,18 @@ along with the selection threshold for the knockoffs and the absolute value of t
 Lasso coefficients. We plot the 25 most important features according to the KO
 statistic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-237
+.. GENERATED FROM PYTHON SOURCE LINES 186-243
 
 .. code-block:: Python
 
     import matplotlib.pyplot as plt
     import seaborn as sns
 
-    selected_mask = np.array(["not selected"] * len(test_scores))
+    selected_mask = np.array(["not selected"] * len(importance[0]))
     selected_mask[selected] = "selected"
     df_ko = pd.DataFrame(
         {
-            "score": test_scores,
+            "score": importance[0],
             "variable": feature_names_noise,
             "selected": selected_mask,
         }
@@ -332,7 +336,9 @@ statistic.
         ax=ax,
         palette={"selected": "tab:red", "not selected": "tab:gray"},
     )
-    ax.axvline(x=threshold, color="k", linestyle="--", label="Threshold")
+    ax.axvline(
+        x=model_x_knockoff.threshold_fdr_, color="k", linestyle="--", label="Threshold"
+    )
     ax.legend()
     ax.set_xlabel("KO statistic (LCD)")
     ax.set_ylabel("")
@@ -371,13 +377,13 @@ statistic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-241
+.. GENERATED FROM PYTHON SOURCE LINES 244-247
 
 The plot shows that the knockoffs procedure is more conservative than the Lasso,
 selecting far fewer spurious features. At the same time, it successfully identifies
 relevant true features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 244-247
+.. GENERATED FROM PYTHON SOURCE LINES 250-253
 
 References
 ----------
@@ -386,9 +392,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.401 seconds)
+   **Total running time of the script:** (0 minutes 4.964 seconds)
 
-**Estimated memory usage:**  895 MB
+**Estimated memory usage:**  216 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:
