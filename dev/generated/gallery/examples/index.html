@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=e3fd900a"></script>
+    <script src="../../../_static/documentation_options.js?v=4eb314e9"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -51,7 +51,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Conditional Feature Importance (CFI) on the wine dataset" href="plot_cfi.html" />
+    <link rel="next" title="Visualization with Partial Dependency Plots" href="plot_partial_dependency_plot.html" />
     <link rel="prev" title="7. Inference in high dimension" href="../../../high_dimension.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -388,6 +388,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
@@ -460,7 +461,10 @@
                   
   <section id="examples-gallery">
 <span id="general-examples"></span><h1>Examples Gallery<a class="headerlink" href="#examples-gallery" title="Link to this heading">#</a></h1>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [:footciteChamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier."><img alt="" src="../../../_images/sphx_glr_plot_cfi_thumb.png" />
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to create Partial Dependency Plots (PDPs). This visualization method allows you to examine a model&#x27;s dependence on a single feature or a pair of features. The underlying implementation is built upon sklearn.inspection.partial_dependence, which calculates the dependence by taking the average response of an estimator across all possible values of the target feature(s). We&#x27;ll use the circles dataset to illustrate the basic usage."><img alt="" src="../../../_images/sphx_glr_plot_partial_dependency_plot_thumb.png" />
+<p><a class="reference internal" href="plot_partial_dependency_plot.html#sphx-glr-generated-gallery-examples-plot-partial-dependency-plot-py"><span class="std std-ref">Visualization with Partial Dependency Plots</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Visualization with Partial Dependency Plots</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [:footciteChamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier."><img alt="" src="../../../_images/sphx_glr_plot_cfi_thumb.png" />
 <p><a class="reference internal" href="plot_cfi.html#sphx-glr-generated-gallery-examples-plot-cfi-py"><span class="std std-ref">Conditional Feature Importance (CFI) on the wine dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional Feature Importance (CFI) on the wine dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield."><img alt="" src="../../../_images/sphx_glr_plot_loco_thumb.png" />
@@ -532,11 +536,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="plot_cfi.html"
+       href="plot_partial_dependency_plot.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Conditional Feature Importance (CFI) on the wine dataset</p>
+        <p class="prev-next-title">Visualization with Partial Dependency Plots</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

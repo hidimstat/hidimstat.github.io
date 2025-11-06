@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=e3fd900a"></script>
+    <script src="../../../_static/documentation_options.js?v=4eb314e9"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -388,6 +388,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
@@ -742,31 +743,31 @@ solutions are then aggregated into one.</p>
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
 
-  4%|▍         | 1/25 [00:00&lt;00:23,  1.02it/s][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
-  8%|▊         | 2/25 [00:02&lt;00:24,  1.06s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 12%|█▏        | 3/25 [00:03&lt;00:23,  1.06s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+  4%|▍         | 1/25 [00:00&lt;00:23,  1.03it/s][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
 
- 16%|█▌        | 4/25 [00:04&lt;00:22,  1.06s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+  8%|▊         | 2/25 [00:02&lt;00:23,  1.02s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
 
- 20%|██        | 5/25 [00:05&lt;00:20,  1.05s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+ 12%|█▏        | 3/25 [00:03&lt;00:22,  1.03s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
 
- 24%|██▍       | 6/25 [00:06&lt;00:19,  1.05s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
+ 16%|█▌        | 4/25 [00:04&lt;00:21,  1.04s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 
- 28%|██▊       | 7/25 [00:07&lt;00:19,  1.06s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+ 20%|██        | 5/25 [00:05&lt;00:21,  1.06s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+
+ 24%|██▍       | 6/25 [00:06&lt;00:20,  1.07s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 28%|██▊       | 7/25 [00:07&lt;00:19,  1.07s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 
@@ -774,73 +775,73 @@ solutions are then aggregated into one.</p>
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 
- 36%|███▌      | 9/25 [00:09&lt;00:17,  1.09s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+ 36%|███▌      | 9/25 [00:09&lt;00:17,  1.07s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+
+ 40%|████      | 10/25 [00:10&lt;00:16,  1.08s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
 
- 40%|████      | 10/25 [00:10&lt;00:16,  1.09s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 44%|████▍     | 11/25 [00:11&lt;00:15,  1.10s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 48%|████▊     | 12/25 [00:12&lt;00:14,  1.12s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 52%|█████▏    | 13/25 [00:14&lt;00:13,  1.13s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 56%|█████▌    | 14/25 [00:15&lt;00:12,  1.15s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 60%|██████    | 15/25 [00:16&lt;00:11,  1.15s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 64%|██████▍   | 16/25 [00:17&lt;00:10,  1.14s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 68%|██████▊   | 17/25 [00:18&lt;00:09,  1.15s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 72%|███████▏  | 18/25 [00:19&lt;00:07,  1.14s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 76%|███████▌  | 19/25 [00:21&lt;00:06,  1.13s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 80%|████████  | 20/25 [00:22&lt;00:05,  1.15s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 84%|████████▍ | 21/25 [00:23&lt;00:04,  1.13s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 88%|████████▊ | 22/25 [00:24&lt;00:03,  1.12s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
-[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
-
- 92%|█████████▏| 23/25 [00:25&lt;00:02,  1.11s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+ 44%|████▍     | 11/25 [00:11&lt;00:15,  1.08s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
 
- 96%|█████████▌| 24/25 [00:26&lt;00:01,  1.09s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+ 48%|████▊     | 12/25 [00:12&lt;00:14,  1.09s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
+
+ 52%|█████▏    | 13/25 [00:13&lt;00:13,  1.09s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 56%|█████▌    | 14/25 [00:14&lt;00:11,  1.09s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
 [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.9s
 [Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.9s finished
 
-100%|██████████| 25/25 [00:27&lt;00:00,  1.11s/it]
-100%|██████████| 25/25 [00:27&lt;00:00,  1.11s/it]
-[Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   27.7s finished
+ 60%|██████    | 15/25 [00:16&lt;00:10,  1.08s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 64%|██████▍   | 16/25 [00:17&lt;00:09,  1.07s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 68%|██████▊   | 17/25 [00:18&lt;00:08,  1.05s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 72%|███████▏  | 18/25 [00:19&lt;00:07,  1.03s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 76%|███████▌  | 19/25 [00:20&lt;00:06,  1.03s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 80%|████████  | 20/25 [00:21&lt;00:05,  1.04s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 84%|████████▍ | 21/25 [00:22&lt;00:04,  1.04s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 88%|████████▊ | 22/25 [00:23&lt;00:03,  1.02s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 92%|█████████▏| 23/25 [00:24&lt;00:02,  1.02s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+ 96%|█████████▌| 24/25 [00:25&lt;00:01,  1.00s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    0.8s
+[Parallel(n_jobs=1)]: Done 200 out of 200 | elapsed:    0.8s finished
+
+100%|██████████| 25/25 [00:26&lt;00:00,  1.01s/it]
+100%|██████████| 25/25 [00:26&lt;00:00,  1.05s/it]
+[Parallel(n_jobs=1)]: Done  25 out of  25 | elapsed:   26.2s finished
 </pre></div>
 </div>
 </section>
@@ -945,8 +946,8 @@ randomization.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 53.651 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  229 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 59.147 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  236 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-2d-simulation-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/59b9ef2de24bb63af60069439f8c75cd/plot_2D_simulation_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_2D_simulation_example.ipynb</span></code></a></p>
