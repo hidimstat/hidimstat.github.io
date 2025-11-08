@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>GaussianKnockoffs &#8212; HiDimStat</title>
+    <title>cfi_analysis &#8212; HiDimStat</title>
   
   
   
@@ -43,17 +43,16 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=3a4d6617"></script>
+    <script src="../../../_static/documentation_options.js?v=de5a2702"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.cfi_analysis';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="quantile_aggregation" href="../helper_functions/hidimstat.quantile_aggregation.html" />
-    <link rel="prev" title="ConditionalSampler" href="hidimstat.statistical_tools.ConditionalSampler.html" />
+    <link rel="next" title="clustered_inference" href="hidimstat.clustered_inference.html" />
+    <link rel="prev" title="DesparsifiedLasso" href="hidimstat.DesparsifiedLasso.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -401,18 +400,21 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">cfi_analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference.html">clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.loco_analysis.html">loco_analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.pfi_analysis.html">pfi_analysis</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.visualization.PDP.html">PDP</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.statistical_tools.ConditionalSampler.html">ConditionalSampler</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">GaussianKnockoffs</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.quantile_aggregation.html">quantile_aggregation</a></li>
@@ -461,7 +463,7 @@
     
     <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">GaussianKnockoffs</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">cfi_analysis</span></li>
   </ul>
 </nav>
 </div>
@@ -478,102 +480,79 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="gaussianknockoffs">
-<h1>GaussianKnockoffs<a class="headerlink" href="#gaussianknockoffs" title="Link to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.GaussianKnockoffs">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.statistical_tools.</span></span><span class="sig-name descname"><span class="pre">GaussianKnockoffs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cov_estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LedoitWolf(assume_centered=True)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-14</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/gaussian_knockoffs.py#L9-L144"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.GaussianKnockoffs" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Generator for second-order Gaussian variables using the equi-correlated method.
-Creates synthetic variables that preserve the covariance structure of the original
-variables while ensuring conditional independence between the original and synthetic data.</p>
+  <section id="cfi-analysis">
+<h1>cfi_analysis<a class="headerlink" href="#cfi-analysis" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="hidimstat.cfi_analysis">
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">cfi_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imputation_model_continuous=RidgeCV()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imputation_model_categorical=LogisticRegressionCV()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_types='auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_max_cardinality:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_statistic='ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_best=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/conditional_feature_importance.py#L229-L270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.cfi_analysis" title="Link to this definition">#</a></dt>
+<dd><p>Conditional Feature Importance (CFI) algorithm.
+Chamma <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chamma-neurips2023" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and for group-level see
+Chamma <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chamma-aaai2024" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.
+Parameters
+———-
+estimator : sklearn compatible estimator
+The estimator to use for the prediction.
+method : str, default=”predict”
+The method to use for the prediction. This determines the predictions passed
+to the loss function. Supported methods are “predict”, “predict_proba” or
+“decision_function”.
+loss : callable, default=mean_squared_error
+The loss function to use when comparing the perturbed model to the full
+model.
+n_permutations : int, default=50
+The number of permutations to perform. For each variable/group of variables,
+the mean of the losses over the <cite>n_permutations</cite> is computed.
+imputation_model_continuous : sklearn compatible estimator, default=RidgeCV()
+The model used to estimate the conditional distribution of a given
+continuous variable/group of variables given the others.
+imputation_model_categorical : sklearn compatible estimator, default=LogisticRegressionCV()
+The model used to estimate the conditional distribution of a given
+categorical variable/group of variables given the others. Binary is
+considered as a special case of categorical.
+features_groups: dict or None, default=None
+A dictionary where the keys are the group names and the values are the
+list of column names corresponding to each features group. If None,
+the features_groups are identified based on the columns of X.
+feature_types: str or list, default=”auto”
+The feature type. Supported types include “auto”, “continuous”, and
+“categorical”. If “auto”, the type is inferred from the cardinality
+of the unique values passed to the <cite>fit</cite> method.
+categorical_max_cardinality : int, default=10
+The maximum cardinality of a variable to be considered as categorical
+when the variable type is inferred (set to “auto” or not provided).
+statistical_test : callable or str, default=”ttest”
+Statistical test function for computing p-values of importance scores.
+random_state : int or None, default=None
+The random state to use for sampling.
+n_jobs : int, default=1
+The number of jobs to run in parallel. Parallelization is done over the
+variables or groups of variables.
+X : array-like of shape (n_samples, n_features)
+Training data.
+y : array-like of shape (n_samples,)
+Target values.
+k_best : int, default=None
+Selects the top k features based on importance scores.
+percentile : float, default=None
+Selects features based on a specified percentile of importance scores.
+threshold_max : float, default=None
+Selects features with importance scores below the specified maximum threshold.
+threshold_min : float, default=None
+Selects features with importance scores above the specified minimum threshold.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>cov_estimator</strong><span class="classifier">object</span></dt><dd><p>Estimator for computing the covariance matrix. Must implement fit and
-have a <cite>covariance_</cite> attribute after fitting.</p>
-</dd>
-<dt><strong>tol</strong><span class="classifier">float, default=1e-14</span></dt><dd><p>Tolerance threshold. While the smallest eigenvalue of <span class="math notranslate nohighlight">\(2\Sigma - diag(S)\)</span>
-is smaller than this threshold, S is incrementally increased.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Attributes<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>mu_tilde_</strong><span class="classifier">ndarray of shape (n_samples, n_features)</span></dt><dd><p>Mean matrix for generating synthetic variables.</p>
-</dd>
-<dt><strong>sigma_tilde_decompose_</strong><span class="classifier">ndarray of shape (n_features, n_features)</span></dt><dd><p>Cholesky decomposition of the synthetic covariance matrix.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">References</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.GaussianKnockoffs.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cov_estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LedoitWolf(assume_centered=True)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-14</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/gaussian_knockoffs.py#L36-L38"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.GaussianKnockoffs.__init__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.GaussianKnockoffs.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/gaussian_knockoffs.py#L40-L92"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.GaussianKnockoffs.fit" title="Link to this definition">#</a></dt>
-<dd><p>Fit the Gaussian synthetic variable generator.
-This method estimates the parameters needed to generate Gaussian synthetic variables
-based on the input data. It follows a methodology for creating second-order
-synthetic variables that preserve the covariance structure.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>The input samples used to estimate the parameters for synthetic variable generation.
-The data is assumed to follow a Gaussian distribution.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Returns the instance itself.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>The method implements the following steps:
-1. Centers and scales the data if specified
-2. Estimates mean and covariance of input data
-3. Computes parameters for synthetic variable generation</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.GaussianKnockoffs.sample">
-<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/gaussian_knockoffs.py#L109-L144"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.GaussianKnockoffs.sample" title="Link to this definition">#</a></dt>
-<dd><p>Generate synthetic variables.
-This function generates synthetic variables that preserve the covariance structure
-of the original data while ensuring conditional independence.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>n_repeats</strong><span class="classifier">int, default=1</span></dt><dd><p>The number of sets of Gaussian knockoff variables</p>
-</dd>
-<dt><strong>random_state</strong><span class="classifier">int or None, default=None</span></dt><dd><p>The random state to use for sampling.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>X_tilde</strong><span class="classifier">3D ndarray (n_repeats, n_samples, n_features)</span></dt><dd><p>The synthetic variables.</p>
-</dd>
+<dt><strong>selection</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>Boolean array indicating selected features (True = selected)</dt><dd></dd>
+<dt><strong>importances</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>Feature importance scores/test statistics.</dt><dd></dd>
+<dt><strong>pvalues</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>P-values for importance scores.</dt><dd></dd>
 </dl>
 </dd>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<section id="examples-using-hidimstat-statistical-tools-gaussianknockoffs">
-<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.statistical_tools.GaussianKnockoffs</span></code><a class="headerlink" href="#examples-using-hidimstat-statistical-tools-gaussianknockoffs" title="Link to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs :footcitecandes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue."><img alt="" src="../../../_images/sphx_glr_plot_knockoffs_wisconsin_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_knockoffs_wisconsin.html#sphx-glr-generated-gallery-examples-plot-knockoffs-wisconsin-py"><span class="std std-ref">Controlled multiple variable selection on the Wisconsin breast cancer dataset</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</div>
-</div></div><div style='clear:both'></div></section>
 </section>
 
 
@@ -587,20 +566,20 @@ of the original data while ensuring conditional independence.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hidimstat.statistical_tools.ConditionalSampler.html"
+       href="hidimstat.DesparsifiedLasso.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ConditionalSampler</p>
+        <p class="prev-next-title">DesparsifiedLasso</p>
       </div>
     </a>
     <a class="right-next"
-       href="../helper_functions/hidimstat.quantile_aggregation.html"
+       href="hidimstat.clustered_inference.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">quantile_aggregation</p>
+        <p class="prev-next-title">clustered_inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -623,13 +602,7 @@ of the original data while ensuring conditional independence.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.GaussianKnockoffs"><code class="docutils literal notranslate"><span class="pre">GaussianKnockoffs</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.GaussianKnockoffs.__init__"><code class="docutils literal notranslate"><span class="pre">GaussianKnockoffs.__init__()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.GaussianKnockoffs.fit"><code class="docutils literal notranslate"><span class="pre">GaussianKnockoffs.fit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.GaussianKnockoffs.sample"><code class="docutils literal notranslate"><span class="pre">GaussianKnockoffs.sample()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-statistical-tools-gaussianknockoffs">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.statistical_tools.GaussianKnockoffs</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.cfi_analysis"><code class="docutils literal notranslate"><span class="pre">cfi_analysis()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -637,7 +610,7 @@ of the original data while ensuring conditional independence.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.rst.txt"
+      <li><a href="../../../_sources/generated/api/class/hidimstat.cfi_analysis.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>

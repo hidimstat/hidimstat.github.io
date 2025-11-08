@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=3a4d6617"></script>
+    <script src="../../../_static/documentation_options.js?v=de5a2702"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -401,17 +401,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.cfi_analysis.html">cfi_analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference.html">clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.loco_analysis.html">loco_analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.pfi_analysis.html">pfi_analysis</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.visualization.PDP.html">PDP</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.statistical_tools.ConditionalSampler.html">ConditionalSampler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.statistical_tools.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.quantile_aggregation.html">quantile_aggregation</a></li>
@@ -481,47 +484,60 @@
 <h1>BasePerturbation<a class="headerlink" href="#baseperturbation" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.base_perturbation.</span></span><span class="sig-name descname"><span class="pre">BasePerturbation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">root_mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L13-L217"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.base_perturbation.</span></span><span class="sig-name descname"><span class="pre">BasePerturbation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test='ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L17-L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a>, <a class="reference internal" href="hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="hidimstat.base_variable_importance.GroupVariableImportanceMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">GroupVariableImportanceMixin</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">root_mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L14-L64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.__init__" title="Link to this definition">#</a></dt>
-<dd><p>Base class for model-agnostic variable importance measures based on
-perturbation.</p>
+<p>Abstract base class for model-agnostic variable importance measures using
+perturbation techniques.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>estimator</strong><span class="classifier">sklearn compatible estimator, optional</span></dt><dd><p>The estimator to use for the prediction.</p>
-</dd>
-<dt><strong>loss</strong><span class="classifier">callable, default=root_mean_squared_error</span></dt><dd><p>The function to compute the loss when comparing the perturbed model
-to the original model.</p>
-</dd>
-<dt><strong>n_permutations</strong><span class="classifier">int, default=50</span></dt><dd><p>This parameter is relevant only for PFI or CFI.
-Specifies the number of times the variable group (residual for CFI) is
-permuted. For each permutation, the perturbed model’s loss is calculated
-and averaged over all permutations.</p>
+<dt><strong>estimator</strong><span class="classifier">sklearn-compatible estimator</span></dt><dd><p>The fitted estimator used for predictions.</p>
 </dd>
 <dt><strong>method</strong><span class="classifier">str, default=”predict”</span></dt><dd><p>The method used for making predictions. This determines the predictions
 passed to the loss function. Supported methods are “predict”,
 “predict_proba”, “decision_function”, “transform”.</p>
 </dd>
-<dt><strong>features_groups: dict or None, default=None</strong></dt><dd><p>A dictionary where the keys are the group names and the values are the
-list of column names corresponding to each features group. If None,
-the features_groups are identified based on the columns of X.</p>
+<dt><strong>loss</strong><span class="classifier">callable, default=mean_squared_error</span></dt><dd><p>The function to compute the loss when comparing the perturbed model
+to the original model.</p>
 </dd>
-<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd><p>The number of parallel jobs to run. Parallelization is done over the
-variables or groups of variables.</p>
+<dt><strong>n_permutations</strong><span class="classifier">int, default=50</span></dt><dd><p>Number of permutations for each feature group.</p>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">int, default=None</span></dt><dd><p>The random state to use for sampling.</p>
+<dt><strong>statistical_test</strong><span class="classifier">callable or str, default=”nb-ttest”</span></dt><dd><p>Statistical test function for computing p-values from importance scores.</p>
+</dd>
+<dt><strong>features_groups</strong><span class="classifier">dict or None, default=None</span></dt><dd><p>Mapping of group names to lists of feature indices or names. If None, groups are inferred.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd><p>Number of parallel jobs for computation.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Seed for reproducible permutations.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>features_groups</strong><span class="classifier">dict</span></dt><dd><p>Mapping of feature groups identified during fit.</p>
+</dd>
+<dt><strong>importances_</strong><span class="classifier">ndarray (n_groups,)</span></dt><dd><p>Importance scores for each feature group.</p>
+</dd>
+<dt><strong>loss_reference_</strong><span class="classifier">float</span></dt><dd><p>Loss on original (non-perturbed) data.</p>
+</dd>
+<dt><strong>loss_</strong><span class="classifier">dict</span></dt><dd><p>Loss values for each permutation of each group.</p>
+</dd>
+<dt><strong>pvalues_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>P-values for importance scores.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-</dd></dl>
+<p class="rubric">Notes</p>
+<p>This class is abstract. Subclasses must implement the <cite>_permutation</cite> method
+to define how feature groups are perturbed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test='ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L63-L92"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L66-L88"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L94-L116"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.fit" title="Link to this definition">#</a></dt>
 <dd><p>Initialize feature groups based on input data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -550,50 +566,73 @@ Defaults to None.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L98-L127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.predict" title="Link to this definition">#</a></dt>
-<dd><p>Compute the predictions after perturbation of the data for each group of
-variables.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X: array-like of shape (n_samples, n_features)</strong></dt><dd><p>The input samples.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>out: array-like of shape (n_groups, n_permutations, n_samples)</dt><dd><p>The predictions after perturbation of the data for each group of variables.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L129-L173"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L155-L220"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute the importance scores for each group of covariates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X: array-like of shape (n_samples, n_features)</strong></dt><dd><p>The input samples.</p>
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>The input samples to compute importance scores for.</p>
 </dd>
-<dt><strong>y: array-like of shape (n_samples,)</strong></dt><dd><p>The target values.</p>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd></dd>
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>The importance scores for each group of covariates.
+A higher score indicates greater importance of that group.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>loss_reference_</strong><span class="classifier">float</span></dt><dd><p>The loss of the model with the original (non-perturbed) data.</p>
+</dd>
+<dt><strong>loss_</strong><span class="classifier">dict</span></dt><dd><p>Dictionary with indices as keys and arrays of perturbed losses as values.
+Contains the loss values for each permutation of each group.</p>
+</dd>
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>The calculated importance scores for each group.</p>
+</dd>
+<dt><strong>pvalues_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>P-values from one-sample t-test testing if importance scores are
+significantly greater than 0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Importance scores for each feature.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The importance score for each group is calculated as the mean increase in loss
+when that group is perturbed, compared to the reference loss.
+A higher importance score indicates that perturbing that group leads to
+worse model performance, suggesting those features are more important.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.fit_importance">
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L222-L246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.fit_importance" title="Link to this definition">#</a></dt>
+<dd><p>Fits the model to the data and computes feature importance scores.
+Convenience method that combines fit() and importance() into a single call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Training data.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target values.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>out_dict: dict</dt><dd><p>A dictionary containing the following keys:
-- ‘loss_reference’: the loss of the model with the original data.
-- ‘loss’: a dictionary containing the loss of the perturbed model
-for each group.
-- ‘importance’: the importance scores for each group.</p>
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>The calculated importance scores for each feature group.
+Higher values indicate greater importance.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This method first calls fit() to identify feature groups, then calls
+importance() to compute the importance scores for each group.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -855,8 +894,8 @@ possible to update each component of a nested object.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation"><code class="docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.__init__"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.__init__()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.fit"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.fit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.predict"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.predict()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.importance"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.fit_importance"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.fit_importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.fdr_selection"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.fdr_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.get_metadata_routing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.get_params"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.get_params()</span></code></a></li>

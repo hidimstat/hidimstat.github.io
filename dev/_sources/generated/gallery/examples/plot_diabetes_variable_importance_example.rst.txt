@@ -99,7 +99,7 @@ diabetes dataset.
     import numpy as np
     from sklearn.base import clone
     from sklearn.linear_model import LogisticRegressionCV, RidgeCV
-    from sklearn.metrics import r2_score, root_mean_squared_error
+    from sklearn.metrics import mean_squared_error, r2_score
     from sklearn.model_selection import KFold
 
     n_folds = 5
@@ -114,7 +114,7 @@ diabetes dataset.
         score = r2_score(
             y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
         )
-        mse = root_mean_squared_error(
+        mse = mean_squared_error(
             y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
         )
 
@@ -131,15 +131,15 @@ diabetes dataset.
  .. code-block:: none
 
     Fold 0: score=0.42498602106170535
-    Fold 0: mse=56.42055334073377
+    Fold 0: mse=3183.2788392745842
     Fold 1: score=0.4576508881883167
-    Fold 1: mse=58.423308135994034
+    Fold 1: mse=3413.2829335533065
     Fold 2: score=0.5351768182569143
-    Fold 2: mse=54.730052311563774
+    Fold 2: mse=2995.378626026507
     Fold 3: score=0.48890245901647933
-    Fold 3: mse=53.411951707073335
+    Fold 3: mse=2852.836585158734
     Fold 4: score=0.5377531849343379
-    Fold 4: mse=51.2067043978449
+    Fold 4: mse=2622.126575288268
 
 
 
@@ -299,14 +299,14 @@ Analyze the results
     import pandas as pd
     from scipy.stats import ttest_1samp
 
-    cfi_vim_arr = np.array([x["importance"] for x in cfi_importance_list]) / 2
+    cfi_vim_arr = np.array(cfi_importance_list) / 2
     cfi_pval = ttest_1samp(cfi_vim_arr, 0, alternative="greater").pvalue
 
     vim = [
         pd.DataFrame(
             {
                 "var": np.arange(cfi_vim_arr.shape[1]),
-                "importance": x["importance"],
+                "importance": x,
                 "fold": i,
                 "pval": cfi_pval,
                 "method": "CFI",
@@ -315,14 +315,14 @@ Analyze the results
         for x in cfi_importance_list
     ]
 
-    loco_vim_arr = np.array([x["importance"] for x in loco_importance_list])
+    loco_vim_arr = np.array(loco_importance_list)
     loco_pval = ttest_1samp(loco_vim_arr, 0, alternative="greater").pvalue
 
     vim += [
         pd.DataFrame(
             {
                 "var": np.arange(loco_vim_arr.shape[1]),
-                "importance": x["importance"],
+                "importance": x,
                 "fold": i,
                 "pval": loco_pval,
                 "method": "LOCO",
@@ -331,14 +331,14 @@ Analyze the results
         for x in loco_importance_list
     ]
 
-    pfi_vim_arr = np.array([x["importance"] for x in pfi_importance_list])
+    pfi_vim_arr = np.array(pfi_importance_list)
     pfi_pval = ttest_1samp(pfi_vim_arr, 0, alternative="greater").pvalue
 
     vim += [
         pd.DataFrame(
             {
                 "var": np.arange(pfi_vim_arr.shape[1]),
-                "importance": x["importance"],
+                "importance": x,
                 "fold": i,
                 "pval": pfi_pval,
                 "method": "PFI",
@@ -385,9 +385,9 @@ Analyze the results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.610 seconds)
+   **Total running time of the script:** (0 minutes 4.652 seconds)
 
-**Estimated memory usage:**  216 MB
+**Estimated memory usage:**  217 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:

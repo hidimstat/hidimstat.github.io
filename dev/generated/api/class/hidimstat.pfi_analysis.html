@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ConditionalSampler &#8212; HiDimStat</title>
+    <title>pfi_analysis &#8212; HiDimStat</title>
   
   
   
@@ -43,16 +43,16 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=3a4d6617"></script>
+    <script src="../../../_static/documentation_options.js?v=de5a2702"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.statistical_tools.ConditionalSampler';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.pfi_analysis';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="GaussianKnockoffs" href="hidimstat.statistical_tools.GaussianKnockoffs.html" />
-    <link rel="prev" title="PDP" href="hidimstat.visualization.PDP.html" />
+    <link rel="next" title="PDP" href="hidimstat.visualization.PDP.html" />
+    <link rel="prev" title="loco_analysis" href="hidimstat.loco_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -400,18 +400,21 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.cfi_analysis.html">cfi_analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference.html">clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.loco_analysis.html">loco_analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">pfi_analysis</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.visualization.PDP.html">PDP</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">ConditionalSampler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.statistical_tools.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.quantile_aggregation.html">quantile_aggregation</a></li>
@@ -460,7 +463,7 @@
     
     <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ConditionalSampler</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pfi_analysis</span></li>
   </ul>
 </nav>
 </div>
@@ -477,86 +480,68 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="conditionalsampler">
-<h1>ConditionalSampler<a class="headerlink" href="#conditionalsampler" title="Link to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.ConditionalSampler">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.statistical_tools.</span></span><span class="sig-name descname"><span class="pre">ConditionalSampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_regression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_categorical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_max_cardinality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/conditional_sampling.py#L43-L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.ConditionalSampler" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.ConditionalSampler.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_regression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_categorical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_max_cardinality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/conditional_sampling.py#L44-L80"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.ConditionalSampler.__init__" title="Link to this definition">#</a></dt>
-<dd><p>Class use to sample from the conditional distribution $p(X^j | X^{-j})$.</p>
+  <section id="pfi-analysis">
+<h1>pfi_analysis<a class="headerlink" href="#pfi-analysis" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="hidimstat.pfi_analysis">
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">pfi_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_statistic='ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_best=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/permutation_feature_importance.py#L89-L122"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.pfi_analysis" title="Link to this definition">#</a></dt>
+<dd><p>Permutation Feature Importance algorithm</p>
+<p>This as presented in Breiman<a class="footnote-reference brackets" href="#footcite-breimanrandomforests2001" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+For each variable/group of variables, the importance is computed as the
+difference between the loss of the initial model and the loss of the model
+with the variable/group permuted.
+The method was also used in Mi <em>et al.</em><a class="footnote-reference brackets" href="#footcite-mi2021permutation" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>
+Parameters
+———-
+estimator : sklearn compatible estimator
+The estimator to use for the prediction.
+method : str, default=”predict”
+The method to use for the prediction. This determines the predictions passed
+to the loss function. Supported methods are “predict”, “predict_proba” or
+“decision_function”.
+loss : callable, default=mean_squared_error
+The loss function to use when comparing the perturbed model to the full
+model.
+n_permutations : int, default=50
+The number of permutations to perform. For each variable/group of variables,
+the mean of the losses over the <cite>n_permutations</cite> is computed.
+statistical_test : callable or str, default=”ttest”
+Statistical test function for computing p-values of importance scores.
+features_groups: dict or None, default=None
+A dictionary where the keys are the group names and the values are the
+list of column names corresponding to each features group. If None,
+the features_groups are identified based on the columns of X.
+random_state : int or None, default=None
+The random state to use for sampling.
+n_jobs : int, default=1
+The number of jobs to run in parallel. Parallelization is done over the
+variables or groups of variables.
+X : array-like of shape (n_samples, n_features)
+Training data.
+y : array-like of shape (n_samples,)
+Target values.
+k_best : int, default=None
+Selects the top k features based on importance scores.
+percentile : float, default=None
+Selects features based on a specified percentile of importance scores.
+threshold_max : float, default=None
+Selects features with importance scores below the specified maximum threshold.
+threshold_min : float, default=None
+Selects features with importance scores above the specified minimum threshold.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>model_regression</strong><span class="classifier">sklearn compatible estimator, optional</span></dt><dd><p>The model to use for continuous data.</p>
-</dd>
-<dt><strong>model_categorical</strong><span class="classifier">sklearn compatible estimator, optional</span></dt><dd><p>The model to use for categorical data. Binary is considered as a special
-case of categorical data.</p>
-</dd>
-<dt><strong>data_type</strong><span class="classifier">str, default=”auto”</span></dt><dd><p>The variable type. Supported types include “auto”, “continuous”, and
-“categorical”. If “auto”, the type is inferred from the cardinality
-of the unique values passed to the <cite>fit</cite> method.</p>
-</dd>
-<dt><strong>categorical_max_cardinality</strong><span class="classifier">int, default=10</span></dt><dd><p>The maximum cardinality of a variable to be considered as categorical
-when <cite>data_type</cite> is “auto”.</p>
-</dd>
+<dt><strong>selection</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>Boolean array indicating selected features (True = selected)</dt><dd></dd>
+<dt><strong>importances</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>Feature importance scores/test statistics.</dt><dd></dd>
+<dt><strong>pvalues</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>P-values for importance scores.</dt><dd></dd>
 </dl>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.ConditionalSampler.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/conditional_sampling.py#L82-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.ConditionalSampler.fit" title="Link to this definition">#</a></dt>
-<dd><p>Fit the model that estimates $mathbb{E}[y | X]$.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">ndarray</span></dt><dd><p>The variables used to predict the group of variables $y$.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">ndarray</span></dt><dd><p>The group of variables to predict.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.ConditionalSampler.sample">
-<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/conditional_sampling.py#L119-L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.ConditionalSampler.sample" title="Link to this definition">#</a></dt>
-<dd><p>Sample from the conditional distribution $p(X^j | X^{-j})$.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">ndarray</span></dt><dd><p>The complementary of the considered set of variables, $X^{-j}$.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">ndarray</span></dt><dd><p>The group of variables to sample, $X^j$.</p>
-</dd>
-<dt><strong>n_samples</strong><span class="classifier">int, optional</span></dt><dd><p>The number of samples to draw.</p>
-</dd>
-<dt><strong>random_state</strong><span class="classifier">int, default=None</span></dt><dd><p>The random state to use for sampling.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>y_conditional</strong><span class="classifier">ndarray</span></dt><dd><p>The samples from the conditional distribution.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<section id="examples-using-hidimstat-statistical-tools-conditionalsampler">
-<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.statistical_tools.ConditionalSampler</span></code><a class="headerlink" href="#examples-using-hidimstat-statistical-tools-conditionalsampler" title="Link to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the pitfalls of using permutation feature importance (PFI) on the California housing dataset. PFI measures the importance of a variable. However, it does not measure conditional importance and does not provide statistical control over the risk of making false discoveries, i.e., the risk of declaring a variable as important when it is not."><img alt="" src="../../../_images/sphx_glr_plot_pitfalls_permutation_importance_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_pitfalls_permutation_importance.html#sphx-glr-generated-gallery-examples-plot-pitfalls-permutation-importance-py"><span class="std std-ref">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</div>
-</div></div><div style='clear:both'></div></section>
 </section>
 
 
@@ -570,20 +555,20 @@ when <cite>data_type</cite> is “auto”.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hidimstat.visualization.PDP.html"
+       href="hidimstat.loco_analysis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">PDP</p>
+        <p class="prev-next-title">loco_analysis</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.statistical_tools.GaussianKnockoffs.html"
+       href="hidimstat.visualization.PDP.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">GaussianKnockoffs</p>
+        <p class="prev-next-title">PDP</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -606,13 +591,7 @@ when <cite>data_type</cite> is “auto”.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.ConditionalSampler"><code class="docutils literal notranslate"><span class="pre">ConditionalSampler</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.ConditionalSampler.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalSampler.__init__()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.ConditionalSampler.fit"><code class="docutils literal notranslate"><span class="pre">ConditionalSampler.fit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.ConditionalSampler.sample"><code class="docutils literal notranslate"><span class="pre">ConditionalSampler.sample()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-statistical-tools-conditionalsampler">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.statistical_tools.ConditionalSampler</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.pfi_analysis"><code class="docutils literal notranslate"><span class="pre">pfi_analysis()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -620,7 +599,7 @@ when <cite>data_type</cite> is “auto”.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/generated/api/class/hidimstat.statistical_tools.ConditionalSampler.rst.txt"
+      <li><a href="../../../_sources/generated/api/class/hidimstat.pfi_analysis.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
