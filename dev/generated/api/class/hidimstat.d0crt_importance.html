@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>quantile_aggregation &#8212; HiDimStat</title>
+    <title>d0crt_importance &#8212; HiDimStat</title>
   
   
   
@@ -43,16 +43,16 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=12843f20"></script>
+    <script src="../../../_static/documentation_options.js?v=658016cb"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/helper_functions/hidimstat.quantile_aggregation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.d0crt_importance';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="reid" href="hidimstat.reid.html" />
-    <link rel="prev" title="GaussianKnockoffs" href="../class/hidimstat.samplers.GaussianKnockoffs.html" />
+    <link rel="next" title="desparsified_lasso_importance" href="hidimstat.desparsified_lasso_importance.html" />
+    <link rel="prev" title="clustered_inference_pvalue" href="hidimstat.clustered_inference_pvalue.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -393,33 +393,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">GroupVariableImportanceMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCO.html">LOCO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.CFI.html">CFI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.PFI.html">PFI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.D0CRT.html">D0CRT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.cfi_analysis.html">cfi_analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference.html">clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.loco_analysis.html">loco_analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.pfi_analysis.html">pfi_analysis</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.visualization.PDP.html">PDP</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCO.html">LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.CFI.html">CFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">D0CRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">quantile_aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.reid.html">reid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.cfi_importance.html">cfi_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference.html">clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">d0crt_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso_importance.html">desparsified_lasso_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.model_x_knockoff_importance.html">model_x_knockoff_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.loco_importance.html">loco_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.pfi_importance.html">pfi_importance</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.visualization.PDP.html">PDP</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.desparsified_lasso.reid.html">reid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
 </ul>
 </div>
 </nav></div>
@@ -463,7 +466,7 @@
     
     <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">quantile_aggregation</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">d0crt_importance</span></li>
   </ul>
 </nav>
 </div>
@@ -480,39 +483,95 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="quantile-aggregation">
-<h1>quantile_aggregation<a class="headerlink" href="#quantile-aggregation" title="Link to this heading">#</a></h1>
+  <section id="d0crt-importance">
+<h1>d0crt_importance<a class="headerlink" href="#d0crt-importance" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="hidimstat.quantile_aggregation">
-<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">quantile_aggregation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/aggregation.py#L4-L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.quantile_aggregation" title="Link to this definition">#</a></dt>
-<dd><p>Implements the quantile aggregation method for p-values.</p>
-<p>This method is based on :footcite:t:meinshausen2009pvalues.</p>
-<p>The function aggregates multiple p-values into a single p-value while controlling
-the family-wise error rate. It supports both fixed and adaptive quantile aggregation.</p>
+<dt class="sig sig-object py" id="hidimstat.d0crt_importance">
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">d0crt_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimated_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lasso_screening</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(fit_intercept=False,</span> <span class="pre">n_alphas=10,</span> <span class="pre">random_state=0,</span> <span class="pre">tol=1e-06)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_distillation_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(n_alphas=10,</span> <span class="pre">n_jobs=1,</span> <span class="pre">random_state=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joblib_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaled_statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_screening_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/distilled_conditional_randomization_test.py#L824-L883"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.d0crt_importance" title="Link to this definition">#</a></dt>
+<dd><p>Implements distilled conditional randomization test (dCRT) without interactions.</p>
+<p>This class provides a fast implementation of the Conditional Randomization
+Test Candes <em>et al.</em><a class="footnote-reference brackets" href="#footcite-candes2018panning" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using the distillation process
+from Liu <em>et al.</em><a class="footnote-reference brackets" href="#footcite-liu2022fast" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. The approach accelerates variable selection
+by combining Lasso-based screening and residual-based test statistics.
+Based on the original implementation at:
+<a class="github reference external" href="https://github.com/moleibobliu/Distillation-CRT/">moleibobliu/Distillation-CRT</a>
+The y-distillation is based on a given estimator and the x-distillation is
+based on a Lasso estimator.
+Parameters
+———-
+estimator : sklearn estimator
+The base estimator used for y-distillation and prediction
+(e.g., Lasso, RandomForest, …).
+method : str, default=”predict”
+Method of the estimator to use for predictions (“predict”, “predict_proba”,
+“decision_function”).
+estimated_coef : array-like of shape (n_features,) or None, default=None
+Pre-computed feature coefficients. If None, coefficients are estimated via
+Lasso.
+estimated_intercept : float or None, default=None
+Pre-computed intercept. If None, intercept is estimated via Lasso.
+sigma_X : array-like of shape (n_features, n_features) or None, default=None
+Covariance matrix of X. If None, Lasso is used for X distillation.
+lasso_screening : sklearn estimator, default=LassoCV(n_alphas=10, tol=1e-6, fit_intercept=False)
+Estimator for variable screening (typically LassoCV or Lasso).
+model_distillation_x : sklearn estimator, default=LassoCV(n_alphas=10)
+Estimator for X distillation (typically LassoCV or Lasso).
+refit : bool, default=False
+Whether to refit the model on selected features after screening.
+screening_threshold : float, default=10
+Percentile threshold for screening (0-100).
+Larger values include more variables at screening.
+(screening_threshold=100 keeps all variables).
+centered : bool, default=True
+Whether to center and scale features using StandardScaler.
+n_jobs : int, default=1
+Number of parallel jobs.
+joblib_verbose : int, default=0
+Verbosity level for parallel jobs.
+fit_y : bool, default=True
+Controls y-distillation behavior:
+- If False and the estimator is linear, the sub-model predicting y from X^{-j}
+is created by simply removing the idx-th coefficient from the full model
+(no fitting is performed).
+- If True, fits a clone of <cite>estimator</cite> on (X^{-j}, y)
+- For non-linear estimators, always fits a clone of <cite>estimator</cite> on (X^{-j}, y)
+regardless of fit_y.
+scaled_statistics : bool, default=False
+Whether to use scaled statistics when computing importance.
+random_state : int, default=None
+Random seed for reproducibility.
+reuse_screening_model: bool, default=True
+Whether to reuse the screening model for y-distillation.
+X : array-like of shape (n_samples, n_features)
+Training data matrix.
+y : array-like of shape (n_samples,)
+Target values.
+cv : None or int, optional (default=None)
+Not used. Included for compatibility. A warning will be issued if provided.
+k_lowest : int, default=None
+Selects the k features with lowest p-values.
+percentile : float, default=None
+Selects features based on a specified percentile of p-values.
+threshold_max : float, default=0.05
+Selects features with p-values below the specified maximum threshold (0 to 1).
+threshold_min : float, default=None
+Selects features with p-values above the specified minimum threshold (0 to 1).
+alternative_hypothesis : bool, default=False
+If True, selects based on 1-pvalues instead of p-values.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>pvals</strong><span class="classifier">ndarray of shape (n_sampling*2, n_test)</span></dt><dd><p>Matrix of p-values to aggregate. Each row represents a sampling instance
-and each column a hypothesis test.</p>
-</dd>
-<dt><strong>gamma</strong><span class="classifier">float, default=0.5</span></dt><dd><p>Quantile level for aggregation. Must be in range (0,1].</p>
-</dd>
-<dt><strong>adaptive</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses adaptive quantile aggregation which optimizes over multiple gamma values.
-If False, uses fixed quantile aggregation with the provided gamma value.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>ndarray of shape (n_test,)</dt><dd><p>Vector of aggregated p-values, one for each hypothesis test.</p>
-</dd>
+<dt><strong>selection</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>Boolean array indicating selected features (True = selected)</dt><dd></dd>
+<dt><strong>importances</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>Feature importance scores/test statistics. For features not selected</dt><dd></dd>
+<dt>during screening, scores are set to 0.</dt><dd></dd>
+<dt><strong>pvalues</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt>Two-sided p-values for each feature under Gaussian null hypothesis.</dt><dd></dd>
+<dt>For features not selected during screening, p-values are set to 1.</dt><dd></dd>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The aggregated p-values are guaranteed to be valid p-values in [0,1].
-When adaptive=True, gamma is treated as the minimum gamma value to consider.</p>
-<p class="rubric">References</p>
 </dd></dl>
 
 </section>
@@ -528,20 +587,20 @@ When adaptive=True, gamma is treated as the minimum gamma value to consider.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../class/hidimstat.samplers.GaussianKnockoffs.html"
+       href="hidimstat.clustered_inference_pvalue.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">GaussianKnockoffs</p>
+        <p class="prev-next-title">clustered_inference_pvalue</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.reid.html"
+       href="hidimstat.desparsified_lasso_importance.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">reid</p>
+        <p class="prev-next-title">desparsified_lasso_importance</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -564,7 +623,7 @@ When adaptive=True, gamma is treated as the minimum gamma value to consider.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.quantile_aggregation"><code class="docutils literal notranslate"><span class="pre">quantile_aggregation()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.d0crt_importance"><code class="docutils literal notranslate"><span class="pre">d0crt_importance()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -572,7 +631,7 @@ When adaptive=True, gamma is treated as the minimum gamma value to consider.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/generated/api/helper_functions/hidimstat.quantile_aggregation.rst.txt"
+      <li><a href="../../../_sources/generated/api/class/hidimstat.d0crt_importance.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
