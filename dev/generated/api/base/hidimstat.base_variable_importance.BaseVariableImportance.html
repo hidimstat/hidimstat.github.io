@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=658016cb"></script>
+    <script src="../../../_static/documentation_options.js?v=55fc97e0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -390,12 +390,16 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.base_perturbation.BasePerturbation.html">BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.base_perturbation.BasePerturbationCV.html">BasePerturbationCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">GroupVariableImportanceMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCO.html">LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCOCV.html">LOCOCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.CFI.html">CFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.CFICV.html">CFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.PFI.html">PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.PFICV.html">PFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.D0CRT.html">D0CRT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
@@ -713,6 +717,9 @@ possible to update each component of a nested object.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example compares the performance of d0crt based on the lasso (1) and random forest (2) implementations. The number of repetitions is set to 10. The metrics used are the type-I error and the power"><img alt="" src="../../../_images/sphx_glr_plot_dcrt_example_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_dcrt_example.html#sphx-glr-generated-gallery-examples-plot-dcrt-example-py"><span class="std std-ref">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</span></a></p>
   <div class="sphx-glr-thumbnail-title">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to compute variable importance using Permutation Feature Importance (PFI), Leave-One-Covariate-Out (LOCO), and Conditional Feature Importance (CFI) on the diabetes dataset. This example also showcases the use how to measure feature importance in a K-Fold cross-validation setting in order to use all the data available."><img alt="" src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_diabetes_variable_importance_example.html#sphx-glr-generated-gallery-examples-plot-diabetes-variable-importance-example-py"><span class="std std-ref">Feature Importance on diabetes dataset using cross-validation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Feature Importance on diabetes dataset using cross-validation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates on XOR data that variables can be conditionally important even if they are not marginally important. The conditional importance is computed using the Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models."><img alt="" src="../../../_images/sphx_glr_plot_conditional_vs_marginal_xor_data_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_conditional_vs_marginal_xor_data.html#sphx-glr-generated-gallery-examples-plot-conditional-vs-marginal-xor-data-py"><span class="std std-ref">Conditional vs Marginal Importance on the XOR dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional vs Marginal Importance on the XOR dataset</div>
@@ -728,9 +735,6 @@ possible to update each component of a nested object.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs :footcitecandes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue."><img alt="" src="../../../_images/sphx_glr_plot_knockoffs_wisconsin_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_knockoffs_wisconsin.html#sphx-glr-generated-gallery-examples-plot-knockoffs-wisconsin-py"><span class="std std-ref">Controlled multiple variable selection on the Wisconsin breast cancer dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Variable Importance estimates the influence of a given input variable to the prediction made by a model. To assess variable importance in a prediction problem, :footcitebreimanRandomForests2001 introduced the permutation approach where the values are shuffled for one variable/column at a time. This permutation breaks the relationship between the variable of interest and the outcome. Following, the loss score is checked before and after this substitution for any significant drop in the performance which reflects the significance of this variable to predict the outcome. This ease-to-use solution is demonstrated, in the work by :footcitestroblConditionalVariableImportance2008, to be affected by the degree of correlation between the variables, thus biased towards truly non-significant variables highly correlated with the significant ones and creating fake significant variables. They introduced a solution for the Random Forest estimator based on conditional sampling by performing sub-groups permutation when bisecting the space using the conditioning variables of the building process. However, this solution is exclusive to the Random Forest and is costly with high-dimensional settings. :footciteChamma_NeurIPS2023 introduced a new model-agnostic solution to bypass the limitations of the permutation approach under the use of the conditional schemes. The variable of interest does contain two types of information: 1) the relationship with the remaining variables and 2) the relationship with the outcome. The standard permutation, while breaking the relationship with the outcome, is also destroying the dependency with the remaining variables. Therefore, instead of directly permuting the variable of interest, the variable of interest is predicted by the remaining variables and the residuals of this prediction are permuted before reconstructing the new version of the variable. This solution preserves the dependency with the remaining variables."><img alt="" src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_diabetes_variable_importance_example.html#sphx-glr-generated-gallery-examples-plot-diabetes-variable-importance-example-py"><span class="std std-ref">Variable Importance on diabetes dataset</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Variable Importance on diabetes dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example compares methods based on Desparsified Lasso (DL) to estimate voxel activation maps associated with behavior, specifically decoder map support. All methods presented here provide statistical guarantees."><img alt="" src="../../../_images/sphx_glr_plot_fmri_data_example_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_fmri_data_example.html#sphx-glr-generated-gallery-examples-plot-fmri-data-example-py"><span class="std std-ref">Support Recovery on fMRI Data</span></a></p>
   <div class="sphx-glr-thumbnail-title">Support Recovery on fMRI Data</div>

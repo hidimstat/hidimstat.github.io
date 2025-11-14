@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=658016cb"></script>
+    <script src="../../../_static/documentation_options.js?v=55fc97e0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Support recovery on simulated data (2D)" href="plot_2D_simulation_example.html" />
-    <link rel="prev" title="Variable Importance on diabetes dataset" href="plot_diabetes_variable_importance_example.html" />
+    <link rel="prev" title="Controlled multiple variable selection on the Wisconsin breast cancer dataset" href="plot_knockoffs_wisconsin.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -392,12 +392,12 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Feature Importance on diabetes dataset using cross-validation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Variable Importance on diabetes dataset</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_2D_simulation_example.html">Support recovery on simulated data (2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
@@ -708,8 +708,8 @@ However you might benefit from clustering randomization taking
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/5 [00:00&lt;?, ?it/s][Parallel(n_jobs=3)]: Using backend LokyBackend with 3 concurrent workers.
 
-100%|██████████| 5/5 [00:00&lt;00:00, 125.68it/s]
-[Parallel(n_jobs=3)]: Done   5 out of   5 | elapsed:   24.3s finished
+100%|██████████| 5/5 [00:00&lt;00:00, 124.15it/s]
+[Parallel(n_jobs=3)]: Done   5 out of   5 | elapsed:   23.2s finished
 </pre></div>
 </div>
 </section>
@@ -820,8 +820,8 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 33.395 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  3011 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 56.341 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  2760 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b6c6a679d257e221e442c55b925ef0bf/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>
@@ -848,12 +848,12 @@ spurious discoveries.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_diabetes_variable_importance_example.html"
+       href="plot_knockoffs_wisconsin.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Variable Importance on diabetes dataset</p>
+        <p class="prev-next-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</p>
       </div>
     </a>
     <a class="right-next"

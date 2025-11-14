@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=658016cb"></script>
+    <script src="../../../_static/documentation_options.js?v=55fc97e0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -51,8 +51,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.PFI';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="D0CRT" href="hidimstat.D0CRT.html" />
-    <link rel="prev" title="CFI" href="hidimstat.CFI.html" />
+    <link rel="next" title="PFICV" href="hidimstat.PFICV.html" />
+    <link rel="prev" title="CFICV" href="hidimstat.CFICV.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -390,12 +390,16 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html">BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbation.html">BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbationCV.html">BasePerturbationCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">GroupVariableImportanceMixin</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCO.html">LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCOCV.html">LOCOCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.CFI.html">CFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.CFICV.html">CFICV</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.PFICV.html">PFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">D0CRT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
@@ -584,7 +588,7 @@ True indicates selected features, False indicates non-selected features.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.PFI.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L94-L116"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L95-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.fit" title="Link to this definition">#</a></dt>
 <dd><p>Initialize feature groups based on input data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -614,7 +618,7 @@ Defaults to None.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.PFI.fit_importance">
-<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L222-L246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.fit_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L223-L247"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.fit_importance" title="Link to this definition">#</a></dt>
 <dd><p>Fits the model to the data and computes feature importance scores.
 Convenience method that combines fit() and importance() into a single call.</p>
 <dl class="field-list simple">
@@ -679,7 +683,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.PFI.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L155-L220"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L156-L221"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFI.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute the importance scores for each group of covariates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -827,10 +831,7 @@ possible to update each component of a nested object.</p>
 
 <section id="examples-using-hidimstat-pfi">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.PFI</span></code><a class="headerlink" href="#examples-using-hidimstat-pfi" title="Link to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Variable Importance estimates the influence of a given input variable to the prediction made by a model. To assess variable importance in a prediction problem, :footcitebreimanRandomForests2001 introduced the permutation approach where the values are shuffled for one variable/column at a time. This permutation breaks the relationship between the variable of interest and the outcome. Following, the loss score is checked before and after this substitution for any significant drop in the performance which reflects the significance of this variable to predict the outcome. This ease-to-use solution is demonstrated, in the work by :footcitestroblConditionalVariableImportance2008, to be affected by the degree of correlation between the variables, thus biased towards truly non-significant variables highly correlated with the significant ones and creating fake significant variables. They introduced a solution for the Random Forest estimator based on conditional sampling by performing sub-groups permutation when bisecting the space using the conditioning variables of the building process. However, this solution is exclusive to the Random Forest and is costly with high-dimensional settings. :footciteChamma_NeurIPS2023 introduced a new model-agnostic solution to bypass the limitations of the permutation approach under the use of the conditional schemes. The variable of interest does contain two types of information: 1) the relationship with the remaining variables and 2) the relationship with the outcome. The standard permutation, while breaking the relationship with the outcome, is also destroying the dependency with the remaining variables. Therefore, instead of directly permuting the variable of interest, the variable of interest is predicted by the remaining variables and the residuals of this prediction are permuted before reconstructing the new version of the variable. This solution preserves the dependency with the remaining variables."><img alt="" src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_diabetes_variable_importance_example.html#sphx-glr-generated-gallery-examples-plot-diabetes-variable-importance-example-py"><span class="std std-ref">Variable Importance on diabetes dataset</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Variable Importance on diabetes dataset</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show on the Iris dataset how to measure variable importance for classification tasks. We use two different variable importance methods: Conditional Feature importance (CFI) and Permutation Feature Importance (PFI) with two different classifiers: Logistic Regression (LR) and Support Vector Classifier (SVC). We start by measuring the importance of individual variables and then show how to measure the importance of groups of variables."><img alt="" src="../../../_images/sphx_glr_plot_importance_classification_iris_thumb.png" />
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show on the Iris dataset how to measure variable importance for classification tasks. We use two different variable importance methods: Conditional Feature importance (CFI) and Permutation Feature Importance (PFI) with two different classifiers: Logistic Regression (LR) and Support Vector Classifier (SVC). We start by measuring the importance of individual variables and then show how to measure the importance of groups of variables."><img alt="" src="../../../_images/sphx_glr_plot_importance_classification_iris_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_importance_classification_iris.html#sphx-glr-generated-gallery-examples-plot-importance-classification-iris-py"><span class="std std-ref">Measuring Individual and Group Variable Importance for Classification</span></a></p>
   <div class="sphx-glr-thumbnail-title">Measuring Individual and Group Variable Importance for Classification</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the pitfalls of using permutation feature importance (PFI) on the California housing dataset. PFI measures the importance of a variable. However, it does not measure conditional importance and does not provide statistical control over the risk of making false discoveries, i.e., the risk of declaring a variable as important when it is not."><img alt="" src="../../../_images/sphx_glr_plot_pitfalls_permutation_importance_thumb.png" />
@@ -850,20 +851,20 @@ possible to update each component of a nested object.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hidimstat.CFI.html"
+       href="hidimstat.CFICV.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CFI</p>
+        <p class="prev-next-title">CFICV</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.D0CRT.html"
+       href="hidimstat.PFICV.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">D0CRT</p>
+        <p class="prev-next-title">PFICV</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
