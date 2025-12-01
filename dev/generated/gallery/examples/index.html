@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=767375e5"></script>
+    <script src="../../../_static/documentation_options.js?v=1da0d382"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -397,11 +397,12 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_2D_simulation_example.html">Support recovery on simulated data (2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_pitfalls_permutation_importance.html">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_2D_simulation_example.html">Ensemble Clustered Inference on 2D Data</a></li>
 </ul>
 </div>
 </nav></div>
@@ -488,21 +489,24 @@
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to apply the distilled conditional randomization test (D0CRT) to logistic regression. The hidimstat package implements the decorrelation method described in :footcitenguyen2022conditional, which ensures that the distribution of the test statistic under the null hypothesis closely approximates a standard Gaussian distribution. We illustrate this property by comparing the quantiles of the test statistics obtained using this method (dCRT-logit) with those from the original D0CRT."><img alt="" src="../../../_images/sphx_glr_plot_dcrt_logit_thumb.png" />
 <p><a class="reference internal" href="plot_dcrt_logit.html#sphx-glr-generated-gallery-examples-plot-dcrt-logit-py"><span class="std std-ref">Conditional Randomization Test for Sparse Logistic Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional Randomization Test for Sparse Logistic Regression</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs :footcitecandes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue."><img alt="" src="../../../_images/sphx_glr_plot_knockoffs_wisconsin_thumb.png" />
-<p><a class="reference internal" href="plot_knockoffs_wisconsin.html#sphx-glr-generated-gallery-examples-plot-knockoffs-wisconsin-py"><span class="std std-ref">Controlled multiple variable selection on the Wisconsin breast cancer dataset</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Pixel-wise inference on digit classification"><img alt="" src="../../../_images/sphx_glr_plot_digits_thumb.png" />
+<p><a class="reference internal" href="plot_digits.html#sphx-glr-generated-gallery-examples-plot-digits-py"><span class="std std-ref">Pixel-wise inference on digit classification</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pixel-wise inference on digit classification</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example compares methods based on Desparsified Lasso (DL) to estimate voxel activation maps associated with behavior, specifically decoder map support. All methods presented here provide statistical guarantees."><img alt="" src="../../../_images/sphx_glr_plot_fmri_data_example_thumb.png" />
 <p><a class="reference internal" href="plot_fmri_data_example.html#sphx-glr-generated-gallery-examples-plot-fmri-data-example-py"><span class="std std-ref">Support Recovery on fMRI Data</span></a></p>
   <div class="sphx-glr-thumbnail-title">Support Recovery on fMRI Data</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the advantages of spatially relaxed inference when dealing with high-dimensional spatial data. To do so, we compare several statistical methods that aim at recovering the support, i.e., predictive features. Among those methods some leverage the spatial structure of the data. For more details about the inference algorithms presented in this example or about the generative process used to simulate the data, please refer to :footcitechevalier2022spatially."><img alt="" src="../../../_images/sphx_glr_plot_2D_simulation_example_thumb.png" />
-<p><a class="reference internal" href="plot_2D_simulation_example.html#sphx-glr-generated-gallery-examples-plot-2d-simulation-example-py"><span class="std std-ref">Support recovery on simulated data (2D)</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Support recovery on simulated data (2D)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs :footcitecandes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue."><img alt="" src="../../../_images/sphx_glr_plot_knockoffs_wisconsin_thumb.png" />
+<p><a class="reference internal" href="plot_knockoffs_wisconsin.html#sphx-glr-generated-gallery-examples-plot-knockoffs-wisconsin-py"><span class="std std-ref">Controlled multiple variable selection on the Wisconsin breast cancer dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show on the Iris dataset how to measure variable importance for classification tasks. We use two different variable importance methods: Conditional Feature importance (CFI) and Permutation Feature Importance (PFI) with two different classifiers: Logistic Regression (LR) and Support Vector Classifier (SVC). We start by measuring the importance of individual variables and then show how to measure the importance of groups of variables."><img alt="" src="../../../_images/sphx_glr_plot_importance_classification_iris_thumb.png" />
 <p><a class="reference internal" href="plot_importance_classification_iris.html#sphx-glr-generated-gallery-examples-plot-importance-classification-iris-py"><span class="std std-ref">Measuring Individual and Group Variable Importance for Classification</span></a></p>
   <div class="sphx-glr-thumbnail-title">Measuring Individual and Group Variable Importance for Classification</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the pitfalls of using permutation feature importance (PFI) on the California housing dataset. PFI measures the importance of a variable. However, it does not measure conditional importance and does not provide statistical control over the risk of making false discoveries, i.e., the risk of declaring a variable as important when it is not."><img alt="" src="../../../_images/sphx_glr_plot_pitfalls_permutation_importance_thumb.png" />
 <p><a class="reference internal" href="plot_pitfalls_permutation_importance.html#sphx-glr-generated-gallery-examples-plot-pitfalls-permutation-importance-py"><span class="std std-ref">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we present how to perform inference on simulated 2D data. This setting is particularly challenging since the number of features (pixels in 2D) is much larger than the number of samples. We first illustrate the limitations of the Desparsified Lasso method in this setting and then present two methods that leverage the data&#x27;s spatial structure to build clusters and perform the inference at the cluster level. We first show how to use clustered inference with DL (hidimstat.CluDL). We then show how to use clustered inference with Ensembled CluDL (hidimstat.EnCluDL)."><img alt="" src="../../../_images/sphx_glr_plot_2D_simulation_example_thumb.png" />
+<p><a class="reference internal" href="plot_2D_simulation_example.html#sphx-glr-generated-gallery-examples-plot-2d-simulation-example-py"><span class="std std-ref">Ensemble Clustered Inference on 2D Data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ensemble Clustered Inference on 2D Data</div>
 </div></div><div class="toctree-wrapper compound">
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">

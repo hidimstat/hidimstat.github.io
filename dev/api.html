@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=767375e5"></script>
+    <script src="_static/documentation_options.js?v=1da0d382"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -398,6 +398,8 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.LOCOCV.html">LOCOCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CFI.html">CFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CFICV.html">CFICV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CluDL.html">CluDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.EnCluDL.html">EnCluDL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.PFI.html">PFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.PFICV.html">PFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html">D0CRT</a></li>
@@ -406,13 +408,9 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html">cfi_importance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference.html">clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.d0crt_importance.html">d0crt_importance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.desparsified_lasso_importance.html">desparsified_lasso_importance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff_importance.html">model_x_knockoff_importance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html">loco_importance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.pfi_importance.html">pfi_importance</a></li>
 </ul>
@@ -522,6 +520,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFICV</span></code></a>(estimators, cv[, statistical_test, ...])</p></td>
 <td><p>Conditional Feature Importance (CFI) algorithm with Cross-Validation.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CluDL</span></code></a>(clustering[, desparsified_lasso, ...])</p></td>
+<td><p>Clustered inference with desparsified lasso.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EnCluDL</span></code></a>(desparsified_lasso, clustering[, ...])</p></td>
+<td><p>Ensemble clustered inference with desparsified lasso.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, method, loss, n_permutations)</p></td>
 <td><p>Permutation Feature Importance algorithm</p></td>
 </tr>
@@ -534,7 +538,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ModelXKnockoff.html#hidimstat.ModelXKnockoff" title="hidimstat.ModelXKnockoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelXKnockoff</span></code></a>([estimator, max_iter, ...])</p></td>
 <td><p>Model-X Knockoff</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DesparsifiedLasso</span></code></a>([estimator, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DesparsifiedLasso</span></code></a>([estimator, centered, ...])</p></td>
 <td><p>Desparsified Lasso Estimator (also known as Debiased Lasso)</p></td>
 </tr>
 </tbody>
@@ -548,12 +552,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html#hidimstat.cfi_importance" title="hidimstat.cfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfi_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
 <td><p>Conditional Feature Importance (CFI) algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference.html#hidimstat.clustered_inference" title="hidimstat.clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference</span></code></a>(X_init, y, ward[, ...])</p></td>
-<td><p>Clustered inference algorithm for statistical analysis of high-dimensional data.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference_pvalue</span></code></a>(n_samples, group, ...)</p></td>
-<td><p>Compute corrected p-values at the cluster level and transform them back to feature level.</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.d0crt_importance.html#hidimstat.d0crt_importance" title="hidimstat.d0crt_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">d0crt_importance</span></code></a>(estimator, X, y[, cv, ...])</p></td>
 <td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
 </tr>
@@ -562,12 +560,6 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff_importance.html#hidimstat.model_x_knockoff_importance" title="hidimstat.model_x_knockoff_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff_importance</span></code></a>(X, y[, ...])</p></td>
 <td><p>Model-X Knockoff</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference.html#hidimstat.ensemble_clustered_inference" title="hidimstat.ensemble_clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference</span></code></a>(X_init, y, ward)</p></td>
-<td><p>Ensemble clustered inference algorithm for high-dimensional statistical inference, as described in <span id="id1">[<a class="reference internal" href="index.html#id27" title="Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Bertrand Thirion, and Joseph Salmon. Spatially relaxed inference on high-dimensional linear models. Statistics and Computing, 32(5):83, 2022.">Chevalier <em>et al.</em>, 2022</a>]</span>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference_pvalue.html#hidimstat.ensemble_clustered_inference_pvalue" title="hidimstat.ensemble_clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference_pvalue</span></code></a>(...[, ...])</p></td>
-<td><p>Compute and aggregate p-values across multiple bootstrap iterations using an aggregation method.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html#hidimstat.loco_importance" title="hidimstat.loco_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loco_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
 <td><p>Leave-One-Covariate-Out (LOCO) algorithm</p></td>
