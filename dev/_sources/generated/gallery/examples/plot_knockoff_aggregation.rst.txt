@@ -49,7 +49,7 @@ performance, in terms of statistical power and false discovery proportion, of th
 different aggregation procedures. We generate data with `n=300` samples and `p=100`
 correlated features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-58
+.. GENERATED FROM PYTHON SOURCE LINES 32-57
 
 .. code-block:: Python
 
@@ -76,7 +76,6 @@ correlated features.
         signal_noise_ratio=snr,
         seed=0,
     )
-    non_zero_index = np.where(beta_true)[0]
 
 
 
@@ -86,7 +85,7 @@ correlated features.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-66
+.. GENERATED FROM PYTHON SOURCE LINES 58-65
 
 Inference with model-X Knockoffs
 --------------------------------
@@ -96,7 +95,7 @@ observe the variability of the selections induced by the knockoff lottery. Then,
 compare the possible solutions to aggregate the selections in order to derandomize
 the inference.
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-88
+.. GENERATED FROM PYTHON SOURCE LINES 65-87
 
 .. code-block:: Python
 
@@ -117,7 +116,7 @@ the inference.
         threshold = model_x_knockoff.knockoff_threshold(ko_statistics, fdr=fdr)
         ko_selection = ko_statistics > threshold
 
-        fdp, power = fdp_power(np.where(ko_selection)[0], non_zero_index)
+        fdp, power = fdp_power(ko_selection, ground_truth=beta_true)
         fdp_individual.append(fdp)
         power_individual.append(power)
 
@@ -140,7 +139,7 @@ the inference.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-94
+.. GENERATED FROM PYTHON SOURCE LINES 88-93
 
 Visualize the results of the individual selections
 --------------------------------------------------
@@ -148,7 +147,7 @@ We first visualize the results of the individual selections to observe the
 variability induced by the knockoff lottery. We plot the False Discovery Proportion
 (FDP) for each run along with the desired FDR level (red dashed line) and the statistical
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-136
+.. GENERATED FROM PYTHON SOURCE LINES 93-135
 
 .. code-block:: Python
 
@@ -206,7 +205,7 @@ variability induced by the knockoff lottery. We plot the False Discovery Proport
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-143
+.. GENERATED FROM PYTHON SOURCE LINES 136-142
 
 Aggregation procedures
 ----------------------
@@ -215,18 +214,18 @@ We now compute the aggregation using both the p-values aggregation procedure fro
 :footcite:t:`Ren_2023`. We then compare the results of both procedures in terms of
 FDP and power.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-210
+.. GENERATED FROM PYTHON SOURCE LINES 142-209
 
 .. code-block:: Python
 
 
     pval_aggregation = model_x_knockoff.fdr_selection(fdr=fdr, adaptive_aggregation=True)
-    fdp_pval_agg, power_pval_agg = fdp_power(np.where(pval_aggregation)[0], non_zero_index)
+    fdp_pval_agg, power_pval_agg = fdp_power(pval_aggregation, ground_truth=beta_true)
 
     eval_aggregation = model_x_knockoff.fdr_selection(
         fdr=fdr, fdr_control="ebh", evalues=True
     )
-    fdp_eval_agg, power_eval_agg = fdp_power(np.where(eval_aggregation)[0], non_zero_index)
+    fdp_eval_agg, power_eval_agg = fdp_power(eval_aggregation, ground_truth=beta_true)
 
     df_plot["Method"] = "Individual KO"
     df_plot_2 = pd.concat(
@@ -298,12 +297,12 @@ FDP and power.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 211-213
+.. GENERATED FROM PYTHON SOURCE LINES 210-212
 
 It appears that both aggregation procedures successfully lowers the false discovery
 proportion while maintaining a good statistical power.
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-219
+.. GENERATED FROM PYTHON SOURCE LINES 215-218
 
 References
 ----------
@@ -312,9 +311,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.590 seconds)
+   **Total running time of the script:** (0 minutes 2.591 seconds)
 
-**Estimated memory usage:**  216 MB
+**Estimated memory usage:**  221 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoff_aggregation.py:
