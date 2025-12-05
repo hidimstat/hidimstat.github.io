@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1da0d382"></script>
+    <script src="../../../_static/documentation_options.js?v=9b1d0ec0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -541,7 +541,7 @@ Higher values indicate greater importance.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.fdr_selection">
-<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L228-L306"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fdr_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-14</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L225-L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fdr_selection" title="Link to this definition">#</a></dt>
 <dd><p>Performs feature selection based on False Discovery Rate (FDR) control.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -555,16 +555,20 @@ Higher values indicate greater importance.</p>
 <dt><strong>reshaping_function: callable or None, default=None</strong></dt><dd><p>Optional reshaping function for FDR control methods.
 If None, defaults to sum of reciprocals for ‘bhy’.</p>
 </dd>
-<dt><strong>alternative_hippothesis: bool or None, default=False</strong></dt><dd><p>If False, selects features with small p-values.
-If True, selects features with large p-values (close to 1).
-If None, selects features that have either small or large p-values.</p>
+<dt><strong>two_tailed_test: bool, default=False</strong></dt><dd><p>If True, performs two-tailed test selection using both p-values
+for positive effects and one-minus p-values for negative effects. The sign
+of the effect is determined from the sign of the importance scores.</p>
+</dd>
+<dt><strong>eps</strong><span class="classifier">float, default=1e-14</span></dt><dd><p>Small value to ensure numerical stability when computing one-minus p-values.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selected</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Boolean mask of selected features.
-True indicates selected features, False indicates non-selected features.</p>
+<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+1 indicates selected features with positive effects,
+-1 indicates selected features with negative effects,
+0 indicates non-selected features.</p>
 </dd>
 </dl>
 </dd>
@@ -589,6 +593,38 @@ True indicates selected features, False indicates non-selected features.</p>
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.fit_importance">
 <span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L443-L447"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fit_importance" title="Link to this definition">#</a></dt>
 <dd><p>Fit the model to the data and computes feature importance scores.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.LOCOCV.fwer_selection">
+<span class="sig-name descname"><span class="pre">fwer_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fwer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procedure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bonferroni'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L300-L351"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fwer_selection" title="Link to this definition">#</a></dt>
+<dd><p>Performs feature selection based on Family-Wise Error Rate (FWER) control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fwer</strong><span class="classifier">float</span></dt><dd><p>The target family-wise error rate level (between 0 and 1)</p>
+</dd>
+<dt><strong>procedure</strong><span class="classifier">{‘bonferroni’}, default=’bonferroni’</span></dt><dd><p>The FWER control method to use:
+- ‘bonferroni’: Bonferroni correction</p>
+</dd>
+<dt><strong>n_tests</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Factor for multiple testing correction. If None, uses the number of clusters
+or the number of features in this order.</p>
+</dd>
+<dt><strong>two_tailed_test</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses the sign of the importance scores to indicate whether the
+selected features have positive or negative effects.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+1 indicates selected features with positive effects,
+-1 indicates selected features with negative effects,
+0 indicates non-selected features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -652,7 +688,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.importance_selection">
-<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L145-L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.importance_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L142-L171"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.importance_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on variable importance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -678,7 +714,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.plot_importance">
-<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L308-L383"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.plot_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L353-L428"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.plot_importance" title="Link to this definition">#</a></dt>
 <dd><p>Plot feature importances as a horizontal bar plot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -703,7 +739,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.pvalue_selection">
-<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L176-L226"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.pvalue_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L173-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.pvalue_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on p-values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -758,7 +794,7 @@ possible to update each component of a nested object.</p>
 <section id="examples-using-hidimstat-lococv">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.LOCOCV</span></code><a class="headerlink" href="#examples-using-hidimstat-lococv" title="Link to this heading">#</a></h2>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to compute variable importance using Permutation Feature Importance (PFI), Leave-One-Covariate-Out (LOCO), and Conditional Feature Importance (CFI) on the diabetes dataset. This example also showcases the use how to measure feature importance in a K-Fold cross-validation setting in order to use all the data available."><img alt="" src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_diabetes_variable_importance_example.html#sphx-glr-generated-gallery-examples-plot-diabetes-variable-importance-example-py"><span class="std std-ref">Feature Importance on diabetes dataset using cross-validation</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_diabetes_variable_importance_example.html"><span class="doc">Feature Importance on diabetes dataset using cross-validation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Feature Importance on diabetes dataset using cross-validation</div>
 </div></div><div style='clear:both'></div></section>
 </section>
@@ -815,6 +851,7 @@ possible to update each component of a nested object.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCOCV.fdr_selection"><code class="docutils literal notranslate"><span class="pre">LOCOCV.fdr_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCOCV.fit"><code class="docutils literal notranslate"><span class="pre">LOCOCV.fit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCOCV.fit_importance"><code class="docutils literal notranslate"><span class="pre">LOCOCV.fit_importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCOCV.fwer_selection"><code class="docutils literal notranslate"><span class="pre">LOCOCV.fwer_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCOCV.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">LOCOCV.get_metadata_routing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCOCV.get_params"><code class="docutils literal notranslate"><span class="pre">LOCOCV.get_params()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.LOCOCV.importance"><code class="docutils literal notranslate"><span class="pre">LOCOCV.importance()</span></code></a></li>

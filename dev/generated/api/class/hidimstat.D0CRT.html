@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1da0d382"></script>
+    <script src="../../../_static/documentation_options.js?v=9b1d0ec0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -717,7 +717,7 @@ See fit() and importance() for details on the underlying computations.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.D0CRT.fdr_selection">
-<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L228-L306"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.fdr_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-14</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L225-L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.fdr_selection" title="Link to this definition">#</a></dt>
 <dd><p>Performs feature selection based on False Discovery Rate (FDR) control.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -731,16 +731,20 @@ See fit() and importance() for details on the underlying computations.</p>
 <dt><strong>reshaping_function: callable or None, default=None</strong></dt><dd><p>Optional reshaping function for FDR control methods.
 If None, defaults to sum of reciprocals for ‘bhy’.</p>
 </dd>
-<dt><strong>alternative_hippothesis: bool or None, default=False</strong></dt><dd><p>If False, selects features with small p-values.
-If True, selects features with large p-values (close to 1).
-If None, selects features that have either small or large p-values.</p>
+<dt><strong>two_tailed_test: bool, default=False</strong></dt><dd><p>If True, performs two-tailed test selection using both p-values
+for positive effects and one-minus p-values for negative effects. The sign
+of the effect is determined from the sign of the importance scores.</p>
+</dd>
+<dt><strong>eps</strong><span class="classifier">float, default=1e-14</span></dt><dd><p>Small value to ensure numerical stability when computing one-minus p-values.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selected</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Boolean mask of selected features.
-True indicates selected features, False indicates non-selected features.</p>
+<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+1 indicates selected features with positive effects,
+-1 indicates selected features with negative effects,
+0 indicates non-selected features.</p>
 </dd>
 </dl>
 </dd>
@@ -749,6 +753,38 @@ True indicates selected features, False indicates non-selected features.</p>
 <dt>ValueError</dt><dd><p>If <cite>importances_</cite> haven’t been computed yet</p>
 </dd>
 <dt>AssertionError</dt><dd><p>If <cite>pvalues_</cite> are missing or fdr_control is invalid</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.D0CRT.fwer_selection">
+<span class="sig-name descname"><span class="pre">fwer_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fwer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procedure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bonferroni'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L300-L351"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.fwer_selection" title="Link to this definition">#</a></dt>
+<dd><p>Performs feature selection based on Family-Wise Error Rate (FWER) control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fwer</strong><span class="classifier">float</span></dt><dd><p>The target family-wise error rate level (between 0 and 1)</p>
+</dd>
+<dt><strong>procedure</strong><span class="classifier">{‘bonferroni’}, default=’bonferroni’</span></dt><dd><p>The FWER control method to use:
+- ‘bonferroni’: Bonferroni correction</p>
+</dd>
+<dt><strong>n_tests</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Factor for multiple testing correction. If None, uses the number of clusters
+or the number of features in this order.</p>
+</dd>
+<dt><strong>two_tailed_test</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses the sign of the importance scores to indicate whether the
+selected features have positive or negative effects.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+1 indicates selected features with positive effects,
+-1 indicates selected features with negative effects,
+0 indicates non-selected features.</p>
 </dd>
 </dl>
 </dd>
@@ -795,7 +831,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.D0CRT.importance_selection">
-<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L145-L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.importance_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L142-L171"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.importance_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on variable importance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -821,7 +857,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.D0CRT.plot_importance">
-<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L308-L383"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.plot_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L353-L428"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.plot_importance" title="Link to this definition">#</a></dt>
 <dd><p>Plot feature importances as a horizontal bar plot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -846,7 +882,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.D0CRT.pvalue_selection">
-<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L176-L226"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.pvalue_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L173-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.D0CRT.pvalue_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on p-values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -901,13 +937,13 @@ possible to update each component of a nested object.</p>
 <section id="examples-using-hidimstat-d0crt">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.D0CRT</span></code><a class="headerlink" href="#examples-using-hidimstat-d0crt" title="Link to this heading">#</a></h2>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example compares the performance of d0crt based on the lasso (1) and random forest (2) implementations. The number of repetitions is set to 10. The metrics used are the type-I error and the power"><img alt="" src="../../../_images/sphx_glr_plot_dcrt_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_dcrt_example.html#sphx-glr-generated-gallery-examples-plot-dcrt-example-py"><span class="std std-ref">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_dcrt_example.html"><span class="doc">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</span></a></p>
   <div class="sphx-glr-thumbnail-title">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the limitations of variable selection methods based on linear models using the circles dataset. We first use the distilled conditional randomization test (d0CRT), which is based on linear models :footciteliu2022fast and then demonstrate how model-agnostic methods, such as Leave-One-Covariate-Out (LOCO), can identify important variables even when classes are not linearly separable."><img alt="" src="../../../_images/sphx_glr_plot_model_agnostic_importance_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_model_agnostic_importance.html#sphx-glr-generated-gallery-examples-plot-model-agnostic-importance-py"><span class="std std-ref">Variable Selection Under Model Misspecification</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_model_agnostic_importance.html"><span class="doc">Variable Selection Under Model Misspecification</span></a></p>
   <div class="sphx-glr-thumbnail-title">Variable Selection Under Model Misspecification</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to apply the distilled conditional randomization test (D0CRT) to logistic regression. The hidimstat package implements the decorrelation method described in :footcitenguyen2022conditional, which ensures that the distribution of the test statistic under the null hypothesis closely approximates a standard Gaussian distribution. We illustrate this property by comparing the quantiles of the test statistics obtained using this method (dCRT-logit) with those from the original D0CRT."><img alt="" src="../../../_images/sphx_glr_plot_dcrt_logit_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_dcrt_logit.html#sphx-glr-generated-gallery-examples-plot-dcrt-logit-py"><span class="std std-ref">Conditional Randomization Test for Sparse Logistic Regression</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_dcrt_logit.html"><span class="doc">Conditional Randomization Test for Sparse Logistic Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional Randomization Test for Sparse Logistic Regression</div>
 </div></div><div style='clear:both'></div></section>
 </section>
@@ -965,6 +1001,7 @@ possible to update each component of a nested object.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.importance"><code class="docutils literal notranslate"><span class="pre">D0CRT.importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.fit_importance"><code class="docutils literal notranslate"><span class="pre">D0CRT.fit_importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.fdr_selection"><code class="docutils literal notranslate"><span class="pre">D0CRT.fdr_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.fwer_selection"><code class="docutils literal notranslate"><span class="pre">D0CRT.fwer_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">D0CRT.get_metadata_routing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.get_params"><code class="docutils literal notranslate"><span class="pre">D0CRT.get_params()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.D0CRT.importance_selection"><code class="docutils literal notranslate"><span class="pre">D0CRT.importance_selection()</span></code></a></li>

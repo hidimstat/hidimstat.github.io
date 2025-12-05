@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1da0d382"></script>
+    <script src="../../../_static/documentation_options.js?v=9b1d0ec0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -563,21 +563,7 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.</p>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mask</span></a> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">mask_img_</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[fetch_haxby] Added README.md to /home/circleci/nilearn_data
-[fetch_haxby] Dataset created in /home/circleci/nilearn_data/haxby2001
-[fetch_haxby] Downloading data from https://www.nitrc.org/frs/download.php/7868/mask.nii.gz ...
-[fetch_haxby]  ...done. (0 seconds, 0 min)
-
-[fetch_haxby] Downloading data from http://data.pymvpa.org/datasets/haxby2001/MD5SUMS ...
-[fetch_haxby]  ...done. (0 seconds, 0 min)
-
-[fetch_haxby] Downloading data from http://data.pymvpa.org/datasets/haxby2001/subj2-2010.01.14.tar.gz ...
-[fetch_haxby]
-Downloaded 194658304 of 291168628 bytes (66.9%%,    0.5s remaining)
-[fetch_haxby]  ...done. (2 seconds, 0 min)
-
-[fetch_haxby] Extracting data from /home/circleci/nilearn_data/haxby2001/3d2c7644e96a21be22fab60f69663a15/subj2-2010.01.14.tar.gz...
-[fetch_haxby] .. done.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[fetch_haxby] Dataset found in /home/circleci/nilearn_data/haxby2001
 </pre></div>
 </div>
 </section>
@@ -668,16 +654,16 @@ However you might benefit from clustering randomization taking
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:02,  3.97it/s]
-Fitting clustered inferences:  60%|██████    | 6/10 [00:10&lt;00:07,  1.89s/it]
-Fitting clustered inferences:  90%|█████████ | 9/10 [00:20&lt;00:02,  2.50s/it]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:20&lt;00:00,  2.08s/it]
+Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:01,  5.12it/s]
+Fitting clustered inferences:  60%|██████    | 6/10 [00:08&lt;00:06,  1.53s/it]
+Fitting clustered inferences:  90%|█████████ | 9/10 [00:18&lt;00:02,  2.26s/it]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:18&lt;00:00,  1.85s/it]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances:  30%|███       | 3/10 [00:00&lt;00:00, 20.37it/s]
-Computing importances:  60%|██████    | 6/10 [00:00&lt;00:00, 20.50it/s]
-Computing importances:  90%|█████████ | 9/10 [00:00&lt;00:00, 20.92it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 20.85it/s]
+Computing importances:  20%|██        | 2/10 [00:00&lt;00:00, 19.92it/s]
+Computing importances:  50%|█████     | 5/10 [00:00&lt;00:00, 21.93it/s]
+Computing importances:  80%|████████  | 8/10 [00:00&lt;00:00, 22.02it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 22.16it/s]
 
 array([ 2.82566950e-05,  2.82566950e-05,  2.82566950e-05, ...,
        -3.43297742e-04, -3.43297742e-04, -3.43297742e-04], shape=(39912,))
@@ -697,32 +683,14 @@ inverse survival function.</p>
 <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">=</span> <span class="mf">0.1</span>
 </pre></div>
 </div>
-<p>We now translate the FWER target into a z-score target.
-For the permutation test methods we do not need any additional correction
-since the p-values are already adjusted for multiple testing.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">zscore_threshold_corr</span></a> <span class="o">=</span> <span class="n">zscore_from_pval</span><span class="p">((</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>Other methods need to be corrected. We consider the Bonferroni correction.
-For methods that do not reduce the feature space, the correction
-consists in dividing by the number of features.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">correction</span></a> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_features</span></a>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">zscore_threshold_no_clust</span></a> <span class="o">=</span> <span class="n">zscore_from_pval</span><span class="p">((</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">correction</span></a><span class="p">)</span>
-</pre></div>
-</div>
-<p>For methods that parcelates the brain into groups of voxels, the correction
-consists in dividing by the number of parcels (or clusters).</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">correction_clust</span></a> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">zscore_threshold_clust</span></a> <span class="o">=</span> <span class="n">zscore_from_pval</span><span class="p">((</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">correction_clust</span></a><span class="p">)</span>
-</pre></div>
-</div>
 <p>Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called <cite>plot_map</cite> that wraps all these steps.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="kn">import</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.get_cmap.html#matplotlib.pyplot.get_cmap" title="matplotlib.pyplot.get_cmap" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">get_cmap</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">nilearn.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_stat_map</span><span class="p">,</span> <span class="n">show</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat.statistical_tools.p_values</span><span class="w"> </span><span class="kn">import</span> <span class="n">zscore_from_pval</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_map</span><span class="p">(</span>
@@ -749,16 +717,20 @@ called <cite>plot_map</cite> that wraps all these steps.</p>
     <span class="p">)</span>
 
 
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected_cludl</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL.fwer_selection" title="hidimstat.CluDL.fwer_selection" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method"><span class="n">cludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="n">fwer</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plot_map</span><span class="p">(</span>
-    <span class="n">zscore_from_pval</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cludl</span><span class="o">.</span><span class="n">pvalues_</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cludl</span><span class="o">.</span><span class="n">one_minus_pvalues_</span></a><span class="p">),</span>
-    <span class="nb">float</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">zscore_threshold_clust</span></a><span class="p">),</span>
-    <span class="s2">&quot;CluDL&quot;</span><span class="p">,</span>
+    <span class="n">zscore_from_pval</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cludl</span><span class="o">.</span><span class="n">pvalues_</span></a><span class="p">)</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected_cludl</span></a><span class="p">,</span>
+    <span class="nb">float</span><span class="p">(</span><span class="n">zscore_from_pval</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">)),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;CluDL&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">encludl</span><span class="o">.</span><span class="n">pvalues_</span></a> <span class="o">&lt;</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected</span></a><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected</span></a><span class="p">[(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">encludl</span><span class="o">.</span><span class="n">one_minus_pvalues_</span></a> <span class="o">&lt;</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">plot_map</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected</span></a><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;EnCluDL&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected_encludl</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fwer_selection" title="hidimstat.EnCluDL.fwer_selection" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method"><span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="n">fwer</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">z_score_encludl</span></a> <span class="o">=</span> <span class="n">zscore_from_pval</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">encludl</span><span class="o">.</span><span class="n">pvalues_</span></a><span class="p">)</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected_encludl</span></a>
+<span class="n">plot_map</span><span class="p">(</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">z_score_encludl</span></a><span class="p">,</span>
+    <span class="nb">float</span><span class="p">(</span><span class="n">zscore_from_pval</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">target_fwer</span></a> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">)),</span>
+    <span class="s2">&quot;EnCluDL&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="c1"># Finally, calling plotting.show() is necessary to display the figure when</span>
 <span class="c1"># running as a script outside IPython</span>
 <span class="n">show</span><span class="p">()</span>
@@ -768,8 +740,8 @@ called <cite>plot_map</cite> that wraps all these steps.</p>
 <li><img src="../../../_images/sphx_glr_plot_fmri_data_example_001.png" srcset="../../../_images/sphx_glr_plot_fmri_data_example_001.png" alt="plot fmri data example" class = "sphx-glr-multi-img"/></li>
 <li><img src="../../../_images/sphx_glr_plot_fmri_data_example_002.png" srcset="../../../_images/sphx_glr_plot_fmri_data_example_002.png" alt="plot fmri data example" class = "sphx-glr-multi-img"/></li>
 </ul>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/memory.py:326: UserWarning: Data array used to create a new image contains 64-bit ints. This is likely due to creating the array with numpy and passing `int` as the `dtype`. Many tools such as FSL and SPM cannot deal with int64 in Nifti images, so for compatibility the data has been converted to int32.
-  return self.func(*args, **kwargs)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Using number of clusters for multiple testing correction.
+Using number of features for multiple testing correction.
 </pre></div>
 </div>
 </section>
@@ -798,8 +770,8 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 31.417 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  2710 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 20.681 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  3025 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b6c6a679d257e221e442c55b925ef0bf/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>

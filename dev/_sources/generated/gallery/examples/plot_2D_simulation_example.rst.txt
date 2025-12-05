@@ -115,7 +115,7 @@ the Bonferroni correction, applying a factor equal to the number of features. Fo
 details about the Desparsified Lasso method, see :footcite:t:`javanmard2014confidence`,
 :footcite:t:`zhang2014confidence` and :footcite:t:`van2014asymptotically`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-102
+.. GENERATED FROM PYTHON SOURCE LINES 74-100
 
 .. code-block:: Python
 
@@ -134,9 +134,7 @@ details about the Desparsified Lasso method, see :footcite:t:`javanmard2014confi
     dl.fit_importance(X_init, y)
 
     # compute estimated support (first method)
-    selected_dl = (dl.pvalues_ < (fwer_target / 2) / n_features) | (
-        dl.one_minus_pvalues_ < (fwer_target / 2) / n_features
-    )
+    selected_dl = dl.fwer_selection(fwer=fwer_target, n_tests=n_features)
 
     tp_mask = ((selected_dl.astype(int) == 1) & (beta == 1)).astype(bool)
     fp_mask = ((selected_dl.astype(int) == 1) & (beta == 0)).astype(bool)
@@ -161,11 +159,11 @@ details about the Desparsified Lasso method, see :footcite:t:`javanmard2014confi
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-104
+.. GENERATED FROM PYTHON SOURCE LINES 101-102
 
 We visualize the support estimated by the Desparsified Lasso method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-117
+.. GENERATED FROM PYTHON SOURCE LINES 102-115
 
 .. code-block:: Python
 
@@ -194,7 +192,7 @@ We visualize the support estimated by the Desparsified Lasso method.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-123
+.. GENERATED FROM PYTHON SOURCE LINES 116-121
 
 It can be seen that:
 **1.** the Desparsified Lasso method is not powerful enough to recover the support,
@@ -202,7 +200,7 @@ it only selects scattered pixels as true positives without identifying the regio
 **2.** the number of false positives is quite high, and sometimes false positives are
 located far from the true support.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-136
+.. GENERATED FROM PYTHON SOURCE LINES 124-134
 
 Clustered inference with CluDL
 -------------------------------
@@ -215,7 +213,7 @@ but here the correction factor is equal to the number of clusters instead of the
 number of features. For more details about CluDL, see
 :footcite:t:`chevalier2022spatially`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-159
+.. GENERATED FROM PYTHON SOURCE LINES 134-155
 
 .. code-block:: Python
 
@@ -237,9 +235,7 @@ number of features. For more details about CluDL, see
     clu_dl = CluDL(desparsified_lasso=dl_2, clustering=clustering, random_state=0)
     clu_dl.fit_importance(X_init, y)
 
-    selected_cdl = (clu_dl.pvalues_ < (fwer_target / 2) / n_clusters) | (
-        clu_dl.one_minus_pvalues_ < (fwer_target / 2) / n_clusters
-    )
+    selected_cdl = clu_dl.fwer_selection(fwer=fwer_target, n_tests=n_clusters)
 
 
 
@@ -249,11 +245,11 @@ number of features. For more details about CluDL, see
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-161
+.. GENERATED FROM PYTHON SOURCE LINES 156-157
 
 Visualizing the support estimated by CluDL
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-182
+.. GENERATED FROM PYTHON SOURCE LINES 157-178
 
 .. code-block:: Python
 
@@ -290,14 +286,14 @@ Visualizing the support estimated by CluDL
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-187
+.. GENERATED FROM PYTHON SOURCE LINES 179-183
 
 With ``CluDL``, the support recovery is more powerful, with large regions of the true
 support being correctly identified. However, some false positives remain. In this
 case, these false positives consist of small clusters that can be either contiguous to
 the true support or located far from it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 190-201
+.. GENERATED FROM PYTHON SOURCE LINES 186-197
 
 Inference with Ensembled CluDL
 ------------------------------
@@ -311,7 +307,7 @@ Bonferroni correction with a factor equal to the number of clusters on the p-val
 obtained by aggregating the different ``CluDL`` runs. For more details about ``EnCluDL``,
 see :footcite:t:`chevalier2022spatially`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-219
+.. GENERATED FROM PYTHON SOURCE LINES 197-213
 
 .. code-block:: Python
 
@@ -328,9 +324,7 @@ see :footcite:t:`chevalier2022spatially`.
     )
     enclu_dl.fit_importance(X_init, y)
 
-    selected_ecdl = (enclu_dl.pvalues_ < (fwer_target / 2) / n_clusters) | (
-        enclu_dl.one_minus_pvalues_ < (fwer_target / 2) / n_clusters
-    )
+    selected_ecdl = enclu_dl.fwer_selection(fwer=fwer_target, n_tests=n_clusters)
 
 
 
@@ -341,17 +335,17 @@ see :footcite:t:`chevalier2022spatially`.
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting clustered inferences:  50%|█████     | 10/20 [00:00<00:00, 21.09it/s]    Fitting clustered inferences:  75%|███████▌  | 15/20 [00:00<00:00, 14.31it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 12.38it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 13.54it/s]
-    Computing importances:   0%|          | 0/20 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 20/20 [00:00<00:00, 293.97it/s]
+    Fitting clustered inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting clustered inferences:  50%|█████     | 10/20 [00:00<00:00, 21.17it/s]    Fitting clustered inferences:  75%|███████▌  | 15/20 [00:00<00:00, 14.75it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 13.06it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 14.16it/s]
+    Computing importances:   0%|          | 0/20 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 20/20 [00:00<00:00, 365.88it/s]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 220-221
+.. GENERATED FROM PYTHON SOURCE LINES 214-215
 
 Visualizing the support estimated by EnCluDL
 
-.. GENERATED FROM PYTHON SOURCE LINES 221-243
+.. GENERATED FROM PYTHON SOURCE LINES 215-237
 
 .. code-block:: Python
 
@@ -389,7 +383,7 @@ Visualizing the support estimated by EnCluDL
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 244-249
+.. GENERATED FROM PYTHON SOURCE LINES 238-243
 
 Compared to ``CluDL``, ``EnCluDL`` further improves the inference, primarily by reducing the
 number of false positives located far from the true support. An intuitive explanation
@@ -397,7 +391,7 @@ for this improvement is that while false discoveries far from the true support m
 occur randomly in a single clustering, they are less likely to occur repeatedly in
 overlapping clusters obtained from different bootstrap samples of the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 252-261
+.. GENERATED FROM PYTHON SOURCE LINES 246-255
 
 Support recovery with spatial tolerance
 ---------------------------------------
@@ -409,7 +403,7 @@ The idea is to penalize less those false discoveries that are close
 to the true support. To achieve this, we introduce an extended support that includes
 the true support and a tolerance region around it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 261-284
+.. GENERATED FROM PYTHON SOURCE LINES 255-278
 
 .. code-block:: Python
 
@@ -448,14 +442,14 @@ the true support and a tolerance region around it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 285-289
+.. GENERATED FROM PYTHON SOURCE LINES 279-283
 
 Comparison with spatial tolerance
 ---------------------------------
 Now, we compare the three methods presented above (Desparsified Lasso, CluDL and
 EnCluDL) in terms of support recovery with spatial tolerance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 289-321
+.. GENERATED FROM PYTHON SOURCE LINES 283-315
 
 .. code-block:: Python
 
@@ -503,7 +497,7 @@ EnCluDL) in terms of support recovery with spatial tolerance.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 322-338
+.. GENERATED FROM PYTHON SOURCE LINES 316-332
 
 Note: Choosing inference parameters
 -----------------------------------
@@ -522,7 +516,7 @@ the average cluster radius. In this example, we choose ``n_clusters = 200``,
 leading to a theoretical spatial tolerance ``delta = 6``, which is still
 conservative (see Results).
 
-.. GENERATED FROM PYTHON SOURCE LINES 341-344
+.. GENERATED FROM PYTHON SOURCE LINES 335-338
 
 References
 ----------
@@ -531,9 +525,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 34.847 seconds)
+   **Total running time of the script:** (0 minutes 25.974 seconds)
 
-**Estimated memory usage:**  222 MB
+**Estimated memory usage:**  320 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_2D_simulation_example.py:

@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1da0d382"></script>
+    <script src="../../../_static/documentation_options.js?v=9b1d0ec0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -642,7 +642,7 @@ importance() to compute the importance scores for each group.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.fdr_selection">
-<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L228-L306"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.fdr_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-14</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L225-L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.fdr_selection" title="Link to this definition">#</a></dt>
 <dd><p>Performs feature selection based on False Discovery Rate (FDR) control.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -656,16 +656,20 @@ importance() to compute the importance scores for each group.</p>
 <dt><strong>reshaping_function: callable or None, default=None</strong></dt><dd><p>Optional reshaping function for FDR control methods.
 If None, defaults to sum of reciprocals for ‘bhy’.</p>
 </dd>
-<dt><strong>alternative_hippothesis: bool or None, default=False</strong></dt><dd><p>If False, selects features with small p-values.
-If True, selects features with large p-values (close to 1).
-If None, selects features that have either small or large p-values.</p>
+<dt><strong>two_tailed_test: bool, default=False</strong></dt><dd><p>If True, performs two-tailed test selection using both p-values
+for positive effects and one-minus p-values for negative effects. The sign
+of the effect is determined from the sign of the importance scores.</p>
+</dd>
+<dt><strong>eps</strong><span class="classifier">float, default=1e-14</span></dt><dd><p>Small value to ensure numerical stability when computing one-minus p-values.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selected</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Boolean mask of selected features.
-True indicates selected features, False indicates non-selected features.</p>
+<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+1 indicates selected features with positive effects,
+-1 indicates selected features with negative effects,
+0 indicates non-selected features.</p>
 </dd>
 </dl>
 </dd>
@@ -674,6 +678,38 @@ True indicates selected features, False indicates non-selected features.</p>
 <dt>ValueError</dt><dd><p>If <cite>importances_</cite> haven’t been computed yet</p>
 </dd>
 <dt>AssertionError</dt><dd><p>If <cite>pvalues_</cite> are missing or fdr_control is invalid</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.fwer_selection">
+<span class="sig-name descname"><span class="pre">fwer_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fwer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procedure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bonferroni'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L300-L351"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.fwer_selection" title="Link to this definition">#</a></dt>
+<dd><p>Performs feature selection based on Family-Wise Error Rate (FWER) control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fwer</strong><span class="classifier">float</span></dt><dd><p>The target family-wise error rate level (between 0 and 1)</p>
+</dd>
+<dt><strong>procedure</strong><span class="classifier">{‘bonferroni’}, default=’bonferroni’</span></dt><dd><p>The FWER control method to use:
+- ‘bonferroni’: Bonferroni correction</p>
+</dd>
+<dt><strong>n_tests</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Factor for multiple testing correction. If None, uses the number of clusters
+or the number of features in this order.</p>
+</dd>
+<dt><strong>two_tailed_test</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses the sign of the importance scores to indicate whether the
+selected features have positive or negative effects.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+1 indicates selected features with positive effects,
+-1 indicates selected features with negative effects,
+0 indicates non-selected features.</p>
 </dd>
 </dl>
 </dd>
@@ -720,7 +756,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.importance_selection">
-<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L145-L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.importance_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L142-L171"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.importance_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on variable importance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -746,7 +782,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.plot_importance">
-<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L308-L383"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.plot_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L353-L428"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.plot_importance" title="Link to this definition">#</a></dt>
 <dd><p>Plot feature importances as a horizontal bar plot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -771,7 +807,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_perturbation.BasePerturbation.pvalue_selection">
-<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L176-L226"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.pvalue_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L173-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_perturbation.BasePerturbation.pvalue_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on p-values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -826,22 +862,22 @@ possible to update each component of a nested object.</p>
 <section id="examples-using-hidimstat-base-perturbation-baseperturbation">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.base_perturbation.BasePerturbation</span></code><a class="headerlink" href="#examples-using-hidimstat-base-perturbation-baseperturbation" title="Link to this heading">#</a></h2>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [:footciteChamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier."><img alt="" src="../../../_images/sphx_glr_plot_cfi_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_cfi.html#sphx-glr-generated-gallery-examples-plot-cfi-py"><span class="std std-ref">Conditional Feature Importance (CFI) on the wine dataset</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_cfi.html"><span class="doc">Conditional Feature Importance (CFI) on the wine dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional Feature Importance (CFI) on the wine dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield."><img alt="" src="../../../_images/sphx_glr_plot_loco_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_loco.html#sphx-glr-generated-gallery-examples-plot-loco-py"><span class="std std-ref">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_loco.html"><span class="doc">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</span></a></p>
   <div class="sphx-glr-thumbnail-title">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates on XOR data that variables can be conditionally important even if they are not marginally important. The conditional importance is computed using the Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models."><img alt="" src="../../../_images/sphx_glr_plot_conditional_vs_marginal_xor_data_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_conditional_vs_marginal_xor_data.html#sphx-glr-generated-gallery-examples-plot-conditional-vs-marginal-xor-data-py"><span class="std std-ref">Conditional vs Marginal Importance on the XOR dataset</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_conditional_vs_marginal_xor_data.html"><span class="doc">Conditional vs Marginal Importance on the XOR dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional vs Marginal Importance on the XOR dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the limitations of variable selection methods based on linear models using the circles dataset. We first use the distilled conditional randomization test (d0CRT), which is based on linear models :footciteliu2022fast and then demonstrate how model-agnostic methods, such as Leave-One-Covariate-Out (LOCO), can identify important variables even when classes are not linearly separable."><img alt="" src="../../../_images/sphx_glr_plot_model_agnostic_importance_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_model_agnostic_importance.html#sphx-glr-generated-gallery-examples-plot-model-agnostic-importance-py"><span class="std std-ref">Variable Selection Under Model Misspecification</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_model_agnostic_importance.html"><span class="doc">Variable Selection Under Model Misspecification</span></a></p>
   <div class="sphx-glr-thumbnail-title">Variable Selection Under Model Misspecification</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show on the Iris dataset how to measure variable importance for classification tasks. We use two different variable importance methods: Conditional Feature importance (CFI) and Permutation Feature Importance (PFI) with two different classifiers: Logistic Regression (LR) and Support Vector Classifier (SVC). We start by measuring the importance of individual variables and then show how to measure the importance of groups of variables."><img alt="" src="../../../_images/sphx_glr_plot_importance_classification_iris_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_importance_classification_iris.html#sphx-glr-generated-gallery-examples-plot-importance-classification-iris-py"><span class="std std-ref">Measuring Individual and Group Variable Importance for Classification</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_importance_classification_iris.html"><span class="doc">Measuring Individual and Group Variable Importance for Classification</span></a></p>
   <div class="sphx-glr-thumbnail-title">Measuring Individual and Group Variable Importance for Classification</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the pitfalls of using permutation feature importance (PFI) on the California housing dataset. PFI measures the importance of a variable. However, it does not measure conditional importance and does not provide statistical control over the risk of making false discoveries, i.e., the risk of declaring a variable as important when it is not."><img alt="" src="../../../_images/sphx_glr_plot_pitfalls_permutation_importance_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_pitfalls_permutation_importance.html#sphx-glr-generated-gallery-examples-plot-pitfalls-permutation-importance-py"><span class="std std-ref">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</span></a></p>
+<p><a class="reference internal" href="../../gallery/examples/plot_pitfalls_permutation_importance.html"><span class="doc">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</div>
 </div></div><div style='clear:both'></div></section>
 </section>
@@ -899,6 +935,7 @@ possible to update each component of a nested object.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.importance"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.fit_importance"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.fit_importance()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.fdr_selection"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.fdr_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.fwer_selection"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.fwer_selection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.get_metadata_routing()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.get_params"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.get_params()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.base_perturbation.BasePerturbation.importance_selection"><code class="docutils literal notranslate"><span class="pre">BasePerturbation.importance_selection()</span></code></a></li>

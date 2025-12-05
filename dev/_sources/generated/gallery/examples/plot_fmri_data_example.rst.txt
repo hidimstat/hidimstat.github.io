@@ -147,21 +147,7 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
  .. code-block:: none
 
-    [fetch_haxby] Added README.md to /home/circleci/nilearn_data
-    [fetch_haxby] Dataset created in /home/circleci/nilearn_data/haxby2001
-    [fetch_haxby] Downloading data from https://www.nitrc.org/frs/download.php/7868/mask.nii.gz ...
-    [fetch_haxby]  ...done. (0 seconds, 0 min)
-
-    [fetch_haxby] Downloading data from http://data.pymvpa.org/datasets/haxby2001/MD5SUMS ...
-    [fetch_haxby]  ...done. (0 seconds, 0 min)
-
-    [fetch_haxby] Downloading data from http://data.pymvpa.org/datasets/haxby2001/subj2-2010.01.14.tar.gz ...
-    [fetch_haxby]     Downloaded 194658304 of 291168628 bytes (66.9%%,    0.5s remaining)
-    [fetch_haxby]  ...done. (2 seconds, 0 min)
-
-    [fetch_haxby] Extracting data from /home/circleci/nilearn_data/haxby2001/3d2c7644e96a21be22fab60f69663a15/subj2-2010.01.14.tar.gz...
-    [fetch_haxby] .. done.
-
+    [fetch_haxby] Dataset found in /home/circleci/nilearn_data/haxby2001
 
 
 
@@ -202,10 +188,9 @@ For fMRI data taking 500 clusters is generally a good default choice.
 Making the inference with several algorithms
 --------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-145
+.. GENERATED FROM PYTHON SOURCE LINES 128-144
 
 .. code-block:: Python
-
 
 
     from sklearn.linear_model import LassoCV
@@ -230,18 +215,18 @@ Making the inference with several algorithms
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-149
+.. GENERATED FROM PYTHON SOURCE LINES 145-148
 
 Due to the very high dimensionality of the problem (close to 40,000 voxels) computing
 a p-value map with Desparsified Lasso would be very memory consuming and may also be
 inadequate since it does not take into account the spatial structure of the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-154
+.. GENERATED FROM PYTHON SOURCE LINES 151-153
 
 Now, the clustered inference algorithm which combines parcellation
 and high-dimensional inference (c.f. References).
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-176
+.. GENERATED FROM PYTHON SOURCE LINES 153-176
 
 .. code-block:: Python
 
@@ -266,6 +251,7 @@ and high-dimensional inference (c.f. References).
         clustering=ward, desparsified_lasso=deepcopy(desparsified_lasso_1), random_state=0
     )
     cludl.fit_importance(X, y)
+
 
 
 
@@ -296,7 +282,6 @@ However you might benefit from clustering randomization taking
 .. code-block:: Python
 
 
-
     from hidimstat.ensemble_clustered_inference import EnCluDL
 
     encludl = EnCluDL(
@@ -313,12 +298,13 @@ However you might benefit from clustering randomization taking
 
 
 
+
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  3.97it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:10<00:07,  1.89s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:20<00:02,  2.50s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:20<00:00,  2.08s/it]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  30%|███       | 3/10 [00:00<00:00, 20.37it/s]    Computing importances:  60%|██████    | 6/10 [00:00<00:00, 20.50it/s]    Computing importances:  90%|█████████ | 9/10 [00:00<00:00, 20.92it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 20.85it/s]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:01,  5.12it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:08<00:06,  1.53s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:18<00:02,  2.26s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:18<00:00,  1.85s/it]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  20%|██        | 2/10 [00:00<00:00, 19.92it/s]    Computing importances:  50%|█████     | 5/10 [00:00<00:00, 21.93it/s]    Computing importances:  80%|████████  | 8/10 [00:00<00:00, 22.02it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 22.16it/s]
 
     array([ 2.82566950e-05,  2.82566950e-05,  2.82566950e-05, ...,
            -3.43297742e-04, -3.43297742e-04, -3.43297742e-04], shape=(39912,))
@@ -336,7 +322,7 @@ inverse survival function.
 
 First, we set theoretical FWER target at 10%.
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-213
+.. GENERATED FROM PYTHON SOURCE LINES 207-214
 
 .. code-block:: Python
 
@@ -353,75 +339,15 @@ First, we set theoretical FWER target at 10%.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-217
 
-We now translate the FWER target into a z-score target.
-For the permutation test methods we do not need any additional correction
-since the p-values are already adjusted for multiple testing.
-
-.. GENERATED FROM PYTHON SOURCE LINES 217-220
-
-.. code-block:: Python
-
-
-    zscore_threshold_corr = zscore_from_pval((target_fwer / 2))
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 221-224
-
-Other methods need to be corrected. We consider the Bonferroni correction.
-For methods that do not reduce the feature space, the correction
-consists in dividing by the number of features.
-
-.. GENERATED FROM PYTHON SOURCE LINES 224-228
-
-.. code-block:: Python
-
-
-    correction = 1.0 / n_features
-    zscore_threshold_no_clust = zscore_from_pval((target_fwer / 2) * correction)
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 229-231
-
-For methods that parcelates the brain into groups of voxels, the correction
-consists in dividing by the number of parcels (or clusters).
-
-.. GENERATED FROM PYTHON SOURCE LINES 231-235
-
-.. code-block:: Python
-
-
-    correction_clust = 1.0 / n_clusters
-    zscore_threshold_clust = zscore_from_pval((target_fwer / 2) * correction_clust)
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 236-240
+.. GENERATED FROM PYTHON SOURCE LINES 215-219
 
 Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called `plot_map` that wraps all these steps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 240-285
+.. GENERATED FROM PYTHON SOURCE LINES 219-270
 
 .. code-block:: Python
 
@@ -429,7 +355,8 @@ called `plot_map` that wraps all these steps.
 
     from matplotlib.pyplot import get_cmap
     from nilearn.plotting import plot_stat_map, show
-    from sklearn.preprocessing import StandardScaler
+
+    from hidimstat.statistical_tools.p_values import zscore_from_pval
 
 
     def plot_map(
@@ -456,19 +383,24 @@ called `plot_map` that wraps all these steps.
         )
 
 
+    selected_cludl = cludl.fwer_selection(fwer=target_fwer, two_tailed_test=True)
     plot_map(
-        zscore_from_pval(cludl.pvalues_, cludl.one_minus_pvalues_),
-        float(zscore_threshold_clust),
-        "CluDL",
+        zscore_from_pval(cludl.pvalues_) * selected_cludl,
+        float(zscore_from_pval(target_fwer / 2 / n_clusters)),
+        title="CluDL",
     )
 
-    selected = encludl.pvalues_ < target_fwer / 2 / n_clusters
-    selected = selected.astype(int)
-    selected[(encludl.one_minus_pvalues_ < target_fwer / 2 / n_clusters)] = -1
-    plot_map(selected, 0.5, "EnCluDL", vmin=-1, vmax=1)
+    selected_encludl = encludl.fwer_selection(fwer=target_fwer, two_tailed_test=True)
+    z_score_encludl = zscore_from_pval(encludl.pvalues_) * selected_encludl
+    plot_map(
+        z_score_encludl,
+        float(zscore_from_pval(target_fwer / 2 / n_clusters)),
+        "EnCluDL",
+    )
     # Finally, calling plotting.show() is necessary to display the figure when
     # running as a script outside IPython
     show()
+
 
 
 
@@ -495,13 +427,13 @@ called `plot_map` that wraps all these steps.
 
  .. code-block:: none
 
-    /home/circleci/project/.venv/lib/python3.13/site-packages/joblib/memory.py:326: UserWarning: Data array used to create a new image contains 64-bit ints. This is likely due to creating the array with numpy and passing `int` as the `dtype`. Many tools such as FSL and SPM cannot deal with int64 in Nifti images, so for compatibility the data has been converted to int32.
-      return self.func(*args, **kwargs)
+    Using number of clusters for multiple testing correction.
+    Using number of features for multiple testing correction.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 286-300
+.. GENERATED FROM PYTHON SOURCE LINES 271-285
 
 Analysis of the results
 -----------------------
@@ -518,7 +450,7 @@ Finally, the solution provided by the ensemble clustered inference algorithm
 (EnCluDL) seems realistic as we recover the visual cortex and do not make
 spurious discoveries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 303-306
+.. GENERATED FROM PYTHON SOURCE LINES 288-291
 
 References
 ----------
@@ -527,9 +459,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 31.417 seconds)
+   **Total running time of the script:** (1 minutes 20.681 seconds)
 
-**Estimated memory usage:**  2710 MB
+**Estimated memory usage:**  3025 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:
