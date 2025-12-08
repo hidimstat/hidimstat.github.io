@@ -43,16 +43,17 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=d37b678b"></script>
+    <script src="_static/documentation_options.js?v=d4a81d78"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=97f0b27d"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'concepts';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind_inria/hidimstat/main/doc_conf/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2.0b1.dev361+g9650d2d50';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.2.0b1.dev362+g1882f605b';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -491,6 +492,121 @@
                   
   <section id="definition-of-concepts">
 <span id="concepts"></span><h1><span class="section-number">1. </span>Definition of concepts<a class="headerlink" href="#definition-of-concepts" title="Link to this heading">#</a></h1>
+<section id="variable-importance">
+<h2><span class="section-number">1.1. </span>Variable Importance<a class="headerlink" href="#variable-importance" title="Link to this heading">#</a></h2>
+<p>Global Variable Importance (VI) aims to assign a measure of
+relevance to each feature <span class="math notranslate nohighlight">\(X^j\)</span> with respect to a target  <span class="math notranslate nohighlight">\(Y\)</span> in the
+data-generating process. In Machine Learning, it can be seen as a measure
+of how much a variable contributes to the predictive power of a model. We
+can then define “important” variables as those whose absence degrades
+the model’s performance <a class="footnote-reference brackets" href="#footcite-covert2020" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>So if <code class="docutils literal notranslate"><span class="pre">VI</span></code> is a variable importance method, <code class="docutils literal notranslate"><span class="pre">X</span></code> a variable matrix and <code class="docutils literal notranslate"><span class="pre">y</span></code>
+the target variable, the importance of all the variables
+can be estimated as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># instantiate the object</span>
+<span class="n">vi</span> <span class="o">=</span> <span class="n">VI</span><span class="p">()</span>
+<span class="c1"># fit the models in the method</span>
+<span class="n">vi</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># compute the importance and the pvalues</span>
+<span class="n">importance</span> <span class="o">=</span> <span class="n">vi</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># get importance for each feature</span>
+<span class="n">importance</span> <span class="o">=</span> <span class="n">vi</span><span class="o">.</span><span class="n">importances_</span>
+</pre></div>
+</div>
+<p>It allow us to rank the variables from more to less important.</p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">VI</span></code> can be a variable importance method that inherits from <a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.base_variable_importance.BaseVariableImportance</span></code></a></p>
+</section>
+<section id="variable-selection">
+<h2><span class="section-number">1.2. </span>Variable Selection<a class="headerlink" href="#variable-selection" title="Link to this heading">#</a></h2>
+<p>(Controlled) Variable selection is then the next step that entails filtering out the
+significant features in a way that provides statistical guarantees,
+e.g. type-I error or False Discovery Rate (FDR).</p>
+<p>For example, if we want to select the variables with a p-value lower than
+a threshold <code class="docutils literal notranslate"><span class="pre">p</span></code>, we can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># selection of the importance and pvalues</span>
+<span class="n">vi</span><span class="o">.</span><span class="n">pvalue_selection</span><span class="p">(</span><span class="n">threshold_max</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similarly, we could use <code class="docutils literal notranslate"><span class="pre">VI.fdr_selection</span></code> or <code class="docutils literal notranslate"><span class="pre">VI.fwer_selection</span></code> to obtain
+FDR or FWER control.</p>
+<p>This step is important to make insighful discoveries. Even if variable
+importance provides a ranking, due to the estimation step, we need
+statistical control to do reliable selection.</p>
+</section>
+<section id="variable-selection-vs-variable-importance">
+<h2><span class="section-number">1.3. </span>Variable Selection vs Variable Importance<a class="headerlink" href="#variable-selection-vs-variable-importance" title="Link to this heading">#</a></h2>
+<p>In the literature, there is a gap between <em>variable selection</em> and
+<em>variable importance</em>, as most methods are dedicated to one of these goals
+exclusively <a class="footnote-reference brackets" href="#footcite-reyerolobo2025principledapproachcomparingvariable" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.
+For instance, Conditional Feature Importance (<a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.CFI</span></code></a>) typically
+serves only as a measure of importance without offering statistical guarantees,
+whereas Model-X Knockoffs (<a class="reference internal" href="generated/api/class/hidimstat.ModelXKnockoff.html#hidimstat.ModelXKnockoff" title="hidimstat.ModelXKnockoff"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.ModelXKnockoff</span></code></a>) generally
+provide selection but little beyond that. For this reason, we have adapted the
+methods to provide both types of information while preserving their standard
+names.</p>
+</section>
+<section id="types-of-vi-methods">
+<h2><span class="section-number">1.4. </span>Types of VI methods<a class="headerlink" href="#types-of-vi-methods" title="Link to this heading">#</a></h2>
+<p>There are two main types of VI methods implemented in HiDimStat:</p>
+<p>1. <strong>Marginal methods</strong>: these methods provide importance to all the features
+are related with testing if <span class="math notranslate nohighlight">\(X^j\perp\!\!\!\!\perp Y\)</span>.
+An example of such methods is Leave One Covariate In (LOCI,
+<a class="footnote-reference brackets" href="#footcite-ewald-2024" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>).</p>
+<p>2. <strong>Conditional methods</strong>: these methods assign importance only to features that
+i.e., they contribute unique knowledge. They are related to Conditional
+Independence Testing, which consists of testing whether
+<span class="math notranslate nohighlight">\(X^j\perp\!\!\!\!\perp Y\mid X^{-j}\)</span>. Examples of such methods are
+<a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.LOCO</span></code></a> and <a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.CFI</span></code></a>.</p>
+<p>Generally, conditional methods address the issue of false positives that often
+arise with marginal methods, which may assign importance to variables just
+because they are correlated with truly important ones. By focusing on unique
+contributions, conditional methods help preserve parsimony, yielding a smaller
+and more meaningful subset of important features. However, in certain cases, the
+distinction between marginal and conditional methods can be more subtle. See
+<a class="reference internal" href="generated/gallery/examples/plot_conditional_vs_marginal_xor_data.html#sphx-glr-generated-gallery-examples-plot-conditional-vs-marginal-xor-data-py"><span class="std std-ref">Conditional vs Marginal Importance on the XOR dataset</span></a></p>
+</section>
+<section id="high-dimension-and-correlation">
+<h2><span class="section-number">1.5. </span>High-dimension and correlation<a class="headerlink" href="#high-dimension-and-correlation" title="Link to this heading">#</a></h2>
+<p>In high-dimensional and highly correlated settings, estimation becomes
+particularly challenging, as it is difficult to clearly distinguish important
+features from unimportant ones. For such problems, a preliminary filtering step
+can be applied to avoid having duplicate or redundant input features, or
+alternatively, one can consider grouping them <a class="footnote-reference brackets" href="#footcite-chamma-aaai2024" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> .
+Grouping consists of treating together features that represent the same
+underlying concept. This approach extends naturally to many methods,
+for example <a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.CFI</span></code></a>.</p>
+</section>
+<section id="statistical-inference">
+<h2><span class="section-number">1.6. </span>Statistical Inference<a class="headerlink" href="#statistical-inference" title="Link to this heading">#</a></h2>
+<p>Given the variability inherent in estimation, it is necessary to apply
+statistical control to the discoveries made. Simply selecting the most important
+features without such control is not valid. Different forms of guarantees can
+be employed, such as controlling the type-I error or the False Discovery Rate.
+This step is directly related to the task of Variable Selection.</p>
+</section>
+<section id="references">
+<h2><span class="section-number">1.7. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id5">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-covert2020" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Ian Covert, Scott M Lundberg, and Su-In Lee. Understanding Global Feature Contributions With Additive Importance Measures. In <em>Advances in Neural Information Processing Systems</em>, volume 33, 17212–17223. Curran Associates, Inc., 2020.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-reyerolobo2025principledapproachcomparingvariable" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Angel Reyero-Lobo, Pierre Neuvial, and Bertrand Thirion. A principled approach for comparing variable importance. 2025. URL: <a class="reference external" href="https://arxiv.org/abs/2507.17306">https://arxiv.org/abs/2507.17306</a>, <a class="reference external" href="https://arxiv.org/abs/2507.17306">arXiv:2507.17306</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-ewald-2024" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Fiona Katharina Ewald, Ludwig Bothmann, Marvin N. Wright, Bernd Bischl, Giuseppe Casalicchio, and Gunnar König. A guide to feature importance methods for scientific inference. In Luca Longo, Sebastian Lapuschkin, and Christin Seifert, editors, <em>Explainable Artificial Intelligence</em>, 440–464. Cham, 2024. Springer Nature Switzerland.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-chamma-aaai2024" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Ahmad Chamma, Bertrand Thirion, and Denis Engemann. Variable importance in high-dimensional settings requires grouping. <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>, 38(10):11195–11203, 2024. <a class="reference external" href="https://doi.org/10.1609/aaai.v38i10.28997">doi:10.1609/aaai.v38i10.28997</a>.</p>
+</aside>
+</aside>
+</div>
+</section>
 </section>
 
 
@@ -531,6 +647,24 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-importance">1.1. Variable Importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-selection">1.2. Variable Selection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-selection-vs-variable-importance">1.3. Variable Selection vs Variable Importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-vi-methods">1.4. Types of VI methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-dimension-and-correlation">1.5. High-dimension and correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-inference">1.6. Statistical Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.7. References</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
