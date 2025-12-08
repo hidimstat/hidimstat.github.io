@@ -1,0 +1,1094 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ModelXKnockoff &#8212; HiDimStat</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=42979f54"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.ModelXKnockoff';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind_inria/hidimstat/main/doc_conf/version.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev5+g63b0e4e46';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="DesparsifiedLasso" href="hidimstat.DesparsifiedLasso.html" />
+    <link rel="prev" title="D0CRT" href="hidimstat.D0CRT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../gallery/examples/index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../gallery/examples/index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html">BaseVariableImportance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbation.html">BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbationCV.html">BasePerturbationCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">GroupVariableImportanceMixin</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCO.html">LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.LOCOCV.html">LOCOCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.CFI.html">CFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.CFICV.html">CFICV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.CluDL.html">CluDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.EnCluDL.html">EnCluDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.PFICV.html">PFICV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">D0CRT</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ModelXKnockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.cfi_importance.html">cfi_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.d0crt_importance.html">d0crt_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso_importance.html">desparsified_lasso_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.model_x_knockoff_importance.html">model_x_knockoff_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.loco_importance.html">loco_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.pfi_importance.html">pfi_importance</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.visualization.PDP.html">PDP</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.desparsified_lasso.reid.html">reid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ModelXKnockoff</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="modelxknockoff">
+<h1>ModelXKnockoff<a class="headerlink" href="#modelxknockoff" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">ModelXKnockoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator=LassoCV(cv=KFold(n_splits=5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle=True)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter=200000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol=1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_generator=&lt;hidimstat.samplers.gaussian_knockoffs.GaussianKnockoffs</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preconfigure_lasso_path=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joblib_verbose=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs=1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L72-L561"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a></p>
+<p>Model-X Knockoff</p>
+<p>This module implements the Model-X knockoff inference procedure, which is an approach
+to control the False Discovery Rate (FDR) based on Candes <em>et al.</em><a class="footnote-reference brackets" href="#footcite-candes2018panning" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+The original implementation can be found at
+<a class="github reference external" href="https://github.com/msesia/knockoff-filter/blob/master/R/knockoff/R/knockoff_filter.R">msesia/knockoff-filter</a>
+The noisy variables are generated with second-order knockoff variables using the equi-correlated method.</p>
+<p>In addition, this function generates multiple sets of Gaussian knockoff variables and calculates
+the test statistics for each set. It then aggregates the test statistics across
+the sets to improve stability and power.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator</strong><span class="classifier">estimator, default=LassoCV(…)</span></dt><dd><p>Estimator used to compute knockoff statistics. Must expose coefficients via
+<cite>coef_</cite> (or <cite>best_estimator_.coef_</cite> for CV wrappers) after fit.</p>
+</dd>
+<dt><strong>ko_generator</strong><span class="classifier">object</span></dt><dd><p>Knockoff generator implementing fit(X) and sample(n_repeats, random_state).</p>
+</dd>
+<dt><strong>n_repeats: int, default=1</strong></dt><dd><p>Number of knockoff draws to average over.</p>
+</dd>
+<dt><strong>centered</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, standardize X before fitting the generator and computing statistics.</p>
+</dd>
+<dt><strong>preconfigure_lasso_path</strong><span class="classifier">bool, default=True</span></dt><dd><p>An optional function is called to configure the LassoCV estimator’s regularization path.
+The maximum alpha is computed as <cite>alpha_max = max(X_ko.T &#64; y) / (2 * n_features)</cite>
+and an alpha grid of length n_alphas is created between
+alpha_max * exp(-n_alphas) and alpha_max.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Random seed forwarded to the knockoff generator sampling.</p>
+</dd>
+<dt><strong>joblib_verbose</strong><span class="classifier">int, default=0</span></dt><dd><p>Verbosity level for parallel jobs.</p>
+</dd>
+<dt><strong>memory</strong><span class="classifier">str, joblib.Memory or None, default=None</span></dt><dd><p>Caching backend for expensive operations.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd><p>Number of parallel jobs (automatically capped to n_repeats).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">ndarray, shape (n_repeats, n_features)</span></dt><dd><p>Test statistics for each repeat.</p>
+</dd>
+<dt><strong>pvalues_</strong><span class="classifier">ndarray, shape (n_repeats, n_features)</span></dt><dd><p>Empirical p-values for each repeat.</p>
+</dd>
+<dt><strong>threshold_fdr_</strong><span class="classifier">float</span></dt><dd><p>Threshold computed by the FDR selection procedure.</p>
+</dd>
+<dt><strong>aggregated_pval_</strong><span class="classifier">ndarray or None</span></dt><dd><p>Aggregated p-values (when using p-value aggregation).</p>
+</dd>
+<dt><strong>aggregated_eval_</strong><span class="classifier">ndarray or None</span></dt><dd><p>Aggregated e-values (when using e-value aggregation).</p>
+</dd>
+<dt><strong>estimators_</strong><span class="classifier">list of estimators</span></dt><dd><p>List of fitted estimators on the concatenated design matrices for each repeat.</p>
+</dd>
+<dt><strong>n_features_</strong><span class="classifier">int</span></dt><dd><p>Number of features on which the model was fitted.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Use the model_x_knockoff function for a functional interface that wraps this
+class. The class focuses on generator fitting, repeated knockoff sampling,
+computing statistics and performing FDR-based selection.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator=LassoCV(cv=KFold(n_splits=5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle=True)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter=200000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol=1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_generator=&lt;hidimstat.samplers.gaussian_knockoffs.GaussianKnockoffs</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preconfigure_lasso_path=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joblib_verbose=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs=1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L135-L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L176-L216"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.fit" title="Link to this definition">#</a></dt>
+<dd><p>Fit the knockoff generator and estimators to the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Training data matrix where n_samples is the number of samples and
+n_features is the number of features.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Returns the instance itself.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.importance">
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L224-L267"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.importance" title="Link to this definition">#</a></dt>
+<dd><p>Calculate feature importance scores using Model-X knockoffs.</p>
+<p>This method generates knockoff variables and computes test statistics to measure
+feature importance. For multiple repeats, the scores are averaged across repeats
+to improve stability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Training data matrix where n_samples is the number of samples and
+n_features is the number of features.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Feature importance scores for each feature.
+Higher absolute values indicate higher importance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The method generates knockoff variables that satisfy the exchangeability property
+and computes test statistics comparing original features against their knockoffs.
+When n_repeats &gt; 1, multiple sets of knockoffs are generated and results are averaged.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.fit_importance">
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L269-L302"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.fit_importance" title="Link to this definition">#</a></dt>
+<dd><p>Fits the model to the data and computes feature importance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>The input data matrix where n_samples is the number of samples and
+n_features is the number of features.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>The target values.</p>
+</dd>
+<dt><strong>cv</strong><span class="classifier">None or cross-validation generator, default=None</span></dt><dd><p>Cross-validation parameter. Not used in this method.
+A warning will be issued if provided.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Feature importance scores (p-values) for each feature.
+Lower values indicate higher importance. Values range from 0 to 1.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#hidimstat.ModelXKnockoff.fit" title="hidimstat.ModelXKnockoff.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></dt><dd><p>Method for fitting the generator only</p>
+</dd>
+<dt><a class="reference internal" href="#hidimstat.ModelXKnockoff.importance" title="hidimstat.ModelXKnockoff.importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">importance</span></code></a></dt><dd><p>Method for computing importance scores only</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This method combines the fit and importance computation steps.
+It first fits the generator to X and then computes importance scores
+by comparing observed test statistics against permuted ones.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.fdr_selection">
+<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evalues</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L304-L390"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.fdr_selection" title="Link to this definition">#</a></dt>
+<dd><p>Performs feature selection based on False Discovery Rate (FDR) control.</p>
+<p>This method selects features by controlling the FDR using either p-values or e-values
+derived from test scores. It supports different FDR control methods and optional
+adaptive aggregation of the statistical values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fdr</strong><span class="classifier">float, default=None</span></dt><dd><p>The target false discovery rate level (between 0 and 1)</p>
+</dd>
+<dt><strong>fdr_control: string, default=”bhq”</strong></dt><dd><p>The FDR control method to use. Options are:
+- “bhq”: Benjamini-Hochberg procedure
+- ‘bhy’: Benjamini-Hochberg-Yekutieli procedure
+- “ebh”: e-BH procedure (only for e-values)</p>
+</dd>
+<dt><strong>evalues: boolean, default=False</strong></dt><dd><p>If True, uses e-values for selection. If False, uses p-values.</p>
+</dd>
+<dt><strong>reshaping_function: callable, default=None</strong></dt><dd><p>Reshaping function for BHY method, default uses sum of reciprocals</p>
+</dd>
+<dt><strong>adaptive_aggregation: boolean, default=False</strong></dt><dd><p>If True, uses adaptive weights for p-value aggregation.
+Only applicable when evalues=False.</p>
+</dd>
+<dt><strong>gamma: boolean, default=0.5</strong></dt><dd><p>The gamma parameter for quantile aggregation of p-values.
+Only used when evalues=False.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Boolean array indicating selected features (True for selected, False for not selected)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>AssertionError</dt><dd><p>If <cite>importances_</cite> is None or if incompatible combinations of parameters are provided</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.lasso_coefficient_difference_statistic">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lasso_coefficient_difference_statistic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L417-L460"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.lasso_coefficient_difference_statistic" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Lasso Coefficient-Difference (LCD) statistic from a fitted estimator.
+Given a list of fitted estimators on the concatenated design matrix [X, X_tilde],
+this function computes the knockoff statistic for each original feature across
+repeats:</p>
+<div class="math notranslate nohighlight">
+\[W_j = |\beta_j| - |\beta_j'|\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta_j\)</span> and <span class="math notranslate nohighlight">\(\beta_j'\)</span> are the fitted coefficients for the original feature j
+and its knockoff counterpart j’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimators</strong><span class="classifier">list of estimators</span></dt><dd><p>List of fitted estimators on the concatenated design matrix [X, X_tilde].
+Each estimator must expose coefficients via <cite>coef_</cite> or
+<cite>best_estimator_.coef_</cite>.</p>
+</dd>
+<dt><strong>n_features</strong><span class="classifier">int</span></dt><dd><p>Number of original features (not including knockoffs).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>test_statistic</strong><span class="classifier">ndarray, shape (n_repeats, n_features)</span></dt><dd><p>Knockoff statistics <span class="math notranslate nohighlight">\(W_j\)</span> for each original feature across repeats. The number
+of repeats corresponds to the length of the estimators list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.knockoff_threshold">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">knockoff_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/knockoffs.py#L462-L497"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.knockoff_threshold" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the knockoff threshold based on the procedure stated in the article.</p>
+<p>Original code:
+<a class="github reference external" href="https://github.com/msesia/knockoff-filter/blob/master/R/knockoff/R/knockoff_filter.R">msesia/knockoff-filter</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>test_score</strong><span class="classifier">1D ndarray, shape (n_features, )</span></dt><dd><p>Vector of test statistic.</p>
+</dd>
+<dt><strong>fdr</strong><span class="classifier">float</span></dt><dd><p>Desired controlled FDR (false discovery rate) level.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>threshold</strong><span class="classifier">float or np.inf</span></dt><dd><p>Threshold level.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.fwer_selection">
+<span class="sig-name descname"><span class="pre">fwer_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fwer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procedure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bonferroni'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L297-L348"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.fwer_selection" title="Link to this definition">#</a></dt>
+<dd><p>Performs feature selection based on Family-Wise Error Rate (FWER) control.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fwer</strong><span class="classifier">float</span></dt><dd><p>The target family-wise error rate level (between 0 and 1)</p>
+</dd>
+<dt><strong>procedure</strong><span class="classifier">{‘bonferroni’}, default=’bonferroni’</span></dt><dd><p>The FWER control method to use:
+- ‘bonferroni’: Bonferroni correction</p>
+</dd>
+<dt><strong>n_tests</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Factor for multiple testing correction. If None, uses the number of clusters
+or the number of features in this order.</p>
+</dd>
+<dt><strong>two_tailed_test</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses the sign of the importance scores to indicate whether the
+selected features have positive or negative effects.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+1 indicates selected features with positive effects,
+-1 indicates selected features with negative effects,
+0 indicates non-selected features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.get_metadata_routing">
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/utils/_metadata_requests.py#L1532-L1544"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.get_metadata_routing" title="Link to this definition">#</a></dt>
+<dd><p>Get metadata routing of this object.</p>
+<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> on how the routing
+mechanism works.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
+routing information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L233-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.get_params" title="Link to this definition">#</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.importance_selection">
+<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L142-L171"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.importance_selection" title="Link to this definition">#</a></dt>
+<dd><p>Selects features based on variable importance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k_best</strong><span class="classifier">int, default=None</span></dt><dd><p>Selects the top k features based on importance scores.</p>
+</dd>
+<dt><strong>percentile</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features based on a specified percentile of importance scores.</p>
+</dd>
+<dt><strong>threshold_max</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features with importance scores below the specified maximum threshold.</p>
+</dd>
+<dt><strong>threshold_min</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features with importance scores above the specified minimum threshold.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.plot_importance">
+<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L350-L425"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.plot_importance" title="Link to this definition">#</a></dt>
+<dd><p>Plot feature importances as a horizontal bar plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes or None, (default=None)</span></dt><dd><p>Axes object to draw the plot onto, otherwise uses the current Axes.</p>
+</dd>
+<dt><strong>ascending: bool, default=False</strong></dt><dd><p>Whether to sort features by ascending importance.</p>
+</dd>
+<dt><strong>**seaborn_barplot_kwargs</strong><span class="classifier">additional keyword arguments</span></dt><dd><p>Additional arguments passed to seaborn.barplot.
+<a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.barplot.html">https://seaborn.pydata.org/generated/seaborn.barplot.html</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes</span></dt><dd><p>The Axes object with the plot.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.pvalue_selection">
+<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L173-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.pvalue_selection" title="Link to this definition">#</a></dt>
+<dd><p>Selects features based on p-values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>k_lowest</strong><span class="classifier">int, default=None</span></dt><dd><p>Selects the k features with lowest p-values.</p>
+</dd>
+<dt><strong>percentile</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features based on a specified percentile of p-values.</p>
+</dd>
+<dt><strong>threshold_max</strong><span class="classifier">float, default=0.05</span></dt><dd><p>Selects features with p-values below the specified maximum threshold (0 to 1).</p>
+</dd>
+<dt><strong>threshold_min</strong><span class="classifier">float, default=None</span></dt><dd><p>Selects features with p-values above the specified minimum threshold (0 to 1).</p>
+</dd>
+<dt><strong>alternative_hypothesis</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, selects based on 1-pvalues instead of p-values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>selection</strong><span class="classifier">array-like of shape (n_features,)</span></dt><dd><p>Binary array indicating the selected features (True for selected).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.ModelXKnockoff.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L317-L359"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ModelXKnockoff.set_params" title="Link to this definition">#</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<section id="examples-using-hidimstat-modelxknockoff">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.ModelXKnockoff</span></code><a class="headerlink" href="#examples-using-hidimstat-modelxknockoff" title="Link to this heading">#</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The examples shows how to use aggregate model-X Knockoff selections to derandomize inference. The model-X Knockoff introduced by :footcitecandes2018panning allows for variable selection with statistical guarantees on the False Discovery Rate (FDR),"><img alt="" src="../../../_images/sphx_glr_plot_knockoff_aggregation_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_knockoff_aggregation.html"><span class="doc">Knockoff aggregation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Knockoff aggregation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs :footcitecandes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue."><img alt="" src="../../../_images/sphx_glr_plot_knockoffs_wisconsin_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_knockoffs_wisconsin.html"><span class="doc">Controlled multiple variable selection on the Wisconsin breast cancer dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</div>
+</div></div><div style='clear:both'></div></section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hidimstat.D0CRT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">D0CRT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hidimstat.DesparsifiedLasso.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DesparsifiedLasso</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.__init__"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.fit"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.importance"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.fit_importance"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.fit_importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.fdr_selection"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.fdr_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.lasso_coefficient_difference_statistic"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.lasso_coefficient_difference_statistic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.knockoff_threshold"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.knockoff_threshold()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.fwer_selection"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.fwer_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.get_metadata_routing()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.get_params"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.get_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.importance_selection"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.importance_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.plot_importance"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.plot_importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.pvalue_selection"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.pvalue_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.ModelXKnockoff.set_params"><code class="docutils literal notranslate"><span class="pre">ModelXKnockoff.set_params()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-modelxknockoff">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.ModelXKnockoff</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/generated/api/class/hidimstat.ModelXKnockoff.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, The hidimstat developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
