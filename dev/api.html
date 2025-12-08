@@ -43,12 +43,19 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=86cd40d7"></script>
+    <script src="_static/documentation_options.js?v=eff7172b"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=97f0b27d"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind_inria/hidimstat/main/doc_conf/version.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev4+geda767d1b';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="BaseVariableImportance" href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html" />
@@ -172,6 +179,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="dev/index.html">
     Developer Documentation
@@ -319,6 +333,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="dev/index.html">
     Developer Documentation
   </a>
@@ -390,31 +411,40 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html">BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html">BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbationCV.html">BasePerturbationCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">GroupVariableImportanceMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html">LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.LOCOCV.html">LOCOCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CFI.html">CFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CFICV.html">CFICV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.CluDL.html">CluDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.EnCluDL.html">EnCluDL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.PFI.html">PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.PFICV.html">PFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html">D0CRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference.html">clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.desparsified_lasso.html">desparsified_lasso</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.desparsified_lasso_pvalue.html">desparsified_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.desparsified_group_lasso_pvalue.html">desparsified_group_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff.html">model_x_knockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html">cfi_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.d0crt_importance.html">d0crt_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.desparsified_lasso_importance.html">desparsified_lasso_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff_importance.html">model_x_knockoff_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html">loco_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.pfi_importance.html">pfi_importance</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html">ConditionalSampler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.visualization.PDP.html">PDP</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.quantile_aggregation.html">quantile_aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.reid.html">reid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.desparsified_lasso.reid.html">reid</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
 </ul>
 </div>
@@ -482,10 +512,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a>()</p></td>
 <td><p>Base class for variable importance methods.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation" title="hidimstat.base_perturbation.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a>(estimator, loss, ...[, ...])</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation" title="hidimstat.base_perturbation.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a>(estimator, method, loss, ...)</p></td>
+<td><p>Abstract base class for model-agnostic variable importance measures using perturbation techniques.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="hidimstat.base_variable_importance.GroupVariableImportanceMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupVariableImportanceMixin</span></code></a>([features_groups])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbationCV.html#hidimstat.base_perturbation.BasePerturbationCV" title="hidimstat.base_perturbation.BasePerturbationCV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbationCV</span></code></a>(estimators, cv[, ...])</p></td>
+<td><p>Base class for perturbation methods with cross-validation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="hidimstat.base_variable_importance.GroupVariableImportanceMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupVariableImportanceMixin</span></code></a>([features_groups])</p></td>
 <td><p>Mixin class for adding group functionality to variable importance methods.</p></td>
 </tr>
 </tbody>
@@ -496,17 +529,38 @@
 <h2>Feature Importance Classes<a class="headerlink" href="#feature-importance-classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, loss, method[, features_groups])</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, method, loss[, ...])</p></td>
+<td><p>Leave-One-Covariate-Out (LOCO) algorithm</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFI</span></code></a>(estimator, loss, method, n_permutations)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCOCV.html#hidimstat.LOCOCV" title="hidimstat.LOCOCV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCOCV</span></code></a>(estimators, cv[, statistical_test, ...])</p></td>
+<td><p>Leave-One-Covariate-Out (LOCO) algorithm with Cross-Validation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, loss, method, n_permutations)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFI</span></code></a>(estimator, method, loss, n_permutations)</p></td>
+<td><p>Conditional Feature Importance (CFI) algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT" title="hidimstat.D0CRT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D0CRT</span></code></a>(estimator[, method, estimated_coef, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFICV</span></code></a>(estimators, cv[, statistical_test, ...])</p></td>
+<td><p>Conditional Feature Importance (CFI) algorithm with Cross-Validation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CluDL</span></code></a>(clustering[, desparsified_lasso, ...])</p></td>
+<td><p>Clustered inference with desparsified lasso.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EnCluDL</span></code></a>(desparsified_lasso, clustering[, ...])</p></td>
+<td><p>Ensemble clustered inference with desparsified lasso.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>(estimator, method, loss, n_permutations)</p></td>
+<td><p>Permutation Feature Importance algorithm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFICV.html#hidimstat.PFICV" title="hidimstat.PFICV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFICV</span></code></a>(estimators, cv[, statistical_test, ...])</p></td>
+<td><p>Permutation Feature Importance (PFI) algorithm with Cross-Validation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT" title="hidimstat.D0CRT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D0CRT</span></code></a>(estimator[, method, estimated_coef, ...])</p></td>
 <td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ModelXKnockoff.html#hidimstat.ModelXKnockoff" title="hidimstat.ModelXKnockoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelXKnockoff</span></code></a>([estimator, max_iter, ...])</p></td>
+<td><p>Model-X Knockoff</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DesparsifiedLasso</span></code></a>([estimator, centered, ...])</p></td>
+<td><p>Desparsified Lasso Estimator (also known as Debiased Lasso)</p></td>
 </tr>
 </tbody>
 </table>
@@ -516,29 +570,34 @@
 <h2>Feature Importance functions<a class="headerlink" href="#feature-importance-functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference.html#hidimstat.clustered_inference" title="hidimstat.clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference</span></code></a>(X_init, y, ward[, ...])</p></td>
-<td><p>Clustered inference algorithm for statistical analysis of high-dimensional data.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html#hidimstat.cfi_importance" title="hidimstat.cfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfi_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
+<td><p>Conditional Feature Importance (CFI) algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.clustered_inference_pvalue.html#hidimstat.clustered_inference_pvalue" title="hidimstat.clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustered_inference_pvalue</span></code></a>(n_samples, group, ...)</p></td>
-<td><p>Compute corrected p-values at the cluster level and transform them back to feature level.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.d0crt_importance.html#hidimstat.d0crt_importance" title="hidimstat.d0crt_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">d0crt_importance</span></code></a>(estimator, X, y[, cv, ...])</p></td>
+<td><p>Implements distilled conditional randomization test (dCRT) without interactions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.desparsified_lasso.html#hidimstat.desparsified_lasso" title="hidimstat.desparsified_lasso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_lasso</span></code></a>(X, y[, dof_ajdustement, ...])</p></td>
-<td><p>Desparsified Lasso</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.desparsified_lasso_importance.html#hidimstat.desparsified_lasso_importance" title="hidimstat.desparsified_lasso_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_lasso_importance</span></code></a>(X, y[, ...])</p></td>
+<td><p>Desparsified Lasso Estimator (also known as Debiased Lasso)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.desparsified_lasso_pvalue.html#hidimstat.desparsified_lasso_pvalue" title="hidimstat.desparsified_lasso_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_lasso_pvalue</span></code></a>(n_samples, ...[, ...])</p></td>
-<td><p>Calculate confidence intervals and p-values for desparsified lasso estimators.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.desparsified_group_lasso_pvalue.html#hidimstat.desparsified_group_lasso_pvalue" title="hidimstat.desparsified_group_lasso_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">desparsified_group_lasso_pvalue</span></code></a>(beta_hat, ...)</p></td>
-<td><p>Compute p-values for the desparsified group Lasso estimator using chi-squared or F tests</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference.html#hidimstat.ensemble_clustered_inference" title="hidimstat.ensemble_clustered_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference</span></code></a>(X_init, y, ward)</p></td>
-<td><p>Ensemble clustered inference algorithm for high-dimensional statistical inference, as described in <span id="id1">[<a class="reference internal" href="index.html#id27" title="Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Bertrand Thirion, and Joseph Salmon. Spatially relaxed inference on high-dimensional linear models. Statistics and Computing, 32(5):83, 2022.">Chevalier <em>et al.</em>, 2022</a>]</span>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.ensemble_clustered_inference_pvalue.html#hidimstat.ensemble_clustered_inference_pvalue" title="hidimstat.ensemble_clustered_inference_pvalue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_clustered_inference_pvalue</span></code></a>(...[, ...])</p></td>
-<td><p>Compute and aggregate p-values across multiple bootstrap iterations using an aggregation method.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff.html#hidimstat.model_x_knockoff" title="hidimstat.model_x_knockoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff</span></code></a>(X, y[, estimator, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff_importance.html#hidimstat.model_x_knockoff_importance" title="hidimstat.model_x_knockoff_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff_importance</span></code></a>(X, y[, ...])</p></td>
 <td><p>Model-X Knockoff</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html#hidimstat.loco_importance" title="hidimstat.loco_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loco_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
+<td><p>Leave-One-Covariate-Out (LOCO) algorithm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.pfi_importance.html#hidimstat.pfi_importance" title="hidimstat.pfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pfi_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
+<td><p>Permutation Feature Importance algorithm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.visualization.PDP.html#hidimstat.visualization.PDP" title="hidimstat.visualization.PDP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PDP</span></code></a>(estimator[, feature_names])</p></td>
+<td><p>Partial Dependence Plot (PDP) visualization.</p></td>
 </tr>
 </tbody>
 </table>
@@ -548,10 +607,10 @@
 <h2>Samplers<a class="headerlink" href="#samplers" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.ConditionalSampler.html#hidimstat.statistical_tools.ConditionalSampler" title="hidimstat.statistical_tools.ConditionalSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConditionalSampler</span></code></a>([model_regression, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.samplers.ConditionalSampler.html#hidimstat.samplers.ConditionalSampler" title="hidimstat.samplers.ConditionalSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConditionalSampler</span></code></a>([model_regression, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.statistical_tools.GaussianKnockoffs.html#hidimstat.statistical_tools.GaussianKnockoffs" title="hidimstat.statistical_tools.GaussianKnockoffs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GaussianKnockoffs</span></code></a>(cov_estimator[, tol])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.samplers.GaussianKnockoffs.html#hidimstat.samplers.GaussianKnockoffs" title="hidimstat.samplers.GaussianKnockoffs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GaussianKnockoffs</span></code></a>([cov_estimator, tol])</p></td>
 <td><p>Generator for second-order Gaussian variables using the equi-correlated method.</p></td>
 </tr>
 </tbody>
@@ -562,10 +621,10 @@
 <h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/helper_functions/hidimstat.quantile_aggregation.html#hidimstat.quantile_aggregation" title="hidimstat.quantile_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantile_aggregation</span></code></a>(pvals[, gamma, adaptive])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html#hidimstat.statistical_tools.aggregation.quantile_aggregation" title="hidimstat.statistical_tools.aggregation.quantile_aggregation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantile_aggregation</span></code></a>(pvals[, gamma, adaptive])</p></td>
 <td><p>Implements the quantile aggregation method for p-values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/helper_functions/hidimstat.reid.html#hidimstat.reid" title="hidimstat.reid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reid</span></code></a>(X, y[, epsilon, tolerance, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/helper_functions/hidimstat.desparsified_lasso.reid.html#hidimstat.desparsified_lasso.reid" title="hidimstat.desparsified_lasso.reid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reid</span></code></a>(beta_hat, residual[, tolerance, ...])</p></td>
 <td><p>Residual sum of squares based estimators for noise standard deviation estimation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html#hidimstat.statistical_tools.nadeau_bengio_ttest" title="hidimstat.statistical_tools.nadeau_bengio_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nadeau_bengio_ttest</span></code></a>(a, popmean, test_frac[, ...])</p></td>
@@ -627,6 +686,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-classes">Base Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-classes">Feature Importance Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-functions">Feature Importance functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samplers">Samplers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions">Helper Functions</a></li>
 </ul>

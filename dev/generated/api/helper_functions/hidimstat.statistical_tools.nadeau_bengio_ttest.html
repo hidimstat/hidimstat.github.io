@@ -43,16 +43,23 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=86cd40d7"></script>
+    <script src="../../../_static/documentation_options.js?v=eff7172b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind_inria/hidimstat/main/doc_conf/version.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev4+geda767d1b';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="User guide" href="../../../user_guide.html" />
-    <link rel="prev" title="reid" href="hidimstat.reid.html" />
+    <link rel="prev" title="reid" href="hidimstat.desparsified_lasso.reid.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -172,6 +179,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../dev/index.html">
     Developer Documentation
@@ -319,6 +333,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../dev/index.html">
     Developer Documentation
   </a>
@@ -390,31 +411,40 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html">BaseVariableImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbation.html">BasePerturbation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbationCV.html">BasePerturbationCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">GroupVariableImportanceMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCO.html">LOCO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCOCV.html">LOCOCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.CFI.html">CFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.CFICV.html">CFICV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.CluDL.html">CluDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.EnCluDL.html">EnCluDL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.PFI.html">PFI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.PFICV.html">PFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.D0CRT.html">D0CRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference.html">clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.clustered_inference_pvalue.html">clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.desparsified_lasso.html">desparsified_lasso</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.desparsified_lasso_pvalue.html">desparsified_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.desparsified_group_lasso_pvalue.html">desparsified_group_lasso_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference.html">ensemble_clustered_inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ensemble_clustered_inference_pvalue.html">ensemble_clustered_inference_pvalue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.model_x_knockoff.html">model_x_knockoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.cfi_importance.html">cfi_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.d0crt_importance.html">d0crt_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.desparsified_lasso_importance.html">desparsified_lasso_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.model_x_knockoff_importance.html">model_x_knockoff_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.loco_importance.html">loco_importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.pfi_importance.html">pfi_importance</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.statistical_tools.ConditionalSampler.html">ConditionalSampler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.statistical_tools.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.visualization.PDP.html">PDP</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.ConditionalSampler.html">ConditionalSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.quantile_aggregation.html">quantile_aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.reid.html">reid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso.reid.html">reid</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">nadeau_bengio_ttest</a></li>
 </ul>
 </div>
@@ -544,7 +574,7 @@ where n is the number of repeated evaluations along <cite>axis</cite>.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hidimstat.reid.html"
+       href="hidimstat.desparsified_lasso.reid.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

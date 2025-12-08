@@ -18,53 +18,22 @@
 .. _sphx_glr_generated_gallery_examples_plot_diabetes_variable_importance_example.py:
 
 
-Variable Importance on diabetes dataset
-=======================================
+Feature Importance on diabetes dataset using cross-validation
+=============================================================
 
-Variable Importance estimates the influence of a given input variable to the
-prediction made by a model. To assess variable importance in a prediction
-problem, :footcite:t:`breimanRandomForests2001` introduced the permutation
-approach where the values are shuffled for one variable/column at a time. This
-permutation breaks the relationship between the variable of interest and the
-outcome. Following, the loss score is checked before and after this
-substitution for any significant drop in the performance which reflects the
-significance of this variable to predict the outcome. This ease-to-use solution
-is demonstrated, in the work by
-:footcite:t:`stroblConditionalVariableImportance2008`, to be affected by the
-degree of correlation between the variables, thus biased towards truly
-non-significant variables highly correlated with the significant ones and
-creating fake significant variables. They introduced a solution for the Random
-Forest estimator based on conditional sampling by performing sub-groups
-permutation when bisecting the space using the conditioning variables of the
-building process. However, this solution is exclusive to the Random Forest and
-is costly with high-dimensional settings.
-:footcite:t:`Chamma_NeurIPS2023` introduced a new model-agnostic solution to
-bypass the limitations of the permutation approach under the use of the
-conditional schemes. The variable of interest does contain two types of
-information: 1) the relationship with the remaining variables and 2) the
-relationship with the outcome. The standard permutation, while breaking the
-relationship with the outcome, is also destroying the dependency with the
-remaining variables. Therefore, instead of directly permuting the variable of
-interest, the variable of interest is predicted by the remaining
-variables and the residuals of this prediction are permuted before
-reconstructing the new version of the variable. This solution preserves the
-dependency with the remaining variables.
+In this example, we show how to compute variable importance using Permutation Feature
+Importance (PFI), Leave-One-Covariate-Out (LOCO), and Conditional Feature Importance
+(CFI) on the diabetes dataset. This example also showcases the use how to measure
+feature importance in a K-Fold cross-validation setting in order to use all the data
+available.
 
-In this example, we compare both the standard permutation and its conditional
-variant approaches for variable importance on the diabetes dataset for the
-single-level case. The aim is to see if integrating the new
-statistically-controlled solution has an impact on the results.
-
-References
-----------
-.. footbibliography::
-
-.. GENERATED FROM PYTHON SOURCE LINES 46-48
+.. GENERATED FROM PYTHON SOURCE LINES 13-16
 
 Load the diabetes dataset
 -------------------------
+We start by loading the diabetes dataset from sklearn.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-57
+.. GENERATED FROM PYTHON SOURCE LINES 16-26
 
 .. code-block:: Python
 
@@ -76,51 +45,67 @@ Load the diabetes dataset
 
     # Encode sex as binary
     X[:, 1] = (X[:, 1] > 0.0).astype(int)
+    print(f"Number of samples: {X.shape[0]}, number of features: {X.shape[1]}")
 
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Number of samples: 442, number of features: 10
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-62
+
+.. GENERATED FROM PYTHON SOURCE LINES 27-34
 
 Fit a baseline model on the diabetes dataset
 --------------------------------------------
-We use a Ridge regression model with a 5-fold cross-validation to fit the
-diabetes dataset.
+The benefit of perturbation-based variable importance methods, presented in this
+example, is that they are model-agnostic. Therefore, we can use any regression
+model. We here leverage this flexibility, using an ensemble model which consists of a
+Ridge regression model and a Histogram Gradient Boosting model, a Random Forest model,
+and a Lasso regression model combined with a Voting Regressor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-89
+.. GENERATED FROM PYTHON SOURCE LINES 34-67
 
 .. code-block:: Python
 
 
     import numpy as np
     from sklearn.base import clone
-    from sklearn.linear_model import LogisticRegressionCV, RidgeCV
-    from sklearn.metrics import r2_score, root_mean_squared_error
+    from sklearn.ensemble import (
+        HistGradientBoostingRegressor,
+        RandomForestRegressor,
+        VotingRegressor,
+    )
+    from sklearn.linear_model import LassoCV, RidgeCV
+    from sklearn.metrics import r2_score
     from sklearn.model_selection import KFold
 
     n_folds = 5
-    regressor = RidgeCV(
-        alphas=np.logspace(-3, 3, 10),
-        cv=KFold(shuffle=True, random_state=20),
+    cv = KFold(n_splits=n_folds, shuffle=True, random_state=0)
+    regressor = VotingRegressor(
+        [
+            ("ridge", RidgeCV()),
+            ("hgb", HistGradientBoostingRegressor()),
+            ("rf", RandomForestRegressor()),
+            ("lasso", LassoCV()),
+        ]
     )
+
+    scores = []
     regressor_list = [clone(regressor) for _ in range(n_folds)]
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
-    for i, (train_index, test_index) in enumerate(kf.split(X)):
+    for i, (train_index, test_index) in enumerate(cv.split(X)):
         regressor_list[i].fit(X[train_index], y[train_index])
-        score = r2_score(
-            y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
+        scores.append(
+            r2_score(y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index]))
         )
-        mse = root_mean_squared_error(
-            y_true=y[test_index], y_pred=regressor_list[i].predict(X[test_index])
-        )
-
-        print(f"Fold {i}: {score=}")
-        print(f"Fold {i}: {mse=}")
-
+    print(f"R2 scores across folds: {np.mean(scores):.3f} ± {np.std(scores):.3f}")
+    regressor
 
 
 
@@ -130,53 +115,1259 @@ diabetes dataset.
 
  .. code-block:: none
 
-    Fold 0: score=0.42498602106170535
-    Fold 0: mse=56.42055334073377
-    Fold 1: score=0.4576508881883167
-    Fold 1: mse=58.423308135994034
-    Fold 2: score=0.5351768182569143
-    Fold 2: mse=54.730052311563774
-    Fold 3: score=0.48890245901647933
-    Fold 3: mse=53.411951707073335
-    Fold 4: score=0.5377531849343379
-    Fold 4: mse=51.2067043978449
+    R2 scores across folds: 0.483 ± 0.095
 
 
+.. raw:: html
+
+    <div class="output_subarea output_html rendered_html output_result">
+    <style>#sk-container-id-1 {
+      /* Definition of color scheme common for light and dark mode */
+      --sklearn-color-text: #000;
+      --sklearn-color-text-muted: #666;
+      --sklearn-color-line: gray;
+      /* Definition of color scheme for unfitted estimators */
+      --sklearn-color-unfitted-level-0: #fff5e6;
+      --sklearn-color-unfitted-level-1: #f6e4d2;
+      --sklearn-color-unfitted-level-2: #ffe0b3;
+      --sklearn-color-unfitted-level-3: chocolate;
+      /* Definition of color scheme for fitted estimators */
+      --sklearn-color-fitted-level-0: #f0f8ff;
+      --sklearn-color-fitted-level-1: #d4ebff;
+      --sklearn-color-fitted-level-2: #b3dbfd;
+      --sklearn-color-fitted-level-3: cornflowerblue;
+
+      /* Specific color for light theme */
+      --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+      --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+      --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+      --sklearn-color-icon: #696969;
+
+      @media (prefers-color-scheme: dark) {
+        /* Redefinition of color scheme for dark theme */
+        --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+        --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+        --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+        --sklearn-color-icon: #878787;
+      }
+    }
+
+    #sk-container-id-1 {
+      color: var(--sklearn-color-text);
+    }
+
+    #sk-container-id-1 pre {
+      padding: 0;
+    }
+
+    #sk-container-id-1 input.sk-hidden--visually {
+      border: 0;
+      clip: rect(1px 1px 1px 1px);
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    #sk-container-id-1 div.sk-dashed-wrapped {
+      border: 1px dashed var(--sklearn-color-line);
+      margin: 0 0.4em 0.5em 0.4em;
+      box-sizing: border-box;
+      padding-bottom: 0.4em;
+      background-color: var(--sklearn-color-background);
+    }
+
+    #sk-container-id-1 div.sk-container {
+      /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+         but bootstrap.min.css set `[hidden] { display: none !important; }`
+         so we also need the `!important` here to be able to override the
+         default hidden behavior on the sphinx rendered scikit-learn.org.
+         See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+      display: inline-block !important;
+      position: relative;
+    }
+
+    #sk-container-id-1 div.sk-text-repr-fallback {
+      display: none;
+    }
+
+    div.sk-parallel-item,
+    div.sk-serial,
+    div.sk-item {
+      /* draw centered vertical line to link estimators */
+      background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+      background-size: 2px 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    /* Parallel-specific style estimator block */
+
+    #sk-container-id-1 div.sk-parallel-item::after {
+      content: "";
+      width: 100%;
+      border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+      flex-grow: 1;
+    }
+
+    #sk-container-id-1 div.sk-parallel {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      background-color: var(--sklearn-color-background);
+      position: relative;
+    }
+
+    #sk-container-id-1 div.sk-parallel-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sk-container-id-1 div.sk-parallel-item:first-child::after {
+      align-self: flex-end;
+      width: 50%;
+    }
+
+    #sk-container-id-1 div.sk-parallel-item:last-child::after {
+      align-self: flex-start;
+      width: 50%;
+    }
+
+    #sk-container-id-1 div.sk-parallel-item:only-child::after {
+      width: 0;
+    }
+
+    /* Serial-specific style estimator block */
+
+    #sk-container-id-1 div.sk-serial {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--sklearn-color-background);
+      padding-right: 1em;
+      padding-left: 1em;
+    }
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-92
+    /* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+    clickable and can be expanded/collapsed.
+    - Pipeline and ColumnTransformer use this feature and define the default style
+    - Estimators will overwrite some part of the style using the `sk-estimator` class
+    */
 
-Measure the importance of variables using the CFI method
---------------------------------------------------------
+    /* Pipeline and ColumnTransformer style (default) */
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-117
+    #sk-container-id-1 div.sk-toggleable {
+      /* Default theme specific background. It is overwritten whether we have a
+      specific estimator or a Pipeline/ColumnTransformer */
+      background-color: var(--sklearn-color-background);
+    }
+
+    /* Toggleable label */
+    #sk-container-id-1 label.sk-toggleable__label {
+      cursor: pointer;
+      display: flex;
+      width: 100%;
+      margin-bottom: 0;
+      padding: 0.5em;
+      box-sizing: border-box;
+      text-align: center;
+      align-items: start;
+      justify-content: space-between;
+      gap: 0.5em;
+    }
+
+    #sk-container-id-1 label.sk-toggleable__label .caption {
+      font-size: 0.6rem;
+      font-weight: lighter;
+      color: var(--sklearn-color-text-muted);
+    }
+
+    #sk-container-id-1 label.sk-toggleable__label-arrow:before {
+      /* Arrow on the left of the label */
+      content: "▸";
+      float: left;
+      margin-right: 0.25em;
+      color: var(--sklearn-color-icon);
+    }
+
+    #sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+      color: var(--sklearn-color-text);
+    }
+
+    /* Toggleable content - dropdown */
+
+    #sk-container-id-1 div.sk-toggleable__content {
+      display: none;
+      text-align: left;
+      /* unfitted */
+      background-color: var(--sklearn-color-unfitted-level-0);
+    }
+
+    #sk-container-id-1 div.sk-toggleable__content.fitted {
+      /* fitted */
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    #sk-container-id-1 div.sk-toggleable__content pre {
+      margin: 0.2em;
+      border-radius: 0.25em;
+      color: var(--sklearn-color-text);
+      /* unfitted */
+      background-color: var(--sklearn-color-unfitted-level-0);
+    }
+
+    #sk-container-id-1 div.sk-toggleable__content.fitted pre {
+      /* unfitted */
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    #sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+      /* Expand drop-down */
+      display: block;
+      width: 100%;
+      overflow: visible;
+    }
+
+    #sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+      content: "▾";
+    }
+
+    /* Pipeline/ColumnTransformer-specific style */
+
+    #sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+      color: var(--sklearn-color-text);
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    #sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    /* Estimator-specific style */
+
+    /* Colorize estimator box */
+    #sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+      /* unfitted */
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    #sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+      /* fitted */
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    #sk-container-id-1 div.sk-label label.sk-toggleable__label,
+    #sk-container-id-1 div.sk-label label {
+      /* The background is the default theme color */
+      color: var(--sklearn-color-text-on-default-background);
+    }
+
+    /* On hover, darken the color of the background */
+    #sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+      color: var(--sklearn-color-text);
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    /* Label box, darken color on hover, fitted */
+    #sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+      color: var(--sklearn-color-text);
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    /* Estimator label */
+
+    #sk-container-id-1 div.sk-label label {
+      font-family: monospace;
+      font-weight: bold;
+      display: inline-block;
+      line-height: 1.2em;
+    }
+
+    #sk-container-id-1 div.sk-label-container {
+      text-align: center;
+    }
+
+    /* Estimator-specific */
+    #sk-container-id-1 div.sk-estimator {
+      font-family: monospace;
+      border: 1px dotted var(--sklearn-color-border-box);
+      border-radius: 0.25em;
+      box-sizing: border-box;
+      margin-bottom: 0.5em;
+      /* unfitted */
+      background-color: var(--sklearn-color-unfitted-level-0);
+    }
+
+    #sk-container-id-1 div.sk-estimator.fitted {
+      /* fitted */
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    /* on hover */
+    #sk-container-id-1 div.sk-estimator:hover {
+      /* unfitted */
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    #sk-container-id-1 div.sk-estimator.fitted:hover {
+      /* fitted */
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    /* Specification for estimator info (e.g. "i" and "?") */
+
+    /* Common style for "i" and "?" */
+
+    .sk-estimator-doc-link,
+    a:link.sk-estimator-doc-link,
+    a:visited.sk-estimator-doc-link {
+      float: right;
+      font-size: smaller;
+      line-height: 1em;
+      font-family: monospace;
+      background-color: var(--sklearn-color-background);
+      border-radius: 1em;
+      height: 1em;
+      width: 1em;
+      text-decoration: none !important;
+      margin-left: 0.5em;
+      text-align: center;
+      /* unfitted */
+      border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-1);
+    }
+
+    .sk-estimator-doc-link.fitted,
+    a:link.sk-estimator-doc-link.fitted,
+    a:visited.sk-estimator-doc-link.fitted {
+      /* fitted */
+      border: var(--sklearn-color-fitted-level-1) 1pt solid;
+      color: var(--sklearn-color-fitted-level-1);
+    }
+
+    /* On hover */
+    div.sk-estimator:hover .sk-estimator-doc-link:hover,
+    .sk-estimator-doc-link:hover,
+    div.sk-label-container:hover .sk-estimator-doc-link:hover,
+    .sk-estimator-doc-link:hover {
+      /* unfitted */
+      background-color: var(--sklearn-color-unfitted-level-3);
+      color: var(--sklearn-color-background);
+      text-decoration: none;
+    }
+
+    div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+    .sk-estimator-doc-link.fitted:hover,
+    div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+    .sk-estimator-doc-link.fitted:hover {
+      /* fitted */
+      background-color: var(--sklearn-color-fitted-level-3);
+      color: var(--sklearn-color-background);
+      text-decoration: none;
+    }
+
+    /* Span, style for the box shown on hovering the info icon */
+    .sk-estimator-doc-link span {
+      display: none;
+      z-index: 9999;
+      position: relative;
+      font-weight: normal;
+      right: .2ex;
+      padding: .5ex;
+      margin: .5ex;
+      width: min-content;
+      min-width: 20ex;
+      max-width: 50ex;
+      color: var(--sklearn-color-text);
+      box-shadow: 2pt 2pt 4pt #999;
+      /* unfitted */
+      background: var(--sklearn-color-unfitted-level-0);
+      border: .5pt solid var(--sklearn-color-unfitted-level-3);
+    }
+
+    .sk-estimator-doc-link.fitted span {
+      /* fitted */
+      background: var(--sklearn-color-fitted-level-0);
+      border: var(--sklearn-color-fitted-level-3);
+    }
+
+    .sk-estimator-doc-link:hover span {
+      display: block;
+    }
+
+    /* "?"-specific style due to the `<a>` HTML tag */
+
+    #sk-container-id-1 a.estimator_doc_link {
+      float: right;
+      font-size: 1rem;
+      line-height: 1em;
+      font-family: monospace;
+      background-color: var(--sklearn-color-background);
+      border-radius: 1rem;
+      height: 1rem;
+      width: 1rem;
+      text-decoration: none;
+      /* unfitted */
+      color: var(--sklearn-color-unfitted-level-1);
+      border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+    }
+
+    #sk-container-id-1 a.estimator_doc_link.fitted {
+      /* fitted */
+      border: var(--sklearn-color-fitted-level-1) 1pt solid;
+      color: var(--sklearn-color-fitted-level-1);
+    }
+
+    /* On hover */
+    #sk-container-id-1 a.estimator_doc_link:hover {
+      /* unfitted */
+      background-color: var(--sklearn-color-unfitted-level-3);
+      color: var(--sklearn-color-background);
+      text-decoration: none;
+    }
+
+    #sk-container-id-1 a.estimator_doc_link.fitted:hover {
+      /* fitted */
+      background-color: var(--sklearn-color-fitted-level-3);
+    }
+
+    .estimator-table summary {
+        padding: .5rem;
+        font-family: monospace;
+        cursor: pointer;
+    }
+
+    .estimator-table details[open] {
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+        padding-bottom: 0.3rem;
+    }
+
+    .estimator-table .parameters-table {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .estimator-table .parameters-table tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    .estimator-table .parameters-table tr:nth-child(even) {
+        background-color: #f6f6f6;
+    }
+
+    .estimator-table .parameters-table tr:hover {
+        background-color: #e0e0e0;
+    }
+
+    .estimator-table table td {
+        border: 1px solid rgba(106, 105, 104, 0.232);
+    }
+
+    .user-set td {
+        color:rgb(255, 94, 0);
+        text-align: left;
+    }
+
+    .user-set td.value pre {
+        color:rgb(255, 94, 0) !important;
+        background-color: transparent !important;
+    }
+
+    .default td {
+        color: black;
+        text-align: left;
+    }
+
+    .user-set td i,
+    .default td i {
+        color: black;
+    }
+
+    .copy-paste-icon {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+        background-repeat: no-repeat;
+        background-size: 14px 14px;
+        background-position: 0;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+    }
+    </style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>VotingRegressor(estimators=[(&#x27;ridge&#x27;, RidgeCV()),
+                                (&#x27;hgb&#x27;, HistGradientBoostingRegressor()),
+                                (&#x27;rf&#x27;, RandomForestRegressor()),
+                                (&#x27;lasso&#x27;, LassoCV())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>VotingRegressor</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.ensemble.VotingRegressor.html">?<span>Documentation for VotingRegressor</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
+            <div class="estimator-table">
+                <details>
+                    <summary>Parameters</summary>
+                    <table class="parameters-table">
+                      <tbody>
+                    
+            <tr class="user-set">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('estimators',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">estimators&nbsp;</td>
+                <td class="value">[(&#x27;ridge&#x27;, ...), (&#x27;hgb&#x27;, ...), ...]</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('weights',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">weights&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('n_jobs',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">n_jobs&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('verbose',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">verbose&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+                      </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>ridge</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>RidgeCV</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.RidgeCV.html">?<span>Documentation for RidgeCV</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="ridge__">
+            <div class="estimator-table">
+                <details>
+                    <summary>Parameters</summary>
+                    <table class="parameters-table">
+                      <tbody>
+                    
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('alphas',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">alphas&nbsp;</td>
+                <td class="value">(0.1, ...)</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('fit_intercept',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">fit_intercept&nbsp;</td>
+                <td class="value">True</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('scoring',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">scoring&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('cv',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">cv&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('gcv_mode',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">gcv_mode&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('store_cv_results',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">store_cv_results&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('alpha_per_target',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">alpha_per_target&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+                      </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>hgb</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>HistGradientBoostingRegressor</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html">?<span>Documentation for HistGradientBoostingRegressor</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="hgb__">
+            <div class="estimator-table">
+                <details>
+                    <summary>Parameters</summary>
+                    <table class="parameters-table">
+                      <tbody>
+                    
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('loss',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">loss&nbsp;</td>
+                <td class="value">&#x27;squared_error&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('quantile',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">quantile&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('learning_rate',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">learning_rate&nbsp;</td>
+                <td class="value">0.1</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_iter',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_iter&nbsp;</td>
+                <td class="value">100</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_leaf_nodes',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_leaf_nodes&nbsp;</td>
+                <td class="value">31</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_depth',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_depth&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('min_samples_leaf',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">min_samples_leaf&nbsp;</td>
+                <td class="value">20</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('l2_regularization',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">l2_regularization&nbsp;</td>
+                <td class="value">0.0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_features',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_features&nbsp;</td>
+                <td class="value">1.0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_bins',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_bins&nbsp;</td>
+                <td class="value">255</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('categorical_features',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">categorical_features&nbsp;</td>
+                <td class="value">&#x27;from_dtype&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('monotonic_cst',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">monotonic_cst&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('interaction_cst',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">interaction_cst&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('warm_start',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">warm_start&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('early_stopping',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">early_stopping&nbsp;</td>
+                <td class="value">&#x27;auto&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('scoring',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">scoring&nbsp;</td>
+                <td class="value">&#x27;loss&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('validation_fraction',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">validation_fraction&nbsp;</td>
+                <td class="value">0.1</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('n_iter_no_change',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">n_iter_no_change&nbsp;</td>
+                <td class="value">10</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('tol',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">tol&nbsp;</td>
+                <td class="value">1e-07</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('verbose',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">verbose&nbsp;</td>
+                <td class="value">0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('random_state',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">random_state&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+                      </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>rf</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>RandomForestRegressor</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.ensemble.RandomForestRegressor.html">?<span>Documentation for RandomForestRegressor</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="rf__">
+            <div class="estimator-table">
+                <details>
+                    <summary>Parameters</summary>
+                    <table class="parameters-table">
+                      <tbody>
+                    
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('n_estimators',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">n_estimators&nbsp;</td>
+                <td class="value">100</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('criterion',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">criterion&nbsp;</td>
+                <td class="value">&#x27;squared_error&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_depth',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_depth&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('min_samples_split',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">min_samples_split&nbsp;</td>
+                <td class="value">2</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('min_samples_leaf',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">min_samples_leaf&nbsp;</td>
+                <td class="value">1</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('min_weight_fraction_leaf',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">min_weight_fraction_leaf&nbsp;</td>
+                <td class="value">0.0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_features',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_features&nbsp;</td>
+                <td class="value">1.0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_leaf_nodes',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_leaf_nodes&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('min_impurity_decrease',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">min_impurity_decrease&nbsp;</td>
+                <td class="value">0.0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('bootstrap',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">bootstrap&nbsp;</td>
+                <td class="value">True</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('oob_score',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">oob_score&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('n_jobs',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">n_jobs&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('random_state',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">random_state&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('verbose',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">verbose&nbsp;</td>
+                <td class="value">0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('warm_start',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">warm_start&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('ccp_alpha',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">ccp_alpha&nbsp;</td>
+                <td class="value">0.0</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_samples',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_samples&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('monotonic_cst',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">monotonic_cst&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+                      </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>lasso</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>LassoCV</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.LassoCV.html">?<span>Documentation for LassoCV</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="lasso__">
+            <div class="estimator-table">
+                <details>
+                    <summary>Parameters</summary>
+                    <table class="parameters-table">
+                      <tbody>
+                    
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('eps',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">eps&nbsp;</td>
+                <td class="value">0.001</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('n_alphas',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">n_alphas&nbsp;</td>
+                <td class="value">&#x27;deprecated&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('alphas',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">alphas&nbsp;</td>
+                <td class="value">&#x27;warn&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('fit_intercept',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">fit_intercept&nbsp;</td>
+                <td class="value">True</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('precompute',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">precompute&nbsp;</td>
+                <td class="value">&#x27;auto&#x27;</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('max_iter',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">max_iter&nbsp;</td>
+                <td class="value">1000</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('tol',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">tol&nbsp;</td>
+                <td class="value">0.0001</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('copy_X',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">copy_X&nbsp;</td>
+                <td class="value">True</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('cv',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">cv&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('verbose',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">verbose&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('n_jobs',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">n_jobs&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('positive',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">positive&nbsp;</td>
+                <td class="value">False</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('random_state',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">random_state&nbsp;</td>
+                <td class="value">None</td>
+            </tr>
+    
+
+            <tr class="default">
+                <td><i class="copy-paste-icon"
+                     onclick="copyToClipboard('selection',
+                              this.parentElement.nextElementSibling)"
+                ></i></td>
+                <td class="param">selection&nbsp;</td>
+                <td class="value">&#x27;cyclic&#x27;</td>
+            </tr>
+    
+                      </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div></div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+        // Get the parameter prefix from the closest toggleable content
+        const toggleableContent = element.closest('.sk-toggleable__content');
+        const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+        const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+        const originalStyle = element.style;
+        const computedStyle = window.getComputedStyle(element);
+        const originalWidth = computedStyle.width;
+        const originalHTML = element.innerHTML.replace('Copied!', '');
+
+        navigator.clipboard.writeText(fullParamName)
+            .then(() => {
+                element.style.width = originalWidth;
+                element.style.color = 'green';
+                element.innerHTML = "Copied!";
+
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Failed to copy:', err);
+                element.style.color = 'red';
+                element.innerHTML = "Failed!";
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 2000);
+            });
+        return false;
+    }
+
+    document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+        const toggleableContent = element.closest('.sk-toggleable__content');
+        const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+        const paramName = element.parentElement.nextElementSibling.textContent.trim();
+        const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+        element.setAttribute('title', fullParamName);
+    });
+    </script></body>
+    </div>
+    <br />
+    <br />
+
+.. GENERATED FROM PYTHON SOURCE LINES 68-79
+
+Measure the importance of variables
+-----------------------------------
+We now measure the importance of each variable using the three different methods:
+Conditional Feature Importance (CFI), Leave-One-Covariate-Out (LOCO), and
+Permutation Feature Importance (PFI). We use the K-Fold cross-validation scheme to
+leverage all the data available. This however comes with the challenge that the
+test statistics computed across folds are not independent since overlapping training
+sets are used to fit the model. To address this issue, we use the Nadeau-Bengio
+corrected t-test :footcite:t:`nadeau1999inference` which adjusts the variance
+estimation to account for the dependency between the test statistics. We use the
+`n_jobs` parameter to parallelize the computation across folds.
+
+.. GENERATED FROM PYTHON SOURCE LINES 79-92
 
 .. code-block:: Python
 
 
-    from hidimstat import CFI
+    from hidimstat import CFICV
 
-    cfi_importance_list = []
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
-    for i, (train_index, test_index) in enumerate(kf.split(X)):
-        print(f"Fold {i}")
-        X_train, X_test = X[train_index], X[test_index]
-        y_train, y_test = y[train_index], y[test_index]
-        cfi = CFI(
-            estimator=regressor_list[i],
-            imputation_model_continuous=RidgeCV(alphas=np.logspace(-3, 3, 10), cv=KFold()),
-            imputation_model_categorical=LogisticRegressionCV(
-                Cs=np.logspace(-2, 2, 10),
-                cv=KFold(),
-            ),
-            # covariate_estimator=HistGradientBoostingRegressor(random_state=0,),
-            n_permutations=50,
-            random_state=24,
-            n_jobs=4,
-        )
-        cfi.fit(X_train, y_train)
-        importance = cfi.importance(X_test, y_test)
-        cfi_importance_list.append(importance)
+    cfi_cv = CFICV(
+        estimators=regressor_list,
+        cv=cv,
+        n_jobs=5,
+        statistical_test="nb-ttest",
+        random_state=0,
+    )
+    importances_cfi = cfi_cv.fit_importance(X, y)
+
 
 
 
@@ -186,40 +1377,30 @@ Measure the importance of variables using the CFI method
 
  .. code-block:: none
 
-    Fold 0
-    Fold 1
-    Fold 2
-    Fold 3
-    Fold 4
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 261.09it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2656.30it/s]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-120
+.. GENERATED FROM PYTHON SOURCE LINES 93-94
 
-Measure the importance of variables using the LOCO method
----------------------------------------------------------
+We repeat the same process using the LOCO method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 120-138
+.. GENERATED FROM PYTHON SOURCE LINES 94-106
 
 .. code-block:: Python
 
 
-    from hidimstat import LOCO
+    from hidimstat import LOCOCV
 
-    loco_importance_list = []
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
-    for i, (train_index, test_index) in enumerate(kf.split(X)):
-        print(f"Fold {i}")
-        X_train, X_test = X[train_index], X[test_index]
-        y_train, y_test = y[train_index], y[test_index]
-        loco = LOCO(
-            estimator=regressor_list[i],
-            n_jobs=4,
-        )
-        loco.fit(X_train, y_train)
-        importance = loco.importance(X_test, y_test)
-        loco_importance_list.append(importance)
+    loco_cv = LOCOCV(
+        estimators=regressor_list,
+        cv=cv,
+        n_jobs=5,
+        statistical_test="nb-ttest",
+    )
+    importances_loco = loco_cv.fit_importance(X, y)
 
 
 
@@ -230,42 +1411,31 @@ Measure the importance of variables using the LOCO method
 
  .. code-block:: none
 
-    Fold 0
-    Fold 1
-    Fold 2
-    Fold 3
-    Fold 4
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 1615.18it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2681.78it/s]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 139-141
+.. GENERATED FROM PYTHON SOURCE LINES 107-108
 
-Measure the importance of variables using the permutation method
-----------------------------------------------------------------
+Finally, we repeat the same process using the PFI method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-161
+.. GENERATED FROM PYTHON SOURCE LINES 108-121
 
 .. code-block:: Python
 
 
-    from hidimstat import PFI
+    from hidimstat import PFICV
 
-    pfi_importance_list = []
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=21)
-    for i, (train_index, test_index) in enumerate(kf.split(X)):
-        print(f"Fold {i}")
-        X_train, X_test = X[train_index], X[test_index]
-        y_train, y_test = y[train_index], y[test_index]
-        pfi = PFI(
-            estimator=regressor_list[i],
-            n_permutations=50,
-            random_state=25,
-            n_jobs=4,
-        )
-        pfi.fit(X_train, y_train)
-        importance = pfi.importance(X_test, y_test)
-        pfi_importance_list.append(importance)
+    pfi_cv = PFICV(
+        estimators=regressor_list,
+        cv=cv,
+        n_jobs=5,
+        statistical_test="nb-ttest",
+        random_state=0,
+    )
+    importances_pfi = pfi_cv.fit_importance(X, y)
 
 
 
@@ -276,100 +1446,60 @@ Measure the importance of variables using the permutation method
 
  .. code-block:: none
 
-    Fold 0
-    Fold 1
-    Fold 2
-    Fold 3
-    Fold 4
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 560.84it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2572.88it/s]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-164
+.. GENERATED FROM PYTHON SOURCE LINES 122-127
 
 Analyze the results
 -------------------
+Finally, we visualize the results obtained with the three different methods. We plot
+the negative log10 p-values for each variable and each method. A horizontal red-dashed
+line indicates the significance threshold at p-value=0.05.
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-240
+.. GENERATED FROM PYTHON SOURCE LINES 127-163
 
 .. code-block:: Python
 
 
     import matplotlib.pyplot as plt
     import pandas as pd
-    from scipy.stats import ttest_1samp
+    import seaborn as sns
 
-    cfi_vim_arr = np.array([x["importance"] for x in cfi_importance_list]) / 2
-    cfi_pval = ttest_1samp(cfi_vim_arr, 0, alternative="greater").pvalue
+    df_plot = pd.concat(
+        [
+            pd.DataFrame(
+                {
+                    "var": diabetes.feature_names,
+                    "importance": vim.importances_.mean(axis=1),
+                    "pval": vim.pvalues_,
+                    "method": vim_name,
+                }
+            )
+            for vim, vim_name in zip(
+                [cfi_cv, loco_cv, pfi_cv],
+                ["CFI", "LOCO", "PFI"],
+            )
+        ]
+    )
+    df_plot = df_plot.sort_values("importance", ascending=False)
+    df_plot["log10pval"] = -np.log10(df_plot["pval"])
 
-    vim = [
-        pd.DataFrame(
-            {
-                "var": np.arange(cfi_vim_arr.shape[1]),
-                "importance": x["importance"],
-                "fold": i,
-                "pval": cfi_pval,
-                "method": "CFI",
-            }
-        )
-        for x in cfi_importance_list
-    ]
-
-    loco_vim_arr = np.array([x["importance"] for x in loco_importance_list])
-    loco_pval = ttest_1samp(loco_vim_arr, 0, alternative="greater").pvalue
-
-    vim += [
-        pd.DataFrame(
-            {
-                "var": np.arange(loco_vim_arr.shape[1]),
-                "importance": x["importance"],
-                "fold": i,
-                "pval": loco_pval,
-                "method": "LOCO",
-            }
-        )
-        for x in loco_importance_list
-    ]
-
-    pfi_vim_arr = np.array([x["importance"] for x in pfi_importance_list])
-    pfi_pval = ttest_1samp(pfi_vim_arr, 0, alternative="greater").pvalue
-
-    vim += [
-        pd.DataFrame(
-            {
-                "var": np.arange(pfi_vim_arr.shape[1]),
-                "importance": x["importance"],
-                "fold": i,
-                "pval": pfi_pval,
-                "method": "PFI",
-            }
-        )
-        for x in pfi_importance_list
-    ]
-
-    fig, ax = plt.subplots()
-    df_plot = pd.concat(vim)
-    df_plot["pval"] = -np.log10(df_plot["pval"])
-    methods = df_plot["method"].unique()
-    colors = plt.get_cmap("tab10", 10)
-
-    for i, method in enumerate(methods):
-        subset = df_plot[df_plot["method"] == method]
-        ax.bar(
-            subset["var"] + i * 0.2,
-            subset["pval"],
-            width=0.2,
-            label=method,
-            color=colors(i),
-        )
-
-    ax.legend(title="Method")
+    _, ax = plt.subplots()
+    sns.barplot(
+        data=df_plot,
+        x="var",
+        y="log10pval",
+        hue="method",
+        ax=ax,
+    )
+    ax.axhline(-np.log10(0.05), color="tab:red", ls="--", label="pval=0.05")
     ax.set_ylabel(r"$-\log_{10}(\text{p-value})$")
-    ax.axhline(-np.log10(0.05), color="tab:red", ls="--")
-    ax.set_xlabel("Variable")
-    ax.set_xticks(range(len(diabetes.feature_names)))
-    ax.set_xticklabels(diabetes.feature_names)
-    plt.show()
+    ax.legend(title="Method")
+
 
 
 
@@ -379,13 +1509,35 @@ Analyze the results
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
 
 
+    <matplotlib.legend.Legend object at 0x7f550ccdbc50>
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 164-169
+
+Several trends can be observed from the results: PFI tends to give smaller p-values
+(that is higher bars in the plot) than LOCO and CFI. This is expected since PFI is
+known to overestimate the importance of correlated variables. On the other hand, LOCO
+has in general, larger p-values (smaller bars in the plot). This is also a known trend
+since LOCO tends to suffer from lower statistical power.
+
+.. GENERATED FROM PYTHON SOURCE LINES 172-175
+
+References
+----------
+.. footbibliography::
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 12.152 seconds)
+   **Total running time of the script:** (0 minutes 38.777 seconds)
+
+**Estimated memory usage:**  1122 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:

@@ -224,7 +224,7 @@ testing conditional importance, as it identifies the spurious feature as importa
         )
         pfi.fit(X_test, y_test)
 
-        permutation_importances.append(pfi.importance(X_test, y_test)["importance"])
+        permutation_importances.append(pfi.importance(X_test, y_test))
     permutation_importances = np.stack(permutation_importances)
     pval_pfi = ttest_1samp(
         permutation_importances, 0.0, axis=0, alternative="greater"
@@ -314,7 +314,7 @@ importance. As shown below, it does not identify the spurious feature as importa
         )
         cfi.fit(X_test, y_test)
 
-        conditional_importances.append(cfi.importance(X_test, y_test)["importance"])
+        conditional_importances.append(cfi.importance(X_test, y_test))
 
 
     cfi_pval = ttest_1samp(
@@ -383,7 +383,7 @@ permutation that generates perturbed but reasonable values of longitude.
 
     from matplotlib.lines import Line2D
 
-    from hidimstat.statistical_tools.conditional_sampling import ConditionalSampler
+    from hidimstat.samplers.conditional_sampling import ConditionalSampler
 
     X_train, X_test = train_test_split(
         X,
@@ -483,7 +483,9 @@ the conditional distribution of the feature of interest.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.318 seconds)
+   **Total running time of the script:** (0 minutes 8.591 seconds)
+
+**Estimated memory usage:**  214 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_pitfalls_permutation_importance.py:

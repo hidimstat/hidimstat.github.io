@@ -43,12 +43,19 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=86cd40d7"></script>
+    <script src="_static/documentation_options.js?v=eff7172b"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=97f0b27d"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind_inria/hidimstat/main/doc_conf/version.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev4+geda767d1b';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Definition of concepts" href="concepts.html" />
@@ -172,6 +179,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="dev/index.html">
     Developer Documentation
@@ -314,6 +328,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="glossary_and_notations.html">
     Glossary and Notations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_news/whats_news.html">
+    What’s new
   </a>
 </li>
 
@@ -472,7 +493,16 @@
 <h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">1. Definition of concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">1. Definition of concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#variable-importance">1.1. Variable Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#variable-selection">1.2. Variable Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#variable-selection-vs-variable-importance">1.3. Variable Selection vs Variable Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#types-of-vi-methods">1.4. Types of VI methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#high-dimension-and-correlation">1.5. High-dimension and correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#statistical-inference">1.6. Statistical Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#references">1.7. References</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="glm_methods.html">2. GLM methods</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="glm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glm_methods/knockoffs.html">2.2. Knockoffs</a></li>

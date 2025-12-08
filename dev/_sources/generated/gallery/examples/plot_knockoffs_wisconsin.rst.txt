@@ -36,7 +36,7 @@ The downstream task is to classify tumors as benign or malignant. We leave out 1
 the data to evaluate the performance of the Logistic Lasso (Logistic Regression with
 L1 regularization) on the prediction task.
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-38
+.. GENERATED FROM PYTHON SOURCE LINES 19-37
 
 .. code-block:: Python
 
@@ -47,7 +47,6 @@ L1 regularization) on the prediction task.
     data = load_breast_cancer()
     X = data.data
     y = data.target
-    # Random seed for reproducibility
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=0)
 
@@ -66,7 +65,7 @@ L1 regularization) on the prediction task.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-45
+.. GENERATED FROM PYTHON SOURCE LINES 38-44
 
 Selecting variables with the Logistic Lasso
 -------------------------------------------
@@ -75,7 +74,7 @@ characteristics that are associated with tumor malignance. We start off by apply
 classical method using Lasso logistic regression and retaining variables with non-null
 coefficients:
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-64
+.. GENERATED FROM PYTHON SOURCE LINES 44-63
 
 .. code-block:: Python
 
@@ -122,7 +121,7 @@ coefficients:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-73
+.. GENERATED FROM PYTHON SOURCE LINES 64-72
 
 Evaluating the rejection set
 ----------------------------
@@ -133,7 +132,7 @@ this method, we artificially increase the number of variables by adding noisy co
 of the features. These are correlated with the variables in the dataset, but are not
 related to the outcome.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-95
+.. GENERATED FROM PYTHON SOURCE LINES 72-94
 
 .. code-block:: Python
 
@@ -166,13 +165,13 @@ related to the outcome.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-99
+.. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 There are 180 features, 30 of them are real and 150 of them are fake and independent
 of the outcome. We now apply the Lasso (with cross-validation to select the best
 regularization parameter) to the noisy dataset and observe the results:
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-135
+.. GENERATED FROM PYTHON SOURCE LINES 98-134
 
 .. code-block:: Python
 
@@ -184,7 +183,7 @@ regularization parameter) to the noisy dataset and observe the results:
         penalty="l1",
         solver="liblinear",
         random_state=0,
-        n_jobs=1,
+        n_jobs=4,
     )
     lasso_noisy.fit(noisy_train, y_train)
     y_pred_noisy = lasso_noisy.predict(noisy_test)
@@ -226,14 +225,14 @@ regularization parameter) to the noisy dataset and observe the results:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-140
+.. GENERATED FROM PYTHON SOURCE LINES 135-139
 
 The Lasso selects many spurious variables that are not directly related to the outcome.
 To mitigate this problem, we can use one of the statistically controlled variable
 selection methods implemented in hidimstat. This ensures that the proportion of False
 Discoveries is below a certain bound set by the user in all scenarios.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-148
+.. GENERATED FROM PYTHON SOURCE LINES 142-147
 
 Controlled variable selection with Knockoffs
 --------------------------------------------
@@ -241,17 +240,19 @@ We use the Model-X Knockoff procedure to control the FDR (False Discovery Rate).
 selection of variables is based on the Lasso Coefficient Difference (LCD) statistic
 :footcite:t:`candes2018panning`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-174
+.. GENERATED FROM PYTHON SOURCE LINES 147-178
 
 .. code-block:: Python
 
-    from hidimstat import model_x_knockoff
+    from sklearn.covariance import LedoitWolf
 
-    fdr = 0.2
+    from hidimstat import ModelXKnockoff
+    from hidimstat.samplers import GaussianKnockoffs
 
-    selected, test_scores, threshold, X_tildes = model_x_knockoff(
-        noisy_train,
-        y_train,
+    model_x_knockoff = ModelXKnockoff(
+        ko_generator=GaussianKnockoffs(
+            cov_estimator=LedoitWolf(assume_centered=True), tol=1e-15
+        ),
         estimator=LogisticRegressionCV(
             solver="liblinear",
             penalty="l1",
@@ -260,15 +261,18 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
             tol=1e-3,
             max_iter=1000,
         ),
-        n_bootstraps=1,
         random_state=0,
-        tol_gauss=1e-15,
-        preconfigure_estimator=None,
-        fdr=fdr,
+        preconfigure_lasso_path=False,
     )
+    importance = model_x_knockoff.fit_importance(
+        noisy_train,
+        y_train,
+    )
+    selected = model_x_knockoff.fdr_selection(fdr=0.2)
+
 
     # Count how many selected features are actually noise
-    num_false_discoveries = np.sum(selected >= p)
+    num_false_discoveries = np.sum(selected[p:])
     print(f"Knockoffs make at least {num_false_discoveries} False Discoveries")
 
 
@@ -279,18 +283,18 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:204: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
       warnings.warn(
-    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:204: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
       warnings.warn(
-    /home/circleci/project/src/hidimstat/statistical_tools/gaussian_knockoffs.py:204: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
       warnings.warn(
-    Knockoffs make at least 1 False Discoveries
+    Knockoffs make at least 2 False Discoveries
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-182
+.. GENERATED FROM PYTHON SOURCE LINES 179-186
 
 Visualizing the results
 -----------------------
@@ -300,18 +304,18 @@ along with the selection threshold for the knockoffs and the absolute value of t
 Lasso coefficients. We plot the 25 most important features according to the KO
 statistic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-237
+.. GENERATED FROM PYTHON SOURCE LINES 186-243
 
 .. code-block:: Python
 
     import matplotlib.pyplot as plt
     import seaborn as sns
 
-    selected_mask = np.array(["not selected"] * len(test_scores))
+    selected_mask = np.array(["not selected"] * len(importance[0]))
     selected_mask[selected] = "selected"
     df_ko = pd.DataFrame(
         {
-            "score": test_scores,
+            "score": importance[0],
             "variable": feature_names_noise,
             "selected": selected_mask,
         }
@@ -332,7 +336,9 @@ statistic.
         ax=ax,
         palette={"selected": "tab:red", "not selected": "tab:gray"},
     )
-    ax.axvline(x=threshold, color="k", linestyle="--", label="Threshold")
+    ax.axvline(
+        x=model_x_knockoff.threshold_fdr_, color="k", linestyle="--", label="Threshold"
+    )
     ax.legend()
     ax.set_xlabel("KO statistic (LCD)")
     ax.set_ylabel("")
@@ -371,13 +377,13 @@ statistic.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-241
+.. GENERATED FROM PYTHON SOURCE LINES 244-247
 
 The plot shows that the knockoffs procedure is more conservative than the Lasso,
 selecting far fewer spurious features. At the same time, it successfully identifies
 relevant true features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 244-247
+.. GENERATED FROM PYTHON SOURCE LINES 250-253
 
 References
 ----------
@@ -386,7 +392,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.982 seconds)
+   **Total running time of the script:** (0 minutes 5.318 seconds)
+
+**Estimated memory usage:**  214 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:

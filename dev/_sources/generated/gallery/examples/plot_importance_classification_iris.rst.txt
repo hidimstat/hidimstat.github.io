@@ -155,7 +155,7 @@ function and use joblib to parallelize the computation.
             )
 
         vim.fit(X[train_index], y[train_index])
-        importance = vim.importance(X[test_index], y[test_index])["importance"]
+        importance = vim.importance(X[test_index], y[test_index])
 
         return pd.DataFrame(
             {
@@ -426,7 +426,9 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 27.423 seconds)
+   **Total running time of the script:** (0 minutes 7.906 seconds)
+
+**Estimated memory usage:**  214 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:

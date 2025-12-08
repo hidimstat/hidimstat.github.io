@@ -38,73 +38,32 @@ We introduce two feature aggregation methods that maintain statistical guarantee
 though with a small spatial tolerance in support detection (i.e., they may identify
 null covariates "close" to non-null covariates):
 
-* Clustered Desparsified Lasso (CLuDL): combines clustering (parcellation)
-    with statistical inference
-* Ensemble Clustered Desparsified Lasso (EnCluDL): adds randomization
-    to the clustering process
+* Clustered Desparsified Lasso (CLuDL): combines clustering (parcellation) with statistical inference
+* Ensemble Clustered Desparsified Lasso (EnCluDL): adds randomization to the clustering process
 
 EnCluDL is particularly powerful as it doesn't rely on a single clustering choice.
 As demonstrated in :footcite:t:`chevalier2021decoding`, it produces relevant
 predictive regions across various tasks.
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-70
+.. GENERATED FROM PYTHON SOURCE LINES 31-35
+
+fetch and preprocess Haxby dataset
+----------------------------------------------
+We define a function that gathers and preprocesses the Haxby dataset for a given subject.
+Only the 'face' and 'house' conditions are kept for this example.
+
+.. GENERATED FROM PYTHON SOURCE LINES 35-84
 
 .. code-block:: Python
 
-
-    import resource
-    import warnings
 
     import numpy as np
     import pandas as pd
-    from matplotlib.pyplot import get_cmap
     from nilearn import datasets
     from nilearn.image import mean_img
     from nilearn.maskers import NiftiMasker
-    from nilearn.plotting import plot_stat_map, show
-    from sklearn.cluster import FeatureAgglomeration
-    from sklearn.feature_extraction import image
-    from sklearn.preprocessing import StandardScaler
     from sklearn.utils import Bunch
 
-    from hidimstat.desparsified_lasso import desparsified_lasso, desparsified_lasso_pvalue
-    from hidimstat.ensemble_clustered_inference import (
-        clustered_inference,
-        clustered_inference_pvalue,
-        ensemble_clustered_inference,
-        ensemble_clustered_inference_pvalue,
-    )
-    from hidimstat.statistical_tools.p_values import zscore_from_pval
-
-    # Remove warnings during loading data
-    warnings.filterwarnings(
-        "ignore", message="The provided image has no sform in its header."
-    )
-
-    # Limit the ressoruce use for the example to 5 G or maximum of possible.
-    limit_5G = int(5 * 1e9)
-    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
-    new_soft_limit = limit_5G if soft < 0 else min(limit_5G, soft)
-    new_hard_limit = limit_5G if hard < 0 else min(limit_5G, hard)
-    resource.setrlimit(resource.RLIMIT_AS, (new_soft_limit, new_hard_limit))
-    n_jobs = 1
-
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 71-73
-
-Function to fetch and preprocess Haxby dataset
-----------------------------------------------
-
-.. GENERATED FROM PYTHON SOURCE LINES 73-113
-
-.. code-block:: Python
 
     def preprocess_haxby(subject=2, memory=None):
         """Gathering and preprocessing Haxby dataset for a given subject."""
@@ -153,7 +112,7 @@ Function to fetch and preprocess Haxby dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-121
+.. GENERATED FROM PYTHON SOURCE LINES 85-92
 
 Gathering and preprocessing Haxby dataset for a given subject
 -------------------------------------------------------------
@@ -163,9 +122,18 @@ it outputs the preprocessed activation maps for the two conditions
 the session labels (in `groups`) and the mask (in `masker`).
 You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-125
+.. GENERATED FROM PYTHON SOURCE LINES 94-107
 
 .. code-block:: Python
+
+
+    import warnings
+
+    # Remove warnings during loading data
+    warnings.filterwarnings(
+        "ignore", message="The provided image has no sform in its header."
+    )
+
 
     data = preprocess_haxby(subject=2)
     X, y, groups, masker = data.X, data.y, data.groups, data.masker
@@ -184,16 +152,19 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 108-111
 
 Initializing FeatureAgglomeration object that performs the clustering
 ---------------------------------------------------------------------
 For fMRI data taking 500 clusters is generally a good default choice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-140
+.. GENERATED FROM PYTHON SOURCE LINES 111-125
 
 .. code-block:: Python
 
+
+    from sklearn.cluster import FeatureAgglomeration
+    from sklearn.feature_extraction import image
 
     n_clusters = 500
 
@@ -212,68 +183,75 @@ For fMRI data taking 500 clusters is generally a good default choice.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-150
+.. GENERATED FROM PYTHON SOURCE LINES 126-128
 
 Making the inference with several algorithms
 --------------------------------------------
 
-First, we try to recover the discriminative pattern by computing
-p-values from desparsified lasso.
-Due to the size of the X, it's not possible to use this method with a limit
-of 5 G for memory. To handle this problem, the following methods use some
-feature aggregation methods.
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 150-162
+.. GENERATED FROM PYTHON SOURCE LINES 128-144
 
 .. code-block:: Python
 
-    try:
-        beta_hat, sigma_hat, precision_diagonal = desparsified_lasso(
-            X, y, noise_method="median", max_iteration=1000, random_state=0, n_jobs=n_jobs
-        )
-        pval_dl, _, one_minus_pval_dl, _, cb_min, cb_max = desparsified_lasso_pvalue(
-            X.shape[0], beta_hat, sigma_hat, precision_diagonal
-        )
-    except MemoryError as err:
-        pval_dl = None
-        one_minus_pval_dl = None
-        print("As expected, Desparsified Lasso uses too much memory.")
+
+    from sklearn.linear_model import LassoCV
+    from sklearn.model_selection import KFold
+
+    # Default estimator
+    estimator = LassoCV(
+        eps=1e-2,
+        fit_intercept=False,
+        cv=KFold(n_splits=5, shuffle=True, random_state=0),
+        tol=1e-2,
+        max_iter=6000,
+        random_state=1,
+        n_jobs=1,
+    )
 
 
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    'max_iter' has been increased to 199560
-    As expected, Desparsified Lasso uses too much memory.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-165
+.. GENERATED FROM PYTHON SOURCE LINES 145-148
+
+Due to the very high dimensionality of the problem (close to 40,000 voxels) computing
+a p-value map with Desparsified Lasso would be very memory consuming and may also be
+inadequate since it does not take into account the spatial structure of the data.
+
+.. GENERATED FROM PYTHON SOURCE LINES 151-153
 
 Now, the clustered inference algorithm which combines parcellation
 and high-dimensional inference (c.f. References).
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-177
+.. GENERATED FROM PYTHON SOURCE LINES 153-176
 
 .. code-block:: Python
 
-    ward_, beta_hat, theta_hat, omega_diag = clustered_inference(
-        X,
-        y,
-        ward,
-        scaler_sampling=StandardScaler(),
-        tolerance=1e-2,
-        random_state=1,
+
+    from copy import deepcopy
+
+    from sklearn.base import clone
+
+    from hidimstat.desparsified_lasso import DesparsifiedLasso
+    from hidimstat.ensemble_clustered_inference import CluDL
+
+    # number of worker
+    n_jobs = 3
+    desparsified_lasso_1 = DesparsifiedLasso(
+        noise_method="median",
+        estimator=clone(estimator),
+        random_state=0,
+        n_jobs=1,
     )
-    beta_hat, pval_cdl, _, one_minus_pval_cdl, _ = clustered_inference_pvalue(
-        X.shape[0], None, ward_, beta_hat, theta_hat, omega_diag
+
+    cludl = CluDL(
+        clustering=ward, desparsified_lasso=deepcopy(desparsified_lasso_1), random_state=0
     )
+    cludl.fit_importance(X, y)
+
 
 
 
@@ -283,15 +261,13 @@ and high-dimensional inference (c.f. References).
 
  .. code-block:: none
 
-    [Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.2s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.0s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.5s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    2.9s finished
+
+    array([ 5.90998411e-06,  5.90998411e-06,  5.90998411e-06, ...,
+           -1.44788141e-03, -1.44788141e-03, -1.44788141e-03], shape=(39912,))
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 178-185
+.. GENERATED FROM PYTHON SOURCE LINES 177-184
 
 Below, we run the ensemble clustered inference algorithm which adds a
 randomization step over the clustered inference algorithm (c.f. References).
@@ -299,35 +275,25 @@ To make the example as short as possible we take `n_bootstraps=5`
 which means that 5 different parcellations are considered and
 then 5 statistical maps are produced and aggregated into one.
 However you might benefit from clustering randomization taking
-`n_bootstraps=25` or `n_bootstraps=100`, also we set `n_jobs`.
+`n_bootstraps=25` or `n_bootstraps=100`, also we set `n_jobs=n_jobs`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 185-209
+.. GENERATED FROM PYTHON SOURCE LINES 184-198
 
 .. code-block:: Python
 
-    list_ward, list_beta_hat, list_theta_hat, list_omega_diag = (
-        ensemble_clustered_inference(
-            X,
-            y,
-            ward,
-            groups=groups,
-            scaler_sampling=StandardScaler(),
-            n_bootstraps=5,
-            max_iteration=6000,
-            tolerance=1e-2,
-            random_state=2,
-            n_jobs=n_jobs,
-        )
+
+    from hidimstat.ensemble_clustered_inference import EnCluDL
+
+    encludl = EnCluDL(
+        clustering=ward,
+        desparsified_lasso=deepcopy(desparsified_lasso_1),
+        n_jobs=n_jobs,
+        n_bootstraps=10,
+        cluster_boostrap_size=0.75,
+        random_state=0,
     )
-    beta_hat, selected = ensemble_clustered_inference_pvalue(
-        X.shape[0],
-        False,
-        list_ward,
-        list_beta_hat,
-        list_theta_hat,
-        list_omega_diag,
-        fdr=0.1,
-    )
+    encludl.fit_importance(X, y)
+
 
 
 
@@ -337,33 +303,15 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-      0%|          | 0/5 [00:00<?, ?it/s][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.8s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.1s finished
-     20%|██        | 1/5 [00:16<01:05, 16.37s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.2s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.6s finished
-     40%|████      | 2/5 [00:30<00:44, 14.85s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.1s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.5s finished
-     60%|██████    | 3/5 [00:44<00:29, 14.55s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.3s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.2s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    2.9s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.3s finished
-     80%|████████  | 4/5 [01:00<00:15, 15.07s/it][Parallel(n_jobs=1)]: Done  49 tasks      | elapsed:    0.4s
-    [Parallel(n_jobs=1)]: Done 199 tasks      | elapsed:    1.3s
-    [Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    3.4s
-    [Parallel(n_jobs=1)]: Done 500 out of 500 | elapsed:    3.8s finished
-    100%|██████████| 5/5 [01:13<00:00, 14.35s/it]    100%|██████████| 5/5 [01:13<00:00, 14.66s/it]
-    [Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:  1.2min finished
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  3.19it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:09<00:06,  1.72s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:18<00:02,  2.21s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:18<00:00,  1.85s/it]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  30%|███       | 3/10 [00:00<00:00, 23.29it/s]    Computing importances:  60%|██████    | 6/10 [00:00<00:00, 23.54it/s]    Computing importances:  90%|█████████ | 9/10 [00:00<00:00, 23.67it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 23.57it/s]
+
+    array([ 2.82566950e-05,  2.82566950e-05,  2.82566950e-05, ...,
+           -3.43297742e-04, -3.43297742e-04, -3.43297742e-04], shape=(39912,))
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 210-218
+.. GENERATED FROM PYTHON SOURCE LINES 199-207
 
 Plotting the results
 --------------------
@@ -374,10 +322,12 @@ inverse survival function.
 
 First, we set theoretical FWER target at 10%.
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-222
+.. GENERATED FROM PYTHON SOURCE LINES 207-214
 
 .. code-block:: Python
 
+
+    from hidimstat.statistical_tools.p_values import zscore_from_pval
 
     n_samples, n_features = X.shape
     target_fwer = 0.1
@@ -389,78 +339,24 @@ First, we set theoretical FWER target at 10%.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-226
 
-We now translate the FWER target into a z-score target.
-For the permutation test methods we do not need any additional correction
-since the p-values are already adjusted for multiple testing.
-
-.. GENERATED FROM PYTHON SOURCE LINES 226-229
-
-.. code-block:: Python
-
-
-    zscore_threshold_corr = zscore_from_pval((target_fwer / 2))
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 230-233
-
-Other methods need to be corrected. We consider the Bonferroni correction.
-For methods that do not reduce the feature space, the correction
-consists in dividing by the number of features.
-
-.. GENERATED FROM PYTHON SOURCE LINES 233-237
-
-.. code-block:: Python
-
-
-    correction = 1.0 / n_features
-    zscore_threshold_no_clust = zscore_from_pval((target_fwer / 2) * correction)
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 238-240
-
-For methods that parcelates the brain into groups of voxels, the correction
-consists in dividing by the number of parcels (or clusters).
-
-.. GENERATED FROM PYTHON SOURCE LINES 240-244
-
-.. code-block:: Python
-
-
-    correction_clust = 1.0 / n_clusters
-    zscore_threshold_clust = zscore_from_pval((target_fwer / 2) * correction_clust)
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 245-249
+.. GENERATED FROM PYTHON SOURCE LINES 215-219
 
 Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called `plot_map` that wraps all these steps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 249-293
+.. GENERATED FROM PYTHON SOURCE LINES 219-270
 
 .. code-block:: Python
 
+
+
+    from matplotlib.pyplot import get_cmap
+    from nilearn.plotting import plot_stat_map, show
+
+    from hidimstat.statistical_tools.p_values import zscore_from_pval
 
 
     def plot_map(
@@ -487,23 +383,24 @@ called `plot_map` that wraps all these steps.
         )
 
 
-    if pval_dl is not None:
-        plot_map(
-            zscore_from_pval(pval_dl, one_minus_pval_dl),
-            float(zscore_threshold_no_clust),
-            "Desparsified Lasso",
-        )
-
+    selected_cludl = cludl.fwer_selection(fwer=target_fwer, two_tailed_test=True)
     plot_map(
-        zscore_from_pval(pval_cdl, one_minus_pval_cdl),
-        float(zscore_threshold_clust),
-        "CluDL",
+        zscore_from_pval(cludl.pvalues_) * selected_cludl,
+        float(zscore_from_pval(target_fwer / 2 / n_clusters)),
+        title="CluDL",
     )
 
-    plot_map(selected, 0.5, "EnCluDL", vmin=-1, vmax=1)
+    selected_encludl = encludl.fwer_selection(fwer=target_fwer, two_tailed_test=True)
+    z_score_encludl = zscore_from_pval(encludl.pvalues_) * selected_encludl
+    plot_map(
+        z_score_encludl,
+        float(zscore_from_pval(target_fwer / 2 / n_clusters)),
+        "EnCluDL",
+    )
     # Finally, calling plotting.show() is necessary to display the figure when
     # running as a script outside IPython
     show()
+
 
 
 
@@ -526,10 +423,17 @@ called `plot_map` that wraps all these steps.
          :class: sphx-glr-multi-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Using number of clusters for multiple testing correction.
+    Using number of features for multiple testing correction.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 294-308
+
+.. GENERATED FROM PYTHON SOURCE LINES 271-285
 
 Analysis of the results
 -----------------------
@@ -546,7 +450,7 @@ Finally, the solution provided by the ensemble clustered inference algorithm
 (EnCluDL) seems realistic as we recover the visual cortex and do not make
 spurious discoveries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 311-314
+.. GENERATED FROM PYTHON SOURCE LINES 288-291
 
 References
 ----------
@@ -555,7 +459,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 14.206 seconds)
+   **Total running time of the script:** (1 minutes 23.367 seconds)
+
+**Estimated memory usage:**  2710 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:
