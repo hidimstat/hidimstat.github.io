@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=2c075d60"></script>
+    <script src="_static/documentation_options.js?v=1aeece68"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev6+ge3a1cc22b';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev7+gb274509a0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -508,6 +508,10 @@ features, the FDP is defined as:</p>
 <div class="math notranslate nohighlight">
 \[\text{FDP} = \frac{|\hat S \cap \hat S \setminus S^*|}{|\hat S|}.\]</div>
 <p>where <span class="math notranslate nohighlight">\(|\cdot|\)</span> denotes the cardinality of a set.</p>
+</dd>
+<dt id="term-FDR">FDR<a class="headerlink" href="#term-FDR" title="Link to this term">#</a></dt><dt id="term-False-Discovery-Rate">False Discovery Rate<a class="headerlink" href="#term-False-Discovery-Rate" title="Link to this term">#</a></dt><dd><p>The False Discovery Rate (FDR) is the expected value of the False Discovery
+Proportion (FDP). For a selection set <span class="math notranslate nohighlight">\(\hat S\)</span> it is defined as
+<span class="math notranslate nohighlight">\(\text{FDR}(\hat S) = \mathbb{E}[\text{FDP}(\hat S)]\)</span>.</p>
 </dd>
 <dt id="term-LOCO">LOCO<a class="headerlink" href="#term-LOCO" title="Link to this term">#</a></dt><dt id="term-Leave-One-Covariate-Out">Leave-One-Covariate-Out<a class="headerlink" href="#term-Leave-One-Covariate-Out" title="Link to this term">#</a></dt><dd><p>The Leave-One-Covariate-Out (LOCO) is a measure of feature importance that
 consists in retraining a predictive model without the feature of interest and

@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=2c075d60"></script>
+    <script src="_static/documentation_options.js?v=1aeece68"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev6+ge3a1cc22b';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev7+gb274509a0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -410,11 +410,7 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">1. Definition of concepts</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="glm_methods.html">2. GLM methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="glm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
-<li class="toctree-l2"><a class="reference internal" href="glm_methods/knockoffs.html">2.2. Knockoffs</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="slm_methods.html">2. Sparse Linear Models</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="model_agnostic_methods.html">3. Model-agnostic methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/total_sobol_index.html">3.1. Total Sobol Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
@@ -503,23 +499,16 @@
 <li class="toctree-l2"><a class="reference internal" href="concepts.html#references">1.7. References</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="glm_methods.html">2. GLM methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="glm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
-<li class="toctree-l2"><a class="reference internal" href="glm_methods/knockoffs.html">2.2. Knockoffs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slm_methods.html">2. Sparse Linear Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slm_methods.html#desparsified-lasso">2.1. Desparsified Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slm_methods.html#model-x-knockoffs">2.2. Model-X Knockoffs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slm_methods.html#distilled-conditional-randomization-test">2.3. Distilled Conditional Randomization Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="model_agnostic_methods.html">3. Model-agnostic methods</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/total_sobol_index.html">3.1. Total Sobol Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html">3.3. Conditional Feature Importance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#theoretical-index">3.3.1. Theoretical index</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#estimation-procedure">3.3.2. Estimation procedure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#inference">3.3.3. Inference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#regression-example">3.3.4. Regression example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#classification-example">3.3.5. Classification example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html#references">3.3.6. References</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html">3.3. Conditional Feature Importance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/permutation_feature_importance.html">3.4. Permutation Feature Importance</a></li>
 </ul>
 </li>
