@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=1aeece68"></script>
+    <script src="../_static/documentation_options.js?v=4a818c16"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev7+gb274509a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev8+g85ba4980a';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -495,12 +495,23 @@
 rooted in sensitivity analysis. It can intuitively be defined by the performance drop
 of a predictive model when a feature is removed, similarly to an ablation study. In general, the TSI can be expressed as:</p>
 <div class="math notranslate nohighlight">
-\[\psi_j^{TSI} = \mathbb{E} \left[\mathcal{L}\left(y, \mu(X)\right)\right] - \mathbb{E} \left[\mathcal{L}\left(y, \mu_{-j}(X^{-j})\right)\right],\]</div>
+\[\psi^j_{TSI} = \mathbb{E} \left[\mathcal{L}\left(y, \mu(X)\right)\right] - \mathbb{E} \left[\mathcal{L}\left(y, \mu_{-j}(X^{-j})\right)\right],\]</div>
 <p>where <span class="math notranslate nohighlight">\(X^{-j}\)</span> denotes the feature vector without the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature, and
 <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j})\)</span> is the same predictive model as <span class="math notranslate nohighlight">\(\mu(X)\)</span> but retrained
 on the reduced feature set <span class="math notranslate nohighlight">\(X^{-j}\)</span>. When <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the squared loss,
 for a regression task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j}) = \mathbb{E}[y | X^{-j}]\)</span> and when
 <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the log-loss, for a classification task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j}) = P(y | X^{-j})\)</span>.</p>
+<section id="references">
+<h2><span class="section-number">3.1.1. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id3">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-sobol1993sensitivity" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Ilya Meyerovich Sobol. Sensitivity estimates for nonlinear mathematical models. <em>Math. Model. Comput. Exp.</em>, 1:407, 1993.</p>
+</aside>
+</aside>
+</div>
+</section>
 </section>
 
 
@@ -541,6 +552,18 @@ for a regression task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.1.1. References</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">

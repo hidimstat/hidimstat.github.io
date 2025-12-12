@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=1aeece68"></script>
+    <script src="_static/documentation_options.js?v=4a818c16"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev7+gb274509a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev8+g85ba4980a';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -470,13 +470,37 @@
 <section id="notations">
 <h2>Notations<a class="headerlink" href="#notations" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-minus-index">minus index<a class="headerlink" href="#term-minus-index" title="Link to this term">#</a></dt><dt id="term-X-j"><span class="math notranslate nohighlight">\(X^{-j}\)</span><a class="headerlink" href="#term-X-j" title="Link to this term">#</a></dt><dd><p>The minus index notation is used to denote all features except the one with the
-given index. For instance, <span class="math notranslate nohighlight">\(X_{-j}\)</span> denotes all features except the
+<dt id="term-target">target<a class="headerlink" href="#term-target" title="Link to this term">#</a></dt><dt id="term-Y-y"><span class="math notranslate nohighlight">\(Y\)</span>, <code class="docutils literal notranslate"><span class="pre">y</span></code><a class="headerlink" href="#term-Y-y" title="Link to this term">#</a></dt><dd><p>In the documentation, the target variable is denoted by a capital letter
+<span class="math notranslate nohighlight">\(Y\)</span> when referring to it as a random variable. In the API and code
+examples, the target variable is denoted by a lowercase letter <code class="docutils literal notranslate"><span class="pre">y</span></code>, following
+the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> convention.</p>
+</dd>
+<dt id="term-index">index<a class="headerlink" href="#term-index" title="Link to this term">#</a></dt><dt id="term-X-j"><span class="math notranslate nohighlight">\(X^{j}\)</span><a class="headerlink" href="#term-X-j" title="Link to this term">#</a></dt><dd><p>The superscript index notation is used to denote the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature of
+the feature vector <span class="math notranslate nohighlight">\(X\)</span>.</p>
+</dd>
+<dt id="term-minus-index">minus index<a class="headerlink" href="#term-minus-index" title="Link to this term">#</a></dt><dt id="term-0"><span class="math notranslate nohighlight">\(X^{-j}\)</span><a class="headerlink" href="#term-0" title="Link to this term">#</a></dt><dd><p>The minus index notation is used to denote all features except the one with the
+given index. For instance, <span class="math notranslate nohighlight">\(X^{-j}\)</span> denotes all features except the
 <span class="math notranslate nohighlight">\(j^{th}\)</span> one.</p>
 </dd>
-<dt id="term-minus-group">minus group<a class="headerlink" href="#term-minus-group" title="Link to this term">#</a></dt><dt id="term-X_-G"><span class="math notranslate nohighlight">\(X_{-G}\)</span><a class="headerlink" href="#term-X_-G" title="Link to this term">#</a></dt><dd><p>Similar to the <a class="reference internal" href="#term-minus-index"><span class="xref std std-term">minus index</span></a> notation for individual features, we use the minus
+<dt id="term-minus-group">minus group<a class="headerlink" href="#term-minus-group" title="Link to this term">#</a></dt><dt id="term-X-G"><span class="math notranslate nohighlight">\(X^{-G}\)</span><a class="headerlink" href="#term-X-G" title="Link to this term">#</a></dt><dd><p>Similar to the <a class="reference internal" href="#term-minus-index"><span class="xref std std-term">minus index</span></a> notation for individual features, we use the minus
 index notation to denote the complement of a group of features. For instance,
-<span class="math notranslate nohighlight">\(X_{-G}\)</span> denotes all features except the ones in the group <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<span class="math notranslate nohighlight">\(X^{-G}\)</span> denotes all features except the ones in the group <span class="math notranslate nohighlight">\(G\)</span>.</p>
+</dd>
+<dt id="term-marginal-permutation-of-a-feature">marginal permutation of a feature<a class="headerlink" href="#term-marginal-permutation-of-a-feature" title="Link to this term">#</a></dt><dt id="term-X-pi-j"><span class="math notranslate nohighlight">\(X^{\pi (j)}\)</span><a class="headerlink" href="#term-X-pi-j" title="Link to this term">#</a></dt><dd><p>To denote a perturbed version of an input <span class="math notranslate nohighlight">\(X\)</span> where the <span class="math notranslate nohighlight">\(j^{th}\)</span>
+feature has been permuted, we use the superscript notation <span class="math notranslate nohighlight">\(\pi (j)\)</span>. This
+permutation is marginal, meaning that the values of the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature
+are shuffled across samples, independently from the other features.</p>
+</dd>
+<dt id="term-conditional-permutation-of-a-feature">conditional permutation of a feature<a class="headerlink" href="#term-conditional-permutation-of-a-feature" title="Link to this term">#</a></dt><dt id="term-X-pi-j-j"><span class="math notranslate nohighlight">\(X^{\pi(j| -j)}\)</span><a class="headerlink" href="#term-X-pi-j-j" title="Link to this term">#</a></dt><dd><p>To denote a perturbed version of an input <span class="math notranslate nohighlight">\(X\)</span> where the <span class="math notranslate nohighlight">\(j^{th}\)</span>
+feature has been sampled from its conditional distribution given all other
+features, we use the notation <span class="math notranslate nohighlight">\(X^{\pi(j| -j)}\)</span>. This means that the
+values of the <span class="math notranslate nohighlight">\(j^{th}\)</span> are drawn from the distribution
+<span class="math notranslate nohighlight">\(P(X^{j} | X^{-j})\)</span>.</p>
+</dd>
+<dt id="term-knockoff-feature">knockoff feature<a class="headerlink" href="#term-knockoff-feature" title="Link to this term">#</a></dt><dt id="term-tilde-X"><span class="math notranslate nohighlight">\(\tilde X\)</span><a class="headerlink" href="#term-tilde-X" title="Link to this term">#</a></dt><dd><p>The knockoff input <span class="math notranslate nohighlight">\(\tilde X\)</span> is a perturbed version of the original
+input <span class="math notranslate nohighlight">\(X\)</span> constructed such that each knockoff feature is pairwise
+exchangeable with the original feature and independent from the output <span class="math notranslate nohighlight">\(Y\)</span>
+conditionally on the original features.</p>
 </dd>
 </dl>
 </section>
@@ -506,7 +530,7 @@ discoveries and the total number of discoveries. Denoting <span class="math notr
 estimated set of important features, and <span class="math notranslate nohighlight">\(S^*\)</span> the true set of important
 features, the FDP is defined as:</p>
 <div class="math notranslate nohighlight">
-\[\text{FDP} = \frac{|\hat S \cap \hat S \setminus S^*|}{|\hat S|}.\]</div>
+\[\text{FDP}(\hat S) = \frac{|\hat S \setminus S^*|}{\max(|\hat S|, 1)}.\]</div>
 <p>where <span class="math notranslate nohighlight">\(|\cdot|\)</span> denotes the cardinality of a set.</p>
 </dd>
 <dt id="term-FDR">FDR<a class="headerlink" href="#term-FDR" title="Link to this term">#</a></dt><dt id="term-False-Discovery-Rate">False Discovery Rate<a class="headerlink" href="#term-False-Discovery-Rate" title="Link to this term">#</a></dt><dd><p>The False Discovery Rate (FDR) is the expected value of the False Discovery

@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=1aeece68"></script>
+    <script src="../_static/documentation_options.js?v=4a818c16"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev7+gb274509a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev8+g85ba4980a';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -505,46 +505,47 @@ does not require retraining the model.</p>
 <h2><span class="section-number">3.3.1. </span>Theoretical index<a class="headerlink" href="#theoretical-index" title="Link to this heading">#</a></h2>
 <p>Conditional Feature Importance (CFI) is a model-agnostic method for estimating feature
 importance through conditional perturbations. Specifically, it constructs a perturbed
-version of the feature <span class="math notranslate nohighlight">\(X_j^P\)</span>, sampled independently from the conditional distribution
-<span class="math notranslate nohighlight">\(P(X_j | X_{-j})\)</span>, such that its association with the output is removed:
-<span class="math notranslate nohighlight">\(X_j^P \perp Y \mid X^{-j}\)</span>. The predictive model is then evaluated on the
-modified feature vector <span class="math notranslate nohighlight">\(\tilde X = [X_1, ..., X_j^P, ..., X_p]\)</span>, and the
-importance of the feature is quantified by the resulting drop in model performance.</p>
+version of the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature, sampled independently from the conditional distribution
+<span class="math notranslate nohighlight">\((X^j | X^{-j})\)</span>, such that its association with the output is removed:
+<span class="math notranslate nohighlight">\(X^{\pi(j| -j)} \perp\!\!\!\!\perp Y \mid X^{-j}\)</span>. The predictive model is then evaluated on the
+modified feature vector <span class="math notranslate nohighlight">\(X^{\pi(j| -j)}\)</span>, which is identical to the original feature
+vector except for the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature that has been replaced by its conditionally
+sampled version. The importance of the feature is quantified by the resulting drop in model performance.</p>
 <div class="math notranslate nohighlight">
-\[\psi_j^{CFI} = \mathbb{E} [\mathcal{L}(y, \mu(\tilde X))] - \mathbb{E} [\mathcal{L}(y, \mu(X))].\]</div>
+\[\psi^j_{CFI} = \mathbb{E} [\mathcal{L}(Y, \mu(X^{\pi(j| -j)}))] - \mathbb{E} [\mathcal{L}(Y, \mu(X))].\]</div>
 <p>The target quantity estimated by CFI is the Total Sobol Index (TSI) <a class="reference internal" href="total_sobol_index.html#total-sobol-index"><span class="std std-ref">Total Sobol Index</span></a>.
 Indeed,</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{2} \psi_j^{CFI}
-= \psi_j^{TSI}
-= \mathbb{E} [\mathcal{L}(y, \mu_{-j}(X^-j))] - \mathbb{E} [\mathcal{L}(y, \mu(X))].\]</div>
-<p>Where in regression, <span class="math notranslate nohighlight">\(\mu_{-j}(X_{-j}) = \mathbb{E}[Y| X_{-j}]\)</span> is the
+\[\frac{1}{2} \psi^j_{CFI}
+= \psi^j_{TSI}
+= \mathbb{E} [\mathcal{L}(Y, \mu_{-j}(X^{-j}))] - \mathbb{E} [\mathcal{L}(Y, \mu(X))].\]</div>
+<p>Where in regression, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j}) = \mathbb{E}[Y| X^{-j}]\)</span> is the
 theoretical model without the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature.</p>
 </section>
 <section id="estimation-procedure">
 <h2><span class="section-number">3.3.2. </span>Estimation procedure<a class="headerlink" href="#estimation-procedure" title="Link to this heading">#</a></h2>
 <p>The estimation of CFI relies on the ability to sample the perturbed feature matrix
-<span class="math notranslate nohighlight">\(\tilde X\)</span>, and specifically to sample <span class="math notranslate nohighlight">\(X_j^p\)</span> independently from the conditional
-distribution, <span class="math notranslate nohighlight">\(X_j^p \overset{\text{i.i.d.}}{\sim} P(X_j | X_{-j})\)</span>, while breaking the
+<span class="math notranslate nohighlight">\(X^{\pi(j| -j)}\)</span>, and specifically to sample the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature independently from the conditional
+distribution, <span class="math notranslate nohighlight">\([X^{\pi(j| -j)}]_j \overset{\text{i.i.d.}}{\sim} P(X^j | X^{-j})\)</span>, while breaking the
 association with the output <span class="math notranslate nohighlight">\(Y\)</span>. Any conditional sampler can be used. A valid
 and efficient approach is conditional permutation (Chamma <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chamma-neurips2023" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).
 This procedure decomposes the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature into a part that
 is predictable from the other features and a residual term that is
 independent of the other features:</p>
 <div class="math notranslate nohighlight">
-\[X_j = \nu_j(X_{-j}) + \epsilon_j, \quad \text{with} \quad \epsilon_j \perp\!\!\!\perp X_{-j} \text{ and } \mathbb{E}[\epsilon_j] = 0.\]</div>
-<p>Here <span class="math notranslate nohighlight">\(\nu_j(X_{-j}) = \mathbb{E}[X_j | X_{-j}]\)</span> is the conditional expectation of
-<span class="math notranslate nohighlight">\(X_j\)</span> given the other features. In practice, <span class="math notranslate nohighlight">\(\nu_j\)</span> is unknown and has to be
+\[X^j = \nu_j(X^{-j}) + \epsilon_j, \quad \text{with} \quad \epsilon_j \perp\!\!\!\perp X^{-j} \text{ and } \mathbb{E}[\epsilon_j] = 0.\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\nu_j(X^{-j}) = \mathbb{E}[X^j | X^{-j}]\)</span> is the conditional expectation of
+<span class="math notranslate nohighlight">\(X^j\)</span> given the other features. In practice, <span class="math notranslate nohighlight">\(\nu_j\)</span> is unknown and has to be
 estimated from the data using a predictive model.</p>
-<p>Then the perturbed feature <span class="math notranslate nohighlight">\(X_j^p\)</span> is generated by keeping the predictable part
-<span class="math notranslate nohighlight">\(\nu_j(X_{-j})\)</span> unchanged, and by replacing the residual <span class="math notranslate nohighlight">\(\epsilon_j\)</span> by a
+<p>Then the perturbed feature <span class="math notranslate nohighlight">\([X^{\pi(j| -j)}]_j\)</span> is generated by keeping the predictable part
+<span class="math notranslate nohighlight">\(\nu_j(X^{-j})\)</span> unchanged, and by replacing the residual <span class="math notranslate nohighlight">\(\epsilon_j\)</span> by a
 randomly permuted version <span class="math notranslate nohighlight">\(\epsilon_j^p\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[X_j^p = \nu_j(X_{-j}) + \epsilon_j^p, \quad \text{with} \quad \epsilon_j^p \sim \text{Perm}(\epsilon_j).\]</div>
+\[[X^{\pi(j| -j)}]_j = \nu_j(X^{-j}) + \epsilon_j^p, \quad \text{with} \quad \epsilon_j^p \sim \text{Perm}(\epsilon_j).\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Estimation of</strong> <span class="math notranslate nohighlight">\(\nu_j\)</span></p>
-<p>To generate the perturbed feature <span class="math notranslate nohighlight">\(X_j^p\)</span>, a model for <span class="math notranslate nohighlight">\(\nu_j\)</span> is required.
+<p>To generate the perturbed input <span class="math notranslate nohighlight">\(X^{\pi(j| -j)}\)</span>, a model for <span class="math notranslate nohighlight">\(\nu_j\)</span> is required.
 Estimating <span class="math notranslate nohighlight">\(\nu_j\)</span> amounts to modeling the relationship between features and is
 arguably an easier task than estimating the relationship between features and the
 target. This ‘model-X’ assumption was for instance argued in Chamma <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chamma-neurips2023" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>,
@@ -565,7 +566,7 @@ Conditional Feature Importance (CFI) allows for conditional independence testing
 determines if a feature provides any unique information to the model’s predictions that
 isn’t already captured by the other features. Essentially, we are testing whether the output is independent from the studied feature given the rest of the input:</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{H}_0: Y \perp\!\!\!\perp X_j | X_{-j}.\]</div>
+\[\mathcal{H}_0: Y \perp\!\!\!\perp X^j | X^{-j}.\]</div>
 <p>The core of this inference is to test the statistical significance of the loss
 differences estimated by CFI. Consequently, a one-sample test on the loss differences
 (or a paired test on the losses) needs to be performed.</p>
@@ -577,9 +578,10 @@ performing a simple t-test on the loss differences is not valid. This issue can 
 addressed by a corrected t-test accounting for this dependence, such as the one
 proposed in Nadeau and Bengio<a class="footnote-reference brackets" href="#footcite-nadeau1999inference" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>Vanishing variance: Under the null hypothesis, even if the loss difference
-converges to zero, the variance of the loss differences also vanishes due to the quadratic functional (:footcite:t:verdinelli2024feature``) . This makes the
-standard one-sample t-test invalid. This second issue can be handled by correcting
-the variance estimate or using other nonparametric test.</p></li>
+converges to zero, the variance of the loss differences also vanishes due to the quadratic
+functional (Verdinelli and Wasserman<a class="footnote-reference brackets" href="#footcite-verdinelli2024feature" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>) . This makes the standard one-sample
+t-test invalid. This second issue can be handled by correcting the variance estimate
+or using other nonparametric test.</p></li>
 </ul>
 </section>
 <section id="regression-example">
@@ -630,7 +632,7 @@ of CFI on a classification task:</p>
 </section>
 <section id="references">
 <h2><span class="section-number">3.3.6. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id6">
+<div class="docutils container" id="id7">
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="footcite-chamma-neurips2023" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
@@ -644,6 +646,10 @@ of CFI on a classification task:</p>
 <aside class="footnote brackets" id="footcite-nadeau1999inference" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
 <p>Claude Nadeau and Yoshua Bengio. Inference for the generalization error. <em>Advances in neural information processing systems</em>, 1999.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-verdinelli2024feature" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
+<p>Isabella Verdinelli and Larry Wasserman. Feature importance: a closer look at shapley values and loco. <em>Statistical Science</em>, 39(4):623–636, 2024.</p>
 </aside>
 </aside>
 </div>
