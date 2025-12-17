@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=3ed578f9"></script>
+    <script src="../../../_static/documentation_options.js?v=32e87117"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,13 +52,13 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev9+g8455cf871';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev10+g0520406e4';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Support Recovery on fMRI Data" href="plot_fmri_data_example.html" />
+    <link rel="next" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
     <link rel="prev" title="Conditional Randomization Test for Sparse Logistic Regression" href="plot_dcrt_logit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -419,6 +419,7 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pixel-wise inference on digit classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
@@ -627,25 +628,25 @@ repetitions using the <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.78it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.78it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.26it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.25it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 656.01it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 348.91it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.24it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.24it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.19it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.19it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 446.87it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 579.36it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.80it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.80it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.83it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.83it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 712.90it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 483.09it/s]
 </pre></div>
 </div>
 </section>
@@ -681,8 +682,8 @@ statistically significant for the classification tasks. For example, we can dete
 the bottom left portion of the loop when distinguishing between digits 0 and 9, the
 bottom left corner of digit 4 when distinguishing between digits 4 and 7, and the
 central vertical stroke when distinguishing between digits 0 and 1.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.481 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1431 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 20.107 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  1442 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-digits-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/75c0e891f7dc9297a5f1b2fc2298b50c/plot_digits.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_digits.ipynb</span></code></a></p>
@@ -718,11 +719,11 @@ central vertical stroke when distinguishing between digits 0 and 1.</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_fmri_data_example.html"
+       href="plot_dl_diabetes_confidence.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Support Recovery on fMRI Data</p>
+        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

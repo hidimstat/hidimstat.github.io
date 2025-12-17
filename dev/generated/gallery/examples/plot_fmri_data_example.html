@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=3ed578f9"></script>
+    <script src="../../../_static/documentation_options.js?v=32e87117"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,14 +52,14 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev9+g8455cf871';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev10+g0520406e4';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Controlled multiple variable selection on the Wisconsin breast cancer dataset" href="plot_knockoffs_wisconsin.html" />
-    <link rel="prev" title="Pixel-wise inference on digit classification" href="plot_digits.html" />
+    <link rel="prev" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -419,6 +419,7 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
@@ -675,16 +676,16 @@ However you might benefit from clustering randomization taking
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:02,  3.74it/s]
-Fitting clustered inferences:  60%|██████    | 6/10 [00:08&lt;00:05,  1.39s/it]
-Fitting clustered inferences:  90%|█████████ | 9/10 [00:15&lt;00:01,  1.85s/it]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:15&lt;00:00,  1.54s/it]
+Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:03,  2.69it/s]
+Fitting clustered inferences:  60%|██████    | 6/10 [00:09&lt;00:06,  1.57s/it]
+Fitting clustered inferences:  90%|█████████ | 9/10 [00:18&lt;00:02,  2.18s/it]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:18&lt;00:00,  1.80s/it]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances:  20%|██        | 2/10 [00:00&lt;00:00, 19.51it/s]
-Computing importances:  50%|█████     | 5/10 [00:00&lt;00:00, 22.08it/s]
-Computing importances:  80%|████████  | 8/10 [00:00&lt;00:00, 22.77it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 22.67it/s]
+Computing importances:  30%|███       | 3/10 [00:00&lt;00:00, 23.05it/s]
+Computing importances:  60%|██████    | 6/10 [00:00&lt;00:00, 23.64it/s]
+Computing importances:  90%|█████████ | 9/10 [00:00&lt;00:00, 23.85it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 23.76it/s]
 
 array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
        -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
@@ -791,7 +792,7 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 7.371 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 15.940 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  2711 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -819,12 +820,12 @@ spurious discoveries.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_digits.html"
+       href="plot_dl_diabetes_confidence.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Pixel-wise inference on digit classification</p>
+        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
       </div>
     </a>
     <a class="right-next"
