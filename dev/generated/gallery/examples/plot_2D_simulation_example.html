@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=2ccfc3d3"></script>
+    <script src="../../../_static/documentation_options.js?v=9c8c3a34"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev11+gd104d9712';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev12+g19e78a563';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -684,7 +684,7 @@ see Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footc
     <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_jobs</span></a><span class="p">,</span>
-    <span class="n">cluster_boostrap_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">cluster_bootstrap_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 <span class="p">)</span>
 <a href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fit_importance" title="hidimstat.EnCluDL.fit_importance" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method"><span class="n">enclu_dl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_init</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">)</span>
 
@@ -692,13 +692,13 @@ see Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footc
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/20 [00:00&lt;?, ?it/s]
-Fitting clustered inferences:  50%|█████     | 10/20 [00:00&lt;00:00, 16.07it/s]
-Fitting clustered inferences:  75%|███████▌  | 15/20 [00:01&lt;00:00, 10.97it/s]
-Fitting clustered inferences: 100%|██████████| 20/20 [00:01&lt;00:00,  9.33it/s]
-Fitting clustered inferences: 100%|██████████| 20/20 [00:01&lt;00:00, 10.25it/s]
+Fitting clustered inferences:  50%|█████     | 10/20 [00:00&lt;00:00, 18.72it/s]
+Fitting clustered inferences:  75%|███████▌  | 15/20 [00:01&lt;00:00, 13.15it/s]
+Fitting clustered inferences: 100%|██████████| 20/20 [00:01&lt;00:00, 11.22it/s]
+Fitting clustered inferences: 100%|██████████| 20/20 [00:01&lt;00:00, 12.28it/s]
 
 Computing importances:   0%|          | 0/20 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 20/20 [00:00&lt;00:00, 275.56it/s]
+Computing importances: 100%|██████████| 20/20 [00:00&lt;00:00, 342.81it/s]
 </pre></div>
 </div>
 <p>Visualizing the support estimated by EnCluDL</p>
@@ -836,7 +836,7 @@ conservative (see Results).</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 19.676 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 21.062 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  226 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-2d-simulation-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

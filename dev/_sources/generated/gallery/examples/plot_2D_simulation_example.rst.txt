@@ -320,7 +320,7 @@ see :footcite:t:`chevalier2022spatially`.
         n_bootstraps=20,
         random_state=0,
         n_jobs=n_jobs,
-        cluster_boostrap_size=0.5,
+        cluster_bootstrap_size=0.5,
     )
     enclu_dl.fit_importance(X_init, y)
 
@@ -335,8 +335,8 @@ see :footcite:t:`chevalier2022spatially`.
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting clustered inferences:  50%|█████     | 10/20 [00:00<00:00, 16.07it/s]    Fitting clustered inferences:  75%|███████▌  | 15/20 [00:01<00:00, 10.97it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00,  9.33it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 10.25it/s]
-    Computing importances:   0%|          | 0/20 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 20/20 [00:00<00:00, 275.56it/s]
+    Fitting clustered inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting clustered inferences:  50%|█████     | 10/20 [00:00<00:00, 18.72it/s]    Fitting clustered inferences:  75%|███████▌  | 15/20 [00:01<00:00, 13.15it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 11.22it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 12.28it/s]
+    Computing importances:   0%|          | 0/20 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 20/20 [00:00<00:00, 342.81it/s]
 
 
 
@@ -525,7 +525,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.676 seconds)
+   **Total running time of the script:** (0 minutes 21.062 seconds)
 
 **Estimated memory usage:**  226 MB
 

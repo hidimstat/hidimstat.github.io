@@ -289,7 +289,7 @@ However you might benefit from clustering randomization taking
         desparsified_lasso=deepcopy(desparsified_lasso_1),
         n_jobs=n_jobs,
         n_bootstraps=10,
-        cluster_boostrap_size=0.75,
+        cluster_bootstrap_size=0.75,
         random_state=0,
     )
     encludl.fit_importance(X, y)
@@ -303,10 +303,10 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  3.53it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:08<00:05,  1.48s/it]/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:782: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  4.27it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:07<00:05,  1.33s/it]/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:782: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
       warnings.warn(
-    Fitting clustered inferences:  90%|█████████ | 9/10 [00:17<00:02,  2.08s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:17<00:00,  1.72s/it]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  30%|███       | 3/10 [00:00<00:00, 22.45it/s]    Computing importances:  60%|██████    | 6/10 [00:00<00:00, 22.26it/s]    Computing importances:  90%|█████████ | 9/10 [00:00<00:00, 22.77it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 22.74it/s]
+    Fitting clustered inferences:  90%|█████████ | 9/10 [00:14<00:01,  1.80s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:14<00:00,  1.49s/it]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  30%|███       | 3/10 [00:00<00:00, 23.29it/s]    Computing importances:  60%|██████    | 6/10 [00:00<00:00, 23.63it/s]    Computing importances:  90%|█████████ | 9/10 [00:00<00:00, 23.82it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 23.69it/s]
 
     array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
            -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
@@ -461,9 +461,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 16.205 seconds)
+   **Total running time of the script:** (1 minutes 6.894 seconds)
 
-**Estimated memory usage:**  2710 MB
+**Estimated memory usage:**  2702 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:
