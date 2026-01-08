@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.1. Total Sobol Index &#8212; HiDimStat</title>
+    <title>1.3. Generalized Linear Model (GLM) Coefficient &#8212; HiDimStat</title>
   
   
   
@@ -43,24 +43,24 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9c8c3a34"></script>
+    <script src="../_static/documentation_options.js?v=6197f892"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'model_agnostic_methods/total_sobol_index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'concepts/glm_coefficient';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev12+g19e78a563';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev13+g4a299c022';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.2. Leave-One-Covariate-Out" href="leave_one_covariate_out.html" />
-    <link rel="prev" title="3. Model-agnostic methods" href="../model_agnostic_methods.html" />
+    <link rel="next" title="1.4. Generalized Total Sobol Index" href="total_sobol_index.html" />
+    <link rel="prev" title="1.2. Statistical guarantees for variable selection" href="statistical_guarantees.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -410,13 +410,18 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../concepts.html">1. Definition of concepts</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../concepts.html">1. General concepts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="general_concepts.html">1.1. Definition of concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistical_guarantees.html">1.2. Statistical guarantees for variable selection</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. Generalized Linear Model (GLM) Coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="total_sobol_index.html">1.4. Generalized Total Sobol Index</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../slm_methods.html">2. Sparse Linear Models</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../model_agnostic_methods.html">3. Model-agnostic methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Total Sobol Index</a></li>
-<li class="toctree-l2"><a class="reference internal" href="leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conditional_feature_importance.html">3.3. Conditional Feature Importance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="permutation_feature_importance.html">3.4. Permutation Feature Importance</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_agnostic_methods.html">3. Model-agnostic methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_agnostic_methods/conditional_feature_importance.html">3.1. Conditional Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_agnostic_methods/permutation_feature_importance.html">3.2. Permutation Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_agnostic_methods/leave_one_covariate_out.html">3.3. Leave-One-Covariate-Out</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../marginal_methods.html">4. Marginal methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -470,9 +475,9 @@
     <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User guide</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../model_agnostic_methods.html" class="nav-link"><span class="section-number">3. </span>Model-agnostic methods</a></li>
+    <li class="breadcrumb-item"><a href="../concepts.html" class="nav-link"><span class="section-number">1. </span>General concepts</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">3.1. </span>Total Sobol Index</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">1.3. </span>Generalized Linear Model (GLM) Coefficient</span></li>
   </ul>
 </nav>
 </div>
@@ -489,25 +494,56 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="total-sobol-index">
-<span id="id1"></span><h1><span class="section-number">3.1. </span>Total Sobol Index<a class="headerlink" href="#total-sobol-index" title="Link to this heading">#</a></h1>
-<p>The Total Sobol Index (TSI) Sobol<a class="footnote-reference brackets" href="#footcite-sobol1993sensitivity" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> is a widely used measure of feature importance that is
-rooted in sensitivity analysis. It can intuitively be defined by the performance drop
-of a predictive model when a feature is removed, similarly to an ablation study. In general, the TSI can be expressed as:</p>
+  <section id="generalized-linear-model-glm-coefficient">
+<span id="glm-coefficient"></span><h1><span class="section-number">1.3. </span>Generalized Linear Model (GLM) Coefficient<a class="headerlink" href="#generalized-linear-model-glm-coefficient" title="Link to this heading">#</a></h1>
+<p>Assuming that the data is generated from a Linear Model,</p>
 <div class="math notranslate nohighlight">
-\[\psi^j_{TSI} = \mathbb{E} \left[\mathcal{L}\left(y, \mu(X)\right)\right] - \mathbb{E} \left[\mathcal{L}\left(y, \mu_{-j}(X^{-j})\right)\right],\]</div>
-<p>where <span class="math notranslate nohighlight">\(X^{-j}\)</span> denotes the feature vector without the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature, and
-<span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j})\)</span> is the same predictive model as <span class="math notranslate nohighlight">\(\mu(X)\)</span> but retrained
-on the reduced feature set <span class="math notranslate nohighlight">\(X^{-j}\)</span>. When <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the squared loss,
-for a regression task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j}) = \mathbb{E}[y | X^{-j}]\)</span> and when
-<span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the log-loss, for a classification task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j}) = P(y | X^{-j})\)</span>.</p>
+\[Y = \sum \beta_j X^j+ \epsilon,
+\quad \text{ with }\varepsilon\sim\mathcal{N}(0, \sigma^2),\]</div>
+<p>the most natural way of defining the importance of each feature is through the absolute/squared value
+of the corresponding coefficient <span class="math notranslate nohighlight">\(\beta_j\)</span> <a class="footnote-reference brackets" href="#footcite-verdinelli2024feature" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[\psi^j_{GLM} = \beta_j^2.\]</div>
+<p>This definition has the advantage of being simple and interpretable. Moreover, it
+can be directly extended to classification for example by considering the
+coefficients of a Generalized Linear Model (GLM).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Misspecification of the underlying distribution</strong></p>
+<p>This definition relies on the strong assumption that the data is generated
+from a (Generalized) Linear Model. In practice, this assumption is often violated,
+which can lead to misspecifying the underlying data distribution and therefore
+to misleading importance measures (<a class="footnote-reference brackets" href="#footcite-molnar2022pitfalls" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>). See
+<a class="reference internal" href="../generated/gallery/examples/plot_model_agnostic_importance.html#sphx-glr-generated-gallery-examples-plot-model-agnostic-importance-py"><span class="std std-ref">Variable Selection Under Model Misspecification</span></a>.</p>
+</div>
+<p>They can be estimated using standard statistical techniques for fitting GLMs.
+There are standard penalization procedures, such as Lasso or Ridge, that address
+estimation issues in high-dimensional or highly correlated settings. Moreover,
+there are debiased alternatives to these procedures (see <a class="reference internal" href="../slm_methods.html#desparsified-lasso"><span class="std std-ref">Desparsified Lasso</span></a>).</p>
+<p>Behind this simple idea lie several core procedures of statistical inference.
+For instance, the popular Model-X Knockoff (<a class="reference internal" href="../slm_methods.html#knockoffs"><span class="std std-ref">Model-X Knockoffs</span></a>, <a class="footnote-reference brackets" href="#footcite-candes2018panning" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>)
+and the Distilled Conditional Randomization Test
+(<a class="reference internal" href="../slm_methods.html#d0crt"><span class="std std-ref">Distilled Conditional Randomization Test</span></a>, <a class="footnote-reference brackets" href="#footcite-liu2022fast" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>) usually rely on GLM coefficients to perform
+variable selection with FDR and type-I error control, respectively.</p>
 <section id="references">
-<h2><span class="section-number">3.1.1. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id3">
+<h2><span class="section-number">1.3.1. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id5">
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="footcite-sobol1993sensitivity" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>Ilya Meyerovich Sobol. Sensitivity estimates for nonlinear mathematical models. <em>Math. Model. Comput. Exp.</em>, 1:407, 1993.</p>
+<aside class="footnote brackets" id="footcite-verdinelli2024feature" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Isabella Verdinelli and Larry Wasserman. Feature importance: a closer look at shapley values and loco. <em>Statistical Science</em>, 39(4):623–636, 2024.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-molnar2022pitfalls" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Christoph Molnar, Gunnar König, Julia Herbinger, Timo Freiesleben, Susanne Dandl, Christian A. Scholbeck, Giuseppe Casalicchio, Moritz Grosse-Wentrup, and Bernd Bischl. <em>General Pitfalls of Model-Agnostic Interpretation Methods for Machine Learning Models</em>, pages 39–68. Springer International Publishing, Cham, 2022.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-candes2018panning" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Emmanuel Candes, Yingying Fan, Lucas Janson, and Jinchi Lv. Panning for gold:’model-x’ knockoffs for high dimensional controlled variable selection. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em>, 80(3):551–577, 2018.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-liu2022fast" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Molei Liu, Eugene Katsevich, Lucas Janson, and Aaditya Ramdas. Fast and powerful conditional randomization testing via distillation. <em>Biometrika</em>, 109(2):277–293, 2022.</p>
 </aside>
 </aside>
 </div>
@@ -525,20 +561,20 @@ for a regression task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../model_agnostic_methods.html"
+       href="statistical_guarantees.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Model-agnostic methods</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Statistical guarantees for variable selection</p>
       </div>
     </a>
     <a class="right-next"
-       href="leave_one_covariate_out.html"
+       href="total_sobol_index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.2. </span>Leave-One-Covariate-Out</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>Generalized Total Sobol Index</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -561,7 +597,7 @@ for a regression task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.1.1. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.3.1. References</a></li>
 </ul>
   </nav></div>
 
@@ -569,7 +605,7 @@ for a regression task, <span class="math notranslate nohighlight">\(\mu_{-j}(X^{
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/model_agnostic_methods/total_sobol_index.rst.txt"
+      <li><a href="../_sources/concepts/glm_coefficient.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>

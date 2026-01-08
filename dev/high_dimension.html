@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=9c8c3a34"></script>
+    <script src="_static/documentation_options.js?v=6197f892"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev12+g19e78a563';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev13+g4a299c022';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -410,13 +410,18 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">1. Definition of concepts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="concepts.html">1. General concepts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts/general_concepts.html">1.1. Definition of concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/statistical_guarantees.html">1.2. Statistical guarantees for variable selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/glm_coefficient.html">1.3. Generalized Linear Model (GLM) Coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/total_sobol_index.html">1.4. Generalized Total Sobol Index</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="slm_methods.html">2. Sparse Linear Models</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="model_agnostic_methods.html">3. Model-agnostic methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/total_sobol_index.html">3.1. Total Sobol Index</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html">3.3. Conditional Feature Importance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/permutation_feature_importance.html">3.4. Permutation Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html">3.1. Conditional Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/permutation_feature_importance.html">3.2. Permutation Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/leave_one_covariate_out.html">3.3. Leave-One-Covariate-Out</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="marginal_methods.html">4. Marginal methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>

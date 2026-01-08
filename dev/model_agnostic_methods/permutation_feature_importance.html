@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.4. Permutation Feature Importance &#8212; HiDimStat</title>
+    <title>3.2. Permutation Feature Importance &#8212; HiDimStat</title>
   
   
   
@@ -43,23 +43,24 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9c8c3a34"></script>
+    <script src="../_static/documentation_options.js?v=6197f892"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model_agnostic_methods/permutation_feature_importance';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev12+g19e78a563';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev13+g4a299c022';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Marginal methods" href="../marginal_methods.html" />
-    <link rel="prev" title="3.3. Conditional Feature Importance" href="conditional_feature_importance.html" />
+    <link rel="next" title="3.3. Leave-One-Covariate-Out" href="leave_one_covariate_out.html" />
+    <link rel="prev" title="3.1. Conditional Feature Importance" href="conditional_feature_importance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -409,13 +410,18 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../concepts.html">1. Definition of concepts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts.html">1. General concepts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/general_concepts.html">1.1. Definition of concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/statistical_guarantees.html">1.2. Statistical guarantees for variable selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/glm_coefficient.html">1.3. Generalized Linear Model (GLM) Coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/total_sobol_index.html">1.4. Generalized Total Sobol Index</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../slm_methods.html">2. Sparse Linear Models</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../model_agnostic_methods.html">3. Model-agnostic methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="total_sobol_index.html">3.1. Total Sobol Index</a></li>
-<li class="toctree-l2"><a class="reference internal" href="leave_one_covariate_out.html">3.2. Leave-One-Covariate-Out</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conditional_feature_importance.html">3.3. Conditional Feature Importance</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. Permutation Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conditional_feature_importance.html">3.1. Conditional Feature Importance</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.2. Permutation Feature Importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="leave_one_covariate_out.html">3.3. Leave-One-Covariate-Out</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../marginal_methods.html">4. Marginal methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -471,7 +477,7 @@
     
     <li class="breadcrumb-item"><a href="../model_agnostic_methods.html" class="nav-link"><span class="section-number">3. </span>Model-agnostic methods</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">3.4. </span>Permutation Feature Importance</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">3.2. </span>Permutation Feature Importance</span></li>
   </ul>
 </nav>
 </div>
@@ -489,7 +495,143 @@
                 <article class="bd-article">
                   
   <section id="permutation-feature-importance">
-<span id="id1"></span><h1><span class="section-number">3.4. </span>Permutation Feature Importance<a class="headerlink" href="#permutation-feature-importance" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">3.2. </span>Permutation Feature Importance<a class="headerlink" href="#permutation-feature-importance" title="Link to this heading">#</a></h1>
+<p>Permutation Feature Importance (PFI) is a model-agnostic approach for quantifying the
+relevance of individual or groups of features in predictive models.
+It was initially introduced as the mean decrease in accuracy (MDA)
+by Breiman<a class="footnote-reference brackets" href="#footcite-breimanrandomforests2001" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for Random Forests. It is a
+perturbation-based method that compares the predictive performance of a model on
+unmodified test data—following the same distribution as the training data—
+to its performance when the studied feature is marginally permutated. Thus, this approach
+does not require retraining the model contrary to other methods such as <a class="reference internal" href="leave_one_covariate_out.html#leave-one-covariate-out"><span class="std std-ref">Leave-One-Covariate-Out</span></a>.</p>
+<section id="theoretical-index">
+<h2><span class="section-number">3.2.1. </span>Theoretical index<a class="headerlink" href="#theoretical-index" title="Link to this heading">#</a></h2>
+<p>The target quantity estimated by PFI can be defined as:</p>
+<div class="math notranslate nohighlight">
+\[\psi^j_{PFI} = \mathbb{E} [\mathcal{L}(y, \mu(X^{\pi(j)}))] - \mathbb{E} [\mathcal{L}(y, \mu(X))],\]</div>
+<p>where <span class="math notranslate nohighlight">\(X^{\pi(j)}\)</span> corresponds to the input distribution where the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature
+has been replaced by a marginally independent <span class="math notranslate nohighlight">\(X^j\)</span>. Then, it preserves the
+same marginal distribution <span class="math notranslate nohighlight">\(P(X_j)\)</span> but is independent of the other features and the output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Uninteresting theoretical target</strong></p>
+<p>It was initially proposed as an heuristic Variable Importance Measure and not as a formal estimator of a
+interesting theoretical quantity. Moreover, it was shown in
+Bénard <em>et al.</em><a class="footnote-reference brackets" href="#footcite-benard2022sobolmda" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> that PFI estimates a quantity that is not interpretable. They proved that it can be decomposed
+as the sum of the Total Sobol Index (TSI) <a class="reference internal" href="../concepts/total_sobol_index.html#total-sobol-index"><span class="std std-ref">Generalized Total Sobol Index</span></a> and two extra terms
+that are not significant due to correlations. Thus, the theoretical quantity estimated by PFI is
+not a relevant quantity contrarily to <a class="reference internal" href="leave_one_covariate_out.html#leave-one-covariate-out"><span class="std std-ref">Leave-One-Covariate-Out</span></a> or
+<a class="reference internal" href="conditional_feature_importance.html#conditional-feature-importance"><span class="std std-ref">Conditional Feature Importance</span></a>.</p>
+</div>
+</section>
+<section id="estimation-procedure">
+<h2><span class="section-number">3.2.2. </span>Estimation procedure<a class="headerlink" href="#estimation-procedure" title="Link to this heading">#</a></h2>
+<p>The estimation of the PFI is relatively simple since there is no need of retraining
+any model as happens with other methods such as <a class="reference internal" href="leave_one_covariate_out.html#leave-one-covariate-out"><span class="std std-ref">Leave-One-Covariate-Out</span></a> or
+estimating a conditional sampler as in <a class="reference internal" href="conditional_feature_importance.html#conditional-feature-importance"><span class="std std-ref">Conditional Feature Importance</span></a>. A simple permutation
+of the feature values across the individuals is sufficient since the distribution from
+which we are sampling is the marginal distribution of the feature, thus breaking the
+relationship with the others. Also, note that the same estimated model is used for
+predicting both the original and perturbed datasets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Extrapolation issues</strong></p>
+<p>When features are correlated, permuting a feature can lead to unrealistic
+combinations of feature values that were not observed in the training data.
+This can result in the model making predictions in regions of the feature space
+where it has not been trained, leading to unreliable importance estimates.
+This issue is discussed in Strobl <em>et al.</em><a class="footnote-reference brackets" href="#footcite-stroblconditionalvariableimportance2008" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>,
+Hooker <em>et al.</em><a class="footnote-reference brackets" href="#footcite-hooker2021extrapolationpfi" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="../generated/gallery/examples/plot_pitfalls_permutation_importance.html"><img alt="../_images/sphx_glr_plot_pitfalls_permutation_importance_004.png" src="../_images/sphx_glr_plot_pitfalls_permutation_importance_004.png" />
+</a>
+</figure>
+</div>
+</section>
+<section id="inference">
+<h2><span class="section-number">3.2.3. </span>Inference<a class="headerlink" href="#inference" title="Link to this heading">#</a></h2>
+<p>Doing inference with PFI is challenging due to the extrapolation issues mentioned above.
+The distribution of the loss differences is difficult to characterize. Then, obtaining
+valid p-values for the null hypothesis</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_0: Y \perp\!\!\!\perp X_j | X_{-j}.\]</div>
+<p>is not straightforward. This leads to many false discoveries, especially when features are correlated.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="../generated/gallery/examples/plot_pitfalls_permutation_importance.html"><img alt="../_images/sphx_glr_plot_pitfalls_permutation_importance_002.png" src="../_images/sphx_glr_plot_pitfalls_permutation_importance_002.png" />
+</a>
+</figure>
+<p>The conditional version of the PFI (<a class="reference internal" href="conditional_feature_importance.html#conditional-feature-importance"><span class="std std-ref">Conditional Feature Importance</span></a>) tackles
+both issues of extrapolation and of inference by using conditional sampling instead of
+the marginal permutation.</p>
+</section>
+<section id="regression-example">
+<h2><span class="section-number">3.2.4. </span>Regression example<a class="headerlink" href="#regression-example" title="Link to this heading">#</a></h2>
+<p>The following example illustrates the use of PFI on a regression task with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_regression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">PFI</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfi</span> <span class="o">=</span> <span class="n">PFI</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfi</span> <span class="o">=</span> <span class="n">pfi</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features_importance</span> <span class="o">=</span> <span class="n">pfi</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="classification-example">
+<h2><span class="section-number">3.2.5. </span>Classification example<a class="headerlink" href="#classification-example" title="Link to this heading">#</a></h2>
+<p>To measure feature importance in a classification task, a classification loss should be
+used, in addition, the prediction method of the estimator should output the corresponding
+type of prediction (probabilities or classes). The following example illustrates the use
+of PFI on a classification task:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_loss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">PFI</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfi</span> <span class="o">=</span> <span class="n">PFI</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">loss</span><span class="o">=</span><span class="n">log_loss</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;predict_proba&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfi</span> <span class="o">=</span> <span class="n">pfi</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features_importance</span> <span class="o">=</span> <span class="n">pfi</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="references">
+<h2><span class="section-number">3.2.6. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id6">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-breimanrandomforests2001" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Leo Breiman. Random Forests. <em>Machine Learning</em>, 45(1):5–32, 2001. <a class="reference external" href="https://doi.org/10.1023/A:1010933404324">doi:10.1023/A:1010933404324</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-benard2022sobolmda" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>Clément Bénard, Sébastien Da Veiga, and Erwan Scornet. Mean decrease accuracy for random forests: inconsistency, and a practical solution via the sobol-mda. <em>Biometrika</em>, 109(4):881–900, 02 2022. <a class="reference external" href="https://doi.org/10.1093/biomet/asac017">doi:10.1093/biomet/asac017</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-stroblconditionalvariableimportance2008" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>Carolin Strobl, Anne-Laure Boulesteix, Thomas Kneib, Thomas Augustin, and Achim Zeileis. Conditional variable importance for random forests. <em>BMC Bioinformatics</em>, 9(1):307, 2008. <a class="reference external" href="https://doi.org/10.1186/1471-2105-9-307">doi:10.1186/1471-2105-9-307</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-hooker2021extrapolationpfi" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>Giles Hooker, Lucas Mentch, and Siyu Zhou. Unrestricted permutation forces extrapolation: variable importance requires at least one more model, or there is no free variable importance. <em>Statistics and Computing</em>, 31(6):82, 2021. <a class="reference external" href="https://doi.org/10.1007/s11222-021-10057-z">doi:10.1007/s11222-021-10057-z</a>.</p>
+</aside>
+</aside>
+</div>
+</section>
 </section>
 
 
@@ -508,15 +650,15 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>Conditional Feature Importance</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>Conditional Feature Importance</p>
       </div>
     </a>
     <a class="right-next"
-       href="../marginal_methods.html"
+       href="leave_one_covariate_out.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Marginal methods</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Leave-One-Covariate-Out</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -530,6 +672,23 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-index">3.2.1. Theoretical index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-procedure">3.2.2. Estimation procedure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference">3.2.3. Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-example">3.2.4. Regression example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-example">3.2.5. Classification example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.2.6. References</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
