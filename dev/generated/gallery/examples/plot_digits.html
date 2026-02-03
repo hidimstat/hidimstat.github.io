@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=b8cb9ab0"></script>
+    <script src="../../../_static/documentation_options.js?v=0bafa6c9"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev14+g15594d976';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev15+gafb14a9e0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -503,7 +503,6 @@ include only digits 4 and 7 for the first classification task, and digits 0 and 
 for the second task and digits 0 and 9 for the third task. To speed up the example, we
 downsample the dataset to 4000 samples for each task.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="sklearn.datasets.fetch_openml" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_openml</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html#sklearn.utils.resample" title="sklearn.utils.resample" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">resample</span></a>
 
@@ -628,25 +627,25 @@ repetitions using the <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.43it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.43it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  7.46it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  7.46it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 625.82it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 581.77it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.04it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.04it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.50it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.50it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 714.45it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 713.68it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.86it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.86it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.24it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.24it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 718.12it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 717.67it/s]
 </pre></div>
 </div>
 </section>
@@ -682,7 +681,7 @@ statistically significant for the classification tasks. For example, we can dete
 the bottom left portion of the loop when distinguishing between digits 0 and 9, the
 bottom left corner of digit 4 when distinguishing between digits 4 and 7, and the
 central vertical stroke when distinguishing between digits 0 and 1.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.666 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 26.208 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  1453 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-digits-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

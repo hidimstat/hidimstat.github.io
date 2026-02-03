@@ -34,14 +34,13 @@ include only digits 4 and 7 for the first classification task, and digits 0 and 
 for the second task and digits 0 and 9 for the third task. To speed up the example, we
 downsample the dataset to 4000 samples for each task.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-47
+.. GENERATED FROM PYTHON SOURCE LINES 17-46
 
 .. code-block:: Python
 
 
 
     import matplotlib.pyplot as plt
-    import numpy as np
     from sklearn.datasets import fetch_openml
     from sklearn.utils import resample
 
@@ -75,11 +74,11 @@ downsample the dataset to 4000 samples for each task.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-49
+.. GENERATED FROM PYTHON SOURCE LINES 47-48
 
 Visualizing samples from each classification task
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-69
+.. GENERATED FROM PYTHON SOURCE LINES 48-68
 
 .. code-block:: Python
 
@@ -115,7 +114,7 @@ Visualizing samples from each classification task
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-80
+.. GENERATED FROM PYTHON SOURCE LINES 69-79
 
 Randomness in clustering affects inference stability
 ----------------------------------------------------
@@ -128,7 +127,7 @@ algorithm with spatial connectivity constraints (each pixel is connected to its
 immediate neighbors) to cluster the pixels of the images. We use 100 clusters and
 visualize the clustering results for four different subsamples of the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-101
+.. GENERATED FROM PYTHON SOURCE LINES 79-100
 
 .. code-block:: Python
 
@@ -165,7 +164,7 @@ visualize the clustering results for four different subsamples of the data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-110
+.. GENERATED FROM PYTHON SOURCE LINES 101-109
 
 Ensemble Clustered Inference with Desparsified Lasso
 ----------------------------------------------------
@@ -176,7 +175,7 @@ for this purpose with 10 bootstraps. While this approach is more computationally
 single clustered inference, the procedure can be parallelized across clustering
 repetitions using the ``n_jobs`` parameter.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-147
+.. GENERATED FROM PYTHON SOURCE LINES 109-146
 
 .. code-block:: Python
 
@@ -225,24 +224,24 @@ repetitions using the ``n_jobs`` parameter.
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.43it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.43it/s]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 625.82it/s]
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.04it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.04it/s]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 714.45it/s]
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.86it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.86it/s]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 718.12it/s]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  7.46it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  7.46it/s]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 581.77it/s]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.50it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  5.50it/s]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 713.68it/s]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  6.24it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:01<00:00,  6.24it/s]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 717.67it/s]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-152
+.. GENERATED FROM PYTHON SOURCE LINES 147-151
 
 Visualizing the results
 -----------------------
 Finally, we visualize the significant pixels identified by EnCluDL for each of the
 three classification tasks.
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-174
+.. GENERATED FROM PYTHON SOURCE LINES 151-173
 
 .. code-block:: Python
 
@@ -280,7 +279,7 @@ three classification tasks.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-182
+.. GENERATED FROM PYTHON SOURCE LINES 174-181
 
 Performing inference on handwritten digits is challenging because the images are not
 perfectly aligned, and the pixel regions occupied by digits vary from one image to
@@ -293,7 +292,7 @@ central vertical stroke when distinguishing between digits 0 and 1.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 32.666 seconds)
+   **Total running time of the script:** (0 minutes 26.208 seconds)
 
 **Estimated memory usage:**  1453 MB
 

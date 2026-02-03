@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=b8cb9ab0"></script>
+    <script src="../_static/documentation_options.js?v=0bafa6c9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev14+g15594d976';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev15+gafb14a9e0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -473,8 +473,8 @@
 <section id="latest-modification">
 <h1>Latest modification<a class="headerlink" href="#latest-modification" title="Link to this heading">#</a></h1>
 </section>
-<section id="version-0-0-4-under-devellopement">
-<span id="changelog"></span><h1>Version 0.0.4 (under devellopement)<a class="headerlink" href="#version-0-0-4-under-devellopement" title="Link to this heading">#</a></h1>
+<section id="version-0-4-0-under-devellopement">
+<span id="changelog"></span><h1>Version 0.4.0 (under devellopement)<a class="headerlink" href="#version-0-4-0-under-devellopement" title="Link to this heading">#</a></h1>
 <section id="highlights">
 <h2>HIGHLIGHTS<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
 </section>
@@ -482,6 +482,7 @@
 <h2>New features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>documentation: added high dimension section (PR #425)</p></li>
+<li><p>API: <code class="docutils literal notranslate"><span class="pre">BasePerturbation</span></code> can now be initialized with unfitted estimators. When this the case, the estimator will first be fitted before variable importance is estimated. (PR #571)</p></li>
 </ul>
 </section>
 <section id="changes">
@@ -501,6 +502,7 @@
 <ul class="simple">
 <li><p>Bertrand Thirion</p></li>
 <li><p>Joseph Paillard</p></li>
+<li><p>Rémi Gau</p></li>
 </ul>
 <p>See the latest revision: <a class="reference internal" href="#lastest-version"><span class="std std-ref">Version 0.3.0</span></a>.</p>
 </section>
@@ -512,29 +514,23 @@
 <span id="lastest-version"></span><span id="v0-3-0"></span><h1>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Link to this heading">#</a></h1>
 <section id="id1">
 <h2>HIGHLIGHTS<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>New API</p></li>
 <li><p>New User Guide</p></li>
 <li><p>More examples</p></li>
 </ul>
-</div></blockquote>
 </section>
 <section id="id2">
 <h2>New features<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 </section>
 <section id="id3">
 <h2>Changes<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<dl class="simple">
-<dt>New API for variable importance methods with <cite>.fit()</cite>, <cite>.importance()</cite>, <cite>fdr_selection()</cite>, <cite>fwer_selection()</cite></dt><dd><ul class="simple">
-<li><p>LOC0, CFI, CPI #372</p></li>
-<li><p>Desparsified Lasso: #381</p></li>
-<li><p>CluDL, EnCluDL #533 and #388</p></li>
-<li><p>ModelXKnockoffs #367</p></li>
-<li><p>d0CRT #220</p></li>
-</ul>
-</dd>
-</dl>
+<p>New API for variable importance methods with <cite>.fit()</cite>, <cite>.importance()</cite>, <cite>fdr_selection()</cite>, <cite>fwer_selection()</cite>
+- LOC0, CFI, CPI #372
+- Desparsified Lasso: #381
+-  CluDL, EnCluDL #533 and #388
+- ModelXKnockoffs #367
+- d0CRT #220</p>
 </section>
 <section id="id4">
 <h2>Bug fixes<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
@@ -544,8 +540,7 @@
 </section>
 <section id="id6">
 <h2>Contributors<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><a class="github reference external" href="https://github.com/bthirion">bthirion</a></p></li>
 <li><p><a class="github reference external" href="https://github.com/AngelReyero">AngelReyero</a></p></li>
 <li><p><a class="github reference external" href="https://github.com/jpaillard">jpaillard</a></p></li>
@@ -558,7 +553,6 @@
 <li><p><a class="github reference external" href="https://github.com/man-shu">man-shu</a></p></li>
 <li><p><a class="github reference external" href="https://github.com/alexblnn">alexblnn</a></p></li>
 </ul>
-</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -613,7 +607,7 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What’s new</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-modification">Latest modification</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-0-4-under-devellopement">Version 0.0.4 (under devellopement)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-4-0-under-devellopement">Version 0.4.0 (under devellopement)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">HIGHLIGHTS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">New features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changes">Changes</a></li>
