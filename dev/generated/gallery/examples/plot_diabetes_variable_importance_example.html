@@ -554,7 +554,7 @@ and a Lasso regression model combined with a Voting Regressor.</p>
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html#sklearn.ensemble.VotingRegressor" title="sklearn.ensemble.VotingRegressor" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">regressor</span></a>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>R2 scores across folds: 0.479 ± 0.096
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>R2 scores across folds: 0.482 ± 0.095
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
@@ -2328,10 +2328,10 @@ estimation to account for the dependency between the test statistics. We use the
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 280.34it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 249.95it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3769.14it/s]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3549.68it/s]
 </pre></div>
 </div>
 <p>We repeat the same process using the LOCO method.</p>
@@ -2347,10 +2347,10 @@ Computing importance scores over folds: 100%|██████████| 5/5
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 1746.32it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 1605.29it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3892.26it/s]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3944.98it/s]
 </pre></div>
 </div>
 <p>Finally, we repeat the same process using the PFI method.</p>
@@ -2367,10 +2367,10 @@ Computing importance scores over folds: 100%|██████████| 5/5
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 524.39it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 395.53it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3750.27it/s]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 2303.80it/s]
 </pre></div>
 </div>
 </section>
@@ -2415,7 +2415,7 @@ line indicates the significance threshold at p-value=0.05.</p>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html#matplotlib.axes.Axes.legend" title="matplotlib.axes.Axes.legend" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Method&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" srcset="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" alt="plot diabetes variable importance example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x7f2507b9a710&gt;
+<img src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" srcset="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" alt="plot diabetes variable importance example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x7f202628ee90&gt;
 </pre></div>
 </div>
 <p>Several trends can be observed from the results: PFI tends to give smaller p-values
@@ -2434,8 +2434,8 @@ since LOCO tends to suffer from lower statistical power.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.946 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1127 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 33.159 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  1138 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-diabetes-variable-importance-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/d68c10fa637d15e39d9e6788dfcc8381/plot_diabetes_variable_importance_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_diabetes_variable_importance_example.ipynb</span></code></a></p>
