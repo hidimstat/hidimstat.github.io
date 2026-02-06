@@ -106,7 +106,7 @@ require a K-fold cross-fitting. Computing the importance for each fold is
 embarrassingly parallel. For this reason, we encapsulate the main computations in a
 function and use joblib to parallelize the computation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-126
+.. GENERATED FROM PYTHON SOURCE LINES 65-127
 
 .. code-block:: Python
 
@@ -136,7 +136,8 @@ function and use joblib to parallelize the computation.
             vim = CFI(
                 estimator=model_c,
                 imputation_model_continuous=RidgeCV(
-                    alphas=np.logspace(-3, 3, 10), cv=KFold(shuffle=True, random_state=1)
+                    alphas=np.logspace(-3, 3, 10),
+                    cv=KFold(shuffle=True, random_state=1),
                 ),
                 n_permutations=50,
                 random_state=2,
@@ -178,13 +179,13 @@ function and use joblib to parallelize the computation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-130
+.. GENERATED FROM PYTHON SOURCE LINES 128-131
 
 We use two different classifiers: LR with cross-validation and SVC with a RBF kernel. We
 then compute the importance for each (importance method, classifier, fold)
 combination, in parallel.
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-163
+.. GENERATED FROM PYTHON SOURCE LINES 131-164
 
 .. code-block:: Python
 
@@ -228,13 +229,13 @@ combination, in parallel.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-167
+.. GENERATED FROM PYTHON SOURCE LINES 165-168
 
 Using the importance values, we can compute the p-value of each feature. As we will
 see, the p-values computed with `PFI` are not valid since the method
 does not provide type-1 error control.
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-199
+.. GENERATED FROM PYTHON SOURCE LINES 168-200
 
 .. code-block:: Python
 
@@ -277,12 +278,12 @@ does not provide type-1 error control.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-202
+.. GENERATED FROM PYTHON SOURCE LINES 201-203
 
 Visualization of the results
 ----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-268
+.. GENERATED FROM PYTHON SOURCE LINES 203-269
 
 .. code-block:: Python
 
@@ -364,7 +365,7 @@ Visualization of the results
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 269-278
+.. GENERATED FROM PYTHON SOURCE LINES 270-279
 
 The boxplot shows the importance of each feature, with colors indicating the
 classifier used. A star marks the features that have a p-value (computed with a
@@ -376,7 +377,7 @@ additional flexibility of the SVC model. The SVC model could benefit from a more
 extensive hyperparameter search, especially optimizing the gamma parameter of the RBF
 kernel, which would be feasible with more data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 281-290
+.. GENERATED FROM PYTHON SOURCE LINES 282-291
 
 Measuring the importance of groups of features
 ----------------------------------------------
@@ -388,7 +389,7 @@ mitigate this issue, we can group correlated features together and measure the
 importance of these feature groups. For instance, we can group 'sepal width' with
 'sepal length' and 'petal length' with 'petal width' and the spurious feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 290-309
+.. GENERATED FROM PYTHON SOURCE LINES 291-310
 
 .. code-block:: Python
 
@@ -426,9 +427,9 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.413 seconds)
+   **Total running time of the script:** (0 minutes 8.415 seconds)
 
-**Estimated memory usage:**  217 MB
+**Estimated memory usage:**  216 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:

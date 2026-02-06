@@ -40,10 +40,9 @@ By simulating the data, we know the true underlying process and can identify whi
 features are null. This information will be used to plot the quantiles of the test
 statistics under the null hypothesis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-57
+.. GENERATED FROM PYTHON SOURCE LINES 23-56
 
 .. code-block:: Python
-
 
 
     import numpy as np
@@ -85,7 +84,7 @@ statistics under the null hypothesis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-67
+.. GENERATED FROM PYTHON SOURCE LINES 57-66
 
 Compute the test statistics
 ---------------------------
@@ -97,7 +96,7 @@ We store the test statistic values for the null features only.
 The simulation uses n=200 samples and p=100 correlated features, with a support size of 10
 and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different random seeds.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-117
+.. GENERATED FROM PYTHON SOURCE LINES 66-115
 
 .. code-block:: Python
 
@@ -110,7 +109,6 @@ and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different r
     # Run dCRT and dCRT-logit for each random seed
     results_list = []
     for seed, (X, y, beta_true) in enumerate(zip(X_list, y_list, beta_true_list)):
-
         # Fit the dCRT-logit model
         dcrt_logit = D0CRT(
             estimator=LogisticRegressionCV(
@@ -123,7 +121,7 @@ and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different r
         )
         dcrt_logit.fit(X, y)
         importance_logit = dcrt_logit.importance(X, y)
-        power_logit = np.mean((dcrt_logit.pvalues_[beta_true] < 0.05))
+        power_logit = np.mean(dcrt_logit.pvalues_[beta_true] < 0.05)
 
         # Fit the dCRT with Lasso-distillation
         dcrt = D0CRT(
@@ -133,7 +131,7 @@ and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different r
         )
         dcrt.fit(X, y)
         importance = dcrt.importance(X, y)
-        power = np.mean((dcrt.pvalues_[beta_true] < 0.05))
+        power = np.mean(dcrt.pvalues_[beta_true] < 0.05)
 
         # Store the results in a DataFrame
         results_list.append(
@@ -193,7 +191,7 @@ and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different r
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-124
+.. GENERATED FROM PYTHON SOURCE LINES 116-122
 
 QQ-plot visualization
 ---------------------
@@ -202,7 +200,7 @@ to the theoretical quantiles of a standard Gaussian distribution.
 We use a QQ-plot, which displays the theoretical quantiles (from norm.ppf)
 against the empirical quantiles computed from the test statistics for each method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-165
+.. GENERATED FROM PYTHON SOURCE LINES 122-171
 
 .. code-block:: Python
 
@@ -227,7 +225,11 @@ against the empirical quantiles computed from the test statistics for each metho
         edgecolor=None,
     )
     axes[0].plot(
-        theoretical_quantiles, theoretical_quantiles, color="tab:red", ls="--", lw=2
+        theoretical_quantiles,
+        theoretical_quantiles,
+        color="tab:red",
+        ls="--",
+        lw=2,
     )
     axes[0].set_title("dCRT")
     sns.scatterplot(
@@ -237,7 +239,11 @@ against the empirical quantiles computed from the test statistics for each metho
         edgecolor=None,
     )
     axes[1].plot(
-        theoretical_quantiles, theoretical_quantiles, color="tab:red", ls="--", lw=2
+        theoretical_quantiles,
+        theoretical_quantiles,
+        color="tab:red",
+        ls="--",
+        lw=2,
     )
     axes[1].set_title("dCRT-logit")
     axes[0].set_xlabel("Theoretical quantiles")
@@ -259,21 +265,21 @@ against the empirical quantiles computed from the test statistics for each metho
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-170
+.. GENERATED FROM PYTHON SOURCE LINES 172-176
 
 In the QQ-plot, the points for the dCRT-logit method are closer to the diagonal red
 dashed line compared to those for the dCRT method. This indicates that the test statistics
 from dCRT-logit more closely follow a standard Gaussian distribution under the null
 hypothesis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-176
+.. GENERATED FROM PYTHON SOURCE LINES 178-182
 
 Power comparison
 ----------------
 We also compare the statistical power of both methods. The plot below shows the average
 power across the 5 random seeds, with error bars representing the standard deviation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-190
+.. GENERATED FROM PYTHON SOURCE LINES 182-196
 
 .. code-block:: Python
 
@@ -303,7 +309,7 @@ power across the 5 random seeds, with error bars representing the standard devia
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-194
+.. GENERATED FROM PYTHON SOURCE LINES 197-200
 
 References
 ----------
@@ -312,9 +318,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.123 seconds)
+   **Total running time of the script:** (0 minutes 11.682 seconds)
 
-**Estimated memory usage:**  217 MB
+**Estimated memory usage:**  216 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_dcrt_logit.py:

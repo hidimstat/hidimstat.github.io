@@ -52,7 +52,7 @@ fetch and preprocess Haxby dataset
 We define a function that gathers and preprocesses the Haxby dataset for a given subject.
 Only the 'face' and 'house' conditions are kept for this example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-84
+.. GENERATED FROM PYTHON SOURCE LINES 35-83
 
 .. code-block:: Python
 
@@ -67,7 +67,6 @@ Only the 'face' and 'house' conditions are kept for this example.
 
     def preprocess_haxby(subject=2, memory=None):
         """Gathering and preprocessing Haxby dataset for a given subject."""
-
         # Gathering data
         haxby_dataset = datasets.fetch_haxby(subjects=[subject])
         fmri_filename = haxby_dataset.func[0]
@@ -112,7 +111,7 @@ Only the 'face' and 'house' conditions are kept for this example.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-92
+.. GENERATED FROM PYTHON SOURCE LINES 84-91
 
 Gathering and preprocessing Haxby dataset for a given subject
 -------------------------------------------------------------
@@ -122,7 +121,7 @@ it outputs the preprocessed activation maps for the two conditions
 the session labels (in `groups`) and the mask (in `masker`).
 You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-107
+.. GENERATED FROM PYTHON SOURCE LINES 93-106
 
 .. code-block:: Python
 
@@ -148,19 +147,19 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
  .. code-block:: none
 
     [fetch_haxby] Dataset found in /home/circleci/nilearn_data/haxby2001
-    /home/circleci/project/examples/plot_fmri_data_example.py:78: UserWarning: [NiftiMasker.fit] Generation of a mask has been requested (imgs != None) while a mask was given at masker creation. Given mask will be used.
+    /home/circleci/project/examples/plot_fmri_data_example.py:77: UserWarning: [NiftiMasker.fit] Generation of a mask has been requested (imgs != None) while a mask was given at masker creation. Given mask will be used.
       fmri_masked = masker.fit_transform(fmri_filename)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 107-110
 
 Initializing FeatureAgglomeration object that performs the clustering
 ---------------------------------------------------------------------
 For fMRI data taking 500 clusters is generally a good default choice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-125
+.. GENERATED FROM PYTHON SOURCE LINES 110-124
 
 .. code-block:: Python
 
@@ -185,12 +184,12 @@ For fMRI data taking 500 clusters is generally a good default choice.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-128
+.. GENERATED FROM PYTHON SOURCE LINES 125-127
 
 Making the inference with several algorithms
 --------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-144
+.. GENERATED FROM PYTHON SOURCE LINES 127-143
 
 .. code-block:: Python
 
@@ -217,18 +216,18 @@ Making the inference with several algorithms
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-148
+.. GENERATED FROM PYTHON SOURCE LINES 144-147
 
 Due to the very high dimensionality of the problem (close to 40,000 voxels) computing
 a p-value map with Desparsified Lasso would be very memory consuming and may also be
 inadequate since it does not take into account the spatial structure of the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-153
+.. GENERATED FROM PYTHON SOURCE LINES 150-152
 
 Now, the clustered inference algorithm which combines parcellation
 and high-dimensional inference (c.f. References).
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-176
+.. GENERATED FROM PYTHON SOURCE LINES 152-177
 
 .. code-block:: Python
 
@@ -250,7 +249,9 @@ and high-dimensional inference (c.f. References).
     )
 
     cludl = CluDL(
-        clustering=ward, desparsified_lasso=deepcopy(desparsified_lasso_1), random_state=0
+        clustering=ward,
+        desparsified_lasso=deepcopy(desparsified_lasso_1),
+        random_state=0,
     )
     cludl.fit_importance(X, y)
 
@@ -269,7 +270,7 @@ and high-dimensional inference (c.f. References).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-184
+.. GENERATED FROM PYTHON SOURCE LINES 178-185
 
 Below, we run the ensemble clustered inference algorithm which adds a
 randomization step over the clustered inference algorithm (c.f. References).
@@ -279,7 +280,7 @@ then 5 statistical maps are produced and aggregated into one.
 However you might benefit from clustering randomization taking
 `n_bootstraps=25` or `n_bootstraps=100`, also we set `n_jobs=n_jobs`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-198
+.. GENERATED FROM PYTHON SOURCE LINES 185-199
 
 .. code-block:: Python
 
@@ -305,15 +306,15 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  3.19it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:09<00:06,  1.67s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:18<00:02,  2.21s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:18<00:00,  1.84s/it]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  40%|████      | 4/10 [00:00<00:00, 32.28it/s]    Computing importances:  80%|████████  | 8/10 [00:00<00:00, 33.15it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 32.78it/s]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  3.84it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:08<00:05,  1.41s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:15<00:01,  1.87s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:15<00:00,  1.56s/it]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  40%|████      | 4/10 [00:00<00:00, 32.34it/s]    Computing importances:  80%|████████  | 8/10 [00:00<00:00, 32.57it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 32.79it/s]
 
     array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
            -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 199-207
+.. GENERATED FROM PYTHON SOURCE LINES 200-208
 
 Plotting the results
 --------------------
@@ -324,7 +325,7 @@ inverse survival function.
 
 First, we set theoretical FWER target at 10%.
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-214
+.. GENERATED FROM PYTHON SOURCE LINES 208-215
 
 .. code-block:: Python
 
@@ -342,14 +343,14 @@ First, we set theoretical FWER target at 10%.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-219
+.. GENERATED FROM PYTHON SOURCE LINES 216-220
 
 Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called `plot_map` that wraps all these steps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-270
+.. GENERATED FROM PYTHON SOURCE LINES 220-273
 
 .. code-block:: Python
 
@@ -358,19 +359,19 @@ called `plot_map` that wraps all these steps.
     from matplotlib.pyplot import get_cmap
     from nilearn.plotting import plot_stat_map, show
 
-    from hidimstat.statistical_tools.p_values import zscore_from_pval
-
 
     def plot_map(
         data,
         threshold,
         title=None,
-        cut_coords=[-25, -40, -5],
+        cut_coords=None,
         masker=masker,
         bg_img=data.bg_img,
         vmin=None,
         vmax=None,
     ):
+        if cut_coords is None:
+            cut_coords = [-25, -40, -5]
         zscore_img = masker.inverse_transform(data)
         plot_stat_map(
             zscore_img,
@@ -392,7 +393,9 @@ called `plot_map` that wraps all these steps.
         title="CluDL",
     )
 
-    selected_encludl = encludl.fwer_selection(fwer=target_fwer, two_tailed_test=True)
+    selected_encludl = encludl.fwer_selection(
+        fwer=target_fwer, two_tailed_test=True
+    )
     z_score_encludl = zscore_from_pval(encludl.pvalues_) * selected_encludl
     plot_map(
         z_score_encludl,
@@ -429,7 +432,7 @@ called `plot_map` that wraps all these steps.
 
  .. code-block:: none
 
-    /home/circleci/project/examples/plot_fmri_data_example.py:222: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
+    /home/circleci/project/examples/plot_fmri_data_example.py:223: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
     No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
     You can fix this by installing a different backend: for example via
             pip install PyQt6
@@ -440,7 +443,7 @@ called `plot_map` that wraps all these steps.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 271-285
+.. GENERATED FROM PYTHON SOURCE LINES 274-288
 
 Analysis of the results
 -----------------------
@@ -457,7 +460,7 @@ Finally, the solution provided by the ensemble clustered inference algorithm
 (EnCluDL) seems realistic as we recover the visual cortex and do not make
 spurious discoveries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 288-291
+.. GENERATED FROM PYTHON SOURCE LINES 291-294
 
 References
 ----------
@@ -466,9 +469,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 16.339 seconds)
+   **Total running time of the script:** (1 minutes 9.871 seconds)
 
-**Estimated memory usage:**  2713 MB
+**Estimated memory usage:**  2615 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:

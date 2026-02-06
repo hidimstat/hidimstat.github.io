@@ -133,7 +133,7 @@ We fit a neural network model to the California housing dataset. PFI is a
 model-agnostic method, we therefore illustrate its behavior when using a neural
 network model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-118
+.. GENERATED FROM PYTHON SOURCE LINES 79-120
 
 .. code-block:: Python
 
@@ -174,7 +174,9 @@ network model.
         y_pred = model_c.predict(X_test)
         scores.append(r2_score(y_test, y_pred))
 
-    print(f"Cross-validation R2 score: {np.mean(scores):.3f} ± {np.std(scores):.3f}")
+    print(
+        f"Cross-validation R2 score: {np.mean(scores):.3f} ± {np.std(scores):.3f}"
+    )
 
 
 
@@ -189,7 +191,7 @@ network model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-125
+.. GENERATED FROM PYTHON SOURCE LINES 121-127
 
 Measure the importance of variables using the PFI method
 --------------------------------------------------------
@@ -198,7 +200,7 @@ way. We then derive a p-value from importance scores using a one-sample t-test.
 As shown in the figure below, the PFI method does not provide valid p-values for
 testing conditional importance, as it identifies the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-179
+.. GENERATED FROM PYTHON SOURCE LINES 127-183
 
 .. code-block:: Python
 
@@ -235,7 +237,9 @@ testing conditional importance, as it identifies the spurious feature as importa
     pval_threshold = 0.05
     # Create a horizontal boxplot of permutation importances
     fig, ax = plt.subplots()
-    sns.barplot(permutation_importances, orient="h", color="tab:blue", capsize=0.2, seed=5)
+    sns.barplot(
+        permutation_importances, orient="h", color="tab:blue", capsize=0.2, seed=5
+    )
     ax.set_xlabel("Permutation Importance")
     # Add asterisks for features with p-values below the threshold
     for i, pval in enumerate(pval_pfi):
@@ -268,14 +272,14 @@ testing conditional importance, as it identifies the spurious feature as importa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-184
+.. GENERATED FROM PYTHON SOURCE LINES 184-188
 
 While the most important variables identified by PFI are plausible, such as the
 geographic coordinates or the median income of the block group, it is not robust to
 the presence of spurious features and misleadingly identifies the spurious feature as
 important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-194
+.. GENERATED FROM PYTHON SOURCE LINES 191-198
 
 A valid alternative: Conditional Feature Importance
 -----------------------------------------------------
@@ -285,7 +289,7 @@ intrinsic information of the feature of interest while leaving the information t
 explained by the other features unchanged. This method is valid for testing conditional
 importance. As shown below, it does not identify the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 194-252
+.. GENERATED FROM PYTHON SOURCE LINES 198-256
 
 .. code-block:: Python
 
@@ -359,11 +363,11 @@ importance. As shown below, it does not identify the spurious feature as importa
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 253-254
+.. GENERATED FROM PYTHON SOURCE LINES 257-258
 
 Contrary to PFI, CFI does not identify the spurious feature as important.
 
-.. GENERATED FROM PYTHON SOURCE LINES 257-267
+.. GENERATED FROM PYTHON SOURCE LINES 261-271
 
 Extrapolation bias in PFI
 -------------------------
@@ -376,7 +380,7 @@ longitude that fall outside of the borders of California and therefore are by
 definition not in the training data. This is not the case for the conditional
 permutation that generates perturbed but reasonable values of longitude.
 
-.. GENERATED FROM PYTHON SOURCE LINES 267-349
+.. GENERATED FROM PYTHON SOURCE LINES 271-353
 
 .. code-block:: Python
 
@@ -474,7 +478,7 @@ permutation that generates perturbed but reasonable values of longitude.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 350-353
+.. GENERATED FROM PYTHON SOURCE LINES 354-357
 
 PFI is likely to generate samples that are unrealistic and outside of the training
 data, leading to extrapolation bias. In contrast, CFI generates samples that respect
@@ -483,9 +487,9 @@ the conditional distribution of the feature of interest.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.407 seconds)
+   **Total running time of the script:** (0 minutes 9.030 seconds)
 
-**Estimated memory usage:**  217 MB
+**Estimated memory usage:**  216 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_pitfalls_permutation_importance.py:

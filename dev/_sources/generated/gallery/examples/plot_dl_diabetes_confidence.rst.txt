@@ -305,7 +305,7 @@ estimates and 95% confidence intervals.
             "confidence_max": dl.confidence_bound_max_,
         }
     )
-    df_plot.sort_values(by="importance", key=np.abs, ascending=False, inplace=True)
+    df_plot = df_plot.sort_values(by="importance", key=np.abs, ascending=False)
 
 
 
@@ -440,9 +440,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.544 seconds)
+   **Total running time of the script:** (0 minutes 2.207 seconds)
 
-**Estimated memory usage:**  217 MB
+**Estimated memory usage:**  216 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_dl_diabetes_confidence.py:

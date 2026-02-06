@@ -35,7 +35,7 @@ Loading the circles dataset
 We start by sampling a synthetic dataset using the `make_circles` function from
 `sklearn.datasets`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-36
+.. GENERATED FROM PYTHON SOURCE LINES 18-38
 
 .. code-block:: Python
 
@@ -52,7 +52,9 @@ We start by sampling a synthetic dataset using the `make_circles` function from
     ax.set_xlabel("X0")
     ax.set_ylabel("X1")
     sns.despine(ax=ax)
-    c1 = plt.Circle((0, 0), 0.85, color="k", ls="--", fill=False, label="class boundary")
+    c1 = plt.Circle(
+        (0, 0), 0.85, color="k", ls="--", fill=False, label="class boundary"
+    )
     ax.add_patch(c1)
     _ = ax.legend(loc="upper right")
 
@@ -69,7 +71,7 @@ We start by sampling a synthetic dataset using the `make_circles` function from
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-43
+.. GENERATED FROM PYTHON SOURCE LINES 39-45
 
 Training a classifier
 ---------------------
@@ -78,7 +80,7 @@ non-linearly separable circles dataset. For this example, we'll use a gradient
 boosted tree ensemble, specifically the HistGradientBoostingClassifier from
 scikit-learn.
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-58
+.. GENERATED FROM PYTHON SOURCE LINES 45-62
 
 .. code-block:: Python
 
@@ -87,7 +89,9 @@ scikit-learn.
     from sklearn.metrics import roc_auc_score
     from sklearn.model_selection import train_test_split
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=0
+    )
     model = HistGradientBoostingClassifier(random_state=0)
 
     model.fit(X_train, y_train)
@@ -110,7 +114,7 @@ scikit-learn.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-71
+.. GENERATED FROM PYTHON SOURCE LINES 63-75
 
 Partial Dependence for an Individual Feature
 --------------------------------------------
@@ -125,7 +129,7 @@ the :math:`x`-axis. This feature distribution is essential for identifying
 low-density regions in the data. Model predictions and the estimated partial
 dependence can be less reliable or extrapolated in these regions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-80
+.. GENERATED FROM PYTHON SOURCE LINES 75-84
 
 .. code-block:: Python
 
@@ -150,7 +154,7 @@ dependence can be less reliable or extrapolated in these regions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-88
+.. GENERATED FROM PYTHON SOURCE LINES 85-92
 
 Partial Dependence on a Pair of Features
 ----------------------------------------
@@ -160,7 +164,7 @@ contour lines (level lines) across the 2D plot. The marginal distribution for ea
 feature is also represented along the axes to help identify regions where the
 estimated dependence might be unreliable due to a low density of training data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-92
+.. GENERATED FROM PYTHON SOURCE LINES 92-96
 
 .. code-block:: Python
 
@@ -183,9 +187,9 @@ estimated dependence might be unreliable due to a low density of training data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.353 seconds)
+   **Total running time of the script:** (0 minutes 1.293 seconds)
 
-**Estimated memory usage:**  230 MB
+**Estimated memory usage:**  229 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_partial_dependency_plot.py:

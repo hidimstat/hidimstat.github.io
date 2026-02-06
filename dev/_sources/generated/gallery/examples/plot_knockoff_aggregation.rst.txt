@@ -95,7 +95,7 @@ observe the variability of the selections induced by the knockoff lottery. Then,
 compare the possible solutions to aggregate the selections in order to derandomize
 the inference.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-87
+.. GENERATED FROM PYTHON SOURCE LINES 65-89
 
 .. code-block:: Python
 
@@ -106,7 +106,9 @@ the inference.
     fdr = 0.1
     n_repeats = 25
     n_jobs = 4
-    model_x_knockoff = ModelXKnockoff(n_repeats=n_repeats, n_jobs=n_jobs, random_state=0)
+    model_x_knockoff = ModelXKnockoff(
+        n_repeats=n_repeats, n_jobs=n_jobs, random_state=0
+    )
     model_x_knockoff.fit_importance(X, y)
 
     fdp_individual = []
@@ -129,17 +131,17 @@ the inference.
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
-      warnings.warn(
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
-      warnings.warn(
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:205: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
-      warnings.warn(
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+      diag_s = np.diag(_s_equi(sigma, tol=self.tol))
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+      diag_s = np.diag(_s_equi(sigma, tol=self.tol))
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+      diag_s = np.diag(_s_equi(sigma, tol=self.tol))
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-93
+.. GENERATED FROM PYTHON SOURCE LINES 90-95
 
 Visualize the results of the individual selections
 --------------------------------------------------
@@ -147,7 +149,7 @@ We first visualize the results of the individual selections to observe the
 variability induced by the knockoff lottery. We plot the False Discovery Proportion
 (FDP) for each run along with the desired FDR level (red dashed line) and the statistical
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-135
+.. GENERATED FROM PYTHON SOURCE LINES 95-137
 
 .. code-block:: Python
 
@@ -205,7 +207,7 @@ variability induced by the knockoff lottery. We plot the False Discovery Proport
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-142
+.. GENERATED FROM PYTHON SOURCE LINES 138-144
 
 Aggregation procedures
 ----------------------
@@ -214,18 +216,24 @@ We now compute the aggregation using both the p-values aggregation procedure fro
 :footcite:t:`Ren_2023`. We then compare the results of both procedures in terms of
 FDP and power.
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-209
+.. GENERATED FROM PYTHON SOURCE LINES 144-217
 
 .. code-block:: Python
 
 
-    pval_aggregation = model_x_knockoff.fdr_selection(fdr=fdr, adaptive_aggregation=True)
-    fdp_pval_agg, power_pval_agg = fdp_power(pval_aggregation, ground_truth=beta_true)
+    pval_aggregation = model_x_knockoff.fdr_selection(
+        fdr=fdr, adaptive_aggregation=True
+    )
+    fdp_pval_agg, power_pval_agg = fdp_power(
+        pval_aggregation, ground_truth=beta_true
+    )
 
     eval_aggregation = model_x_knockoff.fdr_selection(
         fdr=fdr, fdr_control="ebh", evalues=True
     )
-    fdp_eval_agg, power_eval_agg = fdp_power(eval_aggregation, ground_truth=beta_true)
+    fdp_eval_agg, power_eval_agg = fdp_power(
+        eval_aggregation, ground_truth=beta_true
+    )
 
     df_plot["Method"] = "Individual KO"
     df_plot_2 = pd.concat(
@@ -297,12 +305,12 @@ FDP and power.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 210-212
+.. GENERATED FROM PYTHON SOURCE LINES 218-220
 
 It appears that both aggregation procedures successfully lowers the false discovery
 proportion while maintaining a good statistical power.
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-218
+.. GENERATED FROM PYTHON SOURCE LINES 223-226
 
 References
 ----------
@@ -311,9 +319,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.249 seconds)
+   **Total running time of the script:** (0 minutes 3.258 seconds)
 
-**Estimated memory usage:**  219 MB
+**Estimated memory usage:**  217 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoff_aggregation.py:

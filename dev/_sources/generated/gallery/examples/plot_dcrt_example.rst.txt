@@ -53,14 +53,14 @@ the power
 Processing the computations
 ---------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-91
+.. GENERATED FROM PYTHON SOURCE LINES 24-93
 
 .. code-block:: Python
 
 
     results_list = []
     for sim_ind in range(10):
-        print(f"Processing: {sim_ind+1}")
+        print(f"Processing: {sim_ind + 1}")
 
         # Number of observations
         n = 100
@@ -118,7 +118,9 @@ Processing the computations
         results_list.append(
             {
                 "model": "RF",
-                "type-1 error": sum(pvals_forest[np.logical_not(beta_true)] < alpha)
+                "type-1 error": sum(
+                    pvals_forest[np.logical_not(beta_true)] < alpha
+                )
                 / (n_signal),
                 "power": sum(pvals_forest[beta_true] < alpha) / (n_signal),
             }
@@ -546,12 +548,12 @@ Processing the computations
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-94
+.. GENERATED FROM PYTHON SOURCE LINES 94-96
 
 Plotting the comparison
 -----------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-114
+.. GENERATED FROM PYTHON SOURCE LINES 96-116
 
 .. code-block:: Python
 
@@ -587,7 +589,7 @@ Plotting the comparison
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 115-122
+.. GENERATED FROM PYTHON SOURCE LINES 117-124
 
 Both methods empirically control the type-I error. In addition, it can
 be observed that the power of the Random Forest model is generally higher
@@ -600,9 +602,9 @@ outcome.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 25.521 seconds)
+   **Total running time of the script:** (0 minutes 23.119 seconds)
 
-**Estimated memory usage:**  217 MB
+**Estimated memory usage:**  216 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_dcrt_example.py:
