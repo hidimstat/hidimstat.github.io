@@ -80,7 +80,7 @@ The spurious feature does not provide any additional information about the targe
     X_spurious = X[:, redundant_coef].sum(axis=1)
     X_spurious += rng.normal(0, scale=np.std(X_spurious) * 0.5, size=X.shape[0])
     X = np.hstack([X, X_spurious[:, np.newaxis]])
-    feature_names = dataset.feature_names + ["Spurious"]
+    feature_names = [*dataset.feature_names, "Spurious"]
     print(f"The dataset contains {X.shape[0]} samples and {X.shape[1]} features.")
 
     # Compute the correlation matrix
@@ -487,9 +487,9 @@ the conditional distribution of the feature of interest.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.271 seconds)
+   **Total running time of the script:** (0 minutes 8.162 seconds)
 
-**Estimated memory usage:**  216 MB
+**Estimated memory usage:**  215 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_pitfalls_permutation_importance.py:

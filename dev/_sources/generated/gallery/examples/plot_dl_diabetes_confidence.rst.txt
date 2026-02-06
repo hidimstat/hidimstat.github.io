@@ -197,7 +197,7 @@ with the predictors but have no true association with the target variable.
         X_spurious_normalized = StandardScaler().fit_transform(X_spurious)
         X_spurious_list.append(X_spurious_normalized)
         feature_names.append(f"spurious_{i}")
-    X = np.hstack([X] + X_spurious_list)
+    X = np.hstack([X, *X_spurious_list])
 
 
 
@@ -440,7 +440,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.626 seconds)
+   **Total running time of the script:** (0 minutes 2.360 seconds)
 
 **Estimated memory usage:**  216 MB
 

@@ -87,7 +87,7 @@ contrarily to `CFI`.
     spurious_feat += rng.normal(size=X.shape[0], scale=np.std(spurious_feat) / 2)
     X = np.hstack([X, spurious_feat.reshape(-1, 1)])
 
-    dataset.feature_names = dataset.feature_names + ["spurious_feat"]
+    dataset.feature_names = [*dataset.feature_names, "spurious_feat"]
 
 
 
@@ -341,7 +341,7 @@ Visualization of the results
         )
         fig.legend(
             handles=handles,
-            labels=labels + [f"pval < {threshold}"],
+            labels=[*labels, f"pval < {threshold}"],
             loc="center",
             bbox_to_anchor=(0.6, 0.82),
             ncol=3,
@@ -427,9 +427,9 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.739 seconds)
+   **Total running time of the script:** (0 minutes 7.754 seconds)
 
-**Estimated memory usage:**  216 MB
+**Estimated memory usage:**  215 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:
