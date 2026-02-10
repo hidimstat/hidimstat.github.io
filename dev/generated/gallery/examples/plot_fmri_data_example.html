@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=297af055"></script>
+    <script src="../../../_static/documentation_options.js?v=bf5e0ece"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev25+g154d3f1a3';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev26+g594398264';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -532,8 +532,8 @@ Only the ‘face’ and ‘house’ conditions are kept for this example.</p>
 
     <span class="n">behavioral</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">haxby_dataset</span><span class="o">.</span><span class="n">session_target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">behavioral</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">session_label</span> <span class="o">=</span> <span class="n">behavioral</span><span class="p">[</span><span class="s2">&quot;chunks&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">behavioral</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="n">session_label</span> <span class="o">=</span> <span class="n">behavioral</span><span class="p">[</span><span class="s2">&quot;chunks&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
     <span class="n">condition_mask</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span></a><span class="p">(</span><span class="n">conditions</span> <span class="o">==</span> <span class="s2">&quot;face&quot;</span><span class="p">,</span> <span class="n">conditions</span> <span class="o">==</span> <span class="s2">&quot;house&quot;</span><span class="p">)</span>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">groups</span></a> <span class="o">=</span> <span class="n">session_label</span><span class="p">[</span><span class="n">condition_mask</span><span class="p">]</span>
@@ -679,17 +679,16 @@ However you might benefit from clustering randomization taking
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:02,  3.65it/s]
-Fitting clustered inferences:  60%|██████    | 6/10 [00:08&lt;00:06,  1.50s/it]/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:782: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
-  warnings.warn(
-
-Fitting clustered inferences:  90%|█████████ | 9/10 [00:16&lt;00:01,  1.99s/it]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:16&lt;00:00,  1.66s/it]
+Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:03,  2.95it/s]
+Fitting clustered inferences:  60%|██████    | 6/10 [00:10&lt;00:07,  1.76s/it]
+Fitting clustered inferences:  90%|█████████ | 9/10 [00:20&lt;00:02,  2.44s/it]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:20&lt;00:00,  2.02s/it]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances:  40%|████      | 4/10 [00:00&lt;00:00, 34.62it/s]
-Computing importances:  80%|████████  | 8/10 [00:00&lt;00:00, 35.01it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 35.04it/s]
+Computing importances:  30%|███       | 3/10 [00:00&lt;00:00, 24.90it/s]
+Computing importances:  60%|██████    | 6/10 [00:00&lt;00:00, 23.90it/s]
+Computing importances:  90%|█████████ | 9/10 [00:00&lt;00:00, 22.59it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 23.33it/s]
 
 array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
        -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
@@ -803,8 +802,8 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 21.245 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  2704 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 36.248 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  2709 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b6c6a679d257e221e442c55b925ef0bf/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>
