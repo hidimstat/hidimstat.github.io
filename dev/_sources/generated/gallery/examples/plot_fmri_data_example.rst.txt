@@ -306,8 +306,8 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:03,  2.95it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:10<00:07,  1.76s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:20<00:02,  2.44s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:20<00:00,  2.02s/it]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  30%|███       | 3/10 [00:00<00:00, 24.90it/s]    Computing importances:  60%|██████    | 6/10 [00:00<00:00, 23.90it/s]    Computing importances:  90%|█████████ | 9/10 [00:00<00:00, 22.59it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 23.33it/s]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  4.14it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:09<00:06,  1.73s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:19<00:02,  2.39s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:19<00:00,  1.97s/it]
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  30%|███       | 3/10 [00:00<00:00, 27.13it/s]    Computing importances:  70%|███████   | 7/10 [00:00<00:00, 30.71it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 31.53it/s]
 
     array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
            -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
@@ -432,13 +432,13 @@ called `plot_map` that wraps all these steps.
 
  .. code-block:: none
 
-    /home/circleci/project/examples/plot_fmri_data_example.py:223: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
+    Using number of clusters for multiple testing correction.
+    Using number of features for multiple testing correction.
+    /home/circleci/project/examples/plot_fmri_data_example.py:270: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
     No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
     You can fix this by installing a different backend: for example via
             pip install PyQt6
-      from nilearn.plotting import plot_stat_map, show
-    Using number of clusters for multiple testing correction.
-    Using number of features for multiple testing correction.
+      show()
 
 
 
@@ -469,9 +469,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 36.248 seconds)
+   **Total running time of the script:** (1 minutes 21.354 seconds)
 
-**Estimated memory usage:**  2709 MB
+**Estimated memory usage:**  1577 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:
