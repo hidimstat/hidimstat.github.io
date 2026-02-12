@@ -289,7 +289,7 @@ Visualization of the results
 
     def plot_results(df_importance, df_pval):
         fig, axes = plt.subplots(1, 2, figsize=(6, 3), sharey=True)
-        for method, ax in zip(["CFI", "PFI"], axes):
+        for method, ax in zip(["CFI", "PFI"], axes, strict=False):
             df_method = df_importance[df_importance["vim"] == method]
             legend = ax == axes[0]
             sns.stripplot(
@@ -427,9 +427,9 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.665 seconds)
+   **Total running time of the script:** (0 minutes 9.829 seconds)
 
-**Estimated memory usage:**  216 MB
+**Estimated memory usage:**  215 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:

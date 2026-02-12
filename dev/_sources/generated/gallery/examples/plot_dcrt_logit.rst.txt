@@ -96,7 +96,7 @@ We store the test statistic values for the null features only.
 The simulation uses n=200 samples and p=100 correlated features, with a support size of 10
 and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different random seeds.
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-115
+.. GENERATED FROM PYTHON SOURCE LINES 66-117
 
 .. code-block:: Python
 
@@ -108,7 +108,9 @@ and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different r
 
     # Run dCRT and dCRT-logit for each random seed
     results_list = []
-    for seed, (X, y, beta_true) in enumerate(zip(X_list, y_list, beta_true_list)):
+    for seed, (X, y, beta_true) in enumerate(
+        zip(X_list, y_list, beta_true_list, strict=False)
+    ):
         # Fit the dCRT-logit model
         dcrt_logit = D0CRT(
             estimator=LogisticRegressionCV(
@@ -191,7 +193,7 @@ and a signal-to-noise ratio of 3.0. The experiment is repeated for 5 different r
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-122
+.. GENERATED FROM PYTHON SOURCE LINES 118-124
 
 QQ-plot visualization
 ---------------------
@@ -200,7 +202,7 @@ to the theoretical quantiles of a standard Gaussian distribution.
 We use a QQ-plot, which displays the theoretical quantiles (from norm.ppf)
 against the empirical quantiles computed from the test statistics for each method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-171
+.. GENERATED FROM PYTHON SOURCE LINES 124-173
 
 .. code-block:: Python
 
@@ -265,21 +267,21 @@ against the empirical quantiles computed from the test statistics for each metho
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-176
+.. GENERATED FROM PYTHON SOURCE LINES 174-178
 
 In the QQ-plot, the points for the dCRT-logit method are closer to the diagonal red
 dashed line compared to those for the dCRT method. This indicates that the test statistics
 from dCRT-logit more closely follow a standard Gaussian distribution under the null
 hypothesis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-182
+.. GENERATED FROM PYTHON SOURCE LINES 180-184
 
 Power comparison
 ----------------
 We also compare the statistical power of both methods. The plot below shows the average
 power across the 5 random seeds, with error bars representing the standard deviation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-196
+.. GENERATED FROM PYTHON SOURCE LINES 184-198
 
 .. code-block:: Python
 
@@ -309,7 +311,7 @@ power across the 5 random seeds, with error bars representing the standard devia
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 197-200
+.. GENERATED FROM PYTHON SOURCE LINES 199-202
 
 References
 ----------
@@ -318,9 +320,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 12.076 seconds)
+   **Total running time of the script:** (0 minutes 13.572 seconds)
 
-**Estimated memory usage:**  216 MB
+**Estimated memory usage:**  215 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_dcrt_logit.py:

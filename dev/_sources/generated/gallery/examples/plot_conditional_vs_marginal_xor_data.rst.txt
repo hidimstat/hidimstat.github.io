@@ -1127,7 +1127,7 @@ Compute the conditional importance using the CFI class.
 .. code-block:: Python
 
     importances = []
-    for i, (train_index, test_index) in enumerate(cv.split(X)):
+    for _, (train_index, test_index) in enumerate(cv.split(X)):
         X_train, X_test = X[train_index], X[test_index]
         y_train, y_test = Y[train_index], Y[test_index]
 
@@ -1218,7 +1218,7 @@ the null hypothesis (importance = 0.0).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.068 seconds)
+   **Total running time of the script:** (0 minutes 3.601 seconds)
 
 **Estimated memory usage:**  216 MB
 

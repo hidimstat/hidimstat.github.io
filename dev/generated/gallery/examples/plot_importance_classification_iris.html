@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=9e40de67"></script>
+    <script src="../../../_static/documentation_options.js?v=7c28aae8"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev29+g5b03c8207';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev32+gc0a1aa06c';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -685,7 +685,7 @@ does not provide type-1 error control.</p>
 <h2>Visualization of the results<a class="headerlink" href="#visualization-of-the-results" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_results</span><span class="p">(</span><span class="n">df_importance</span><span class="p">,</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df_pval</span></a><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">&quot;CFI&quot;</span><span class="p">,</span> <span class="s2">&quot;PFI&quot;</span><span class="p">],</span> <span class="n">axes</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">&quot;CFI&quot;</span><span class="p">,</span> <span class="s2">&quot;PFI&quot;</span><span class="p">],</span> <span class="n">axes</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">df_method</span> <span class="o">=</span> <span class="n">df_importance</span><span class="p">[</span><span class="n">df_importance</span><span class="p">[</span><span class="s2">&quot;vim&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">method</span><span class="p">]</span>
         <span class="n">legend</span> <span class="o">=</span> <span class="n">ax</span> <span class="o">==</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <a href="https://seaborn.pydata.org/generated/seaborn.stripplot.html#seaborn.stripplot" title="seaborn.stripplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span></a><span class="p">(</span>
@@ -789,8 +789,8 @@ importance of these feature groups. For instance, we can group ‘sepal width’
 <span class="n">plot_results</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df_features_grouped</span></a><span class="p">,</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df_pval</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" srcset="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" alt="CFI, PFI" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.665 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  216 MB</p>
+<img src="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" srcset="../../../_images/sphx_glr_plot_importance_classification_iris_002.png" alt="CFI, PFI" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.829 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  215 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-importance-classification-iris-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/685dfd9a93754f17fef7a8e26ecab26c/plot_importance_classification_iris.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_importance_classification_iris.ipynb</span></code></a></p>

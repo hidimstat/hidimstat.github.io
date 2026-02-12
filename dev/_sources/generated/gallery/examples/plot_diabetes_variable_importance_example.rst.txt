@@ -118,7 +118,7 @@ and a Lasso regression model combined with a Voting Regressor.
 
  .. code-block:: none
 
-    R2 scores across folds: 0.482 ± 0.092
+    R2 scores across folds: 0.481 ± 0.093
 
 
 .. raw:: html
@@ -1910,8 +1910,8 @@ estimation to account for the dependency between the test statistics. We use the
 
  .. code-block:: none
 
-    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 268.38it/s]
-    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2542.93it/s]
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 263.32it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2415.52it/s]
 
 
 
@@ -1944,8 +1944,8 @@ We repeat the same process using the LOCO method.
 
  .. code-block:: none
 
-    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 1757.00it/s]
-    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 3620.77it/s]
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 1646.63it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 3842.35it/s]
 
 
 
@@ -1979,8 +1979,8 @@ Finally, we repeat the same process using the PFI method.
 
  .. code-block:: none
 
-    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 580.64it/s]
-    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 3827.62it/s]
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 589.25it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2287.22it/s]
 
 
 
@@ -1993,7 +1993,7 @@ Finally, we visualize the results obtained with the three different methods. We 
 the negative log10 p-values for each variable and each method. A horizontal red-dashed
 line indicates the significance threshold at p-value=0.05.
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-166
+.. GENERATED FROM PYTHON SOURCE LINES 130-167
 
 .. code-block:: Python
 
@@ -2015,6 +2015,7 @@ line indicates the significance threshold at p-value=0.05.
             for vim, vim_name in zip(
                 [cfi_cv, loco_cv, pfi_cv],
                 ["CFI", "LOCO", "PFI"],
+                strict=False,
             )
         ]
     )
@@ -2047,11 +2048,11 @@ line indicates the significance threshold at p-value=0.05.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7f555e9dec10>
+    <matplotlib.legend.Legend object at 0x7f13e718ac10>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-172
+.. GENERATED FROM PYTHON SOURCE LINES 168-173
 
 Several trends can be observed from the results: PFI tends to give smaller p-values
 (that is higher bars in the plot) than LOCO and CFI. This is expected since PFI is
@@ -2059,7 +2060,7 @@ known to overestimate the importance of correlated variables. On the other hand,
 has in general, larger p-values (smaller bars in the plot). This is also a known trend
 since LOCO tends to suffer from lower statistical power.
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-178
+.. GENERATED FROM PYTHON SOURCE LINES 176-179
 
 References
 ----------
@@ -2068,9 +2069,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 34.968 seconds)
+   **Total running time of the script:** (0 minutes 36.114 seconds)
 
-**Estimated memory usage:**  1133 MB
+**Estimated memory usage:**  1112 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:
