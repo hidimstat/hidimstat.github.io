@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f7c61a92"></script>
+    <script src="../../../_static/documentation_options.js?v=94deb20e"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev34+gf75386ef6';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev35+g61299b0df';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -686,11 +686,11 @@ Candes <em>et al.</em><a class="footnote-reference brackets" href="#footcite-can
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Knockoffs make at least </span><span class="si">{</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.int64" title="numpy.int64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">num_false_discoveries</span></a><span class="si">}</span><span class="s2"> False Discoveries&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
   diag_s = np.diag(_s_equi(sigma, tol=self.tol))
-/home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+/home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
   diag_s = np.diag(_s_equi(sigma, tol=self.tol))
-/home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+/home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
   diag_s = np.diag(_s_equi(sigma, tol=self.tol))
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:1780: FutureWarning: The default value for l1_ratios will change from None to (0.0,) in version 1.10. From version 1.10 onwards, only array-like with values in [0, 1] will be allowed, None will be forbidden. To avoid this warning, explicitly set a value, e.g. l1_ratios=(0,).
   warnings.warn(
@@ -784,8 +784,8 @@ relevant true features.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.287 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  214 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.287 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  212 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-knockoffs-wisconsin-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/be610d1779117e0c8d603c7d3c033b71/plot_knockoffs_wisconsin.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_knockoffs_wisconsin.ipynb</span></code></a></p>

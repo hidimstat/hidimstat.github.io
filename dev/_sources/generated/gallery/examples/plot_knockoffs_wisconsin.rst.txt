@@ -296,11 +296,11 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
       diag_s = np.diag(_s_equi(sigma, tol=self.tol))
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
       diag_s = np.diag(_s_equi(sigma, tol=self.tol))
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
       diag_s = np.diag(_s_equi(sigma, tol=self.tol))
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:1780: FutureWarning: The default value for l1_ratios will change from None to (0.0,) in version 1.10. From version 1.10 onwards, only array-like with values in [0, 1] will be allowed, None will be forbidden. To avoid this warning, explicitly set a value, e.g. l1_ratios=(0,).
       warnings.warn(
@@ -414,9 +414,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.287 seconds)
+   **Total running time of the script:** (0 minutes 5.287 seconds)
 
-**Estimated memory usage:**  214 MB
+**Estimated memory usage:**  212 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:
