@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=94deb20e"></script>
+    <script src="../../../_static/documentation_options.js?v=f577864f"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev35+g61299b0df';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev37+g379fc99d3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -420,6 +420,7 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_meg_somato.html">Source localization of somatosensory MEG data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
@@ -648,25 +649,25 @@ repetitions using the <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.10it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.10it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  8.69it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  8.69it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 605.89it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 643.78it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.96it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.96it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.56it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.56it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 509.19it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 717.96it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.65it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.65it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.35it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.35it/s]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 613.81it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 634.36it/s]
 </pre></div>
 </div>
 </section>
@@ -704,8 +705,8 @@ statistically significant for the classification tasks. For example, we can dete
 the bottom left portion of the loop when distinguishing between digits 0 and 9, the
 bottom left corner of digit 4 when distinguishing between digits 4 and 7, and the
 central vertical stroke when distinguishing between digits 0 and 1.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 30.482 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1425 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.835 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  1434 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-digits-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/75c0e891f7dc9297a5f1b2fc2298b50c/plot_digits.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_digits.ipynb</span></code></a></p>

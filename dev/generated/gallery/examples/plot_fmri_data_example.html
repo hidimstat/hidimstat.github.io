@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=94deb20e"></script>
+    <script src="../../../_static/documentation_options.js?v=f577864f"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,14 +52,14 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev35+g61299b0df';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev37+g379fc99d3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Controlled multiple variable selection on the Wisconsin breast cancer dataset" href="plot_knockoffs_wisconsin.html" />
-    <link rel="prev" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
+    <link rel="prev" title="Source localization of somatosensory MEG data" href="plot_meg_somato.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -420,6 +420,7 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_meg_somato.html">Source localization of somatosensory MEG data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
@@ -679,16 +680,15 @@ However you might benefit from clustering randomization taking
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:02,  4.05it/s]
-Fitting clustered inferences:  60%|██████    | 6/10 [00:10&lt;00:07,  1.84s/it]
-Fitting clustered inferences:  90%|█████████ | 9/10 [00:20&lt;00:02,  2.49s/it]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:20&lt;00:00,  2.06s/it]
+Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:01,  5.02it/s]
+Fitting clustered inferences:  60%|██████    | 6/10 [00:07&lt;00:05,  1.25s/it]
+Fitting clustered inferences:  90%|█████████ | 9/10 [00:13&lt;00:01,  1.68s/it]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:13&lt;00:00,  1.40s/it]
 
 Computing importances:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Computing importances:  30%|███       | 3/10 [00:00&lt;00:00, 20.93it/s]
-Computing importances:  60%|██████    | 6/10 [00:00&lt;00:00, 21.16it/s]
-Computing importances:  90%|█████████ | 9/10 [00:00&lt;00:00, 21.77it/s]
-Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 21.61it/s]
+Computing importances:  40%|████      | 4/10 [00:00&lt;00:00, 32.16it/s]
+Computing importances:  80%|████████  | 8/10 [00:00&lt;00:00, 33.00it/s]
+Computing importances: 100%|██████████| 10/10 [00:00&lt;00:00, 32.16it/s]
 
 array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
        -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
@@ -802,8 +802,8 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 19.191 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1572 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 50.264 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  1794 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b6c6a679d257e221e442c55b925ef0bf/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>
@@ -830,12 +830,12 @@ spurious discoveries.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_dl_diabetes_confidence.html"
+       href="plot_meg_somato.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
+        <p class="prev-next-title">Source localization of somatosensory MEG data</p>
       </div>
     </a>
     <a class="right-next"

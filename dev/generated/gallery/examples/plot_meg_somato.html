@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Source localization of somatosensory MEG data &#8212; HiDimStat</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=f577864f"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_meg_somato';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev37+g379fc99d3';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Support Recovery on fMRI Data" href="plot_fmri_data_example.html" />
+    <link rel="prev" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Feature Importance on diabetes dataset using cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Source localization of somatosensory MEG data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_pitfalls_permutation_importance.html">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_2D_simulation_example.html">Ensemble Clustered Inference on 2D Data</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Examples Gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Source localization of somatosensory MEG data</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-generated-gallery-examples-plot-meg-somato-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="source-localization-of-somatosensory-meg-data">
+<span id="sphx-glr-generated-gallery-examples-plot-meg-somato-py"></span><h1>Source localization of somatosensory MEG data<a class="headerlink" href="#source-localization-of-somatosensory-meg-data" title="Link to this heading">#</a></h1>
+<p>This example adapts the experiment presented in
+Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footcite-chevalier2020statistical" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. We show how to identify which cortical
+sources are activated during a somatosensory task. To do so, we leverage
+spatially constrained clustering to effectively reduce the dimensionality of
+the problem while accounting for the spatial structure of the data. We then
+perform inference with the desparsified multitask Lasso to perform support
+recovery from spatio-temporal data.</p>
+<div class="admonition-multitasklasso admonition">
+<p class="admonition-title">MultiTaskLasso:</p>
+<p>The <a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html#multi-task-lasso">MultiTaskLasso</a>
+is a linear model that estimates sparse coefficients for multiple correlated
+tasks simultaneously. Here, the tasks correspond to the different time points.
+Instead of fitting a separate Lasso model for each time point, it fits a single
+model that enforces joint feature selection across all time points. To do so,
+it uses an L1/L2 mixed-norm regularization, which for a coefficient matrix
+<span class="math notranslate nohighlight">\(W\)</span> of shape (n_features, n_tasks) is defined as:</p>
+<div class="math notranslate nohighlight">
+\[||W||_{21} = \sum_{j=1}^p \sqrt{\sum_{t=1}^T W_{j,t}^2}\]</div>
+</div>
+<section id="load-somatosensory-meg-data-from-mne-python">
+<h2>Load somatosensory MEG data from MNE-Python<a class="headerlink" href="#load-somatosensory-meg-data-from-mne-python" title="Link to this heading">#</a></h2>
+<p>We use the somatosensory MEG dataset available in MNE-Python. We visualize
+the evoked response across MEG sensors.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mne</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mne.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">somato</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cond</span></a> <span class="o">=</span> <span class="s2">&quot;somato&quot;</span>
+<a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_path</span></a> <span class="o">=</span> <span class="n">somato</span><span class="o">.</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_path</span></a><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a> <span class="o">=</span> <span class="s2">&quot;01&quot;</span>
+<a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subjects_dir</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_path</span></a> <span class="o">/</span> <span class="s2">&quot;derivatives/freesurfer/subjects&quot;</span>
+<a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">raw_fname</span></a> <span class="o">=</span> <span class="p">(</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_path</span></a> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="si">}</span><span class="s2">&quot;</span> <span class="o">/</span> <span class="s2">&quot;meg&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="si">}</span><span class="s2">_task-</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cond</span></a><span class="si">}</span><span class="s2">_meg.fif&quot;</span>
+<span class="p">)</span>
+<a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fwd_fname</span></a> <span class="o">=</span> <span class="p">(</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_path</span></a>
+    <span class="o">/</span> <span class="s2">&quot;derivatives&quot;</span>
+    <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="si">}</span><span class="s2">_task-</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cond</span></a><span class="si">}</span><span class="s2">-fwd.fif&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Read evoked</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_fif</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">raw_fname</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">events</span></a> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">find_events</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">stim_channel</span><span class="o">=</span><span class="s2">&quot;STI 014&quot;</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">reject</span></a> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;grad&quot;</span><span class="p">:</span> <span class="mf">4000e-13</span><span class="p">,</span> <span class="s2">&quot;eog&quot;</span><span class="p">:</span> <span class="mf">350e-6</span><span class="p">}</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">picks</span></a> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">pick_types</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">,</span> <span class="n">meg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eeg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">event_id</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmin</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmax</span></a> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span>
+    <span class="n">raw</span><span class="p">,</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">events</span></a><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">event_id</span></a><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmin</span></a><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmax</span></a><span class="p">,</span>
+    <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">picks</span></a><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">picks</span></a><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">reject</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">reject</span></a><span class="p">,</span>
+    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">evoked</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+<span class="n">evoked</span> <span class="o">=</span> <span class="n">evoked</span><span class="o">.</span><span class="n">pick_types</span><span class="p">(</span><span class="s2">&quot;grad&quot;</span><span class="p">)</span>
+<span class="n">evoked</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_meg_somato_001.png" srcset="../../../_images/sphx_glr_plot_meg_somato_001.png" alt="Gradiometers (204 channels)" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Using default location ~/mne_data for somato...
+Creating /home/circleci/mne_data
+Downloading file &#39;MNE-somato-data.tar.gz&#39; from &#39;https://osf.io/download/tp4sg?version=7&#39; to &#39;/home/circleci/mne_data&#39;.
+
+  0%|                                               | 0.00/611M [00:00&lt;?, ?B/s]
+  0%|▏                                     | 3.02M/611M [00:00&lt;00:20, 30.2MB/s]
+  2%|▋                                     | 10.7M/611M [00:00&lt;00:10, 57.5MB/s]
+  3%|█▏                                    | 18.4M/611M [00:00&lt;00:08, 66.5MB/s]
+  4%|█▋                                    | 26.2M/611M [00:00&lt;00:08, 70.9MB/s]
+  6%|██                                    | 33.9M/611M [00:00&lt;00:07, 73.4MB/s]
+  7%|██▌                                   | 41.7M/611M [00:00&lt;00:07, 74.8MB/s]
+  8%|███                                   | 49.6M/611M [00:00&lt;00:07, 76.0MB/s]
+  9%|███▌                                  | 57.3M/611M [00:00&lt;00:07, 76.6MB/s]
+ 11%|████                                  | 65.1M/611M [00:00&lt;00:07, 77.0MB/s]
+ 12%|████▌                                 | 72.9M/611M [00:01&lt;00:06, 77.3MB/s]
+ 13%|█████                                 | 80.7M/611M [00:01&lt;00:06, 77.4MB/s]
+ 15%|█████▌                                | 88.5M/611M [00:01&lt;00:06, 77.8MB/s]
+ 16%|█████▉                                | 96.3M/611M [00:01&lt;00:06, 77.7MB/s]
+ 17%|██████▋                                | 104M/611M [00:01&lt;00:06, 77.7MB/s]
+ 18%|███████▏                               | 112M/611M [00:01&lt;00:06, 77.7MB/s]
+ 20%|███████▋                               | 120M/611M [00:01&lt;00:06, 77.8MB/s]
+ 21%|████████▏                              | 127M/611M [00:01&lt;00:06, 77.9MB/s]
+ 22%|████████▋                              | 135M/611M [00:01&lt;00:06, 77.6MB/s]
+ 23%|█████████▏                             | 143M/611M [00:01&lt;00:06, 77.7MB/s]
+ 25%|█████████▋                             | 151M/611M [00:02&lt;00:05, 77.8MB/s]
+ 26%|██████████▏                            | 159M/611M [00:02&lt;00:05, 77.2MB/s]
+ 27%|██████████▋                            | 166M/611M [00:02&lt;00:05, 77.3MB/s]
+ 29%|███████████▏                           | 174M/611M [00:02&lt;00:05, 77.4MB/s]
+ 30%|███████████▌                           | 182M/611M [00:02&lt;00:05, 77.5MB/s]
+ 31%|████████████                           | 190M/611M [00:02&lt;00:05, 77.2MB/s]
+ 32%|████████████▌                          | 197M/611M [00:02&lt;00:05, 76.2MB/s]
+ 34%|█████████████                          | 205M/611M [00:02&lt;00:05, 76.5MB/s]
+ 35%|█████████████▌                         | 213M/611M [00:02&lt;00:05, 76.5MB/s]
+ 36%|██████████████                         | 220M/611M [00:02&lt;00:05, 75.9MB/s]
+ 37%|██████████████▌                        | 228M/611M [00:03&lt;00:05, 75.7MB/s]
+ 39%|███████████████                        | 236M/611M [00:03&lt;00:04, 75.9MB/s]
+ 40%|███████████████▌                       | 244M/611M [00:03&lt;00:04, 76.6MB/s]
+ 41%|████████████████                       | 251M/611M [00:03&lt;00:04, 76.3MB/s]
+ 42%|████████████████▌                      | 259M/611M [00:03&lt;00:04, 75.6MB/s]
+ 44%|█████████████████                      | 266M/611M [00:03&lt;00:04, 70.6MB/s]
+ 45%|█████████████████▍                     | 274M/611M [00:03&lt;00:04, 71.5MB/s]
+ 46%|█████████████████▉                     | 281M/611M [00:03&lt;00:04, 73.1MB/s]
+ 47%|██████████████████▍                    | 289M/611M [00:03&lt;00:04, 74.4MB/s]
+ 49%|██████████████████▉                    | 297M/611M [00:03&lt;00:04, 75.3MB/s]
+ 50%|███████████████████▍                   | 305M/611M [00:04&lt;00:04, 76.2MB/s]
+ 51%|███████████████████▉                   | 313M/611M [00:04&lt;00:03, 76.7MB/s]
+ 52%|████████████████████▍                  | 320M/611M [00:04&lt;00:03, 77.0MB/s]
+ 54%|████████████████████▉                  | 328M/611M [00:04&lt;00:03, 77.3MB/s]
+ 55%|█████████████████████▍                 | 336M/611M [00:04&lt;00:03, 77.4MB/s]
+ 56%|█████████████████████▉                 | 344M/611M [00:04&lt;00:03, 77.4MB/s]
+ 58%|██████████████████████▍                | 351M/611M [00:04&lt;00:03, 77.6MB/s]
+ 59%|██████████████████████▉                | 359M/611M [00:04&lt;00:03, 77.6MB/s]
+ 60%|███████████████████████▍               | 367M/611M [00:04&lt;00:03, 77.7MB/s]
+ 61%|███████████████████████▉               | 375M/611M [00:04&lt;00:03, 77.6MB/s]
+ 63%|████████████████████████▍              | 383M/611M [00:05&lt;00:02, 77.5MB/s]
+ 64%|████████████████████████▉              | 390M/611M [00:05&lt;00:02, 77.5MB/s]
+ 65%|█████████████████████████▍             | 398M/611M [00:05&lt;00:02, 77.7MB/s]
+ 66%|█████████████████████████▉             | 406M/611M [00:05&lt;00:02, 77.6MB/s]
+ 68%|██████████████████████████▍            | 414M/611M [00:05&lt;00:02, 77.7MB/s]
+ 69%|██████████████████████████▉            | 421M/611M [00:05&lt;00:02, 77.7MB/s]
+ 70%|███████████████████████████▍           | 429M/611M [00:05&lt;00:02, 77.9MB/s]
+ 72%|███████████████████████████▉           | 437M/611M [00:05&lt;00:02, 77.8MB/s]
+ 73%|████████████████████████████▍          | 445M/611M [00:05&lt;00:02, 74.4MB/s]
+ 74%|████████████████████████████▉          | 453M/611M [00:05&lt;00:02, 75.2MB/s]
+ 75%|█████████████████████████████▍         | 460M/611M [00:06&lt;00:01, 76.0MB/s]
+ 77%|█████████████████████████████▉         | 468M/611M [00:06&lt;00:01, 76.5MB/s]
+ 78%|██████████████████████████████▍        | 476M/611M [00:06&lt;00:01, 77.0MB/s]
+ 79%|██████████████████████████████▉        | 484M/611M [00:06&lt;00:01, 77.1MB/s]
+ 80%|███████████████████████████████▍       | 491M/611M [00:06&lt;00:01, 77.0MB/s]
+ 82%|███████████████████████████████▉       | 499M/611M [00:06&lt;00:01, 77.2MB/s]
+ 83%|████████████████████████████████▍      | 507M/611M [00:06&lt;00:01, 77.0MB/s]
+ 84%|████████████████████████████████▉      | 515M/611M [00:06&lt;00:01, 77.2MB/s]
+ 86%|█████████████████████████████████▎     | 522M/611M [00:06&lt;00:01, 77.3MB/s]
+ 87%|█████████████████████████████████▊     | 530M/611M [00:06&lt;00:01, 71.9MB/s]
+ 88%|██████████████████████████████████▎    | 538M/611M [00:07&lt;00:00, 73.2MB/s]
+ 89%|██████████████████████████████████▊    | 545M/611M [00:07&lt;00:00, 74.2MB/s]
+ 91%|███████████████████████████████████▎   | 553M/611M [00:07&lt;00:00, 74.7MB/s]
+ 92%|███████████████████████████████████▊   | 561M/611M [00:07&lt;00:00, 75.1MB/s]
+ 93%|████████████████████████████████████▎  | 568M/611M [00:07&lt;00:00, 75.4MB/s]
+ 94%|████████████████████████████████████▊  | 576M/611M [00:07&lt;00:00, 75.8MB/s]
+ 96%|█████████████████████████████████████▎ | 584M/611M [00:07&lt;00:00, 76.1MB/s]
+ 97%|█████████████████████████████████████▊ | 591M/611M [00:07&lt;00:00, 76.4MB/s]
+ 98%|██████████████████████████████████████▎| 599M/611M [00:07&lt;00:00, 76.5MB/s]
+ 99%|██████████████████████████████████████▊| 607M/611M [00:07&lt;00:00, 76.5MB/s]
+  0%|                                               | 0.00/611M [00:00&lt;?, ?B/s]
+100%|███████████████████████████████████████| 611M/611M [00:00&lt;00:00, 1.81TB/s]
+Untarring contents of &#39;/home/circleci/mne_data/MNE-somato-data.tar.gz&#39; to &#39;/home/circleci/mne_data&#39;
+Attempting to create new mne-python configuration file:
+/home/circleci/.mne/mne-python.json
+Could not read the /home/circleci/.mne/mne-python.json json file during the writing. Assuming it is empty. Got: Expecting value: line 1 column 1 (char 0)
+Download complete in 20s (582.2 MB)
+Opening raw data file /home/circleci/mne_data/MNE-somato-data/sub-01/meg/sub-01_task-somato_meg.fif...
+    Range : 237600 ... 506999 =    791.189 ...  1688.266 secs
+Ready.
+Finding events on: STI 014
+111 events found on stim channel STI 014
+Event IDs: [1]
+Not setting metadata
+111 matching events found
+Setting baseline interval to [-0.19979521315838786, 0.0] s
+Applying baseline correction (mode: mean)
+0 projection items activated
+Loading data for 111 events and 136 original time points ...
+0 bad epochs dropped
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+
+&lt;Figure size 640x300 with 2 Axes&gt;
+</pre></div>
+</div>
+</section>
+<section id="preprocessing-meg-data-for-source-localization">
+<h2>Preprocessing MEG data for source localization<a class="headerlink" href="#preprocessing-meg-data-for-source-localization" title="Link to this heading">#</a></h2>
+<p>Before performing source localization, we need to preprocess the MEG data.
+To do so we rely on the MNE-Python library. We compute the forward model,
+which describes how the activity of cortical sources is projected onto MEG
+sensors. We also select the time window of interest, which is the early
+response. Finally we compute the noise covariance matrix, in order to whiten
+the data.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mne.inverse_sparse.mxne_inverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">_prepare_gain</span>
+
+<span class="c1"># Read forward matrix</span>
+<span class="n">forward</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">read_forward_solution</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fwd_fname</span></a><span class="p">)</span>
+<span class="c1"># Compute noise covariance matrix</span>
+<span class="n">noise_cov</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">compute_covariance</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmax</span></a><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="c1"># We must reduce the whitener since data were preprocessed for removal</span>
+<span class="c1"># of environmental noise with maxwell filter leading to an effective</span>
+<span class="c1"># number of 64 samples.</span>
+<a href="https://docs.python.org/3/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pca</span></a> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># Preprocessing MEG data</span>
+<span class="n">forward</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gain</span></a><span class="p">,</span> <span class="n">gain_info</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">whitener</span></a><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_prepare_gain</span><span class="p">(</span>
+    <span class="n">forward</span><span class="p">,</span>
+    <span class="n">evoked</span><span class="o">.</span><span class="n">info</span><span class="p">,</span>
+    <span class="n">noise_cov</span><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pca</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#bool" title="builtins.bool" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pca</span></a><span class="p">,</span>
+    <span class="n">depth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">loose</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">weights_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">rank</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Reading forward solution from /home/circleci/mne_data/MNE-somato-data/derivatives/sub-01/sub-01_task-somato-fwd.fif...
+    Reading a source space...
+    [done]
+    Reading a source space...
+    [done]
+    2 source spaces read
+    Desired named matrix (kind = 3523 (FIFF_MNE_FORWARD_SOLUTION_GRAD)) not available
+    Read MEG forward solution (8155 sources, 306 channels, free orientations)
+    Source spaces transformed to the forward solution coordinate frame
+    Setting small MEG eigenvalues to zero (without PCA)
+Reducing data rank from 306 -&gt; 64
+Estimating covariance using EMPIRICAL
+Done.
+Number of samples used : 6771
+[done]
+Converting forward solution to fixed orientation
+    No patch info available. The standard source space normals will be employed in the rotation to the local surface coordinates....
+    Changing to fixed-orientation forward solution with surface-based source orientations...
+    [done]
+Computing inverse operator with 204 channels.
+    204 out of 306 channels remain after picking
+Selected 204 channels
+Whitening the forward solution.
+Computing rank from covariance with rank=None
+    Using tolerance 2.1e-12 (2.2e-16 eps * 204 dim * 46  max singular value)
+    Estimated rank (grad): 64
+    GRAD: rank 64 computed from 204 data channels with 0 projectors
+    Setting small GRAD eigenvalues to zero (without PCA)
+Creating the source covariance matrix
+Adjusting source covariance matrix.
+</pre></div>
+</div>
+<p>Selecting relevant time window: focusing on early signal</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_min</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_max</span></a> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span>
+<a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_step</span></a> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">300</span>
+<span class="c1"># Croping evoked according to relevant time window</span>
+<span class="n">evoked</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmin</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_min</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmax</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_max</span></a><span class="p">)</span>
+<span class="c1"># Choosing frequency and number of clusters used for compression.</span>
+<span class="c1"># Reducing the frequency to 100Hz to make inference faster</span>
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">step</span></a> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">t_step</span></a> <span class="o">*</span> <span class="n">evoked</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;sfreq&quot;</span><span class="p">])</span>
+<span class="n">evoked</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">step</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.dot.html#numpy.dot" title="numpy.dot" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">dot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">whitener</span></a><span class="p">,</span> <span class="n">evoked</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="spatially-constrained-clustering">
+<h2>Spatially constrained clustering<a class="headerlink" href="#spatially-constrained-clustering" title="Link to this heading">#</a></h2>
+<p>We then extract the spatial adjacency matrix that is then used in the
+clustering step to incorporate the spatial structure of the data.
+For MEG data <code class="docutils literal notranslate"><span class="pre">n_clusters</span> <span class="pre">=</span> <span class="pre">750</span></code> is generally a good default choice.
+Taking <code class="docutils literal notranslate"><span class="pre">n_clusters</span> <span class="pre">&gt;</span> <span class="pre">2000</span></code> might lead to an unpowerful inference.
+Taking <code class="docutils literal notranslate"><span class="pre">n_clusters</span> <span class="pre">&lt;</span> <span class="pre">500</span></code> might compress too much the data leading
+to a compressed problem not close enough to the original problem.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class"><span class="n">FeatureAgglomeration</span></a>
+
+<span class="c1"># Collecting features&#39; connectivity</span>
+<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_array.html#scipy.sparse.coo_array" title="scipy.sparse.coo_array" class="sphx-glr-backref-module-scipy-sparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">connectivity</span></a> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">source_estimate</span><span class="o">.</span><span class="n">spatial_src_adjacency</span><span class="p">(</span><span class="n">forward</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">])</span>
+
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a> <span class="o">=</span> <span class="mi">750</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class"><span class="n">FeatureAgglomeration</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_clusters</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_array.html#scipy.sparse.coo_array" title="scipy.sparse.coo_array" class="sphx-glr-backref-module-scipy-sparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">connectivity</span></a><span class="o">=</span><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_array.html#scipy.sparse.coo_array" title="scipy.sparse.coo_array" class="sphx-glr-backref-module-scipy-sparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">connectivity</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>-- number of adjacent vertices : 8196
+/home/circleci/project/examples/plot_meg_somato.py:135: RuntimeWarning: 0.5% of original source space vertices have been omitted, tri-based adjacency will have holes.
+Consider using distance-based adjacency or morphing data to all source space vertices.
+  connectivity = mne.source_estimate.spatial_src_adjacency(forward[&quot;src&quot;])
+</pre></div>
+</div>
+</section>
+<section id="running-clustered-inference">
+<h2>Running clustered inference<a class="headerlink" href="#running-clustered-inference" title="Link to this heading">#</a></h2>
+<p>We can now run the clustered inference using the desparsified multitask Lasso
+We then select the clusters that are significant at the target FWER level,
+which is set to 0.1 in this example.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.MultiTaskLassoCV.html#sklearn.linear_model.MultiTaskLassoCV" title="sklearn.linear_model.MultiTaskLassoCV" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">MultiTaskLassoCV</span></a>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class"><span class="n">CluDL</span></a><span class="p">,</span> <a href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class"><span class="n">DesparsifiedLasso</span></a>
+
+<span class="c1"># Setting theoretical FWER target</span>
+<a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fwer_target</span></a> <span class="o">=</span> <span class="mf">0.1</span>
+
+<a href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cludl</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class"><span class="n">CluDL</span></a><span class="p">(</span>
+    <span class="n">clustering</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ward</span></a><span class="p">,</span>
+    <span class="n">desparsified_lasso</span><span class="o">=</span><a href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class"><span class="n">DesparsifiedLasso</span></a><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.MultiTaskLassoCV.html#sklearn.linear_model.MultiTaskLassoCV" title="sklearn.linear_model.MultiTaskLassoCV" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">MultiTaskLassoCV</span></a><span class="p">()),</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<a href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL.fit_importance" title="hidimstat.CluDL.fit_importance" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method"><span class="n">cludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gain</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL.fwer_selection" title="hidimstat.CluDL.fwer_selection" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method"><span class="n">cludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fwer_target</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># multiplying the -log10(p-value) map by the sign of the estimated coefficients</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">log_pvalues</span></a> <span class="o">=</span> <span class="o">-</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cludl</span><span class="o">.</span><span class="n">pvalues_</span></a><span class="p">)</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">selected</span></a>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/cluster/_agglomerative.py:323: UserWarning: the number of connected components of the connectivity matrix is 2 &gt; 1. Completing it to avoid stopping the tree early.
+  connectivity, n_connected_components = _fix_connectivity(
+Group reid: AR1 cov estimation
+Using number of clusters for multiple testing correction.
+</pre></div>
+</div>
+<p>We here used CluDL, which relies on a single clustering. Alternatively,
+<a class="reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnCluDL</span></code></a> can be used, which relies on aggregating the
+results over multiple clusterings obtained by running the clustering
+algorithm on bootstrapped samples of the data. This can lead to more stable
+results at the cost of a higher computational time.</p>
+</section>
+<section id="visualize-the-p-value-map-on-the-brain-surface">
+<h2>Visualize the p-value map on the brain surface<a class="headerlink" href="#visualize-the-p-value-map-on-the-brain-surface" title="Link to this heading">#</a></h2>
+<p>We then visualize the identified cortical sources on the brain surface. We
+plot the -log10(p-value) map to which we assign the sign of the estimated
+coefficient in the multitask Lasso model.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">plotting</span>
+
+<span class="n">stc_pvals</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">SourceEstimate</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">log_pvalues</span></a><span class="p">[:,</span> <a href="https://numpy.org/doc/stable/reference/constants.html#numpy.newaxis" title="numpy.newaxis" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span></a><span class="p">],</span>
+    <span class="n">vertices</span><span class="o">=</span><span class="p">[</span><span class="n">forward</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;vertno&quot;</span><span class="p">],</span> <span class="n">forward</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;vertno&quot;</span><span class="p">]],</span>
+    <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmin</span></a><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">tstep</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># TODO: tmp fix: unlinking fsaverage directory to avoid error</span>
+<a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fs_dir</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subjects_dir</span></a><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;fsaverage&quot;</span>
+<span class="k">if</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path.is_symlink" title="pathlib.Path.is_symlink" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-method"><span class="n">fs_dir</span><span class="o">.</span><span class="n">is_symlink</span></a><span class="p">():</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink" title="pathlib.Path.unlink" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-method"><span class="n">fs_dir</span><span class="o">.</span><span class="n">unlink</span></a><span class="p">()</span>
+<span class="n">mne</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fetch_fsaverage</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subjects_dir</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subjects_dir</span></a><span class="p">)</span>
+
+<span class="n">morph</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">compute_source_morph</span><span class="p">(</span>
+    <span class="n">src</span><span class="o">=</span><span class="n">forward</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">],</span>
+    <span class="n">subject_from</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subject</span></a><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">subject_to</span><span class="o">=</span><span class="s2">&quot;fsaverage&quot;</span><span class="p">,</span>
+    <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subjects_dir</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subjects_dir</span></a><span class="p">,</span>
+    <span class="n">spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">stc_fsaverage</span> <span class="o">=</span> <span class="n">morph</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">stc_pvals</span><span class="p">)</span>
+
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_id</span></a> <span class="o">=</span> <span class="n">stc_fsaverage</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rh_stat_map</span></a> <span class="o">=</span> <span class="n">stc_fsaverage</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">start_id</span></a><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>179 files missing from root.txt in /home/circleci/mne_data/MNE-somato-data/derivatives/freesurfer/subjects
+Downloading missing files remotely
+Downloading data from &#39;https://osf.io/download/3bxqt?version=2&#39; to file &#39;/tmp/tmpc47q4y1o/temp.zip&#39;.
+
+  0%|                                               | 0.00/196M [00:00&lt;?, ?B/s]
+  2%|▌                                     | 2.96M/196M [00:00&lt;00:06, 29.6MB/s]
+  5%|██                                    | 10.4M/196M [00:00&lt;00:03, 55.8MB/s]
+  9%|███▍                                  | 17.8M/196M [00:00&lt;00:02, 64.4MB/s]
+ 13%|████▉                                 | 25.4M/196M [00:00&lt;00:02, 68.7MB/s]
+ 17%|██████▍                               | 32.9M/196M [00:00&lt;00:02, 71.0MB/s]
+ 21%|███████▊                              | 40.5M/196M [00:00&lt;00:02, 72.7MB/s]
+ 25%|█████████▎                            | 48.0M/196M [00:00&lt;00:02, 73.6MB/s]
+ 28%|██████████▊                           | 55.5M/196M [00:00&lt;00:01, 74.1MB/s]
+ 32%|████████████▎                         | 63.1M/196M [00:00&lt;00:01, 74.6MB/s]
+ 36%|█████████████▋                        | 70.7M/196M [00:01&lt;00:01, 75.0MB/s]
+ 40%|███████████████▏                      | 78.3M/196M [00:01&lt;00:01, 75.2MB/s]
+ 44%|████████████████▋                     | 85.8M/196M [00:01&lt;00:01, 75.0MB/s]
+ 48%|██████████████████                    | 93.3M/196M [00:01&lt;00:01, 75.0MB/s]
+ 51%|████████████████████                   | 101M/196M [00:01&lt;00:01, 75.0MB/s]
+ 55%|█████████████████████▌                 | 108M/196M [00:01&lt;00:01, 74.7MB/s]
+ 59%|███████████████████████                | 116M/196M [00:01&lt;00:01, 74.8MB/s]
+ 63%|████████████████████████▌              | 123M/196M [00:01&lt;00:00, 74.9MB/s]
+ 67%|██████████████████████████             | 131M/196M [00:01&lt;00:00, 75.1MB/s]
+ 71%|███████████████████████████▌           | 138M/196M [00:01&lt;00:00, 59.4MB/s]
+ 75%|█████████████████████████████          | 146M/196M [00:02&lt;00:00, 63.5MB/s]
+ 78%|██████████████████████████████▌        | 154M/196M [00:02&lt;00:00, 66.8MB/s]
+ 82%|████████████████████████████████       | 161M/196M [00:02&lt;00:00, 69.4MB/s]
+ 86%|█████████████████████████████████▌     | 169M/196M [00:02&lt;00:00, 71.2MB/s]
+ 90%|███████████████████████████████████    | 176M/196M [00:02&lt;00:00, 72.4MB/s]
+ 94%|████████████████████████████████████▋  | 184M/196M [00:02&lt;00:00, 73.5MB/s]
+ 98%|██████████████████████████████████████▏| 192M/196M [00:02&lt;00:00, 74.4MB/s]
+  0%|                                               | 0.00/196M [00:00&lt;?, ?B/s]
+100%|████████████████████████████████████████| 196M/196M [00:00&lt;00:00, 533GB/s]
+Extracting missing files
+Successfully extracted 179 files
+10 files missing from bem.txt in /home/circleci/mne_data/MNE-somato-data/derivatives/freesurfer/subjects/fsaverage
+Downloading missing files remotely
+Downloading data from &#39;https://osf.io/download/7ve8g?version=4&#39; to file &#39;/tmp/tmpm9b2q_nz/temp.zip&#39;.
+
+  0%|                                               | 0.00/239M [00:00&lt;?, ?B/s]
+  1%|▍                                     | 2.96M/239M [00:00&lt;00:07, 29.6MB/s]
+  4%|█▋                                    | 10.6M/239M [00:00&lt;00:03, 57.3MB/s]
+  8%|██▉                                   | 18.4M/239M [00:00&lt;00:03, 66.6MB/s]
+ 11%|████▏                                 | 26.2M/239M [00:00&lt;00:02, 71.0MB/s]
+ 14%|█████▍                                | 33.9M/239M [00:00&lt;00:02, 73.2MB/s]
+ 17%|██████▌                               | 41.6M/239M [00:00&lt;00:02, 74.7MB/s]
+ 21%|███████▊                              | 49.4M/239M [00:00&lt;00:02, 75.5MB/s]
+ 24%|█████████                             | 57.1M/239M [00:00&lt;00:02, 76.1MB/s]
+ 27%|██████████▎                           | 64.9M/239M [00:00&lt;00:02, 76.6MB/s]
+ 30%|███████████▌                          | 72.6M/239M [00:01&lt;00:02, 76.8MB/s]
+ 34%|████████████▊                         | 80.4M/239M [00:01&lt;00:02, 77.1MB/s]
+ 37%|██████████████                        | 88.2M/239M [00:01&lt;00:01, 77.3MB/s]
+ 40%|███████████████▎                      | 95.9M/239M [00:01&lt;00:01, 77.3MB/s]
+ 43%|████████████████▉                      | 104M/239M [00:01&lt;00:01, 77.3MB/s]
+ 47%|██████████████████▏                    | 111M/239M [00:01&lt;00:01, 77.4MB/s]
+ 50%|███████████████████▍                   | 119M/239M [00:01&lt;00:01, 77.5MB/s]
+ 53%|████████████████████▋                  | 127M/239M [00:01&lt;00:01, 77.6MB/s]
+ 56%|█████████████████████▉                 | 135M/239M [00:01&lt;00:01, 56.5MB/s]
+ 60%|███████████████████████▎               | 143M/239M [00:02&lt;00:01, 61.7MB/s]
+ 63%|████████████████████████▌              | 150M/239M [00:02&lt;00:01, 66.0MB/s]
+ 66%|█████████████████████████▊             | 158M/239M [00:02&lt;00:01, 69.3MB/s]
+ 70%|███████████████████████████▏           | 166M/239M [00:02&lt;00:01, 71.9MB/s]
+ 73%|████████████████████████████▍          | 174M/239M [00:02&lt;00:00, 73.8MB/s]
+ 76%|█████████████████████████████▋         | 182M/239M [00:02&lt;00:00, 75.2MB/s]
+ 79%|██████████████████████████████▉        | 190M/239M [00:02&lt;00:00, 76.1MB/s]
+ 83%|████████████████████████████████▎      | 198M/239M [00:02&lt;00:00, 76.8MB/s]
+ 86%|█████████████████████████████████▌     | 205M/239M [00:02&lt;00:00, 77.2MB/s]
+ 89%|██████████████████████████████████▊    | 213M/239M [00:02&lt;00:00, 77.3MB/s]
+ 93%|████████████████████████████████████   | 221M/239M [00:03&lt;00:00, 77.6MB/s]
+ 96%|█████████████████████████████████████▎ | 229M/239M [00:03&lt;00:00, 77.7MB/s]
+ 99%|██████████████████████████████████████▋| 237M/239M [00:03&lt;00:00, 77.9MB/s]
+  0%|                                               | 0.00/239M [00:00&lt;?, ?B/s]
+100%|████████████████████████████████████████| 239M/239M [00:00&lt;00:00, 647GB/s]
+Extracting missing files
+Successfully extracted 10 files
+surface source space present ...
+Computing morph matrix...
+Morph map &quot;/home/circleci/mne_data/MNE-somato-data/derivatives/freesurfer/subjects/morph-maps/fsaverage-01-morph.fif&quot; does not exist, creating it and saving it to disk
+Creating morph map 01 -&gt; fsaverage
+Creating morph map fsaverage -&gt; 01
+    13 smooth iterations done.
+    12 smooth iterations done.
+[done]
+[done]
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.Bunch.html#sklearn.utils.Bunch" title="sklearn.utils.Bunch" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fsaverage</span></a> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_surf_fsaverage</span><span class="p">(</span><span class="s2">&quot;fsaverage5&quot;</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axes</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="s2">&quot;3d&quot;</span><span class="p">},</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;hspace&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1"># sphinx_gallery_thumbnail_number = 2</span>
+<span class="k">for</span> <a href="https://matplotlib.org/stable/api/toolkits/mplot3d/axes3d.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="mpl_toolkits.mplot3d.axes3d.Axes3D" class="sphx-glr-backref-module-mpl_toolkits-mplot3d-axes3d sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">view</span></a> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axes</span></a><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;lateral&quot;</span><span class="p">,</span> <span class="s2">&quot;medial&quot;</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">plotting</span><span class="o">.</span><span class="n">plot_surf_stat_map</span><span class="p">(</span>
+        <span class="n">surf_mesh</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fsaverage</span><span class="o">.</span><span class="n">infl_right</span></a><span class="p">,</span>
+        <span class="n">stat_map</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rh_stat_map</span></a><span class="p">,</span>
+        <span class="n">bg_map</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fsaverage</span><span class="o">.</span><span class="n">sulc_right</span></a><span class="p">,</span>
+        <span class="n">hemi</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+        <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">view</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">view</span></a><span class="p">,</span>
+        <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
+        <span class="n">threshold</span><span class="o">=-</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fwer_target</span></a><span class="p">),</span>
+        <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axes</span></a><span class="o">=</span><a href="https://matplotlib.org/stable/api/toolkits/mplot3d/axes3d.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="mpl_toolkits.mplot3d.axes3d.Axes3D" class="sphx-glr-backref-module-mpl_toolkits-mplot3d-axes3d sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;rh-</span><span class="si">{</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">view</span></a><span class="si">}</span><span class="s2"> view&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span><span class="o">.</span><span class="n">_colorbars</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;-log10(p-value)&quot;</span><span class="p">)</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_meg_somato_002.png" srcset="../../../_images/sphx_glr_plot_meg_somato_002.png" alt="rh-lateral view, rh-medial view" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/examples/plot_meg_somato.py:243: UserWarning: You are using the &#39;agg&#39; matplotlib backend that is non-interactive.
+No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
+You can fix this by installing a different backend: for example via
+        pip install PyQt6
+  plotting.show()
+</pre></div>
+</div>
+<p>Most of the identified sources are located in the somatosensory cortex,
+which is expected for this somatosensory task.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id2">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-chevalier2020statistical" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Jérôme-Alexis Chevalier, Joseph Salmon, Alexandre Gramfort, and Bertrand Thirion. Statistical control for spatio-temporal meg/eeg source imaging with desparsified mutli-task lasso. <em>Advances in Neural Information Processing Systems</em>, 33:1759–1770, 2020.</p>
+</aside>
+</aside>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 34.186 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  3068 MB</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-meg-somato-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/91da9746dad432670a90ae64245a7b67/plot_meg_somato.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_meg_somato.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/5c75ea736e2abe606381bb17500547aa/plot_meg_somato.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_meg_somato.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/19b99e88cd849064bcafe4e006acd29b/plot_meg_somato.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_meg_somato.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plot_dl_diabetes_confidence.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="plot_fmri_data_example.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Support Recovery on fMRI Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-somatosensory-meg-data-from-mne-python">Load somatosensory MEG data from MNE-Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-meg-data-for-source-localization">Preprocessing MEG data for source localization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatially-constrained-clustering">Spatially constrained clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-clustered-inference">Running clustered inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-p-value-map-on-the-brain-surface">Visualize the p-value map on the brain surface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/generated/gallery/examples/plot_meg_somato.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, The hidimstat developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
