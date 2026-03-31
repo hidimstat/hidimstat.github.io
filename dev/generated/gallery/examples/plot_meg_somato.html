@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f67a9525"></script>
+    <script src="../../../_static/documentation_options.js?v=50f9ba79"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,14 +53,14 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev42+g239d95cc5';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev43+g22245566c';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Support Recovery on fMRI Data" href="plot_fmri_data_example.html" />
-    <link rel="prev" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
+    <link rel="next" title="Controlled multiple variable selection on the Wisconsin breast cancer dataset" href="plot_knockoffs_wisconsin.html" />
+    <link rel="prev" title="Support Recovery on fMRI Data" href="plot_fmri_data_example.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -421,8 +421,8 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Source localization of somatosensory MEG data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Source localization of somatosensory MEG data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_pitfalls_permutation_importance.html">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</a></li>
@@ -520,6 +520,14 @@ the evoked response across MEG sensors.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mne</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mne.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">somato</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mne.datasets.utils</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MNE_DATASETS</span></a>
+
+<span class="c1"># MNE &lt;= 1.11.0 ships a somato dataset archive (version=7) that is no longer supported.</span>
+<span class="c1"># TODO: remove once mne &gt;= 1.12 is used.</span>
+<span class="c1"># Fix presented in https://github.com/mne-tools/mne-python/pull/13630</span>
+<span class="k">if</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MNE_DATASETS</span></a><span class="p">[</span><span class="s2">&quot;somato&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;version=7&quot;</span><span class="p">):</span>
+    <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MNE_DATASETS</span></a><span class="p">[</span><span class="s2">&quot;somato&quot;</span><span class="p">][</span><span class="s2">&quot;hash&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;md5:9a191907b326b9402341ee7a0d1240d8&quot;</span>
+    <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MNE_DATASETS</span></a><span class="p">[</span><span class="s2">&quot;somato&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://osf.io/download/tp4sg?version=8&quot;</span>
 
 <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cond</span></a> <span class="o">=</span> <span class="s2">&quot;somato&quot;</span>
 <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_path</span></a> <span class="o">=</span> <span class="n">somato</span><span class="o">.</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_path</span></a><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -675,7 +683,7 @@ to a compressed problem not close enough to the original problem.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>-- number of adjacent vertices : 8196
-/home/circleci/project/examples/plot_meg_somato.py:135: RuntimeWarning: 0.5% of original source space vertices have been omitted, tri-based adjacency will have holes.
+/home/circleci/project/examples/plot_meg_somato.py:143: RuntimeWarning: 0.5% of original source space vertices have been omitted, tri-based adjacency will have holes.
 Consider using distance-based adjacency or morphing data to all source space vertices.
   connectivity = mne.source_estimate.spatial_src_adjacency(forward[&quot;src&quot;])
 </pre></div>
@@ -796,7 +804,7 @@ Computing morph matrix...
 <span class="n">plotting</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../../_images/sphx_glr_plot_meg_somato_002.png" srcset="../../../_images/sphx_glr_plot_meg_somato_002.png" alt="rh-lateral view, rh-medial view" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/examples/plot_meg_somato.py:243: UserWarning: You are using the &#39;agg&#39; matplotlib backend that is non-interactive.
+<img src="../../../_images/sphx_glr_plot_meg_somato_002.png" srcset="../../../_images/sphx_glr_plot_meg_somato_002.png" alt="rh-lateral view, rh-medial view" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/examples/plot_meg_somato.py:251: UserWarning: You are using the &#39;agg&#39; matplotlib backend that is non-interactive.
 No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
 You can fix this by installing a different backend: for example via
         pip install PyQt6
@@ -816,8 +824,8 @@ which is expected for this somatosensory task.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 29.377 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  3059 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 23.853 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  3076 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-meg-somato-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/91da9746dad432670a90ae64245a7b67/plot_meg_somato.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_meg_somato.ipynb</span></code></a></p>
@@ -844,20 +852,20 @@ which is expected for this somatosensory task.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_dl_diabetes_confidence.html"
+       href="plot_fmri_data_example.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
+        <p class="prev-next-title">Support Recovery on fMRI Data</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_fmri_data_example.html"
+       href="plot_knockoffs_wisconsin.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Support Recovery on fMRI Data</p>
+        <p class="prev-next-title">Controlled multiple variable selection on the Wisconsin breast cancer dataset</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

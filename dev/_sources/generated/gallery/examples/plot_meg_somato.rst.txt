@@ -49,7 +49,7 @@ Load somatosensory MEG data from MNE-Python
 We use the somatosensory MEG dataset available in MNE-Python. We visualize
 the evoked response across MEG sensors.
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-74
+.. GENERATED FROM PYTHON SOURCE LINES 33-82
 
 .. code-block:: Python
 
@@ -57,6 +57,14 @@ the evoked response across MEG sensors.
     import mne
     import numpy as np
     from mne.datasets import somato
+    from mne.datasets.utils import MNE_DATASETS
+
+    # MNE <= 1.11.0 ships a somato dataset archive (version=7) that is no longer supported.
+    # TODO: remove once mne >= 1.12 is used.
+    # Fix presented in https://github.com/mne-tools/mne-python/pull/13630
+    if MNE_DATASETS["somato"]["url"].endswith("version=7"):
+        MNE_DATASETS["somato"]["hash"] = "md5:9a191907b326b9402341ee7a0d1240d8"
+        MNE_DATASETS["somato"]["url"] = "https://osf.io/download/tp4sg?version=8"
 
     cond = "somato"
     data_path = somato.data_path(verbose=True)
@@ -130,7 +138,7 @@ the evoked response across MEG sensors.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-83
+.. GENERATED FROM PYTHON SOURCE LINES 83-91
 
 Preprocessing MEG data for source localization
 ----------------------------------------------
@@ -141,7 +149,7 @@ sensors. We also select the time window of interest, which is the early
 response. Finally we compute the noise covariance matrix, in order to whiten
 the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-108
+.. GENERATED FROM PYTHON SOURCE LINES 91-116
 
 .. code-block:: Python
 
@@ -212,11 +220,11 @@ the data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-110
+.. GENERATED FROM PYTHON SOURCE LINES 117-118
 
 Selecting relevant time window: focusing on early signal
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-122
+.. GENERATED FROM PYTHON SOURCE LINES 118-130
 
 .. code-block:: Python
 
@@ -239,7 +247,7 @@ Selecting relevant time window: focusing on early signal
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-131
+.. GENERATED FROM PYTHON SOURCE LINES 131-139
 
 Spatially constrained clustering
 --------------------------------
@@ -250,7 +258,7 @@ Taking ``n_clusters > 2000`` might lead to an unpowerful inference.
 Taking ``n_clusters < 500`` might compress too much the data leading
 to a compressed problem not close enough to the original problem.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-141
+.. GENERATED FROM PYTHON SOURCE LINES 139-149
 
 .. code-block:: Python
 
@@ -273,14 +281,14 @@ to a compressed problem not close enough to the original problem.
  .. code-block:: none
 
     -- number of adjacent vertices : 8196
-    /home/circleci/project/examples/plot_meg_somato.py:135: RuntimeWarning: 0.5% of original source space vertices have been omitted, tri-based adjacency will have holes.
+    /home/circleci/project/examples/plot_meg_somato.py:143: RuntimeWarning: 0.5% of original source space vertices have been omitted, tri-based adjacency will have holes.
     Consider using distance-based adjacency or morphing data to all source space vertices.
       connectivity = mne.source_estimate.spatial_src_adjacency(forward["src"])
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-147
+.. GENERATED FROM PYTHON SOURCE LINES 150-155
 
 Running clustered inference
 ---------------------------
@@ -288,7 +296,7 @@ We can now run the clustered inference using the desparsified multitask Lasso
 We then select the clusters that are significant at the target FWER level,
 which is set to 0.1 in this example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-167
+.. GENERATED FROM PYTHON SOURCE LINES 155-175
 
 .. code-block:: Python
 
@@ -328,7 +336,7 @@ which is set to 0.1 in this example.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-173
+.. GENERATED FROM PYTHON SOURCE LINES 176-181
 
 We here used CluDL, which relies on a single clustering. Alternatively,
 :class:`~hidimstat.EnCluDL` can be used, which relies on aggregating the
@@ -336,7 +344,7 @@ results over multiple clusterings obtained by running the clustering
 algorithm on bootstrapped samples of the data. This can lead to more stable
 results at the cost of a higher computational time.
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-181
+.. GENERATED FROM PYTHON SOURCE LINES 184-189
 
 Visualize the p-value map on the brain surface
 ----------------------------------------------
@@ -344,7 +352,7 @@ We then visualize the identified cortical sources on the brain surface. We
 plot the -log10(p-value) map to which we assign the sign of the estimated
 coefficient in the multitask Lasso model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-214
+.. GENERATED FROM PYTHON SOURCE LINES 189-222
 
 .. code-block:: Python
 
@@ -403,7 +411,7 @@ coefficient in the multitask Lasso model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-245
+.. GENERATED FROM PYTHON SOURCE LINES 223-253
 
 .. code-block:: Python
 
@@ -450,7 +458,7 @@ coefficient in the multitask Lasso model.
 
  .. code-block:: none
 
-    /home/circleci/project/examples/plot_meg_somato.py:243: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
+    /home/circleci/project/examples/plot_meg_somato.py:251: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
     No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
     You can fix this by installing a different backend: for example via
             pip install PyQt6
@@ -459,12 +467,12 @@ coefficient in the multitask Lasso model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 246-248
+.. GENERATED FROM PYTHON SOURCE LINES 254-256
 
 Most of the identified sources are located in the somatosensory cortex,
 which is expected for this somatosensory task.
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-253
+.. GENERATED FROM PYTHON SOURCE LINES 258-261
 
 References
 ----------
@@ -473,9 +481,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 29.377 seconds)
+   **Total running time of the script:** (0 minutes 23.853 seconds)
 
-**Estimated memory usage:**  3059 MB
+**Estimated memory usage:**  3076 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_meg_somato.py:
