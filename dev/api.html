@@ -43,16 +43,16 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
 
-    <script src="_static/documentation_options.js?v=4a8f1dfc"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=11cbd185"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=97f0b27d"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev45+g120c1e5f0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev46+g2c4d4d8b2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -582,7 +582,7 @@
 <h2>Feature Importance functions<a class="headerlink" href="#feature-importance-functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html#hidimstat.cfi_importance" title="hidimstat.cfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfi_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html#hidimstat.cfi_importance" title="hidimstat.cfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfi_importance</span></code></a>(estimator, X, y, method, ...)</p></td>
 <td><p>Conditional Feature Importance (CFI) algorithm.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.d0crt_importance.html#hidimstat.d0crt_importance" title="hidimstat.d0crt_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">d0crt_importance</span></code></a>(estimator, X, y[, cv, ...])</p></td>
@@ -594,10 +594,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff_importance.html#hidimstat.model_x_knockoff_importance" title="hidimstat.model_x_knockoff_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff_importance</span></code></a>(X, y[, ...])</p></td>
 <td><p>Model-X Knockoff</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html#hidimstat.loco_importance" title="hidimstat.loco_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loco_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html#hidimstat.loco_importance" title="hidimstat.loco_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loco_importance</span></code></a>(estimator, X, y, method, loss)</p></td>
 <td><p>Leave-One-Covariate-Out (LOCO) algorithm</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.pfi_importance.html#hidimstat.pfi_importance" title="hidimstat.pfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pfi_importance</span></code></a>(estimator, X, y[, method, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.pfi_importance.html#hidimstat.pfi_importance" title="hidimstat.pfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pfi_importance</span></code></a>(estimator, X, y, method, ...)</p></td>
 <td><p>Permutation Feature Importance algorithm</p></td>
 </tr>
 </tbody>
@@ -747,7 +747,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>
