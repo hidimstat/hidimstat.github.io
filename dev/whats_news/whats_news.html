@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
 
-    <script src="../_static/documentation_options.js?v=b0455dc6"></script>
+    <script src="../_static/documentation_options.js?v=2b4778d4"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev47+g5db4b8e7a';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev48+g0b922c7ce';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -484,63 +484,87 @@
 </section>
 <section id="latest-modification">
 <h1>Latest modification<a class="headerlink" href="#latest-modification" title="Link to this heading">#</a></h1>
-</section>
-<section id="version-0-4-0-under-devellopement">
-<span id="changelog"></span><h1>Version 0.4.0 (under devellopement)<a class="headerlink" href="#version-0-4-0-under-devellopement" title="Link to this heading">#</a></h1>
-<section id="highlights">
-<h2>HIGHLIGHTS<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
-</section>
-<section id="new-features">
-<h2>New features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h2>
+<p id="changelog"># under devellopement (0.3.0.dev)</p>
+<p>## HIGHLIGHTS</p>
+<p>## New features</p>
 <ul class="simple">
 <li><p>documentation: added high dimension section (PR #425)</p></li>
 <li><p>API: <code class="docutils literal notranslate"><span class="pre">BasePerturbation</span></code> can now be initialized with unfitted estimators. When this the case, the estimator will first be fitted before variable importance is estimated. (PR #571)</p></li>
+<li><p>Doc: add Distilled Conditional Randomization Test (D0CRT) section in the user-guide (PR #621)</p></li>
+<li><p>Doc: add example with MEG somato data (PR #607)</p></li>
+<li><p>Doc: add Permutation Feature Importance section in user-guide (PR #553)</p></li>
+<li><p>Doc: add Desparsified Lasso (DL) and Knockoffs section in user-guide (PR #558)</p></li>
+<li><p>Doc: add DL example on the diabetes dataset (PR #564)</p></li>
 </ul>
-</section>
-<section id="changes">
-<h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
-</section>
-<section id="bug-fixes">
-<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h2>
+<p>## Changes</p>
+<p>## Bug fixes</p>
 <ul class="simple">
-<li><p>Fixed a bug in CLuDL/EncluDL: cloning the internal estimators to avoid them carrying unwanted history. (PR #425)</p></li>
-<li><p>Fix the unexpected change in the order of feature groups when a dataframe is used as input (PR #632)</p></li>
+<li><p>Fixed a bug in CLuster DL (CLuDL) / Ensemble CLuDL: cloning the internal estimators to avoid them carrying unwanted history. (PR #425)</p></li>
+<li><p>Fix sign in D0CRT-logit (PR #627)</p></li>
+<li><p>Test: relax flaky test for conditional sampling (PR #602)</p></li>
+<li><p>Fix sklearn compatibility of <code class="docutils literal notranslate"><span class="pre">BasePerturbation</span></code> (PR #576)</p></li>
+<li><p>Fix README pip installation instructions (PR #579)</p></li>
+<li><p>Fix DL user-guide image not showing (PR #566)</p></li>
 </ul>
-</section>
-<section id="maintenance">
-<h2>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading">#</a></h2>
+<p>## Maintenance
+* Fixed a bug in CLuDL/EncluDL: cloning the internal estimators to avoid them carrying unwanted history. (PR #425)
+* Fix the unexpected change in the order of feature groups when a dataframe is used as input (PR #632)
+* Update pandas intersphinx mapping (PR #615)
+* scikit-learn compatibility: run check_estimator on Permutation Feature Importance (PFI) and PFICV (PR #610)
+* scikit-learn compatibility: run check_estimator on ModelXKnockoff (PR #608)
+* scikit-learn compatibility: improve <code class="docutils literal notranslate"><span class="pre">BasePerturbationCV</span></code> (PR #581)
+* scikit-learn compatibility: run check_estimator on DesparsifiedLasso (PR #590)
+* CI: update python version (PR #606)
+* Fix inconsistent attribute names in ModelXKnockoff (PR #600)
+* update pre-commit hooks (PR #597)
+* silence or solve unused arguments errors (PR #596)
+* Fix docstring in scenario.py (PR #594)
+* Test: set random generator as a test fixture (PR #593)
+* Fix pandas and perf errors (PR #592)
+* Fix ruff bugbear issues (PR #591)
+* Fix simplify ruff errors (PR #589)
+* Fix ruff linting errors (PR #582)
+* Adopt and apply ruff linter (PR #573)
+* Doc: silence some warnings (PR #588)
+* Doc: fix CI bug (PR #586)
+* Doc: fix notation inconsistencies (PR #552)
+* Run tests on oldest and most recent supported Python (PR #577)
+* Fix test timeout in minimal version tests (PR #569)
+* Skip unnecessary Ubuntu install in CI (PR #580)
+* Fix documentation release CI (PR #556, #559)
+* Update pooch version constraint (PR #614)
+* Bump GitHub Actions dependencies (PR #565, #612)
+* Bump codecov-action (PR #619, #623)
+* Add missing entries to the changelog (PR #630)
+* Update dependencies following SPEC 0 (PR #527)</p>
+<p>## Contributors</p>
 <ul class="simple">
-<li><p>Update dependencies following SPEC 0 (PR #527)</p></li>
-</ul>
-</section>
-<section id="contributors">
-<h2>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<li><p>Ángel Reyero Lobo</p></li>
 <li><p>Bertrand Thirion</p></li>
 <li><p>Joseph Paillard</p></li>
+<li><p>Lionel Kusch</p></li>
 <li><p>Rémi Gau</p></li>
 </ul>
 <p>See the latest revision: <a class="reference internal" href="#lastest-version"><span class="std std-ref">Version 0.3.0</span></a>.</p>
-</section>
 </section>
 <section id="history-of-modification">
 <h1>History of modification<a class="headerlink" href="#history-of-modification" title="Link to this heading">#</a></h1>
 </section>
 <section id="version-0-3-0">
 <span id="lastest-version"></span><span id="v0-3-0"></span><h1>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Link to this heading">#</a></h1>
-<section id="id1">
-<h2>HIGHLIGHTS<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="highlights">
+<h2>HIGHLIGHTS<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>New API</p></li>
 <li><p>New User Guide</p></li>
 <li><p>More examples</p></li>
 </ul>
 </section>
-<section id="id2">
-<h2>New features<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h2>
 </section>
-<section id="id3">
-<h2>Changes<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
 <p>New API for variable importance methods with <cite>.fit()</cite>, <cite>.importance()</cite>, <cite>fdr_selection()</cite>, <cite>fwer_selection()</cite>
 - LOC0, CFI, CPI #372
 - Desparsified Lasso: #381
@@ -548,14 +572,14 @@
 - ModelXKnockoffs #367
 - d0CRT #220</p>
 </section>
-<section id="id4">
-<h2>Bug fixes<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="bug-fixes">
+<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h2>
 </section>
-<section id="id5">
-<h2>Maintenance<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="maintenance">
+<h2>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading">#</a></h2>
 </section>
-<section id="id6">
-<h2>Contributors<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/bthirion">https://github.com/bthirion</a></p></li>
 <li><p><a class="reference external" href="https://github.com/AngelReyero">https://github.com/AngelReyero</a></p></li>
@@ -623,23 +647,14 @@
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What’s new</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-modification">Latest modification</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-4-0-under-devellopement">Version 0.4.0 (under devellopement)</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#history-of-modification">History of modification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-3-0">Version 0.3.0</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">HIGHLIGHTS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">New features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changes">Changes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance">Maintenance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#history-of-modification">History of modification</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-3-0">Version 0.3.0</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">HIGHLIGHTS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">New features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Changes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Bug fixes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Maintenance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Contributors</a></li>
 </ul>
 </li>
 </ul>
