@@ -32,10 +32,11 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -43,11 +44,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../_static/documentation_options.js?v=2e6617bb"></script>
+    <script src="../_static/documentation_options.js?v=b94110d2"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'whats_news/v0.3.0';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
@@ -487,47 +490,45 @@
                   
   <section id="version-0-3-0">
 <h1>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Major change in the API, that settles for using <code class="docutils literal notranslate"><span class="pre">.fit()</span></code>, <code class="docutils literal notranslate"><span class="pre">.importance()</span></code>, <code class="docutils literal notranslate"><span class="pre">.fdr_selection()</span></code> and <code class="docutils literal notranslate"><span class="pre">.fwer_selection()</span></code></p>
+</div>
 <section id="highlights">
-<h2>HIGHLIGHTS<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>New API</p></li>
 <li><p>New User Guide</p></li>
 <li><p>More examples</p></li>
 </ul>
 </section>
-<section id="new-features">
-<h2>New features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h2>
-</section>
 <section id="changes">
 <h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
-<p>New API for variable importance methods with <cite>.fit()</cite>, <cite>.importance()</cite>, <cite>fdr_selection()</cite>, <cite>fwer_selection()</cite>
-- LOC0, CFI, CPI #372
-- Desparsified Lasso: #381
--  CluDL, EnCluDL #533 and #388
-- ModelXKnockoffs #367
-- d0CRT #220</p>
-</section>
-<section id="bug-fixes">
-<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h2>
-</section>
-<section id="maintenance">
-<h2>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> LOC0, CFI, CPI (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/372">#372</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> Desparsified Lasso: (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/381">#381</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> CluDL, EnCluDL (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/533">#533</a> and <a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/388">#388</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span>  ModelXKnockoffs (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/367">#367</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> d0CRT (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/220">#220</a>)</p></li>
+</ul>
 </section>
 <section id="contributors">
-<h2>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="github reference external" href="https://github.com/bthirion">bthirion</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/AngelReyero">AngelReyero</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/jpaillard">jpaillard</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/lionelkusch">lionelkusch</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/tbng">tbng</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/Remi-Gau">Remi-Gau</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/jeromedockes">jeromedockes</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/glemaitre">glemaitre</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/antoinebaker">antoinebaker</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/man-shu">man-shu</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/alexblnn">alexblnn</a></p></li>
+<h2>Contributors:<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/alexblnn">Alexandre Blain</a></p></li>
+<li><p><a class="reference external" href="https://github.com/antoinebaker">Antoine Baker</a></p></li>
+<li><p><a class="reference external" href="https://github.com/bthirion">Bertrand Thirion</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tbng">Binh Nguyen</a></p></li>
+<li><p><a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a></p></li>
+<li><p><a class="reference external" href="https://github.com/man-shu">Himanshu Aggarwal</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jeromedockes">Jérôme Dockès</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lionelkusch">Lionel Kusch</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Remi-Gau">Rémi Gau</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AngelReyero">Ángel Reyero Lobo</a></p></li>
 </ul>
+</div></blockquote>
 </section>
 </section>
 
@@ -578,12 +579,9 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">HIGHLIGHTS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">New features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changes">Changes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance">Maintenance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors:</a></li>
 </ul>
   </nav></div>
 

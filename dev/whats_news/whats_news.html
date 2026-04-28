@@ -32,10 +32,11 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -43,11 +44,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../_static/documentation_options.js?v=2e6617bb"></script>
+    <script src="../_static/documentation_options.js?v=b94110d2"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'whats_news/whats_news';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
@@ -485,158 +488,134 @@
   <section id="what-s-new">
 <span id="whats-new"></span><h1>What’s new<a class="headerlink" href="#what-s-new" title="Link to this heading">#</a></h1>
 <p>See the latest revision: <a class="reference internal" href="#lastest-version"><span class="std std-ref">Version 0.3.1</span></a>.</p>
-</section>
-<section id="under-devellopement-0-3-2-dev0">
-<span id="changelog"></span><h1>under devellopement (0.3.2.dev0)<a class="headerlink" href="#under-devellopement-0-3-2-dev0" title="Link to this heading">#</a></h1>
-<section id="highlights">
-<h2>HIGHLIGHTS<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
-</section>
-<section id="new-features">
-<h2>New features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h2>
-</section>
-<section id="changes">
-<h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
-</section>
-<section id="bug-fixes">
-<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h2>
+<p>Each entry is tagged with one of the following categories:</p>
 <ul class="simple">
-<li><p>Update version in doc’s dropdown menu to 0.3.1 (stable) and clean changelog (PR #637)</p></li>
-<li><p>Fix bug in the KO methods: threshold_mesh was computed but not assigned to the variable (PR #643)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Feature</span> — new functionality</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> — bug fixes</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> — documentation, examples</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> — API changes, deprecations</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — CI, testing, maintenance, dependencies</p></li>
 </ul>
 </section>
-<section id="maintenance">
-<h2>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading">#</a></h2>
-</section>
-<section id="contributors">
-<h2>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
+<section id="under-development-0-3-2-dev0">
+<span id="changelog"></span><h1>under development (0.3.2.dev0)<a class="headerlink" href="#under-development-0-3-2-dev0" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Bertrand Thirion</p></li>
-<li><p>Joseph Paillard</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> Update version in doc’s dropdown menu to 0.3.1 (stable) and clean changelog (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/637">#637</a> by <a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a>).</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> Fix bug in the KO methods: <code class="docutils literal notranslate"><span class="pre">threshold_mesh</span></code> was computed but not assigned to the variable (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/643">#643</a> by <a class="reference external" href="https://github.com/bthirion">Bertrand Thirion</a> amd <a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a>).</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> add badges and functional links to the changelog (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/644">#644</a> by <a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a>).</p></li>
 </ul>
-</section>
 </section>
 <section id="version-0-3-1">
 <span id="lastest-version"></span><span id="v0-3-1"></span><h1>Version 0.3.1<a class="headerlink" href="#version-0-3-1" title="Link to this heading">#</a></h1>
-<section id="id1">
-<h2>Highlights<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Expanded user guide</strong> with new sections on Desparsified Lasso, Knockoffs, Permutation Feature Importance, D0CRT, and high-dimensional inference</p></li>
 <li><p><strong>Improved scikit-learn compatibility</strong> for some estimators (DesparsifiedLasso, ModelXKnockoff, PFI, BasePerturbation)</p></li>
 <li><p><strong>Updated dependencies</strong> following SPEC 0</p></li>
 </ul>
 </section>
-<section id="id2">
-<h2>New features<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>documentation: added high dimension section (PR #425)</p></li>
-<li><p>API: <code class="docutils literal notranslate"><span class="pre">BasePerturbation</span></code> can now be initialized with unfitted estimators. When this the case, the estimator will first be fitted before variable importance is estimated. (PR #571)</p></li>
-<li><p>Doc: add Distilled Conditional Randomization Test (D0CRT) section in the user-guide (PR #621)</p></li>
-<li><p>Doc: add example with MEG somato data (PR #607)</p></li>
-<li><p>Doc: add Permutation Feature Importance section in user-guide (PR #553)</p></li>
-<li><p>Doc: add Desparsified Lasso (DL) and Knockoffs section in user-guide (PR #558)</p></li>
-<li><p>Doc: add DL example on the diabetes dataset (PR #564)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Feature</span> — can now be initialized with unfitted estimators. When this the case, the estimator will first be fitted before variable importance is estimated. (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/571">#571</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> — add Distilled Conditional Randomization Test (D0CRT) section in the user-guide (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/621">#621</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> — add example with MEG somato data (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/607">#607</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> — add Permutation Feature Importance section in user-guide (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/553">#553</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> — add Desparsified Lasso (DL) and Knockoffs section in user-guide (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/558">#558</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> — add DL example on the diabetes dataset (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/564">#564</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> — Fixed a bug in CLuster DL (CLuDL) / Ensemble CLuDL: cloning the internal estimators to avoid them carrying unwanted history. (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/425">#425</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> — Fix sign in D0CRT-logit (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/627">#627</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> — Test: relax flaky test for conditional sampling (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/602">#602</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> — Fix sklearn compatibility of <code class="docutils literal notranslate"><span class="pre">BasePerturbation</span></code> (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/576">#576</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> — Fix README pip installation instructions (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/579">#579</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> — Fix DL user-guide image not showing (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/566">#566</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fixed a bug in CLuDL/EncluDL: cloning the internal estimators to avoid them carrying unwanted history. (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/425">#425</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix the unexpected change in the order of feature groups when a dataframe is used as input (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/632">#632</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Update pandas intersphinx mapping (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/615">#615</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — scikit-learn compatibility: run check_estimator on Permutation Feature Importance (PFI) and PFICV (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/610">#610</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — scikit-learn compatibility: run check_estimator on ModelXKnockoff (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/608">#608</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — scikit-learn compatibility: improve <code class="docutils literal notranslate"><span class="pre">BasePerturbationCV</span></code> (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/581">#581</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — scikit-learn compatibility: run check_estimator on DesparsifiedLasso (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/590">#590</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — CI: update python version (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/606">#606</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix inconsistent attribute names in ModelXKnockoff (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/600">#600</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — update pre-commit hooks (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/597">#597</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — silence or solve unused arguments errors (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/596">#596</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix docstring in scenario.py (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/594">#594</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Test: set random generator as a test fixture (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/593">#593</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix pandas and perf errors (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/592">#592</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix ruff bugbear issues (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/591">#591</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix simplify ruff errors (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/589">#589</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix ruff linting errors (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/582">#582</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Adopt and apply ruff linter (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/573">#573</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Doc: silence some warnings (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/588">#588</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Doc: fix CI bug (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/586">#586</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Doc: fix notation inconsistencies (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/552">#552</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Run tests on oldest and most recent supported Python (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/577">#577</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix test timeout in minimal version tests (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/569">#569</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Skip unnecessary Ubuntu install in CI (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/580">#580</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Fix documentation release CI (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/556">#556</a>, <a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/559">#559</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Update pooch version constraint (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/614">#614</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Bump GitHub Actions dependencies (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/565">#565</a>, <a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/612">#612</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Bump codecov-action (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/619">#619</a>, <a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/623">#623</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Add missing entries to the changelog (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/630">#630</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — Update dependencies following SPEC 0 (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/527">#527</a>)</p></li>
 </ul>
 </section>
-<section id="id3">
-<h2>Bug fixes<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Fixed a bug in CLuster DL (CLuDL) / Ensemble CLuDL: cloning the internal estimators to avoid them carrying unwanted history. (PR #425)</p></li>
-<li><p>Fix sign in D0CRT-logit (PR #627)</p></li>
-<li><p>Test: relax flaky test for conditional sampling (PR #602)</p></li>
-<li><p>Fix sklearn compatibility of <code class="docutils literal notranslate"><span class="pre">BasePerturbation</span></code> (PR #576)</p></li>
-<li><p>Fix README pip installation instructions (PR #579)</p></li>
-<li><p>Fix DL user-guide image not showing (PR #566)</p></li>
+<section id="contributors">
+<h2>Contributors:<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/bthirion">Bertrand Thirion</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lionelkusch">Lionel Kusch</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Remi-Gau">Rémi Gau</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AngelReyero">Ángel Reyero Lobo</a></p></li>
 </ul>
-</section>
-<section id="id4">
-<h2>Maintenance<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Fixed a bug in CLuDL/EncluDL: cloning the internal estimators to avoid them carrying unwanted history. (PR #425)</p></li>
-<li><p>Fix the unexpected change in the order of feature groups when a dataframe is used as input (PR #632)</p></li>
-<li><p>Update pandas intersphinx mapping (PR #615)</p></li>
-<li><p>scikit-learn compatibility: run check_estimator on Permutation Feature Importance (PFI) and PFICV (PR #610)</p></li>
-<li><p>scikit-learn compatibility: run check_estimator on ModelXKnockoff (PR #608)</p></li>
-<li><p>scikit-learn compatibility: improve <code class="docutils literal notranslate"><span class="pre">BasePerturbationCV</span></code> (PR #581)</p></li>
-<li><p>scikit-learn compatibility: run check_estimator on DesparsifiedLasso (PR #590)</p></li>
-<li><p>CI: update python version (PR #606)</p></li>
-<li><p>Fix inconsistent attribute names in ModelXKnockoff (PR #600)</p></li>
-<li><p>update pre-commit hooks (PR #597)</p></li>
-<li><p>silence or solve unused arguments errors (PR #596)</p></li>
-<li><p>Fix docstring in scenario.py (PR #594)</p></li>
-<li><p>Test: set random generator as a test fixture (PR #593)</p></li>
-<li><p>Fix pandas and perf errors (PR #592)</p></li>
-<li><p>Fix ruff bugbear issues (PR #591)</p></li>
-<li><p>Fix simplify ruff errors (PR #589)</p></li>
-<li><p>Fix ruff linting errors (PR #582)</p></li>
-<li><p>Adopt and apply ruff linter (PR #573)</p></li>
-<li><p>Doc: silence some warnings (PR #588)</p></li>
-<li><p>Doc: fix CI bug (PR #586)</p></li>
-<li><p>Doc: fix notation inconsistencies (PR #552)</p></li>
-<li><p>Run tests on oldest and most recent supported Python (PR #577)</p></li>
-<li><p>Fix test timeout in minimal version tests (PR #569)</p></li>
-<li><p>Skip unnecessary Ubuntu install in CI (PR #580)</p></li>
-<li><p>Fix documentation release CI (PR #556, #559)</p></li>
-<li><p>Update pooch version constraint (PR #614)</p></li>
-<li><p>Bump GitHub Actions dependencies (PR #565, #612)</p></li>
-<li><p>Bump codecov-action (PR #619, #623)</p></li>
-<li><p>Add missing entries to the changelog (PR #630)</p></li>
-<li><p>Update dependencies following SPEC 0 (PR #527)</p></li>
-</ul>
-</section>
-<section id="id5">
-<h2>Contributors<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Ángel Reyero Lobo</p></li>
-<li><p>Bertrand Thirion</p></li>
-<li><p>Joseph Paillard</p></li>
-<li><p>Lionel Kusch</p></li>
-<li><p>Rémi Gau</p></li>
-</ul>
+</div></blockquote>
 </section>
 </section>
 <section id="version-0-3-0">
 <span id="v0-3-0"></span><h1>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Link to this heading">#</a></h1>
-<section id="id6">
-<h2>HIGHLIGHTS<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Major change in the API, that settles for using <code class="docutils literal notranslate"><span class="pre">.fit()</span></code>, <code class="docutils literal notranslate"><span class="pre">.importance()</span></code>, <code class="docutils literal notranslate"><span class="pre">.fdr_selection()</span></code> and <code class="docutils literal notranslate"><span class="pre">.fwer_selection()</span></code></p>
+</div>
+<section id="id1">
+<h2>Highlights<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>New API</p></li>
 <li><p>New User Guide</p></li>
 <li><p>More examples</p></li>
 </ul>
 </section>
-<section id="id7">
-<h2>New features<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-</section>
-<section id="id8">
-<h2>Changes<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p>New API for variable importance methods with <cite>.fit()</cite>, <cite>.importance()</cite>, <cite>fdr_selection()</cite>, <cite>fwer_selection()</cite>
-- LOC0, CFI, CPI #372
-- Desparsified Lasso: #381
--  CluDL, EnCluDL #533 and #388
-- ModelXKnockoffs #367
-- d0CRT #220</p>
-</section>
-<section id="id9">
-<h2>Bug fixes<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-</section>
-<section id="id10">
-<h2>Maintenance<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
-</section>
-<section id="id11">
-<h2>Contributors<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h2>Changes<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="github reference external" href="https://github.com/bthirion">bthirion</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/AngelReyero">AngelReyero</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/jpaillard">jpaillard</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/lionelkusch">lionelkusch</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/tbng">tbng</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/Remi-Gau">Remi-Gau</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/jeromedockes">jeromedockes</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/glemaitre">glemaitre</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/antoinebaker">antoinebaker</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/man-shu">man-shu</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/alexblnn">alexblnn</a></p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> LOC0, CFI, CPI (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/372">#372</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> Desparsified Lasso: (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/381">#381</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> CluDL, EnCluDL (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/533">#533</a> and <a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/388">#388</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span>  ModelXKnockoffs (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/367">#367</a>)</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> d0CRT (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/220">#220</a>)</p></li>
 </ul>
+</section>
+<section id="id3">
+<h2>Contributors:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/alexblnn">Alexandre Blain</a></p></li>
+<li><p><a class="reference external" href="https://github.com/antoinebaker">Antoine Baker</a></p></li>
+<li><p><a class="reference external" href="https://github.com/bthirion">Bertrand Thirion</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tbng">Binh Nguyen</a></p></li>
+<li><p><a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a></p></li>
+<li><p><a class="reference external" href="https://github.com/man-shu">Himanshu Aggarwal</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jeromedockes">Jérôme Dockès</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lionelkusch">Lionel Kusch</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Remi-Gau">Rémi Gau</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AngelReyero">Ángel Reyero Lobo</a></p></li>
+</ul>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -690,30 +669,17 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What’s new</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#under-devellopement-0-3-2-dev0">under devellopement (0.3.2.dev0)</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">HIGHLIGHTS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">New features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changes">Changes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance">Maintenance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#under-development-0-3-2-dev0">under development (0.3.2.dev0)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-3-1">Version 0.3.1</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Highlights</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">New features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bug fixes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Maintenance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changes">Changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors:</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-3-0">Version 0.3.0</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">HIGHLIGHTS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">New features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Changes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Bug fixes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Maintenance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Highlights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Contributors:</a></li>
 </ul>
 </li>
 </ul>
