@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
 
-    <script src="../_static/documentation_options.js?v=0bdcd229"></script>
+    <script src="../_static/documentation_options.js?v=05c8054f"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -451,6 +451,7 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="developer_code_of_conduct.html">Contributor’s Code of Conduct</a></li>
 </ul>
 </div>
 </nav></div>
@@ -513,7 +514,7 @@
                   
   <section id="continuous-integration-ci">
 <span id="developer-documentation-ci"></span><h1>Continuous Integration (CI)<a class="headerlink" href="#continuous-integration-ci" title="Link to this heading">#</a></h1>
-<p>After creating your PR, CI tools will run proceed to run all the tests on all
+<p>After creating your PR, CI tools will proceed to run all the tests on all
 configurations supported by hidimstat.</p>
 <ul class="simple">
 <li><p><strong>Github Actions</strong>:
@@ -547,25 +548,25 @@ actions are taken.</p>
 </div></blockquote>
 <p>There is a dependence on the different parts of the CI. You need to pass the
 static analysis by the linter (Black) before that the example is running.
-The documentation is built only if the tests are succeeding.</p>
+The documentation is built only if the tests succeeded.</p>
 <p>Note that, by default, the documentation is built with all the examples are modified.</p>
-<dl class="simple">
-<dt>For more details, the GitHub Action creates an event on the CircleCI pipeline, which</dt><dd><p>trigger the building of the documentation and the deployment of the documentation.</p>
-</dd>
-</dl>
+<p>For more details, the GitHub Action creates an event on the CircleCI pipeline, which
+triggers the documentation build and the deployment of the documentation.</p>
 <p>CI is testing all possible configurations supported by hidimstat, so tests may fail
-with configurations different from what you are developing with. See with the
-maintainers to identify the cause of this failure.</p>
+with configurations different from your development setup. See with the
+maintainers to identify the cause of any possible failure.</p>
+<p>Test results are posted on a CircleCI workspace that is accessible by clicking on the
+associated Github actions at the bottom of a pull-request’s page.</p>
 </section>
-<section id="modification-continuous-integration-ci">
-<h1>Modification Continuous Integration (CI)<a class="headerlink" href="#modification-continuous-integration-ci" title="Link to this heading">#</a></h1>
-<p>Actually, only the workflow on the main branch is used for running the CI. This is
+<section id="modifying-continuous-integration-ci">
+<h1>Modifying Continuous Integration (CI)<a class="headerlink" href="#modifying-continuous-integration-ci" title="Link to this heading">#</a></h1>
+<p>Currently, only the workflow on the main branch is used for running the CI. This is
 done for security reasons.
-In consequence, for testing a modification of the actual workflow or a new workflow,
-it requires creating a pull request, which is modified .github/workflow/ci_test.yml for
-allowing the running of this modification. You need to add the label <cite>testCI</cite>
-to automatically trigger the test of the CI. You can also trigger the workflow
-using with the <a class="reference external" href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#repository_dispatch">HTTP POST request</a>.</p>
+In consequence, to test a modification of the actual workflow or a new workflow,
+contributors should create a pull request which contains modifications on .github/workflow/ci_test.yml.
+You need to add the label <cite>testCI</cite> to automatically trigger the test of the CI.
+You can also trigger the workflow using with the
+<a class="reference external" href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#repository_dispatch">HTTP POST request</a>.</p>
 <p>Once this modification is merged into main, it should be important to clean ci_test.yml
 for having an empty workflow.</p>
 </section>
@@ -618,7 +619,7 @@ for having an empty workflow.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Continuous Integration (CI)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modification-continuous-integration-ci">Modification Continuous Integration (CI)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-continuous-integration-ci">Modifying Continuous Integration (CI)</a></li>
 </ul>
 
   </nav></div>
