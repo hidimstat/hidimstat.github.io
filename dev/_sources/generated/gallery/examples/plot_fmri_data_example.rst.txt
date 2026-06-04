@@ -306,8 +306,10 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  3.35it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:08<00:06,  1.53s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:16<00:01,  2.00s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:16<00:00,  1.67s/it]
-    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  20%|██        | 2/10 [00:00<00:00, 19.72it/s]    Computing importances:  50%|█████     | 5/10 [00:00<00:00, 24.28it/s]    Computing importances:  80%|████████  | 8/10 [00:00<00:00, 23.43it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 23.14it/s]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  10%|█         | 1/10 [00:00<00:02,  3.41it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:09<00:06,  1.67s/it]    Fitting clustered inferences:  90%|█████████ | 9/10 [00:18<00:02,  2.28s/it]    Fitting clustered inferences: 100%|██████████| 10/10 [00:18<00:00,  1.89s/it]
+    /home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:782: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+      warnings.warn(
+    Computing importances:   0%|          | 0/10 [00:00<?, ?it/s]    Computing importances:  40%|████      | 4/10 [00:00<00:00, 29.66it/s]    Computing importances:  80%|████████  | 8/10 [00:00<00:00, 31.32it/s]    Computing importances: 100%|██████████| 10/10 [00:00<00:00, 31.27it/s]
 
     array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
            -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
@@ -469,7 +471,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 0.882 seconds)
+   **Total running time of the script:** (1 minutes 8.239 seconds)
 
 **Estimated memory usage:**  1579 MB
 
