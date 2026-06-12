@@ -263,7 +263,7 @@ We visualize the correlation matrix of the features and the distribution of R2 s
 
  .. code-block:: none
 
-    /home/circleci/project/examples/plot_dl_diabetes_confidence.py:92: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+    /home/circleci/project/examples/plot_dl_diabetes_confidence.py:92: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator. Otherwise, ticks may be mislabeled.
       ax[1].set_xticklabels(["Lasso", "Linear\nRegression"])
 
 
@@ -418,7 +418,7 @@ correction, often resulting in larger absolute coefficient estimates.
     /home/circleci/project/examples/plot_dl_diabetes_confidence.py:160: UserWarning: 
     The palette list has fewer values (2) than needed (3) and will cycle, which may produce an uninterpretable plot.
       sns.pointplot(
-    /home/circleci/project/examples/plot_dl_diabetes_confidence.py:204: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+    /home/circleci/project/examples/plot_dl_diabetes_confidence.py:204: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator. Otherwise, ticks may be mislabeled.
       ax.set_xticklabels(df_plot["feature"], rotation=45, ha="right")
 
 
@@ -440,9 +440,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.552 seconds)
+   **Total running time of the script:** (0 minutes 2.654 seconds)
 
-**Estimated memory usage:**  216 MB
+**Estimated memory usage:**  218 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_dl_diabetes_confidence.py:
