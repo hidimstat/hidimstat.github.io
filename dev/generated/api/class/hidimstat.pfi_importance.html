@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=7e4e396a"></script>
+    <script src="../../../_static/documentation_options.js?v=1e765e46"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -587,11 +587,11 @@ Selects features with importance scores above the specified minimum threshold.</
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>selection</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
-<dt>Boolean array indicating selected features (True = selected)</dt><dd></dd>
-<dt><strong>importances</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
-<dt>Feature importance scores/test statistics.</dt><dd></dd>
-<dt><strong>pvalues</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
+<dt><strong>selection</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd></dd>
+<dt>Boolean array indicating selected feature groups (True = selected)</dt><dd></dd>
+<dt><strong>importances</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd></dd>
+<dt>Feature group importance scores/test statistics.</dt><dd></dd>
+<dt><strong>pvalues</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd></dd>
 <dt>P-values for importance scores.</dt><dd></dd>
 </dl>
 </dd>

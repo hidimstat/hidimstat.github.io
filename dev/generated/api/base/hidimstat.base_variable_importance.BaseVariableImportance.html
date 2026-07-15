@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=7e4e396a"></script>
+    <script src="../../../_static/documentation_options.js?v=1e765e46"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -650,7 +650,7 @@ of the effect is determined from the sign of the importance scores.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+<dt><strong>selected</strong><span class="classifier">ndarray of int of shape (n_features,)</span></dt><dd><p>Integer array indicating the selected features.
 1 indicates selected features with positive effects,
 -1 indicates selected features with negative effects,
 0 indicates non-selected features.</p>
@@ -690,7 +690,7 @@ selected features have positive or negative effects.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+<dt><strong>selected</strong><span class="classifier">ndarray of int of shape (n_features,)</span></dt><dd><p>Integer array indicating the selected features.
 1 indicates selected features with positive effects,
 -1 indicates selected features with negative effects,
 0 indicates non-selected features.</p>

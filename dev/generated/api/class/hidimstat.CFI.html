@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=7e4e396a"></script>
+    <script src="../../../_static/documentation_options.js?v=1e765e46"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -679,7 +679,7 @@ of the effect is determined from the sign of the importance scores.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+<dt><strong>selected</strong><span class="classifier">ndarray of int of shape (n_features,)</span></dt><dd><p>Integer array indicating the selected features.
 1 indicates selected features with positive effects,
 -1 indicates selected features with negative effects,
 0 indicates non-selected features.</p>
@@ -719,7 +719,7 @@ selected features have positive or negative effects.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>selected</strong><span class="classifier">ndarray of int</span></dt><dd><p>Integer array indicating the selected features.
+<dt><strong>selected</strong><span class="classifier">ndarray of int of shape (n_features,)</span></dt><dd><p>Integer array indicating the selected features.
 1 indicates selected features with positive effects,
 -1 indicates selected features with negative effects,
 0 indicates non-selected features.</p>
@@ -769,7 +769,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.CFI.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L172-L235"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.CFI.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L172-L221"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.CFI.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute the importance scores for each group of covariates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -777,28 +777,12 @@ contained subobjects that are estimators.</p>
 <dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>The input samples to compute importance scores for.</p>
 </dd>
 <dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd></dd>
-<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>The importance scores for each group of covariates.
-A higher score indicates greater importance of that group.</p>
-</dd>
 </dl>
 </dd>
-<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>loss_reference_</strong><span class="classifier">float</span></dt><dd><p>The loss of the model with the original (non-perturbed) data.</p>
-</dd>
-<dt><strong>loss_</strong><span class="classifier">dict</span></dt><dd><p>Dictionary with indices as keys and arrays of perturbed losses as values.
-Contains the loss values for each permutation of each group.</p>
-</dd>
-<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>The calculated importance scores for each group.</p>
-</dd>
-<dt><strong>pvalues_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>P-values from one-sample t-test testing if importance scores are
-significantly greater than 0.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Importance scores for each feature.</p>
+<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>The importance scores for each feature group.
+A larger score indicates greater importance of that group.</p>
 </dd>
 </dl>
 </dd>
@@ -807,7 +791,9 @@ significantly greater than 0.</p>
 <p>The importance score for each group is calculated as the mean increase in loss
 when that group is perturbed, compared to the reference loss.
 A higher importance score indicates that perturbing that group leads to
-worse model performance, suggesting those features are more important.</p>
+worse model performance, suggesting those features are more important.
+When no group has been specified, the importance is computed for each single
+feature.</p>
 </dd></dl>
 
 <dl class="py method">
