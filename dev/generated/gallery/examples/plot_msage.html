@@ -1,0 +1,1012 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Shapley Additive Global Importance (SAGE) example &#8212; HiDimStat</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=6acfbcb1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_msage';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Leave-One-Covariate-Out (LOCO) feature importance with different regression models" href="plot_loco.html" />
+    <link rel="prev" title="Conditional Feature Importance (CFI) on the wine dataset" href="plot_cfi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="HiDimStat - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="HiDimStat - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Examples Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../glossary_and_notations.html">
+    Glossary and Notations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../whats_news/whats_news.html">
+    What’s new
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../dev/index.html">
+    Developer Documentation
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/mind-inria/hidimstat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shapley Additive Global Importance (SAGE) example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_loci.html">Leave-One-Covariate-In (LOCI) feature importance with different regression models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Feature Importance on diabetes dataset using cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_meg_somato.html">Source localization of somatosensory MEG data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_importance_classification_iris.html">Measuring Individual and Group Variable Importance for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_pitfalls_permutation_importance.html">Pitfalls of Permutation Feature Importance (PFI) on the California Housing Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_2D_simulation_example.html">Ensemble Clustered Inference on 2D Data</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Examples Gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Shapley Additive Global Importance (SAGE) example</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-generated-gallery-examples-plot-msage-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="shapley-additive-global-importance-sage-example">
+<span id="sphx-glr-generated-gallery-examples-plot-msage-py"></span><h1>Shapley Additive Global Importance (SAGE) example<a class="headerlink" href="#shapley-additive-global-importance-sage-example" title="Link to this heading">#</a></h1>
+<p>In this example, we demonstrate how to measure feature importance using
+SAGE Covert <em>et al.</em><a class="footnote-reference brackets" href="#footcite-covert2020" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> on the diabetes dataset. For this example, we use
+the marginal version of SAGE, which limits the computational cost. To further
+reduce the computational cost, Shapley values are estimated using a Monte Carlo
+approximation. Only a subset of all possible feature coalitions is sampled.
+This is controlled by the <cite>n_subsets</cite> parameter. Finally, the expectation over
+the marginal distribution is also approximated using <cite>n_permutations</cite>.</p>
+<section id="lightgbm-example-on-the-bike-sharing-dataset">
+<h2>LightGBM example on the bike sharing dataset<a class="headerlink" href="#lightgbm-example-on-the-bike-sharing-dataset" title="Link to this heading">#</a></h2>
+<p>We demonstrate how to use SAGE on the bike sharing
+dataset. We fit a LightGBM model and compute its <span class="math notranslate nohighlight">\(R^2\)</span> score on a
+held-out test set.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="sklearn.datasets.fetch_openml" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_openml</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor" title="sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble-_hist_gradient_boosting-gradient_boosting sphx-glr-backref-type-py-class"><span class="n">HistGradientBoostingRegressor</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="sklearn.preprocessing.OrdinalEncoder" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">OrdinalEncoder</span></a>
+
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.Bunch.html#sklearn.utils.Bunch" title="sklearn.utils.Bunch" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bike_sharing</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="sklearn.datasets.fetch_openml" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_openml</span></a><span class="p">(</span><span class="s2">&quot;Bike_Sharing_Demand&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bike_sharing</span><span class="o">.</span><span class="n">frame</span></a>
+<a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df</span></a><span class="p">[</span><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df</span></a><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">])</span>
+
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop" title="pandas.DataFrame.drop" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">df</span><span class="o">.</span><span class="n">drop</span></a><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="sklearn.preprocessing.OrdinalEncoder" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">OrdinalEncoder</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df</span></a><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor" title="sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble-_hist_gradient_boosting-gradient_boosting sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor" title="sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble-_hist_gradient_boosting-gradient_boosting sphx-glr-backref-type-py-class"><span class="n">HistGradientBoostingRegressor</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor.fit" title="sklearn.ensemble.HistGradientBoostingRegressor.fit" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-method"><span class="n">model</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor.predict" title="sklearn.ensemble.HistGradientBoostingRegressor.predict" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-method"><span class="n">model</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 score:&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>R2 score: 0.9283833661677658
+</pre></div>
+</div>
+</section>
+<section id="sage-feature-importance">
+<h2>SAGE feature importance<a class="headerlink" href="#sage-feature-importance" title="Link to this heading">#</a></h2>
+<p>We compute the SAGE feature importance for the fitted model. To keep the
+computational cost tractable, we use a subset of the test set to compute the
+SAGE values. Finally, the SAGE values are plotted using the <cite>plot_importance</cite>
+function.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a href="../../api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance" class="sphx-glr-backref-module-hidimstat-base_variable_importance sphx-glr-backref-type-py-class"><span class="n">SAGE</span></a>
+
+<span class="n">sage</span> <span class="o">=</span> <a href="../../api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance" class="sphx-glr-backref-module-hidimstat-base_variable_importance sphx-glr-backref-type-py-class"><span class="n">SAGE</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor" title="sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble-_hist_gradient_boosting-gradient_boosting sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model</span></a><span class="p">,</span>
+    <span class="n">n_subsets</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+    <span class="n">n_permutations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="p">)</span>
+<a href="../../api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit" title="hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit" class="sphx-glr-backref-module-hidimstat-base_variable_importance sphx-glr-backref-type-py-method"><span class="n">sage</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">)</span>
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subsample_size</span></a> <span class="o">=</span> <span class="mi">1024</span>
+<a href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.Generator" title="numpy.random.Generator" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rng</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.default_rng" title="numpy.random.default_rng" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subsample_ids</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.choice.html#numpy.random.Generator.choice" title="numpy.random.Generator.choice" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-method"><span class="n">rng</span><span class="o">.</span><span class="n">choice</span></a><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">),</span> <span class="n">size</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subsample_size</span></a><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sage</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subsample_ids</span></a><span class="p">],</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">subsample_ids</span></a><span class="p">])</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a> <span class="o">=</span> <a href="../../api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance.plot_importance" title="hidimstat.base_variable_importance.BaseVariableImportance.plot_importance" class="sphx-glr-backref-module-hidimstat-base_variable_importance sphx-glr-backref-type-py-method"><span class="n">sage</span><span class="o">.</span><span class="n">plot_importance</span></a><span class="p">(</span>
+    <span class="n">feature_names</span><span class="o">=</span><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop" title="pandas.DataFrame.drop" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">df</span><span class="o">.</span><span class="n">drop</span></a><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:purple&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.semilogx.html#matplotlib.axes.Axes.semilogx" title="matplotlib.axes.Axes.semilogx" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_msage_001.png" srcset="../../../_images/sphx_glr_plot_msage_001.png" alt="plot msage" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1925 [00:00&lt;?, ?it/s]
+  1%|          | 16/1925 [00:03&lt;06:01,  5.28it/s]
+  1%|          | 24/1925 [00:03&lt;04:04,  7.79it/s]
+  2%|▏         | 32/1925 [00:03&lt;02:51, 11.06it/s]
+  2%|▏         | 40/1925 [00:03&lt;02:04, 15.17it/s]
+  2%|▏         | 48/1925 [00:03&lt;01:35, 19.60it/s]
+  3%|▎         | 56/1925 [00:04&lt;01:16, 24.32it/s]
+  3%|▎         | 64/1925 [00:04&lt;01:03, 29.33it/s]
+  4%|▎         | 72/1925 [00:04&lt;00:54, 34.09it/s]
+  4%|▍         | 80/1925 [00:04&lt;00:49, 37.16it/s]
+  5%|▍         | 88/1925 [00:04&lt;00:43, 41.99it/s]
+  5%|▍         | 96/1925 [00:04&lt;00:41, 44.19it/s]
+  5%|▌         | 104/1925 [00:04&lt;00:38, 47.41it/s]
+  6%|▌         | 112/1925 [00:05&lt;00:37, 48.16it/s]
+  6%|▌         | 120/1925 [00:05&lt;00:35, 50.35it/s]
+  7%|▋         | 128/1925 [00:05&lt;00:35, 50.69it/s]
+  7%|▋         | 136/1925 [00:05&lt;00:36, 49.32it/s]
+  7%|▋         | 144/1925 [00:05&lt;00:35, 49.72it/s]
+  8%|▊         | 152/1925 [00:05&lt;00:34, 51.54it/s]
+  8%|▊         | 160/1925 [00:06&lt;00:34, 51.26it/s]
+  9%|▊         | 168/1925 [00:06&lt;00:34, 51.21it/s]
+  9%|▉         | 176/1925 [00:06&lt;00:33, 51.98it/s]
+ 10%|▉         | 184/1925 [00:06&lt;00:33, 52.20it/s]
+ 10%|▉         | 192/1925 [00:06&lt;00:32, 53.99it/s]
+ 10%|█         | 200/1925 [00:06&lt;00:34, 50.65it/s]
+ 11%|█         | 208/1925 [00:06&lt;00:33, 51.58it/s]
+ 11%|█         | 216/1925 [00:07&lt;00:33, 51.07it/s]
+ 12%|█▏        | 224/1925 [00:07&lt;00:33, 50.03it/s]
+ 12%|█▏        | 232/1925 [00:07&lt;00:32, 51.93it/s]
+ 12%|█▏        | 240/1925 [00:07&lt;00:33, 50.89it/s]
+ 13%|█▎        | 248/1925 [00:07&lt;00:32, 51.26it/s]
+ 13%|█▎        | 256/1925 [00:07&lt;00:32, 51.30it/s]
+ 14%|█▎        | 264/1925 [00:08&lt;00:32, 51.83it/s]
+ 14%|█▍        | 272/1925 [00:08&lt;00:31, 53.17it/s]
+ 15%|█▍        | 280/1925 [00:08&lt;00:31, 52.19it/s]
+ 15%|█▍        | 288/1925 [00:08&lt;00:31, 51.92it/s]
+ 15%|█▌        | 296/1925 [00:08&lt;00:30, 52.68it/s]
+ 16%|█▌        | 304/1925 [00:08&lt;00:31, 51.75it/s]
+ 16%|█▌        | 312/1925 [00:09&lt;00:31, 50.41it/s]
+ 17%|█▋        | 320/1925 [00:09&lt;00:31, 50.34it/s]
+ 17%|█▋        | 328/1925 [00:09&lt;00:31, 51.41it/s]
+ 17%|█▋        | 336/1925 [00:09&lt;00:31, 50.57it/s]
+ 18%|█▊        | 344/1925 [00:09&lt;00:30, 51.12it/s]
+ 18%|█▊        | 352/1925 [00:09&lt;00:29, 52.63it/s]
+ 19%|█▊        | 360/1925 [00:09&lt;00:30, 51.56it/s]
+ 19%|█▉        | 368/1925 [00:10&lt;00:30, 51.11it/s]
+ 20%|█▉        | 376/1925 [00:10&lt;00:29, 52.36it/s]
+ 20%|█▉        | 384/1925 [00:10&lt;00:29, 51.53it/s]
+ 20%|██        | 392/1925 [00:10&lt;00:32, 46.86it/s]
+ 21%|██        | 400/1925 [00:10&lt;00:28, 52.78it/s]
+ 21%|██        | 408/1925 [00:10&lt;00:28, 52.32it/s]
+ 22%|██▏       | 416/1925 [00:11&lt;00:28, 52.21it/s]
+ 22%|██▏       | 424/1925 [00:11&lt;00:30, 49.75it/s]
+ 22%|██▏       | 432/1925 [00:11&lt;00:28, 52.38it/s]
+ 23%|██▎       | 440/1925 [00:11&lt;00:29, 50.54it/s]
+ 23%|██▎       | 448/1925 [00:11&lt;00:28, 52.28it/s]
+ 24%|██▎       | 456/1925 [00:11&lt;00:28, 51.96it/s]
+ 24%|██▍       | 464/1925 [00:11&lt;00:27, 53.51it/s]
+ 25%|██▍       | 472/1925 [00:12&lt;00:28, 51.66it/s]
+ 25%|██▍       | 480/1925 [00:12&lt;00:27, 53.37it/s]
+ 25%|██▌       | 488/1925 [00:12&lt;00:27, 52.52it/s]
+ 26%|██▌       | 496/1925 [00:12&lt;00:28, 50.56it/s]
+ 26%|██▌       | 504/1925 [00:12&lt;00:28, 50.60it/s]
+ 27%|██▋       | 512/1925 [00:12&lt;00:28, 49.60it/s]
+ 27%|██▋       | 520/1925 [00:13&lt;00:27, 50.21it/s]
+ 27%|██▋       | 528/1925 [00:13&lt;00:28, 49.86it/s]
+ 28%|██▊       | 536/1925 [00:13&lt;00:27, 50.56it/s]
+ 28%|██▊       | 544/1925 [00:13&lt;00:27, 51.03it/s]
+ 29%|██▊       | 552/1925 [00:13&lt;00:26, 51.68it/s]
+ 29%|██▉       | 560/1925 [00:13&lt;00:26, 50.67it/s]
+ 30%|██▉       | 568/1925 [00:14&lt;00:27, 49.79it/s]
+ 30%|██▉       | 576/1925 [00:14&lt;00:26, 50.13it/s]
+ 30%|███       | 584/1925 [00:14&lt;00:26, 49.97it/s]
+ 31%|███       | 592/1925 [00:14&lt;00:27, 49.10it/s]
+ 31%|███       | 600/1925 [00:14&lt;00:27, 49.01it/s]
+ 32%|███▏      | 608/1925 [00:14&lt;00:27, 47.33it/s]
+ 32%|███▏      | 616/1925 [00:15&lt;00:28, 46.69it/s]
+ 32%|███▏      | 624/1925 [00:15&lt;00:27, 47.77it/s]
+ 33%|███▎      | 632/1925 [00:15&lt;00:27, 46.93it/s]
+ 33%|███▎      | 640/1925 [00:15&lt;00:27, 46.33it/s]
+ 34%|███▎      | 648/1925 [00:15&lt;00:27, 47.12it/s]
+ 34%|███▍      | 656/1925 [00:15&lt;00:25, 49.56it/s]
+ 34%|███▍      | 664/1925 [00:16&lt;00:25, 49.38it/s]
+ 35%|███▍      | 672/1925 [00:16&lt;00:24, 51.09it/s]
+ 35%|███▌      | 680/1925 [00:16&lt;00:24, 51.28it/s]
+ 36%|███▌      | 688/1925 [00:16&lt;00:24, 50.71it/s]
+ 36%|███▌      | 696/1925 [00:16&lt;00:24, 50.73it/s]
+ 37%|███▋      | 704/1925 [00:16&lt;00:24, 50.70it/s]
+ 37%|███▋      | 712/1925 [00:16&lt;00:25, 48.28it/s]
+ 37%|███▋      | 720/1925 [00:17&lt;00:24, 50.00it/s]
+ 38%|███▊      | 728/1925 [00:17&lt;00:24, 49.77it/s]
+ 38%|███▊      | 736/1925 [00:17&lt;00:23, 50.91it/s]
+ 39%|███▊      | 744/1925 [00:17&lt;00:23, 49.32it/s]
+ 39%|███▉      | 752/1925 [00:17&lt;00:23, 50.69it/s]
+ 39%|███▉      | 760/1925 [00:17&lt;00:22, 51.48it/s]
+ 40%|███▉      | 768/1925 [00:18&lt;00:23, 49.82it/s]
+ 40%|████      | 776/1925 [00:18&lt;00:22, 50.14it/s]
+ 41%|████      | 784/1925 [00:18&lt;00:23, 48.17it/s]
+ 41%|████      | 792/1925 [00:18&lt;00:22, 49.32it/s]
+ 42%|████▏     | 800/1925 [00:18&lt;00:22, 50.88it/s]
+ 42%|████▏     | 808/1925 [00:18&lt;00:22, 49.75it/s]
+ 42%|████▏     | 816/1925 [00:19&lt;00:21, 51.73it/s]
+ 43%|████▎     | 824/1925 [00:19&lt;00:21, 51.48it/s]
+ 43%|████▎     | 832/1925 [00:19&lt;00:21, 50.65it/s]
+ 44%|████▎     | 840/1925 [00:19&lt;00:20, 52.47it/s]
+ 44%|████▍     | 848/1925 [00:19&lt;00:22, 48.91it/s]
+ 44%|████▍     | 856/1925 [00:19&lt;00:20, 51.48it/s]
+ 45%|████▍     | 864/1925 [00:19&lt;00:20, 51.18it/s]
+ 45%|████▌     | 872/1925 [00:20&lt;00:20, 51.88it/s]
+ 46%|████▌     | 880/1925 [00:20&lt;00:20, 52.23it/s]
+ 46%|████▌     | 888/1925 [00:20&lt;00:19, 52.41it/s]
+ 47%|████▋     | 896/1925 [00:20&lt;00:19, 52.08it/s]
+ 47%|████▋     | 904/1925 [00:20&lt;00:20, 50.51it/s]
+ 47%|████▋     | 912/1925 [00:20&lt;00:19, 51.76it/s]
+ 48%|████▊     | 920/1925 [00:21&lt;00:19, 50.98it/s]
+ 48%|████▊     | 928/1925 [00:21&lt;00:19, 50.42it/s]
+ 49%|████▊     | 936/1925 [00:21&lt;00:19, 51.04it/s]
+ 49%|████▉     | 944/1925 [00:21&lt;00:19, 50.98it/s]
+ 49%|████▉     | 952/1925 [00:21&lt;00:19, 51.07it/s]
+ 50%|████▉     | 960/1925 [00:21&lt;00:19, 49.16it/s]
+ 50%|█████     | 968/1925 [00:22&lt;00:19, 48.98it/s]
+ 51%|█████     | 976/1925 [00:22&lt;00:18, 50.13it/s]
+ 51%|█████     | 984/1925 [00:22&lt;00:18, 50.24it/s]
+ 52%|█████▏    | 992/1925 [00:22&lt;00:17, 52.11it/s]
+ 52%|█████▏    | 1000/1925 [00:22&lt;00:18, 51.23it/s]
+ 52%|█████▏    | 1008/1925 [00:22&lt;00:18, 48.77it/s]
+ 53%|█████▎    | 1016/1925 [00:22&lt;00:18, 49.05it/s]
+ 53%|█████▎    | 1024/1925 [00:23&lt;00:17, 50.28it/s]
+ 54%|█████▎    | 1032/1925 [00:23&lt;00:18, 47.40it/s]
+ 54%|█████▍    | 1040/1925 [00:23&lt;00:18, 47.21it/s]
+ 54%|█████▍    | 1048/1925 [00:23&lt;00:17, 49.10it/s]
+ 55%|█████▍    | 1056/1925 [00:23&lt;00:18, 47.81it/s]
+ 55%|█████▌    | 1064/1925 [00:23&lt;00:17, 48.38it/s]
+ 56%|█████▌    | 1072/1925 [00:24&lt;00:17, 48.12it/s]
+ 56%|█████▌    | 1080/1925 [00:24&lt;00:17, 48.72it/s]
+ 57%|█████▋    | 1088/1925 [00:24&lt;00:16, 50.04it/s]
+ 57%|█████▋    | 1096/1925 [00:24&lt;00:16, 50.05it/s]
+ 57%|█████▋    | 1104/1925 [00:24&lt;00:16, 50.08it/s]
+ 58%|█████▊    | 1112/1925 [00:24&lt;00:16, 50.13it/s]
+ 58%|█████▊    | 1120/1925 [00:25&lt;00:15, 50.56it/s]
+ 59%|█████▊    | 1128/1925 [00:25&lt;00:15, 50.38it/s]
+ 59%|█████▉    | 1136/1925 [00:25&lt;00:15, 49.42it/s]
+ 59%|█████▉    | 1144/1925 [00:25&lt;00:15, 48.98it/s]
+ 60%|█████▉    | 1152/1925 [00:25&lt;00:15, 49.83it/s]
+ 60%|██████    | 1160/1925 [00:25&lt;00:15, 48.94it/s]
+ 61%|██████    | 1168/1925 [00:26&lt;00:14, 52.54it/s]
+ 61%|██████    | 1176/1925 [00:26&lt;00:14, 52.16it/s]
+ 62%|██████▏   | 1184/1925 [00:26&lt;00:14, 51.92it/s]
+ 62%|██████▏   | 1192/1925 [00:26&lt;00:14, 50.21it/s]
+ 62%|██████▏   | 1200/1925 [00:26&lt;00:14, 50.20it/s]
+ 63%|██████▎   | 1208/1925 [00:26&lt;00:14, 50.54it/s]
+ 63%|██████▎   | 1216/1925 [00:27&lt;00:14, 49.29it/s]
+ 64%|██████▎   | 1224/1925 [00:27&lt;00:13, 51.39it/s]
+ 64%|██████▍   | 1232/1925 [00:27&lt;00:13, 50.49it/s]
+ 64%|██████▍   | 1240/1925 [00:27&lt;00:13, 52.11it/s]
+ 65%|██████▍   | 1248/1925 [00:27&lt;00:12, 52.18it/s]
+ 65%|██████▌   | 1256/1925 [00:27&lt;00:13, 50.86it/s]
+ 66%|██████▌   | 1264/1925 [00:27&lt;00:12, 51.38it/s]
+ 66%|██████▌   | 1272/1925 [00:28&lt;00:12, 51.17it/s]
+ 66%|██████▋   | 1280/1925 [00:28&lt;00:12, 50.24it/s]
+ 67%|██████▋   | 1288/1925 [00:28&lt;00:12, 49.05it/s]
+ 67%|██████▋   | 1296/1925 [00:28&lt;00:12, 49.47it/s]
+ 68%|██████▊   | 1304/1925 [00:28&lt;00:12, 50.06it/s]
+ 68%|██████▊   | 1312/1925 [00:28&lt;00:11, 51.83it/s]
+ 69%|██████▊   | 1320/1925 [00:29&lt;00:11, 50.59it/s]
+ 69%|██████▉   | 1328/1925 [00:29&lt;00:11, 50.10it/s]
+ 69%|██████▉   | 1336/1925 [00:29&lt;00:11, 52.03it/s]
+ 70%|██████▉   | 1344/1925 [00:29&lt;00:11, 50.41it/s]
+ 70%|███████   | 1352/1925 [00:29&lt;00:10, 52.75it/s]
+ 71%|███████   | 1360/1925 [00:29&lt;00:10, 51.51it/s]
+ 71%|███████   | 1368/1925 [00:29&lt;00:11, 50.57it/s]
+ 71%|███████▏  | 1376/1925 [00:30&lt;00:10, 52.59it/s]
+ 72%|███████▏  | 1384/1925 [00:30&lt;00:10, 51.83it/s]
+ 72%|███████▏  | 1392/1925 [00:30&lt;00:10, 51.62it/s]
+ 73%|███████▎  | 1400/1925 [00:30&lt;00:10, 51.44it/s]
+ 73%|███████▎  | 1408/1925 [00:30&lt;00:10, 51.65it/s]
+ 74%|███████▎  | 1416/1925 [00:30&lt;00:09, 50.98it/s]
+ 74%|███████▍  | 1424/1925 [00:31&lt;00:10, 49.79it/s]
+ 74%|███████▍  | 1432/1925 [00:31&lt;00:09, 49.97it/s]
+ 75%|███████▍  | 1440/1925 [00:31&lt;00:09, 52.36it/s]
+ 75%|███████▌  | 1448/1925 [00:31&lt;00:09, 51.69it/s]
+ 76%|███████▌  | 1456/1925 [00:31&lt;00:09, 51.73it/s]
+ 76%|███████▌  | 1464/1925 [00:31&lt;00:08, 52.16it/s]
+ 76%|███████▋  | 1472/1925 [00:31&lt;00:08, 52.93it/s]
+ 77%|███████▋  | 1480/1925 [00:32&lt;00:08, 53.47it/s]
+ 77%|███████▋  | 1488/1925 [00:32&lt;00:08, 52.89it/s]
+ 78%|███████▊  | 1496/1925 [00:32&lt;00:08, 52.71it/s]
+ 78%|███████▊  | 1504/1925 [00:32&lt;00:07, 53.17it/s]
+ 79%|███████▊  | 1512/1925 [00:32&lt;00:07, 52.95it/s]
+ 79%|███████▉  | 1520/1925 [00:32&lt;00:07, 53.90it/s]
+ 79%|███████▉  | 1528/1925 [00:33&lt;00:07, 51.65it/s]
+ 80%|███████▉  | 1536/1925 [00:33&lt;00:07, 51.19it/s]
+ 80%|████████  | 1544/1925 [00:33&lt;00:07, 49.61it/s]
+ 81%|████████  | 1552/1925 [00:33&lt;00:07, 48.76it/s]
+ 81%|████████  | 1560/1925 [00:33&lt;00:07, 52.11it/s]
+ 81%|████████▏ | 1568/1925 [00:33&lt;00:06, 53.46it/s]
+ 82%|████████▏ | 1576/1925 [00:33&lt;00:06, 51.82it/s]
+ 82%|████████▏ | 1584/1925 [00:34&lt;00:06, 52.28it/s]
+ 83%|████████▎ | 1592/1925 [00:34&lt;00:06, 53.25it/s]
+ 83%|████████▎ | 1600/1925 [00:34&lt;00:06, 52.66it/s]
+ 84%|████████▎ | 1608/1925 [00:34&lt;00:06, 52.31it/s]
+ 84%|████████▍ | 1616/1925 [00:34&lt;00:05, 52.44it/s]
+ 84%|████████▍ | 1624/1925 [00:34&lt;00:05, 52.38it/s]
+ 85%|████████▍ | 1632/1925 [00:35&lt;00:05, 51.89it/s]
+ 85%|████████▌ | 1640/1925 [00:35&lt;00:05, 51.84it/s]
+ 86%|████████▌ | 1648/1925 [00:35&lt;00:05, 53.65it/s]
+ 86%|████████▌ | 1656/1925 [00:35&lt;00:05, 51.17it/s]
+ 86%|████████▋ | 1664/1925 [00:35&lt;00:05, 50.06it/s]
+ 87%|████████▋ | 1672/1925 [00:35&lt;00:05, 50.26it/s]
+ 87%|████████▋ | 1680/1925 [00:36&lt;00:04, 49.80it/s]
+ 88%|████████▊ | 1688/1925 [00:36&lt;00:04, 50.68it/s]
+ 88%|████████▊ | 1696/1925 [00:36&lt;00:04, 50.66it/s]
+ 89%|████████▊ | 1704/1925 [00:36&lt;00:04, 49.84it/s]
+ 89%|████████▉ | 1712/1925 [00:36&lt;00:04, 51.11it/s]
+ 89%|████████▉ | 1720/1925 [00:36&lt;00:04, 48.65it/s]
+ 90%|████████▉ | 1728/1925 [00:36&lt;00:03, 51.47it/s]
+ 90%|█████████ | 1736/1925 [00:37&lt;00:03, 51.10it/s]
+ 91%|█████████ | 1744/1925 [00:37&lt;00:03, 51.39it/s]
+ 91%|█████████ | 1752/1925 [00:37&lt;00:03, 49.55it/s]
+ 91%|█████████▏| 1760/1925 [00:37&lt;00:03, 50.91it/s]
+ 92%|█████████▏| 1768/1925 [00:37&lt;00:03, 50.81it/s]
+ 92%|█████████▏| 1776/1925 [00:37&lt;00:02, 52.73it/s]
+ 93%|█████████▎| 1784/1925 [00:38&lt;00:02, 51.73it/s]
+ 93%|█████████▎| 1792/1925 [00:38&lt;00:02, 52.68it/s]
+ 94%|█████████▎| 1800/1925 [00:38&lt;00:02, 52.88it/s]
+ 94%|█████████▍| 1808/1925 [00:38&lt;00:02, 51.32it/s]
+ 94%|█████████▍| 1816/1925 [00:38&lt;00:02, 51.14it/s]
+ 95%|█████████▍| 1824/1925 [00:38&lt;00:01, 50.92it/s]
+ 95%|█████████▌| 1832/1925 [00:38&lt;00:01, 51.40it/s]
+ 96%|█████████▌| 1840/1925 [00:39&lt;00:01, 49.75it/s]
+ 96%|█████████▌| 1848/1925 [00:39&lt;00:01, 51.06it/s]
+ 96%|█████████▋| 1856/1925 [00:39&lt;00:01, 51.05it/s]
+ 97%|█████████▋| 1864/1925 [00:39&lt;00:01, 52.47it/s]
+ 97%|█████████▋| 1872/1925 [00:39&lt;00:01, 52.55it/s]
+ 98%|█████████▊| 1880/1925 [00:39&lt;00:00, 52.58it/s]
+ 98%|█████████▊| 1888/1925 [00:40&lt;00:00, 51.66it/s]
+ 98%|█████████▊| 1896/1925 [00:40&lt;00:00, 53.65it/s]
+ 99%|█████████▉| 1904/1925 [00:40&lt;00:00, 52.13it/s]
+ 99%|█████████▉| 1912/1925 [00:40&lt;00:00, 51.14it/s]
+100%|█████████▉| 1920/1925 [00:40&lt;00:00, 52.34it/s]
+100%|██████████| 1925/1925 [00:40&lt;00:00, 47.34it/s]
+</pre></div>
+</div>
+<p>This analysis reveals that the hour of the day is the most important feature
+for predicting bike sharing demand. This example also illustrates a specific
+property of SAGE: it tends to distribute importance over correlated features.
+This can be seen for the temperature and “feel temperature” features,
+which have a near-perfect correlation, as seen in the correlation matrix below,
+and are both assigned similar importance.
+This property is a consequence of the axioms of Shapley values, and contrasts
+with other feature importance methods, such as
+<a class="reference internal" href="../../api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-class docutils literal notranslate"><span class="pre">LOCO</span></code></a> or <a class="reference internal" href="../../api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFI</span></code></a>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">corr_mat</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.corrcoef.html#numpy.corrcoef" title="numpy.corrcoef" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.imshow.html#matplotlib.axes.Axes.imshow" title="matplotlib.axes.Axes.imshow" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">corr_mat</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xticks.html#matplotlib.axes.Axes.set_xticks" title="matplotlib.axes.Axes.set_xticks" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html#numpy.arange" title="numpy.arange" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">corr_mat</span><span class="o">.</span><span class="n">shape</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_yticks.html#matplotlib.axes.Axes.set_yticks" title="matplotlib.axes.Axes.set_yticks" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html#numpy.arange" title="numpy.arange" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">corr_mat</span><span class="o">.</span><span class="n">shape</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xticklabels.html#matplotlib.axes.Axes.set_xticklabels" title="matplotlib.axes.Axes.set_xticklabels" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span></a><span class="p">(</span>
+    <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop" title="pandas.DataFrame.drop" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">df</span><span class="o">.</span><span class="n">drop</span></a><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span>
+<span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_yticklabels.html#matplotlib.axes.Axes.set_yticklabels" title="matplotlib.axes.Axes.set_yticklabels" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span></a><span class="p">(</span><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop" title="pandas.DataFrame.drop" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">df</span><span class="o">.</span><span class="n">drop</span></a><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<a href="https://matplotlib.org/stable/api/colorbar_api.html#matplotlib.colorbar.Colorbar" title="matplotlib.colorbar.Colorbar" class="sphx-glr-backref-module-matplotlib-colorbar sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cbar</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.figure.html#matplotlib.axes.Axes.figure" title="matplotlib.axes.Axes.figure" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-property"><span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.imshow.html#matplotlib.axes.Axes.imshow" title="matplotlib.axes.Axes.imshow" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">corr_mat</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;correlation&quot;</span>
+<span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../../_images/sphx_glr_plot_msage_002.png" srcset="../../../_images/sphx_glr_plot_msage_002.png" alt="plot msage" class = "sphx-glr-single-img"/></section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id2">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-covert2020" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Ian Covert, Scott M Lundberg, and Su-In Lee. Understanding Global Feature Contributions With Additive Importance Measures. In <em>Advances in Neural Information Processing Systems</em>, volume 33, 17212–17223. Curran Associates, Inc., 2020.</p>
+</aside>
+</aside>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 45.682 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  230 MB</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-msage-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/cd40c88e1f9e4715c86cd0d2c446339e/plot_msage.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_msage.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/a4eecf91200bb6649c90c5d78126c377/plot_msage.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_msage.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/a7044ab0025d243bc69314194f163c27/plot_msage.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_msage.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plot_cfi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Conditional Feature Importance (CFI) on the wine dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="plot_loco.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightgbm-example-on-the-bike-sharing-dataset">LightGBM example on the bike sharing dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sage-feature-importance">SAGE feature importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/generated/gallery/examples/plot_msage.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, The hidimstat developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

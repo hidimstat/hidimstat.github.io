@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=1e765e46"></script>
+    <script src="../../../_static/documentation_options.js?v=6acfbcb1"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -441,6 +441,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_msage.html">Shapley Additive Global Importance (SAGE) example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loci.html">Leave-One-Covariate-In (LOCI) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
@@ -711,15 +712,13 @@ However you might benefit from clustering randomization taking
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:02,  4.28it/s]
-Fitting clustered inferences:  60%|██████    | 6/10 [00:07&lt;00:05,  1.33s/it]
-Fitting clustered inferences:  90%|█████████ | 9/10 [00:14&lt;00:01,  1.77s/it]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:14&lt;00:00,  1.47s/it]
-/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:782: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
-  warnings.warn(
+Fitting clustered inferences:  10%|█         | 1/10 [00:00&lt;00:02,  3.83it/s]
+Fitting clustered inferences:  60%|██████    | 6/10 [00:08&lt;00:05,  1.41s/it]
+Fitting clustered inferences:  90%|█████████ | 9/10 [00:15&lt;00:01,  1.87s/it]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:15&lt;00:00,  1.56s/it]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 160.50it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 163.38it/s]
 
 array([ 3.46122880e-05,  3.46122880e-05,  3.46122880e-05, ...,
        -3.36995934e-04, -3.36995934e-04, -3.36995934e-04], shape=(39912,))
@@ -833,8 +832,8 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 51.870 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1790 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 52.153 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  1870 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b6c6a679d257e221e442c55b925ef0bf/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>
