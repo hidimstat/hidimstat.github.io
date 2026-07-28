@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=d1bcea0e"></script>
+    <script src="../../../_static/documentation_options.js?v=04fbb43d"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="PFI" href="hidimstat.PFI.html" />
-    <link rel="prev" title="CluDL" href="hidimstat.CluDL.html" />
+    <link rel="next" title="EnsembleImportance" href="hidimstat.EnsembleImportance.html" />
+    <link rel="prev" title="ClusterImportance" href="hidimstat.ClusterImportance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -452,7 +452,9 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.CFI.html">CFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.CFICV.html">CFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.CluDL.html">CluDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.ClusterImportance.html">ClusterImportance</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">EnCluDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.EnsembleImportance.html">EnsembleImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">PFI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.PFICV.html">PFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.SAGE.html">SAGE</a></li>
@@ -545,7 +547,7 @@
 <h1>EnCluDL<a class="headerlink" href="#encludl" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.EnCluDL">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">EnCluDL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desparsified_lasso</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_bootstrap_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensembling_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantiles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L272-L504"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">EnCluDL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desparsified_lasso</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_bootstrap_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensembling_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantiles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L251-L495"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a></p>
 <p>Ensemble clustered inference with desparsified lasso. Performs multiple runs
 of clustered inference using different clustering obtained from random subsamples
@@ -594,18 +596,29 @@ is ‘quantiles’.</p>
 </dd>
 <dt><strong>pvalues_</strong><span class="classifier">ndarray, shape (n_features,)</span></dt><dd><p>P-values for each feature.</p>
 </dd>
-<dt><strong>.. footbibliography::</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.5.0: </span>Use <a class="reference internal" href="hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.EnsembleImportance</span></code></a> instead.</p>
+</div>
+<div class="docutils container" id="id2">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-chevalier2022spatially" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Jérôme-Alexis Chevalier, Tuan-Binh Nguyen, Bertrand Thirion, and Joseph Salmon. Spatially relaxed inference on high-dimensional linear models. <em>Statistics and Computing</em>, 32(5):83, 2022.</p>
+</aside>
+</aside>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.EnCluDL.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desparsified_lasso</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_bootstrap_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensembling_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantiles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L324-L350"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desparsified_lasso</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_bootstrap_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensembling_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantiles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L308-L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.EnCluDL.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L374-L410"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L365-L401"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.fit" title="Link to this definition">#</a></dt>
 <dd><p>Fit multiple clustered inferences on random subsamples of the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -627,7 +640,7 @@ is ‘quantiles’.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.EnCluDL.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L417-L467"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L408-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute feature importance by aggregating results from multiple
 clustered inferences.</p>
 <dl class="field-list simple">
@@ -650,7 +663,7 @@ clustered inferences.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.EnCluDL.fit_importance">
-<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L469-L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.fit_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L460-L478"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.fit_importance" title="Link to this definition">#</a></dt>
 <dd><p>Fit the model and compute feature importance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -672,7 +685,7 @@ clustered inferences.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.EnCluDL.fdr_selection">
-<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L489-L504"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.fdr_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_clustered_inference.py#L480-L495"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnCluDL.fdr_selection" title="Link to this definition">#</a></dt>
 <dd><p>Overrides the signature to set two_tailed_test=True by default.</p>
 </dd></dl>
 
@@ -859,12 +872,6 @@ possible to update each component of a nested object.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example adapts the experiment presented in :footcitechevalier2020statistical. We show how to identify which cortical sources are activated during a somatosensory task. To do so, we leverage spatially constrained clustering to effectively reduce the dimensionality of the problem while accounting for the spatial structure of the data. We then perform inference with the desparsified multitask Lasso to perform support recovery from spatio-temporal data."><img alt="" src="../../../_images/sphx_glr_plot_meg_somato_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_meg_somato.html"><span class="doc">Source localization of somatosensory MEG data</span></a></p>
   <div class="sphx-glr-thumbnail-title">Source localization of somatosensory MEG data</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares methods based on Desparsified Lasso (DL) to estimate voxel activation maps associated with behavior, specifically decoder map support. All methods presented here provide statistical guarantees."><img alt="" src="../../../_images/sphx_glr_plot_fmri_data_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_fmri_data_example.html"><span class="doc">Support Recovery on fMRI Data</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Support Recovery on fMRI Data</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we present how to perform inference on simulated 2D data. This setting is particularly challenging since the number of features (pixels in 2D) is much larger than the number of samples. We first illustrate the limitations of the Desparsified Lasso method in this setting and then present two methods that leverage the data&#x27;s spatial structure to build clusters and perform the inference at the cluster level. We first show how to use clustered inference with DL (hidimstat.CluDL). We then show how to use clustered inference with Ensembled CluDL (hidimstat.EnCluDL)."><img alt="" src="../../../_images/sphx_glr_plot_2D_simulation_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_2D_simulation_example.html"><span class="doc">Ensemble Clustered Inference on 2D Data</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Ensemble Clustered Inference on 2D Data</div>
 </div></div><div style='clear:both'></div></section>
 </section>
 
@@ -879,20 +886,20 @@ possible to update each component of a nested object.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hidimstat.CluDL.html"
+       href="hidimstat.ClusterImportance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CluDL</p>
+        <p class="prev-next-title">ClusterImportance</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.PFI.html"
+       href="hidimstat.EnsembleImportance.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PFI</p>
+        <p class="prev-next-title">EnsembleImportance</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

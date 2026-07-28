@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PFICV &#8212; HiDimStat</title>
+    <title>EnsembleImportance &#8212; HiDimStat</title>
   
   
   
@@ -51,7 +51,7 @@
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.PFICV';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/class/hidimstat.EnsembleImportance';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="SAGE" href="hidimstat.SAGE.html" />
-    <link rel="prev" title="PFI" href="hidimstat.PFI.html" />
+    <link rel="next" title="PFI" href="hidimstat.PFI.html" />
+    <link rel="prev" title="EnCluDL" href="hidimstat.EnCluDL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -454,9 +454,9 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.CluDL.html">CluDL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ClusterImportance.html">ClusterImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.EnCluDL.html">EnCluDL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.EnsembleImportance.html">EnsembleImportance</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">EnsembleImportance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.PFI.html">PFI</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">PFICV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.PFICV.html">PFICV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.SAGE.html">SAGE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.D0CRT.html">D0CRT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
@@ -526,7 +526,7 @@
     
     <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">PFICV</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">EnsembleImportance</span></li>
   </ul>
 </nav>
 </div>
@@ -543,68 +543,133 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="pficv">
-<h1>PFICV<a class="headerlink" href="#pficv" title="Link to this heading">#</a></h1>
+  <section id="ensembleimportance">
+<h1>EnsembleImportance<a class="headerlink" href="#ensembleimportance" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="hidimstat.PFICV">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">PFICV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nb-ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/permutation_feature_importance.py#L143-L222"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbationCV.html#hidimstat.base_perturbation.BasePerturbationCV" title="hidimstat.base_perturbation.BasePerturbationCV"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePerturbationCV</span></code></a></p>
-<p>Permutation Feature Importance (PFI) algorithm with Cross-Validation.</p>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">EnsembleImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantiles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_importance.py#L12-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a></p>
+<p>Ensemble inference with arbitrary variable importance measure. Performs multiple runs
+of clustered inference using different clustering obtained from random subsamples
+of the data. The results are then aggregated to provide robust feature importance
+scores and p-values. This algorithm is based on the method described in
+<a class="footnote-reference brackets" href="#footcite-chevalier2022spatially" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>estimators: list of sklearn estimators or single sklearn estimator</strong></dt><dd><p>Can be a list of fitted sklearn estimators (one per fold) or a single sklearn
-estimator that will then be cloned and fitted on each fold.</p>
+<dt><strong>vim: hidimstat.BaseVariableImportance</strong></dt><dd><p>Any variable importance method that derives from hidimstat’s BaseVariableImportance class.</p>
 </dd>
-<dt><strong>cv: cross-validation generator</strong></dt><dd><p>A cross-validation generator object (e.g., KFold, StratifiedKFold).</p>
+<dt><strong>n_repeats: int, optional (default=25)</strong></dt><dd><p>Number of bootstrap iterations for ensemble inference.</p>
 </dd>
-<dt><strong>statistical_test</strong><span class="classifier">callable or str, default=”nb-ttest”</span></dt><dd><p>Statistical test function for computing p-values from importance scores.</p>
+<dt><strong>bootstrap_frac: float, optional (default=0.3)</strong></dt><dd><p>Fraction of samples used for the ensemble.
+When bootstrap_frac=1.0, all samples are used.</p>
 </dd>
-<dt><strong>method</strong><span class="classifier">str, default=”predict”</span></dt><dd><p>The method to use for the prediction. This determines the predictions passed
-to the loss function. Supported methods are “predict”, “predict_proba” or
-“decision_function”.</p>
+<dt><strong>bootstrap_groups: ndarray, shape (n_samples,), optional (default=None)</strong></dt><dd><p>Sample group labels for stratified subsampling.</p>
 </dd>
-<dt><strong>loss</strong><span class="classifier">callable, default=mean_squared_error</span></dt><dd><p>The loss function to use when comparing the perturbed model to the full
-model.</p>
+<dt><strong>n_jobs</strong><span class="classifier">int or None, optional (default=1)</span></dt><dd><p>Number of parallel jobs.</p>
 </dd>
-<dt><strong>n_permutations</strong><span class="classifier">int, default=50</span></dt><dd><p>The number of permutations to perform. For each variable/group of variables,
-the mean of the losses over the <cite>n_permutations</cite> is computed.</p>
+<dt><strong>random_state: int, optional (default=None)</strong></dt><dd><p>Random seed for reproducible subsampling. This will also set the <cite>random_state</cite>
+parameter of the <cite>vim</cite> argument.</p>
 </dd>
-<dt><strong>features_groups: dict or None, default=None</strong></dt><dd><p>A dictionary where the keys are the group names and the values are the
-list of column names corresponding to each features group. If None,
-the features_groups are identified based on the columns of X.</p>
+<dt><strong>aggregation</strong><span class="classifier">str, optional (default=’quantiles’)</span></dt><dd><p>Method used for ensembling. Currently, the two available methods
+are ‘quantiles’ and ‘median’.</p>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">int or None, default=None</span></dt><dd><p>The random state to use for sampling.</p>
+<dt><strong>gamma</strong><span class="classifier">float, optional (default=0.2)</span></dt><dd><p>Lowest gamma-quantile considered to compute the adaptive
+quantile aggregation formula. This parameter is used only if
+<cite>aggregation</cite> is ‘quantiles’.</p>
 </dd>
-<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd><p>The number of jobs to run in parallel. Parallelization is done over the folds.</p>
+<dt><strong>adaptive_aggregation</strong><span class="classifier">bool, optional (default=True)</span></dt><dd><p>Whether to use adaptive quantile aggregation when <cite>aggregation</cite>
+is ‘quantiles’.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Attributes<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>importance_estimators_</strong><span class="classifier">list of PFI instances</span></dt><dd><p>The PFI instances fitted on each fold.</p>
+<dt><strong>ensemble_vims_</strong><span class="classifier">list of hidimstat.BaseVariableImportance</span></dt><dd><p>List of fitted variable importance methods from each bootstrap.</p>
 </dd>
-<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups, n_folds)</span></dt><dd><p>The calculated importance scores for each feature group and each fold.
-Higher values indicate greater importance.</p>
+<dt><strong>importances_</strong><span class="classifier">ndarray, shape (n_features,) or (n_features, n_tasks)</span></dt><dd><p>Estimated coefficients at feature level.</p>
 </dd>
-<dt><strong>pvalues_</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd><p>The p-values for the importance scores computed across folds.</p>
+<dt><strong>pvalues_</strong><span class="classifier">ndarray, shape (n_features,)</span></dt><dd><p>P-values for each feature.</p>
 </dd>
-<dt><strong>estimators_</strong><span class="classifier">list of sklearn estimators</span></dt><dd><p>List of fitted estimators for each fold.</p>
-</dd>
-<dt><strong>test_train_frac_</strong><span class="classifier">float</span></dt><dd><p>Fraction of test samples over train samples in each fold. Approximated as
-1 / (n_splits - 1).</p>
-</dd>
+<dt><strong>.. footbibliography::</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nb-ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/permutation_feature_importance.py#L191-L208"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.__init__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantiles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive_aggregation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_importance.py#L59-L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.fdr_selection">
-<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L270-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.fdr_selection" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_importance.py#L103-L144"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.fit" title="Link to this definition">#</a></dt>
+<dd><p>Fit multiple clustered inferences on random subsamples of the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>Input data matrix.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">ndarray, shape (n_samples,) or (n_samples, n_tasks)</span></dt><dd><p>Target variable(s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">EnsembleImportance</span></dt><dd><p>Fitted estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.importance">
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_importance.py#L151-L194"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.importance" title="Link to this definition">#</a></dt>
+<dd><p>Compute feature importance by aggregating results from multiple
+clustered inferences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>Input data matrix.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">ndarray, shape (n_samples,) or (n_samples, n_tasks)</span></dt><dd><p>Target variable(s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">ndarray, shape (n_features,) or (n_features, n_tasks)</span></dt><dd><p>Estimated importance values at feature level.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.fit_importance">
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/ensemble_importance.py#L196-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.fit_importance" title="Link to this definition">#</a></dt>
+<dd><p>Fit the model and compute feature importance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>Input data matrix.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">ndarray, shape (n_samples,) or (n_samples, n_tasks)</span></dt><dd><p>Target variable(s).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>importances_</strong><span class="classifier">ndarray, shape (n_features,) or (n_features, n_tasks)</span></dt><dd><p>Estimated importance values at feature level.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.fdr_selection">
+<span class="sig-name descname"><span class="pre">fdr_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_control</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bhq'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshaping_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L270-L340"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.fdr_selection" title="Link to this definition">#</a></dt>
 <dd><p>Performs feature selection based on False Discovery Rate (FDR) control.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -645,20 +710,8 @@ of the effect is determined from the sign of the importance scores.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L436-L469"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.fit" title="Link to this definition">#</a></dt>
-<dd><p>Fit the importance estimators on each fold of the cross-validation.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.fit_importance">
-<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L521-L525"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.fit_importance" title="Link to this definition">#</a></dt>
-<dd><p>Fit the model to the data and computes feature importance scores.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.fwer_selection">
-<span class="sig-name descname"><span class="pre">fwer_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fwer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procedure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bonferroni'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L342-L400"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.fwer_selection" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.fwer_selection">
+<span class="sig-name descname"><span class="pre">fwer_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fwer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procedure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bonferroni'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_tailed_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L342-L400"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.fwer_selection" title="Link to this definition">#</a></dt>
 <dd><p>Performs feature selection based on Family-Wise Error Rate (FWER) control.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -689,8 +742,8 @@ selected features have positive or negative effects.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/utils/_metadata_requests.py#L1737-L1749"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.get_metadata_routing" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.get_metadata_routing">
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/utils/_metadata_requests.py#L1737-L1749"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.get_metadata_routing" title="Link to this definition">#</a></dt>
 <dd><p>Get metadata routing of this object.</p>
 <p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a> on how the routing
 mechanism works.</p>
@@ -706,8 +759,8 @@ routing information.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L248-L270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.get_params" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L248-L270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.get_params" title="Link to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -727,29 +780,8 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L479-L519"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.importance" title="Link to this definition">#</a></dt>
-<dd><p>Compute the importance scores using cross-validation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>The input samples to compute importance scores for.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd></dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>importances_</strong><span class="classifier">ndarray of shape (n_groups, n_folds)</span></dt><dd><p>The importance scores for each group of features.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.importance_selection">
-<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L181-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.importance_selection" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.importance_selection">
+<span class="sig-name descname"><span class="pre">importance_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L181-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.importance_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on variable importance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -774,8 +806,8 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.plot_importance">
-<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L402-L485"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.plot_importance" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.plot_importance">
+<span class="sig-name descname"><span class="pre">plot_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">seaborn_barplot_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L402-L485"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.plot_importance" title="Link to this definition">#</a></dt>
 <dd><p>Plot feature importances as a horizontal bar plot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -799,8 +831,8 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.pvalue_selection">
-<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L216-L268"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.pvalue_selection" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.pvalue_selection">
+<span class="sig-name descname"><span class="pre">pvalue_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L216-L268"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.pvalue_selection" title="Link to this definition">#</a></dt>
 <dd><p>Selects features based on p-values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -827,8 +859,8 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="hidimstat.PFICV.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L400-L442"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.PFICV.set_params" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="hidimstat.EnsembleImportance.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/../../.venv/lib/python3.13/site-packages/sklearn/base.py#L400-L442"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.EnsembleImportance.set_params" title="Link to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
@@ -852,11 +884,14 @@ possible to update each component of a nested object.</p>
 
 </dd></dl>
 
-<section id="examples-using-hidimstat-pficv">
-<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.PFICV</span></code><a class="headerlink" href="#examples-using-hidimstat-pficv" title="Link to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to compute variable importance using Permutation Feature Importance (PFI), Leave-One-Covariate-Out (LOCO), and Conditional Feature Importance (CFI) on the diabetes dataset. This example also showcases the use how to measure feature importance in a K-Fold cross-validation setting in order to use all the data available."><img alt="" src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_thumb.png" />
-<p><a class="reference internal" href="../../gallery/examples/plot_diabetes_variable_importance_example.html"><span class="doc">Feature Importance on diabetes dataset using cross-validation</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Feature Importance on diabetes dataset using cross-validation</div>
+<section id="examples-using-hidimstat-ensembleimportance">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.EnsembleImportance</span></code><a class="headerlink" href="#examples-using-hidimstat-ensembleimportance" title="Link to this heading">#</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example compares methods based on Desparsified Lasso (DL) to estimate voxel activation maps associated with behavior, specifically decoder map support. All methods presented here provide statistical guarantees."><img alt="" src="../../../_images/sphx_glr_plot_fmri_data_example_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_fmri_data_example.html"><span class="doc">Support Recovery on fMRI Data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Support Recovery on fMRI Data</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we present how to perform inference on simulated 2D data. This setting is particularly challenging since the number of features (pixels in 2D) is much larger than the number of samples. We first illustrate the limitations of the Desparsified Lasso method in this setting and then present two methods that leverage the data&#x27;s spatial structure to build clusters and perform the inference at the cluster level. We first show how to use clustered inference with DL (hidimstat.ClusterImportance). We then show how to use clustered inference with Ensembled CluDL (hidimstat.EnsembleImportance)."><img alt="" src="../../../_images/sphx_glr_plot_2D_simulation_example_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_2D_simulation_example.html"><span class="doc">Ensemble Clustered Inference on 2D Data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ensemble Clustered Inference on 2D Data</div>
 </div></div><div style='clear:both'></div></section>
 </section>
 
@@ -871,20 +906,20 @@ possible to update each component of a nested object.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hidimstat.PFI.html"
+       href="hidimstat.EnCluDL.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">PFI</p>
+        <p class="prev-next-title">EnCluDL</p>
       </div>
     </a>
     <a class="right-next"
-       href="hidimstat.SAGE.html"
+       href="hidimstat.PFI.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SAGE</p>
+        <p class="prev-next-title">PFI</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -907,29 +942,29 @@ possible to update each component of a nested object.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV"><code class="docutils literal notranslate"><span class="pre">PFICV</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.__init__"><code class="docutils literal notranslate"><span class="pre">PFICV.__init__()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.fdr_selection"><code class="docutils literal notranslate"><span class="pre">PFICV.fdr_selection()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.fit"><code class="docutils literal notranslate"><span class="pre">PFICV.fit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.fit_importance"><code class="docutils literal notranslate"><span class="pre">PFICV.fit_importance()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.fwer_selection"><code class="docutils literal notranslate"><span class="pre">PFICV.fwer_selection()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">PFICV.get_metadata_routing()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.get_params"><code class="docutils literal notranslate"><span class="pre">PFICV.get_params()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.importance"><code class="docutils literal notranslate"><span class="pre">PFICV.importance()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.importance_selection"><code class="docutils literal notranslate"><span class="pre">PFICV.importance_selection()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.plot_importance"><code class="docutils literal notranslate"><span class="pre">PFICV.plot_importance()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.pvalue_selection"><code class="docutils literal notranslate"><span class="pre">PFICV.pvalue_selection()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.PFICV.set_params"><code class="docutils literal notranslate"><span class="pre">PFICV.set_params()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.__init__"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.fit"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.importance"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.fit_importance"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.fit_importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.fdr_selection"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.fdr_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.fwer_selection"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.fwer_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.get_metadata_routing()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.get_params"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.get_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.importance_selection"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.importance_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.plot_importance"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.plot_importance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.pvalue_selection"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.pvalue_selection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.EnsembleImportance.set_params"><code class="docutils literal notranslate"><span class="pre">EnsembleImportance.set_params()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-pficv">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.PFICV</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-hidimstat-ensembleimportance">Examples using <code class="docutils literal notranslate"><span class="pre">hidimstat.EnsembleImportance</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../../_sources/generated/api/class/hidimstat.PFICV.rst.txt">
+    <a href="../../../_sources/generated/api/class/hidimstat.EnsembleImportance.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

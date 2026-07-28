@@ -26,9 +26,9 @@ is particularly challenging since the number of features (pixels in 2D) is much 
 than the number of samples. We first illustrate the limitations of the Desparsified
 Lasso method in this setting and then present two methods that leverage the data's
 spatial structure to build clusters and perform the inference at the cluster level.
-We first show how to use clustered inference with DL (:class:`hidimstat.CluDL`).
+We first show how to use clustered inference with DL (:class:`hidimstat.ClusterImportance`).
 We then show how to use clustered inference with Ensembled CluDL
-(:class:`hidimstat.EnCluDL`).
+(:class:`hidimstat.EnsembleImportance`).
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-23
 
@@ -225,7 +225,7 @@ number of features. For more details about CluDL, see
     from sklearn.cluster import FeatureAgglomeration
     from sklearn.feature_extraction import image
 
-    from hidimstat import CluDL
+    from hidimstat import ClusterImportance
 
     # Clustering step
     n_clusters = 200
@@ -235,7 +235,7 @@ number of features. For more details about CluDL, see
     )
 
     dl_2 = DesparsifiedLasso(estimator=clone(estimator), n_jobs=n_jobs)
-    clu_dl = CluDL(desparsified_lasso=dl_2, clustering=clustering, random_state=0)
+    clu_dl = ClusterImportance(vim=dl_2, clustering=clustering)
     clu_dl.fit_importance(X_init, y)
 
     selected_cdl = clu_dl.fwer_selection(fwer=fwer_target, n_tests=n_clusters)
@@ -244,6 +244,15 @@ number of features. For more details about CluDL, see
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/circleci/project/src/hidimstat/cluster_importance.py:101: UserWarning: X won't be used.
+      self.vim_.importance(X_reduced, y)
+    /home/circleci/project/src/hidimstat/cluster_importance.py:101: UserWarning: y won't be used.
+      self.vim_.importance(X_reduced, y)
 
 
 
@@ -310,20 +319,19 @@ Bonferroni correction with a factor equal to the number of clusters on the p-val
 obtained by aggregating the different ``CluDL`` runs. For more details about ``EnCluDL``,
 see :footcite:t:`chevalier2022spatially`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-216
+.. GENERATED FROM PYTHON SOURCE LINES 200-215
 
 .. code-block:: Python
 
 
-    from hidimstat.ensemble_clustered_inference import EnCluDL
+    from hidimstat import EnsembleImportance
 
-    enclu_dl = EnCluDL(
-        desparsified_lasso=DesparsifiedLasso(estimator=clone(estimator), n_jobs=1),
-        clustering=clustering,
-        n_bootstraps=20,
-        random_state=0,
+    enclu_dl = EnsembleImportance(
+        vim=clu_dl,
+        n_repeats=20,
+        bootstrap_frac=0.5,
         n_jobs=n_jobs,
-        cluster_bootstrap_size=0.5,
+        random_state=0,
     )
     enclu_dl.fit_importance(X_init, y)
 
@@ -338,17 +346,17 @@ see :footcite:t:`chevalier2022spatially`.
 
  .. code-block:: none
 
-    Fitting clustered inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting clustered inferences:  50%|█████     | 10/20 [00:00<00:00, 16.12it/s]    Fitting clustered inferences:  75%|███████▌  | 15/20 [00:01<00:00, 11.67it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 10.31it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:01<00:00, 11.09it/s]
-    Fitting clustered inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:00<00:00, 713.95it/s]
+    Fitting ensemble inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting ensemble inferences:  50%|█████     | 10/20 [00:00<00:00, 12.37it/s]    Fitting ensemble inferences:  75%|███████▌  | 15/20 [00:01<00:00,  8.54it/s]    Fitting ensemble inferences: 100%|██████████| 20/20 [00:02<00:00,  7.16it/s]    Fitting ensemble inferences: 100%|██████████| 20/20 [00:02<00:00,  7.88it/s]
+    Fitting clustered inferences:   0%|          | 0/20 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 20/20 [00:00<00:00, 695.56it/s]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-218
+.. GENERATED FROM PYTHON SOURCE LINES 216-217
 
 Visualizing the support estimated by EnCluDL
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-240
+.. GENERATED FROM PYTHON SOURCE LINES 217-239
 
 .. code-block:: Python
 
@@ -386,7 +394,7 @@ Visualizing the support estimated by EnCluDL
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 241-246
+.. GENERATED FROM PYTHON SOURCE LINES 240-245
 
 Compared to ``CluDL``, ``EnCluDL`` further improves the inference, primarily by reducing the
 number of false positives located far from the true support. An intuitive explanation
@@ -394,7 +402,7 @@ for this improvement is that while false discoveries far from the true support m
 occur randomly in a single clustering, they are less likely to occur repeatedly in
 overlapping clusters obtained from different bootstrap samples of the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 249-258
+.. GENERATED FROM PYTHON SOURCE LINES 248-257
 
 Support recovery with spatial tolerance
 ---------------------------------------
@@ -406,7 +414,7 @@ The idea is to penalize less those false discoveries that are close
 to the true support. To achieve this, we introduce an extended support that includes
 the true support and a tolerance region around it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 258-281
+.. GENERATED FROM PYTHON SOURCE LINES 257-280
 
 .. code-block:: Python
 
@@ -445,14 +453,14 @@ the true support and a tolerance region around it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-286
+.. GENERATED FROM PYTHON SOURCE LINES 281-285
 
 Comparison with spatial tolerance
 ---------------------------------
 Now, we compare the three methods presented above (Desparsified Lasso, CluDL and
 EnCluDL) in terms of support recovery with spatial tolerance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 286-332
+.. GENERATED FROM PYTHON SOURCE LINES 285-332
 
 .. code-block:: Python
 
@@ -500,6 +508,7 @@ EnCluDL) in terms of support recovery with spatial tolerance.
     ]
     axes[0].legend(handles=legend_handles, loc="lower center")
     plt.tight_layout()
+    plt.show()
 
 
 
@@ -542,9 +551,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 22.395 seconds)
+   **Total running time of the script:** (0 minutes 23.292 seconds)
 
-**Estimated memory usage:**  231 MB
+**Estimated memory usage:**  234 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_2D_simulation_example.py:
