@@ -155,7 +155,7 @@ observe how they process the correlation.
     # 2. ALE Plot
     ale = ALE(model, feature_names=X.columns)
     ale_axes = ale.plot(
-        X_test, features=1, grid_resolution=100, confidence_interval=False
+        X_test, features=1, grid_resolution=100, confidence_level=0
     )
 
     mean_pred = model.predict(X_test).mean()
@@ -211,7 +211,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.832 seconds)
+   **Total running time of the script:** (0 minutes 1.621 seconds)
 
 **Estimated memory usage:**  249 MB
 
