@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=a1fc4c9e"></script>
+    <script src="../_static/documentation_options.js?v=9676d862"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -55,7 +55,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0.dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -526,7 +526,7 @@
 <section id="test-suite">
 <h2>Test suite<a class="headerlink" href="#test-suite" title="Link to this heading">#</a></h2>
 <p>For testing, we recommend you install the test dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>hidimstat<span class="o">[</span>test<span class="o">]</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[test]&#39;</span>
 </pre></div>
 </div>
 <p>This will install <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and the following extensions:
@@ -552,7 +552,7 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <p>To run the examples, we recommend you install the example dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>hidimstat<span class="o">[</span>example<span class="o">]</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[example]&#39;</span>
 </pre></div>
 </div>
 <p>For running the examples, it’s necessary to install Matplotlib &gt;= 3.9.0 and seaborn &gt;=
@@ -565,7 +565,7 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
 <section id="id2">
 <h2>Documentation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>The documentation is built with Sphinx. We recommend you install the documentation dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>hidimstat<span class="o">[</span>doc<span class="o">]</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[doc]&#39;</span>
 </pre></div>
 </div>
 <p>After this installation, you can build the documentation from the source using the Makefile in doc_conf:</p>
