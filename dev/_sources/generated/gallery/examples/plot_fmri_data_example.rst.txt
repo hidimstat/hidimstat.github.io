@@ -262,9 +262,9 @@ and high-dimensional inference (c.f. References).
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/cluster_importance.py:101: UserWarning: X won't be used.
+    /home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: X won't be used.
       self.vim_.importance(X_reduced, y)
-    /home/circleci/project/src/hidimstat/cluster_importance.py:101: UserWarning: y won't be used.
+    /home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: y won't be used.
       self.vim_.importance(X_reduced, y)
 
     array([ 1.74719401e-05,  1.74719401e-05,  1.74719401e-05, ...,
@@ -307,8 +307,10 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:02,  3.68it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:08<00:05,  1.46s/it]    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:16<00:02,  2.03s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:16<00:00,  1.68s/it]
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:00<00:00, 40.23it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 66.79it/s]
+    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:02,  4.28it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:07<00:05,  1.28s/it]/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:782: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+      warnings.warn(
+    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:14<00:01,  1.75s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:14<00:00,  1.45s/it]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:00<00:00, 53.82it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 89.40it/s]
 
     array([ 4.02271197e-05,  4.02271197e-05,  4.02271197e-05, ...,
            -4.34262336e-04, -4.34262336e-04, -4.34262336e-04], shape=(39912,))
@@ -470,9 +472,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 58.760 seconds)
+   **Total running time of the script:** (0 minutes 53.782 seconds)
 
-**Estimated memory usage:**  1809 MB
+**Estimated memory usage:**  1840 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:

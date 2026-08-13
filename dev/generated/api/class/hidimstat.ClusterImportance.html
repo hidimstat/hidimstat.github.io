@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=c54d9c73"></script>
+    <script src="../../../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -55,7 +55,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -547,7 +547,7 @@
 <h1>ClusterImportance<a class="headerlink" href="#clusterimportance" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.ClusterImportance">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">ClusterImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L12-L187"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">ClusterImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L12-L190"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a></p>
 <p>Clustered inference with any variable importance method.</p>
 <p>This algorithm computes a single clustered inference on groups of features
@@ -578,14 +578,18 @@ using an arbitrary variable importance measure for statistical inference.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.ClusterImportance.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L43-L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L46-L55"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.ClusterImportance.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L54-L84"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L57-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.fit" title="Link to this definition">#</a></dt>
 <dd><p>Fit the clustering and variable importance method on the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -607,7 +611,7 @@ using an arbitrary variable importance measure for statistical inference.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.ClusterImportance.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L86-L110"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L89-L113"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute feature importance from the underlying variable importance method.
 Then map the importance scores from cluster level back to feature level.</p>
 <dl class="field-list simple">
@@ -624,7 +628,7 @@ Then map the importance scores from cluster level back to feature level.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.ClusterImportance.fit_importance">
-<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L112-L130"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.fit_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/cluster_importance.py#L115-L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.ClusterImportance.fit_importance" title="Link to this definition">#</a></dt>
 <dd><p>Fit the model and compute feature importance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

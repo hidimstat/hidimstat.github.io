@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../../_static/documentation_options.js?v=c54d9c73"></script>
+    <script src="../../../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -55,7 +55,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.1.dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -687,9 +687,9 @@ and high-dimensional inference (c.f. References).</p>
 <a href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance.fit_importance" title="hidimstat.ClusterImportance.fit_importance" class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method"><span class="n">cludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/src/hidimstat/cluster_importance.py:101: UserWarning: X won&#39;t be used.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: X won&#39;t be used.
   self.vim_.importance(X_reduced, y)
-/home/circleci/project/src/hidimstat/cluster_importance.py:101: UserWarning: y won&#39;t be used.
+/home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: y won&#39;t be used.
   self.vim_.importance(X_reduced, y)
 
 array([ 1.74719401e-05,  1.74719401e-05,  1.74719401e-05, ...,
@@ -716,14 +716,16 @@ However you might benefit from clustering randomization taking
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting ensemble inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting ensemble inferences:  10%|█         | 1/10 [00:00&lt;00:02,  3.68it/s]
-Fitting ensemble inferences:  60%|██████    | 6/10 [00:08&lt;00:05,  1.46s/it]
-Fitting ensemble inferences:  90%|█████████ | 9/10 [00:16&lt;00:02,  2.03s/it]
-Fitting ensemble inferences: 100%|██████████| 10/10 [00:16&lt;00:00,  1.68s/it]
+Fitting ensemble inferences:  10%|█         | 1/10 [00:00&lt;00:02,  4.28it/s]
+Fitting ensemble inferences:  60%|██████    | 6/10 [00:07&lt;00:05,  1.28s/it]/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:782: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+
+Fitting ensemble inferences:  90%|█████████ | 9/10 [00:14&lt;00:01,  1.75s/it]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:14&lt;00:00,  1.45s/it]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences:  60%|██████    | 6/10 [00:00&lt;00:00, 40.23it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 66.79it/s]
+Fitting clustered inferences:  60%|██████    | 6/10 [00:00&lt;00:00, 53.82it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 89.40it/s]
 
 array([ 4.02271197e-05,  4.02271197e-05,  4.02271197e-05, ...,
        -4.34262336e-04, -4.34262336e-04, -4.34262336e-04], shape=(39912,))
@@ -837,8 +839,8 @@ spurious discoveries.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 58.760 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1809 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 53.782 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  1840 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-fmri-data-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/b6c6a679d257e221e442c55b925ef0bf/plot_fmri_data_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fmri_data_example.ipynb</span></code></a></p>
