@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=4281cb7a"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -56,7 +56,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0.dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -535,7 +535,7 @@ Indeed, the TSI can be intuitively defined by the performance drop of a predicti
 when a feature is removed, similarly to an ablation study. More formally, it can
 be defined as:</p>
 <div class="math notranslate nohighlight">
-\[\psi^j_{TSI} = \mathbb{E} \left[\mathcal{L}\left(y, \mu(X)\right)\right] - \mathbb{E} \left[\mathcal{L}\left(y, \mu_{-j}(X^{-j})\right)\right],\]</div>
+\[\psi^j_{TSI} = \mathbb{E} \left[\mathcal{L}\left(y, \mu_{-j}(X^{-j})\right)\right] - \mathbb{E} \left[\mathcal{L}\left(y, \mu(X)\right)\right],\]</div>
 <p>where <span class="math notranslate nohighlight">\(X^{-j}\)</span> denotes the feature vector without the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature, and
 <span class="math notranslate nohighlight">\(\mu_{-j}(X^{-j})\)</span> is the same predictive model as <span class="math notranslate nohighlight">\(\mu(X)\)</span> but retrained
 on the reduced feature set <span class="math notranslate nohighlight">\(X^{-j}\)</span>. When <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the squared loss,
@@ -551,14 +551,14 @@ which gives the Leave-One-Covariate-Out (<a class="reference internal" href="../
 <p>In the regression setting with the MSE loss, the TSI can be expressed in several
 equivalent forms which provide different intuitions of why the target quantity is relevant:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
+\[\begin{split}\begin{aligned}
 \psi^j_{\mathrm{TSI}}
 &amp;= \mathbb{E}\!\left[\left(\mu_{-j}(X^{-j})- Y\right)^2\right]
    - \mathbb{E}\!\left[(\mu(X)- Y)^2\right]
    &amp;\textcolor{gray}{\text{loss / refitting}}\\
-&amp;= \sigma^2(R^2_{-j}-R^2)
+&amp;= \sigma^2(R^2-R^2_{-j})
    &amp;\textcolor{gray}{\text{adjustment}}\\
-&amp;= \mathbb{E}\!\left[\mathrm{Var}(Y\mid X^{-j})\right]
+&amp;= \mathbb{E}\!\left[\mathrm{Var}\left(\mu(X)\mid X^{-j}\right)\right]
    &amp;\textcolor{gray}{\text{variance}}\\
 &amp;= \mathbb{E}\!\left[\left(\mathbb{E}[\mu(X)\mid X^{-j}]- Y\right)^2\right]
    - \mathbb{E}\!\left[(\mu(X)- Y)^2\right]
@@ -566,7 +566,7 @@ equivalent forms which provide different intuitions of why the target quantity i
 &amp;= \frac{1}{2}\!\left[\mathbb{E}\!\left[\left(\mu(X^{\pi(j\mid -j)})- Y\right)^2\right]
    - \mathbb{E}\!\left[(\mu(X)- Y)^2\right]\right]
    &amp;\textcolor{gray}{\text{perturbation}}.
-\end{align}\end{split}\]</div>
+\end{aligned}\end{split}\]</div>
 <p>The first formulation (loss / refitting) provides the definition of the TSI with
 the quadratic loss. The second formulation (adjustment) shows that the TSI can be seen
 as the dropped R-squared when removing the <span class="math notranslate nohighlight">\(j^{th}\)</span> feature, scaled by the output variance.
@@ -585,11 +585,11 @@ consists on plug-in estimators of the refitting, perturbation and marginalizatio
 <p>In the classification setting with the cross-entropy (log-loss), the TSI can be expressed
 in terms of information-theoretic quantities:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
+\[\begin{split}\begin{aligned}
 \psi_{\mathrm{TSI}}^j
 &amp;= \mathrm{I}(Y; X^j \mid X^{-j}) &amp;\textcolor{gray}{\text{mutual information}}
-\\&amp;= D_{\mathrm{KL}}\left(P\left(Y, X^j \mid X^{-j}\right) \,\big\|\, P\left(Y \mid X^{-j}\right) P\left(X^j \mid X^{-j}\right)\right)&amp;\textcolor{gray}{\text{KL divergence}}.
-\end{align}\end{split}\]</div>
+\\&amp;= \mathbb{E}_{X^{-j}}\left[D_{\mathrm{KL}}\left(P\left(Y, X^j \mid X^{-j}\right) \,\big\|\, P\left(Y \mid X^{-j}\right) P\left(X^j \mid X^{-j}\right)\right)\right]&amp;\textcolor{gray}{\text{KL divergence}}.
+\end{aligned}\end{split}\]</div>
 <p>From the first formulation (mutual information), we see that the TSI quantifies the
 mutual information between the output <span class="math notranslate nohighlight">\(Y\)</span> and the feature <span class="math notranslate nohighlight">\(X^j\)</span> conditionally on the
 rest of the features <span class="math notranslate nohighlight">\(X^{-j}\)</span>. Thus, it quantifies how much information
