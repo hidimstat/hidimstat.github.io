@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../_static/documentation_options.js?v=b1f5706e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -55,7 +55,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0.dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -500,7 +500,7 @@
                   
   <section id="what-s-new">
 <span id="whats-new"></span><h1>What’s new<a class="headerlink" href="#what-s-new" title="Link to this heading">#</a></h1>
-<p>See the latest revision: <a class="reference internal" href="#lastest-version"><span class="std std-ref">Version 0.3.1</span></a>.</p>
+<p>See the latest revision: <a class="reference internal" href="#latest-version"><span class="std std-ref">Version 0.3.1</span></a>.</p>
 <p>Each entry is tagged with one of the following categories:</p>
 <ul class="simple">
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Feature</span> — new functionality</p></li>
@@ -510,8 +510,21 @@
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> — CI, testing, maintenance, dependencies</p></li>
 </ul>
 </section>
-<section id="under-development-0-3-2-dev0">
-<span id="changelog"></span><h1>under development (0.3.2.dev0)<a class="headerlink" href="#under-development-0-3-2-dev0" title="Link to this heading">#</a></h1>
+<section id="under-development-0-4-1-dev">
+<span id="changelog"></span><h1>under development (0.4.1.dev)<a class="headerlink" href="#under-development-0-4-1-dev" title="Link to this heading">#</a></h1>
+</section>
+<section id="version-0-3-1">
+<span id="latest-version"></span><span id="v0-4-0"></span><h1>Version 0.3.1<a class="headerlink" href="#version-0-3-1" title="Link to this heading">#</a></h1>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>New importance methods and visualizatino</strong>: Shapley Additive Global Importance (SAGE), Leave-One-Covariate-In (LOCI), and Accumulated Local Effects (ALE).</p></li>
+<li><p><strong>Many feature improvements</strong>: refined current implementations, better unification of API.</p></li>
+<li><p><strong>Documentation improvement</strong>: fixed missing docs, docstrings, faulty ones.</p></li>
+</ul>
+</section>
+<section id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary">Maint</span> Update version in doc’s dropdown menu to 0.3.1 (stable) and clean changelog (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/637">#637</a> by <a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a>).</p></li>
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> Fix bug in the KO methods: <code class="docutils literal notranslate"><span class="pre">threshold_mesh</span></code> was computed but not assigned to the variable (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/643">#643</a> by <a class="reference external" href="https://github.com/bthirion">Bertrand Thirion</a> amd <a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a>).</p></li>
@@ -544,18 +557,19 @@
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> Fixed math formatting in total sobol index section (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/746">#746</a> by <a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a>).</p></li>
 </ul>
 </section>
-<section id="version-0-3-1">
-<span id="lastest-version"></span><span id="v0-3-1"></span><h1>Version 0.3.1<a class="headerlink" href="#version-0-3-1" title="Link to this heading">#</a></h1>
-<section id="highlights">
-<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
+</section>
+<section id="v0-3-1">
+<span id="id1"></span><h1>Version 0.3.1<a class="headerlink" href="#v0-3-1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>Highlights<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Expanded user guide</strong> with new sections on Desparsified Lasso, Knockoffs, Permutation Feature Importance, D0CRT, and high-dimensional inference</p></li>
 <li><p><strong>Improved scikit-learn compatibility</strong> for some estimators (DesparsifiedLasso, ModelXKnockoff, PFI, BasePerturbation)</p></li>
 <li><p><strong>Updated dependencies</strong> following SPEC 0</p></li>
 </ul>
 </section>
-<section id="changes">
-<h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>Changes<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Feature</span> — can now be initialized with unfitted estimators. When this the case, the estimator will first be fitted before variable importance is estimated. (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/571">#571</a>)</p></li>
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary">Doc</span> — add Distilled Conditional Randomization Test (D0CRT) section in the user-guide (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/621">#621</a>)</p></li>
@@ -620,16 +634,16 @@
 <p class="admonition-title">Warning</p>
 <p>Major change in the API, that settles for using <code class="docutils literal notranslate"><span class="pre">.fit()</span></code>, <code class="docutils literal notranslate"><span class="pre">.importance()</span></code>, <code class="docutils literal notranslate"><span class="pre">.fdr_selection()</span></code> and <code class="docutils literal notranslate"><span class="pre">.fwer_selection()</span></code></p>
 </div>
-<section id="id1">
-<h2>Highlights<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>Highlights<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>New API</p></li>
 <li><p>New User Guide</p></li>
 <li><p>More examples</p></li>
 </ul>
 </section>
-<section id="id2">
-<h2>Changes<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h2>Changes<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> LOC0, CFI, CPI (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/372">#372</a>)</p></li>
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> Desparsified Lasso: (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/381">#381</a>)</p></li>
@@ -638,8 +652,8 @@
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> d0CRT (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/220">#220</a>)</p></li>
 </ul>
 </section>
-<section id="id3">
-<h2>Contributors:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h2>Contributors:<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference external" href="https://github.com/alexblnn">Alexandre Blain</a></p></li>
@@ -708,17 +722,22 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What’s new</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#under-development-0-3-2-dev0">under development (0.3.2.dev0)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#under-development-0-4-1-dev">under development (0.4.1.dev)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-3-1">Version 0.3.1</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changes">Changes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-1">Version 0.3.1</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Highlights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Changes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors:</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-3-0">Version 0.3.0</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Highlights</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Changes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Contributors:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Highlights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Contributors:</a></li>
 </ul>
 </li>
 </ul>
