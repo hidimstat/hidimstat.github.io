@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quick start for contributing &#8212; HiDimStat</title>
+    <title>Useful links for a release &#8212; HiDimStat</title>
   
   
   
@@ -51,7 +51,7 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'dev/CONTRIBUTING';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dev/release_useful_links';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Developer Guidelines" href="developer_guidelines.html" />
-    <link rel="prev" title="Developer Documentation" href="index.html" />
+    <link rel="next" title="Contributor’s Code of Conduct" href="developer_code_of_conduct.html" />
+    <link rel="prev" title="How to create a release ?" href="how_to_release.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -438,10 +438,10 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quick start for contributing</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Quick start for contributing</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how_to_contribute.html">How to contribute to HiDimStat?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="building_documentation.html">Building the documentation</a></li>
@@ -455,7 +455,7 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="how_to_release.html">How to create a release ?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_useful_links.html">Useful links for a release</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Useful links for a release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="developer_code_of_conduct.html">Contributor’s Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_suite.html">The Test Suite</a></li>
 </ul>
@@ -501,7 +501,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Developer Documentation</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quick start for contributing</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Useful links for a release</span></li>
   </ul>
 </nav>
 </div>
@@ -518,65 +518,37 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="quick-start-for-contributing">
-<h1>Quick start for contributing<a class="headerlink" href="#quick-start-for-contributing" title="Link to this heading">#</a></h1>
-<section id="source-code">
-<h2>Source code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h2>
-<p>You can check out the latest sources with the command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mind-inria/hidimstat.git
-</pre></div>
-</div>
+  <section id="useful-links-for-a-release">
+<span id="release-useful-links"></span><h1>Useful links for a release<a class="headerlink" href="#useful-links-for-a-release" title="Link to this heading">#</a></h1>
+<section id="setuptool-links">
+<h2>Setuptool links<a class="headerlink" href="#setuptool-links" title="Link to this heading">#</a></h2>
+<p>The simplest way to make a release can be find in this <a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">tutorial</a></p>
+<p>The following links help configure <code class="docutils literal notranslate"><span class="pre">setuptool</span></code>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learn.scientific-python.org/development/guides/packaging-simple/">https://learn.scientific-python.org/development/guides/packaging-simple/</a></p></li>
+<li><p><a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/quickstart.html">https://setuptools.pypa.io/en/latest/userguide/quickstart.html</a></p></li>
+<li><p><a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html">https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html</a></p></li>
+</ul>
+<p>The version of the packages is defined dynamically based on the git tag using setuptools_scm.
+For more details, look at this page:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://setuptools-scm.readthedocs.io/en/stable/usage/#builtin-mechanisms-for-obtaining-version-numbers">https://setuptools-scm.readthedocs.io/en/stable/usage/#builtin-mechanisms-for-obtaining-version-numbers</a></p></li>
+</ul>
 </section>
-<section id="test-suite">
-<h2>Test suite<a class="headerlink" href="#test-suite" title="Link to this heading">#</a></h2>
-<p>For testing, we recommend you install the test dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[test]'</span>
-</pre></div>
-</div>
-<p>This will install <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and the following extensions:
-<code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-randomly</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-xdist</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-html</span></code>,
-<code class="docutils literal notranslate"><span class="pre">pytest-timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-durations</span></code></p>
-<p>After this installation, you can launch the test suite:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span><span class="nb">test</span>
-</pre></div>
-</div>
+<section id="branch-management-issues">
+<h2>Branch management issues<a class="headerlink" href="#branch-management-issues" title="Link to this heading">#</a></h2>
+<p>no squash when merging the release branch onto main:
+see warning here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/dev/developers/maintainer.html#reference-steps">https://scikit-learn.org/dev/developers/maintainer.html#reference-steps</a></p></li>
+</ul>
 </section>
-<section id="style-guide">
-<h2>Style guide<a class="headerlink" href="#style-guide" title="Link to this heading">#</a></h2>
-<p>The code is formatted and linted with with <a class="reference external" href="https://github.com/astral-sh/ruff">ruff</a>.</p>
-<p>Spelling is checked using <a class="reference external" href="https://github.com/codespell-project/codespell">codespell</a>.</p>
-<p>To apply the required dependencies and style your code:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[style]'</span>
-ruff<span class="w"> </span>format<span class="w"> </span>.
-ruff<span class="w"> </span>check<span class="w"> </span>--fix<span class="w"> </span>.
-codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
-</pre></div>
-</div>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<p>To run the examples, we recommend you install the example dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[example]'</span>
-</pre></div>
-</div>
-<p>For running the examples, it’s necessary to install Matplotlib &gt;= 3.9.0 and seaborn &gt;=
-0.9.0.</p>
-<div class="line-block">
-<div class="line">After this installation, you can run any example in the <a class="reference external" href="https://github.com/mind-inria/hidimstat/tree/main/examples">examples</a> folder.</div>
-<div class="line">Or you can download some of them from the <a class="reference external" href="https://hidimstat.github.io/dev/generated/gallery/examples/index.html">documentation</a>.</div>
-</div>
-</section>
-<section id="id2">
-<h2>Documentation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>The documentation is built with Sphinx. We recommend you install the documentation dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[doc]'</span>
-</pre></div>
-</div>
-<p>After this installation, you can build the documentation from the source using the Makefile in doc_conf:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
-</pre></div>
-</div>
-<p><strong>For more information</strong>, look at the <a class="reference external" href="https://hidimstat.github.io/dev/dev/index.html">developer documentation</a></p>
+<section id="release-from-github-tag">
+<h2>Release from Github tag<a class="headerlink" href="#release-from-github-tag" title="Link to this heading">#</a></h2>
+<p>More info here</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#about-release-management">https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#about-release-management</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -591,20 +563,20 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="how_to_release.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Developer Documentation</p>
+        <p class="prev-next-title">How to create a release ?</p>
       </div>
     </a>
     <a class="right-next"
-       href="developer_guidelines.html"
+       href="developer_code_of_conduct.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Developer Guidelines</p>
+        <p class="prev-next-title">Contributor’s Code of Conduct</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -627,18 +599,16 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">Source code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-suite">Test suite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-guide">Style guide</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setuptool-links">Setuptool links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-management-issues">Branch management issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-from-github-tag">Release from Github tag</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/dev/CONTRIBUTING.rst.txt">
+    <a href="../_sources/dev/release_useful_links.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

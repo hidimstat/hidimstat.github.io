@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../_static/documentation_options.js?v=73ebe82e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -56,7 +56,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0.dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -633,7 +633,7 @@ of PFI on a classification task:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pfi</span> <span class="o">=</span> <span class="n">PFI</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">loss</span><span class="o">=</span><span class="n">log_loss</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;predict_proba&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">method</span><span class="o">=</span><span class="s2">"predict_proba"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pfi</span> <span class="o">=</span> <span class="n">pfi</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">features_importance</span> <span class="o">=</span> <span class="n">pfi</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>

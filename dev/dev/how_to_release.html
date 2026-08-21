@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quick start for contributing &#8212; HiDimStat</title>
+    <title>How to create a release ? &#8212; HiDimStat</title>
   
   
   
@@ -51,7 +51,7 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'dev/CONTRIBUTING';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dev/how_to_release';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Developer Guidelines" href="developer_guidelines.html" />
-    <link rel="prev" title="Developer Documentation" href="index.html" />
+    <link rel="next" title="Useful links for a release" href="release_useful_links.html" />
+    <link rel="prev" title="Version 0.4.0" href="CONTRIBUTORS.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -438,10 +438,10 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quick start for contributing</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Quick start for contributing</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how_to_contribute.html">How to contribute to HiDimStat?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="building_documentation.html">Building the documentation</a></li>
@@ -454,7 +454,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="how_to_release.html">How to create a release ?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">How to create a release ?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_useful_links.html">Useful links for a release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="developer_code_of_conduct.html">Contributor’s Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_suite.html">The Test Suite</a></li>
@@ -501,7 +501,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Developer Documentation</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quick start for contributing</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How to create a release ?</span></li>
   </ul>
 </nav>
 </div>
@@ -518,65 +518,231 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="quick-start-for-contributing">
-<h1>Quick start for contributing<a class="headerlink" href="#quick-start-for-contributing" title="Link to this heading">#</a></h1>
-<section id="source-code">
-<h2>Source code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h2>
-<p>You can check out the latest sources with the command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mind-inria/hidimstat.git
-</pre></div>
-</div>
+  <section id="how-to-create-a-release">
+<span id="how-to-release"></span><h1>How to create a release ?<a class="headerlink" href="#how-to-create-a-release" title="Link to this heading">#</a></h1>
+<p>This section explains how to create a release for hidimstat. This guide is destined
+to developers with the adequate rights.</p>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#release-steps" id="id2">Release steps</a></p></li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>The creation of the release is based on a specific tool called a builder, <code class="docutils literal notranslate"><span class="pre">setuptools</span></code>.
+This tool normally doesn’t have to be called directly here, as all the configuration
+has already been written in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p>
+<p>The format of version tag is X.Y.Z:</p>
+<ul class="simple">
+<li><p>X represents a major revision (frequency: more than 1 year):</p>
+<ul>
+<li><p>Important modification of the API</p></li>
+<li><p>Refactoring of the major part of the code</p></li>
+</ul>
+</li>
+<li><p>Y represents major release (frequency: 6 months to 1 year):</p>
+<ul>
+<li><p>Add new functionality (methods, functionalities, …)</p></li>
+<li><p>Important modification of one function</p></li>
+</ul>
+</li>
+<li><p>Z represents minor release (minimum: 1 day):</p>
+<ul>
+<li><p>Fix important bugs in a release</p></li>
+<li><p>Small modification of the example</p></li>
+<li><p>Adding new examples</p></li>
+</ul>
+</li>
+</ul>
+<p>Some useful links for tool configuration or to write this guide were saved <a class="reference internal" href="release_useful_links.html#release-useful-links"><span class="std std-ref">here</span></a>.
+Please have a quick look if you want to, or face an issue during release.
+This guide should be enough to walk you through the different steps.</p>
 </section>
-<section id="test-suite">
-<h2>Test suite<a class="headerlink" href="#test-suite" title="Link to this heading">#</a></h2>
-<p>For testing, we recommend you install the test dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[test]'</span>
+<section id="release-steps">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Release steps</a><a class="headerlink" href="#release-steps" title="Link to this heading">#</a></h2>
+<p>The release needs to be executed from a branch that follows a specific naming convention,
+due to how to CI is built: <code class="docutils literal notranslate"><span class="pre">release_X.Y.Z</span></code>
+This branch is created from the main branch, and the following steps should be executed
+only once all target modifications for the new version have been included on the release branch.</p>
+<ol class="arabic" start="0">
+<li><p><a class="reference external" href="https://shouldideploy.today/">Check if today is a good day for releasing</a></p></li>
+<li><p>Update the information related to the release:</p>
+<ul class="simple">
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">hidimstat\CHANGELOG.rst</span></code> with the missing elements.</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">hidimstat\CONTRIBUTORS.rst</span></code> with the missing contributors for the new version.</p></li>
+</ul>
+</li>
+<li><p>Update the docstring of function based on CHANGELOG with <code class="docutils literal notranslate"><span class="pre">deprecated</span></code>, <code class="docutils literal notranslate"><span class="pre">versionchanged</span></code>
+and <code class="docutils literal notranslate"><span class="pre">versionadded</span></code> directives in the docstrings under a <code class="docutils literal notranslate"><span class="pre">Note</span></code> section.
+Additionally, make sure all deprecations that are supposed to be removed with this new version
+have been removed.</p></li>
+<li><p>Update the changelog, contributor and version:</p>
+<ul>
+<li><p>Move the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> in the directory <code class="docutils literal notranslate"><span class="pre">docs/src/whats_news/</span></code>
+and rename it according to the target version <cite>vX.Y.Z.rst</cite>
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">CHANGELOG</span><span class="o">.</span><span class="n">rst</span> <span class="n">docs</span><span class="o">/</span><span class="n">whats_news</span><span class="o">/</span><span class="n">vX</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span><span class="o">.</span><span class="n">rst</span>
 </pre></div>
 </div>
-<p>This will install <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and the following extensions:
-<code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-randomly</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-xdist</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-html</span></code>,
-<code class="docutils literal notranslate"><span class="pre">pytest-timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest-durations</span></code></p>
-<p>After this installation, you can launch the test suite:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span><span class="nb">test</span>
+</li>
+<li><p>Update symlink to latest version of the changelog:
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rm docs/src/whats_news/latest.rst``
+cd docs/src/whats_news/; ln -s ./vX.Y.Z.rst ./latest.rst
 </pre></div>
 </div>
-</section>
-<section id="style-guide">
-<h2>Style guide<a class="headerlink" href="#style-guide" title="Link to this heading">#</a></h2>
-<p>The code is formatted and linted with with <a class="reference external" href="https://github.com/astral-sh/ruff">ruff</a>.</p>
-<p>Spelling is checked using <a class="reference external" href="https://github.com/codespell-project/codespell">codespell</a>.</p>
-<p>To apply the required dependencies and style your code:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[style]'</span>
-ruff<span class="w"> </span>format<span class="w"> </span>.
-ruff<span class="w"> </span>check<span class="w"> </span>--fix<span class="w"> </span>.
-codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
+</li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> with an empty template of <code class="docutils literal notranslate"><span class="pre">hidimstat\docs\tools\_templates\CHANGELOG.rst</span></code>
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">docs</span>\<span class="n">tools</span>\<span class="n">_templates</span>\<span class="n">CHANGELOG</span><span class="o">.</span><span class="n">rst</span> <span class="o">.</span>\<span class="n">CHANGELOG</span><span class="o">.</span><span class="n">rst</span>
 </pre></div>
 </div>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<p>To run the examples, we recommend you install the example dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[example]'</span>
+</li>
+<li><p>Change the version in this template and commit the modification</p></li>
+<li><p>Create a new entry in <code class="docutils literal notranslate"><span class="pre">docs\src\whats_news\whats_news.rst</span></code></p></li>
+<li><p>Update the file <code class="docutils literal notranslate"><span class="pre">CONTRIBUTORS.rst</span></code> in the documentation
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">CONTRIBUTORS</span><span class="o">.</span><span class="n">rst</span> <span class="n">docs</span>\<span class="n">src</span>\<span class="n">whats_news</span>\<span class="n">CONTRIBUTORS</span><span class="o">.</span><span class="n">rst</span>
 </pre></div>
 </div>
-<p>For running the examples, it’s necessary to install Matplotlib &gt;= 3.9.0 and seaborn &gt;=
-0.9.0.</p>
-<div class="line-block">
-<div class="line">After this installation, you can run any example in the <a class="reference external" href="https://github.com/mind-inria/hidimstat/tree/main/examples">examples</a> folder.</div>
-<div class="line">Or you can download some of them from the <a class="reference external" href="https://hidimstat.github.io/dev/generated/gallery/examples/index.html">documentation</a>.</div>
-</div>
-</section>
-<section id="id2">
-<h2>Documentation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>The documentation is built with Sphinx. We recommend you install the documentation dependencies with pip:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[doc]'</span>
+</li>
+<li><p>Update the file <code class="docutils literal notranslate"><span class="pre">docs\tools\version.json</span></code> which defines all the versions of the project.
+The first two elements indicate the development version and the last stable version.
+Write a new entry for the current version, update the last stable version, and the new dev version.</p></li>
+<li><p>Update symlink to stable version in the <a class="reference external" href="https://github.com/hidimstat/hidimstat.github.io">github branches repo</a>
+This update requires special authorization, so ask admins/main maintainers for edition authorization.</p></li>
+</ul>
+</li>
+<li><p>Create a tag and branches associate with the release.
+Please be aware that once you create the tag, the tag head will be detached from the release branch.
+If you have to make changes after this, update the tag as described in Step 8.
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git commit --allow-empty-message -m 'release X.Y.Z'
+# minor release of the ongoing:
+git checkout -b release_X.Y.(Z+1) # Create a branch
+git tag X.Y.(Z+1) # Add a tag on the last commit with the name of the release
+#major release:
+git checkout -b release_X.(Y+1).0 # Create a branch on the last commit of main
+git rebase -i release_X.Y.Z # (optional) if you want to cherry pick some commits
+git tag X.(Y+1).0 # Add a tag to this branch
+#major revision
+git reset --hard (X+1).0.0` # Change main to major revion branch (with a force push)
+git push -f mind-inria/main` # force to update main (disable the rule Prevent Branch deletion)
+git checkout release_(X+1).0.0` # switch to the branch
+git tag (X+1).0.0 # Add a tag on this version `(X+1).0.0`
 </pre></div>
 </div>
-<p>After this installation, you can build the documentation from the source using the Makefile in doc_conf:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
+</li>
+<li><p>Build the wheel &amp; test it
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $(root of repository)
+rm -r release_file  # remove the previous build
+mkdir release_file
+git pull # update your repository
+git checkout X.Y.Z # checkout to the tag
+python -m venv release_file/venv_release # create virtual environment for testing the release
+source release_file/venv_release/bin/activate # activate this new venvironement
+pip install build twine uv # install packages for create a wheel and push it on pype
+python -m build -o release_file/dist # build the wheel
+twine check release_file/dist/* # check if the wheel is ready to be use
+pip install release_file/dist/hidimstat.....whl # install the wheel in a fresh virtualenv
+uv pip install -r pyproject.toml --extra test; pytest # test the installation
 </pre></div>
 </div>
-<p><strong>For more information</strong>, look at the <a class="reference external" href="https://hidimstat.github.io/dev/dev/index.html">developer documentation</a></p>
+</li>
+<li><p>Push the tag, and push and create a PR for the release branch, if not done yet:
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git push origin tag X.Y.Z`
+git checkout release_X.Y.Z`  # return to the release branch
+git push origin`  # push the release branch
+# Then create the PR for the release branch, with the main branch as target.
+</pre></div>
+</div>
+</li>
+<li><p>Commit and push any modifications</p></li>
+<li><p>Update the tag if any modifications were pushed at the previous step
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">d</span> <span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span> <span class="c1"># Delete the tag. This requires an exception on the tag deletion rule of the repository (Settings/Rulesets/Prevent Tag Deletion)</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">s</span> <span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span> <span class="c1"># `-s` is for signing, optional</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span> <span class="c1"># (disable the rule Prevent Branch deletion)</span>
+</pre></div>
+</div>
+</li>
+<li><p>merge the PR on <code class="docutils literal notranslate"><span class="pre">release_X.Y.Z</span></code> (don’t squash the commits)</p>
+<ul class="simple">
+<li><p>check if the tests pass, the rendering of the documentation, the examples and the changelog are good</p></li>
+<li><p>merge the PR <strong>without squashing commit</strong>:
+Normally, only squash &amp; merge is enabled. There seems to be no way to configure this per branch ATM on github.
+When we do a release, we temporarily enable rebase. To do so, go to repository settings -&gt; general -&gt; pull requests,
+enable rebase, then merge the PR on release_X.Y.Z (with the rebase option).
+Once done, switch to squash and merge in the settings again.
+Once the PR is merged, the documentation will automatically be updated by the CI.</p></li>
+</ul>
+</li>
+<li><p>Rebuild the wheel &amp; retest it (see step [3]):
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">origin</span><span class="o">/</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
+<span class="c1"># Follow step 3 instructions</span>
+</pre></div>
+</div>
+</li>
+<li><p>(Optional) Upload to TestPyPi for testing (<a class="reference external" href="https://test.pypi.org/">https://test.pypi.org/</a>)
+This requires an authorization for the organization, and the creation of an access token.
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">twine</span> <span class="n">upload</span> <span class="o">--</span><span class="n">repository</span> <span class="n">testpypi</span> <span class="n">release_file</span><span class="o">/</span><span class="n">dist</span><span class="o">/*</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="o">--</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="o">.</span><span class="n">pypi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="o">.</span><span class="n">pypi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span><span class="n">hidismtat</span>
+<span class="n">pytest</span> <span class="c1"># test the installation</span>
+</pre></div>
+</div>
+</li>
+<li><p>Upload to <a class="reference external" href="https://pypi.org/">PyPi</a>. This requires a separate authorization from TestPyPi for the organization,
+and the creation of an access token that is different from TestPyPi.
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">twine</span> <span class="n">upload</span> <span class="n">release_file</span><span class="o">/</span><span class="n">dist</span><span class="o">/*</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span> <span class="n">hidimstat</span><span class="o">==</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
+<span class="n">pytest</span> <span class="c1"># test the installation</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a release on github from a specific tag:
+At this point, we need to upload the binaries (what we have just built) to GitHub and link them to the tag.
+To do so, go there: <a class="github reference external" href="https://github.com/mind-inria/hidimstat/tags">mind-inria/hidimstat</a>
+and edit the tag by providing a description (copy and paste the content of the <code class="docutils literal notranslate"><span class="pre">docs\src\whats_news\X.Y.Z.rst</span></code>),
+and upload both build files that we created situated in the folder <code class="docutils literal notranslate"><span class="pre">release_file\dist</span></code>.</p></li>
+<li><p>Update the conda-forge recipe</p>
+<ul>
+<li><p>in <a class="reference external" href="https://github.com/conda-forge/hidimstat-feedstock">hidimstat-feedstock</a></p></li>
+<li><p>create branch <code class="docutils literal notranslate"><span class="pre">release_X.Y.Z</span></code></p></li>
+<li><p>update <code class="docutils literal notranslate"><span class="pre">recipe/meta.yml</span></code></p>
+<ul>
+<li><p>that is the only file we ever edit manually in that repo</p></li>
+<li><p>update version number</p></li>
+<li><p>update sha256</p></li>
+<li><p>if needed reset build number to 0</p></li>
+<li><p>if needed update the requirements (easiest way to check is in hidimstat</p>
+<p>git checkout X.Y.Z
+git diff X.Y.(Z-1) – pyproject.toml)</p>
+</li>
+</ul>
+</li>
+<li><p>open a PR to <code class="docutils literal notranslate"><span class="pre">mind-inria/hidimstat-feedstock</span></code> main branch</p>
+<ul class="simple">
+<li><p>use checklist that will be posted in PR</p></li>
+<li><p>in particular it asks to post a comment asking a bot to re-render the
+recipe, make sure to wait until that has finished</p></li>
+<li><p>then merge the PR. it can take around an hour (maybe more?) for the
+package to be available from the conda-forge channel</p></li>
+<li><p>when it becomes available, install in a fresh env &amp; test</p></li>
+<li><p>NOTE: to add new maintainers to that repo add them to the list at the end of meta.yml</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Congratulations, the release is over !</p></li>
+</ol>
 </section>
 </section>
 
@@ -591,20 +757,20 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="CONTRIBUTORS.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Developer Documentation</p>
+        <p class="prev-next-title">Version 0.4.0</p>
       </div>
     </a>
     <a class="right-next"
-       href="developer_guidelines.html"
+       href="release_useful_links.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Developer Guidelines</p>
+        <p class="prev-next-title">Useful links for a release</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -627,18 +793,15 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">Source code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-suite">Test suite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-guide">Style guide</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-steps">Release steps</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/dev/CONTRIBUTING.rst.txt">
+    <a href="../_sources/dev/how_to_release.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

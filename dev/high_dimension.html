@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=6c02275b"></script>
+    <script src="_static/documentation_options.js?v=73ebe82e"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -56,7 +56,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0.dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -562,8 +562,8 @@ to identify relevant features. We need some data to start:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">.05</span> <span class="c1"># alpha is the significance level for the statistical test</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selected_dl</span> <span class="o">=</span> <span class="n">dlasso</span><span class="o">.</span><span class="n">pvalues_</span> <span class="o">&lt;</span> <span class="n">alpha</span> <span class="o">/</span> <span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">true_support</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Desparsified Lasso selected </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">selected_dl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span>
-<span class="go">    features among {np.sum(true_support)} &#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Desparsified Lasso selected </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">selected_dl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span>
+<span class="go">    features among {np.sum(true_support)} ')</span>
 <span class="go">Desparsified Lasso selected 19 features among 64</span>
 </pre></div>
 </div>
@@ -594,7 +594,7 @@ among pixels, which avoids creating overly messy clusters:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connectivity</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">grid_to_graph</span><span class="p">(</span><span class="n">n_x</span><span class="o">=</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_y</span><span class="o">=</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ward</span> <span class="o">=</span> <span class="n">FeatureAgglomeration</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">"ward"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Equipped with this, we can use CluDL:</p>
@@ -606,9 +606,9 @@ among pixels, which avoids creating overly messy clusters:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cludl</span><span class="o">.</span><span class="n">fit_importance</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="go"># compute estimated support</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selected_cdl</span> <span class="o">=</span> <span class="n">cludl</span><span class="o">.</span><span class="n">fwer_selection</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Clustered Desparsified Lasso selected</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Clustered Desparsified Lasso selected</span>
 <span class="go">    {np.sum(selected_cdl *  true_support)} features among</span>
-<span class="go">    {np.sum(true_support)}&#39;)</span>
+<span class="go">    {np.sum(true_support)}')</span>
 <span class="go">Clustered Desparsified Lasso selected 51 features among 64</span>
 </pre></div>
 </div>
@@ -634,9 +634,9 @@ Ensemble of Clustered Desparsified lasso, or <a class="reference internal" href=
 <span class="go">        random_state=0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selected_ecdl</span> <span class="o">=</span> <span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ensemble of Clustered Desparsified Lasso selected</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Ensemble of Clustered Desparsified Lasso selected</span>
 <span class="go">    {np.sum(selected_ecdl *  true_support)} features among</span>
-<span class="go">    {np.sum(true_support)} &#39;)</span>
+<span class="go">    {np.sum(true_support)} ')</span>
 <span class="go">Ensemble of Clustered Desparsified Lasso selected 57 features among 64</span>
 </pre></div>
 </div>

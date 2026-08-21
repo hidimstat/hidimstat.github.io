@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=6c02275b"></script>
+    <script src="_static/documentation_options.js?v=73ebe82e"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -56,7 +56,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0.dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -903,8 +903,8 @@ automatically:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">X</span> <span class="o">@</span> <span class="n">beta</span><span class="p">)))</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dcrt</span> <span class="o">=</span> <span class="n">D0CRT</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">estimator</span><span class="o">=</span><span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;liblinear&quot;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">lasso_screening</span><span class="o">=</span><span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;liblinear&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">estimator</span><span class="o">=</span><span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">"l1"</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">"liblinear"</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">lasso_screening</span><span class="o">=</span><span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">"l1"</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">"liblinear"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dcrt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
