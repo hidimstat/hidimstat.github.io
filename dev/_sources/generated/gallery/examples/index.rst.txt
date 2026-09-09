@@ -108,6 +108,23 @@ Examples Gallery
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to compute p-values with the Holdout Randomization Test (HRT) [:footcitetansey2022holdout]. We simulate a regression problem in which only 10 of the 100 features carry signal, fit a linear model, and test each feature with CFI by passing statistical_test=&quot;hrt&quot;. The resulting p-values are valid in finite samples and make no assumption on the model; we check this on the features that carry no signal.">
+
+.. only:: html
+
+  .. image:: /generated/gallery/examples/images/thumb/sphx_glr_plot_holdout_randomization_test_thumb.png
+    :alt:
+
+  :doc:`/generated/gallery/examples/plot_holdout_randomization_test`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Feature selection with the Holdout Randomization Test</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield.">
 
 .. only:: html
@@ -393,6 +410,7 @@ Examples Gallery
    /generated/gallery/examples/plot_comparison_pdp_ale
    /generated/gallery/examples/plot_accumulated_local_effects
    /generated/gallery/examples/plot_msage
+   /generated/gallery/examples/plot_holdout_randomization_test
    /generated/gallery/examples/plot_loco
    /generated/gallery/examples/plot_loci
    /generated/gallery/examples/plot_dcrt_example

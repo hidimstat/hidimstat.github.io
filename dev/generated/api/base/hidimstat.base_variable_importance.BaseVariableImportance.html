@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=3e0d2ae5"></script>
+    <script src="../../../_static/documentation_options.js?v=4cf474e9"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -480,9 +480,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../statistical_tests/hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistical_tests/hidimstat.statistical_tools.holdout_randomization_test.html">holdout_randomization_test</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.desparsified_lasso.reid.html">reid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
 </ul>
 </div>
 </nav></div>
@@ -804,6 +807,9 @@ possible to update each component of a nested object.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we demonstrate how to measure feature importance using SAGE :footciteCovert2020 on the diabetes dataset. Read more in the User Guide &lt;shapley_additive_global_explanation&gt;. For this example, we use the marginal version of SAGE, which limits the computational cost. To further reduce the computational cost, Shapley values are estimated using a Monte Carlo approximation. Only a subset of all possible feature coalitions is sampled. This is controlled by the n_subsets parameter. Finally, the expectation over the marginal distribution is also approximated using n_permutations."><img alt="" src="../../../_images/sphx_glr_plot_msage_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_msage.html"><span class="doc">Shapley Additive Global Importance (SAGE) example</span></a></p>
   <div class="sphx-glr-thumbnail-title">Shapley Additive Global Importance (SAGE) example</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Here we show how to compute p-values with the Holdout Randomization Test (HRT) [:footcitetansey2022holdout]. We simulate a regression problem in which only 10 of the 100 features carry signal, fit a linear model, and test each feature with CFI by passing statistical_test=&quot;hrt&quot;. The resulting p-values are valid in finite samples and make no assumption on the model; we check this on the features that carry no signal."><img alt="" src="../../../_images/sphx_glr_plot_holdout_randomization_test_thumb.png" />
+<p><a class="reference internal" href="../../gallery/examples/plot_holdout_randomization_test.html"><span class="doc">Feature selection with the Holdout Randomization Test</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Feature selection with the Holdout Randomization Test</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield."><img alt="" src="../../../_images/sphx_glr_plot_loco_thumb.png" />
 <p><a class="reference internal" href="../../gallery/examples/plot_loco.html"><span class="doc">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</span></a></p>
   <div class="sphx-glr-thumbnail-title">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</div>

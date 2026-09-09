@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="_static/documentation_options.js?v=3e0d2ae5"></script>
+    <script src="_static/documentation_options.js?v=4cf474e9"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -480,9 +480,12 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/api/statistical_tests/hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/statistical_tests/hidimstat.statistical_tools.holdout_randomization_test.html">holdout_randomization_test</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.desparsified_lasso.reid.html">reid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
 </ul>
 </div>
 </nav></div>
@@ -675,6 +678,20 @@
 </table>
 </div>
 </section>
+<section id="statistical-tests">
+<h2>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/statistical_tests/hidimstat.statistical_tools.nadeau_bengio_ttest.html#hidimstat.statistical_tools.nadeau_bengio_ttest" title="hidimstat.statistical_tools.nadeau_bengio_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nadeau_bengio_ttest</span></code></a>(a, popmean, test_frac[, ...])</p></td>
+<td><p>One-sample t-test with Nadeau &amp; Bengio variance correction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/statistical_tests/hidimstat.statistical_tools.holdout_randomization_test.html#hidimstat.statistical_tools.holdout_randomization_test" title="hidimstat.statistical_tools.holdout_randomization_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holdout_randomization_test</span></code></a>(loss_diff[, ...])</p></td>
+<td><p>Compute the p-values of the holdout randomization test (HRT).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="helper-functions">
 <h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
@@ -684,9 +701,6 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/helper_functions/hidimstat.desparsified_lasso.reid.html#hidimstat.desparsified_lasso.reid" title="hidimstat.desparsified_lasso.reid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reid</span></code></a>(beta_hat, residual[, tolerance, ...])</p></td>
 <td><p>Residual sum of squares based estimators for noise standard deviation estimation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.html#hidimstat.statistical_tools.nadeau_bengio_ttest" title="hidimstat.statistical_tools.nadeau_bengio_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nadeau_bengio_ttest</span></code></a>(a, popmean, test_frac[, ...])</p></td>
-<td><p>One-sample t-test with Nadeau &amp; Bengio variance correction.</p></td>
 </tr>
 </tbody>
 </table>
@@ -746,6 +760,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-functions">Feature Importance functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samplers">Samplers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">Statistical Tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions">Helper Functions</a></li>
 </ul>
   </nav></div>

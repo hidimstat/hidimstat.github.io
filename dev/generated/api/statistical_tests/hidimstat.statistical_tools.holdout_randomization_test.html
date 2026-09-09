@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>nadeau_bengio_ttest &#8212; HiDimStat</title>
+    <title>holdout_randomization_test &#8212; HiDimStat</title>
   
   
   
@@ -44,14 +44,15 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=3e0d2ae5"></script>
+    <script src="../../../_static/documentation_options.js?v=4cf474e9"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest';</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/api/statistical_tests/hidimstat.statistical_tools.holdout_randomization_test';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
@@ -62,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="User guide" href="../../../user_guide.html" />
-    <link rel="prev" title="reid" href="hidimstat.desparsified_lasso.reid.html" />
+    <link rel="next" title="quantile_aggregation" href="../helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html" />
+    <link rel="prev" title="nadeau_bengio_ttest" href="hidimstat.statistical_tools.nadeau_bengio_ttest.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -480,9 +481,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.samplers.GaussianKnockoffs.html">GaussianKnockoffs</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hidimstat.desparsified_lasso.reid.html">reid</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">nadeau_bengio_ttest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.statistical_tools.nadeau_bengio_ttest.html">nadeau_bengio_ttest</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">holdout_randomization_test</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html">quantile_aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helper_functions/hidimstat.desparsified_lasso.reid.html">reid</a></li>
 </ul>
 </div>
 </nav></div>
@@ -526,7 +530,7 @@
     
     <li class="breadcrumb-item"><a href="../../../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">nadeau_bengio_ttest</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">holdout_randomization_test</span></li>
   </ul>
 </nav>
 </div>
@@ -543,56 +547,59 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="nadeau-bengio-ttest">
-<h1>nadeau_bengio_ttest<a class="headerlink" href="#nadeau-bengio-ttest" title="Link to this heading">#</a></h1>
+  <section id="holdout-randomization-test">
+<h1>holdout_randomization_test<a class="headerlink" href="#holdout-randomization-test" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="hidimstat.statistical_tools.nadeau_bengio_ttest">
-<span class="sig-prename descclassname"><span class="pre">hidimstat.statistical_tools.</span></span><span class="sig-name descname"><span class="pre">nadeau_bengio_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">popmean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_frac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'greater'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/nadeau_bengio_ttest.py#L33-L91"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.nadeau_bengio_ttest" title="Link to this definition">#</a></dt>
-<dd><p>One-sample t-test with Nadeau &amp; Bengio variance correction.</p>
-<p>Simplification of <a class="github reference external" href="https://github.com/scipy/scipy/blob/b1296b9b4393e251511fe8fdd3e58c22a1124899/scipy/stats/_stats_py.py#L6035-L6233">scipy/scipy</a>
-Remove all the check and the management of NaN and empty array.</p>
-<p>This is a modification of scipy.stats.ttest_1samp that applies the
-Nadeau and Bengio<a class="footnote-reference brackets" href="#footcite-nadeau1999inference" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> correction to the variance
-estimate to account for dependence between repeated cross-validation estimates.</p>
+<dt class="sig sig-object py" id="hidimstat.statistical_tools.holdout_randomization_test">
+<span class="sig-prename descclassname"><span class="pre">hidimstat.statistical_tools.</span></span><span class="sig-name descname"><span class="pre">holdout_randomization_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss_diff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/statistical_tools/holdout_randomization_test.py#L7-L73"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.statistical_tools.holdout_randomization_test" title="Link to this definition">#</a></dt>
+<dd><p>Compute the p-values of the holdout randomization test (HRT).</p>
+<p>The procedure follows Tansey <em>et al.</em><a class="footnote-reference brackets" href="#footcite-tansey2022holdout" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+For a feature <span class="math notranslate nohighlight">\(j\)</span> (resp. a feature group), <cite>n_permutations</cite> samples
+are drawn from the conditional distribution <span class="math notranslate nohighlight">\(p(X_j \mid X_{-j})\)</span>, and
+for each draw, the loss difference difference between the empirical risk
+obtained on the sampled data and the empirical risk obtained on the original
+data is computed, <span class="math notranslate nohighlight">\(\Delta_k = t_k - t_0\)</span>, with <span class="math notranslate nohighlight">\(t_0\)</span> being the
+empirical risk obtained on the original data and <span class="math notranslate nohighlight">\(t_k\)</span> being the
+empirical risk obtained on the sampled data. Then the p-value is computed
+using the following formula:</p>
+<div class="math notranslate nohighlight">
+\[p_j = \frac{1}{K+1} \left(1 + \sum_{k=1}^{K}
+\mathbb{I}(\Delta_k \leq 0)\right)\]</div>
+<p>An important feature makes the resampled risks larger than the original
+one, so <span class="math notranslate nohighlight">\(\Delta_k &gt; 0\)</span> for most draws and the p-value is small.</p>
+<p>In the cross-validated setting, the p-values are aggregated across folds
+using quantile aggregation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>Sample data. The axis specified by <cite>axis</cite> is the sample (observation)
-axis.</p>
+<dt><strong>loss_diff</strong><span class="classifier">ndarray</span></dt><dd><p>The loss differences between the two models for each feature and each
+permutation. Should be of shape (n_features, n_permutations) or
+(n_features, n_permutations, n_folds), or (n_permutations,) for a
+single feature.</p>
 </dd>
-<dt><strong>popmean</strong><span class="classifier">scalar</span></dt><dd><p>The population mean to test against.</p>
+<dt><strong>gamma</strong><span class="classifier">float, default=0.5</span></dt><dd><p>Quantile level for aggregation. Must be in range (0,1].</p>
 </dd>
-<dt><strong>test_frac</strong><span class="classifier">float</span></dt><dd><p>Fraction of the data used for testing (test set size / total
-samples). Used by the Nadeau and Bengio<a class="footnote-reference brackets" href="#footcite-nadeau1999inference" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> correction
-when adjusting the sample variance.</p>
-</dd>
-<dt><strong>axis</strong><span class="classifier">int or None, default=0</span></dt><dd><p>Axis along which to compute the test. Default is 0. If None, the
-input array is flattened.</p>
-</dd>
-<dt><strong>alternative</strong><span class="classifier">{‘two-sided’, ‘greater’, ‘less’}, optional</span></dt><dd><p>Defines the alternative hypothesis. Default is ‘greater’.</p>
+<dt><strong>adaptive</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, uses adaptive quantile aggregation which optimizes over
+multiple gamma values. If False, uses fixed quantile aggregation with
+the provided gamma value.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>NBTtestResult</dt><dd><p>Named tuple with fields: statistic, pvalue. Both are computed using the
-Nadeau &amp; Bengio corrected standard error.</p>
+<dt>TestResult</dt><dd><p>Named tuple with fields: statistic, pvalue. The holdout randomization
+test does not define a test statistic, so <cite>statistic</cite> is always None
+and <cite>pvalue</cite> is an array of shape (n_features,).</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The variance is corrected using the factor implemented here:
-<cite>corrected_var = var * (1 / n + test_frac)</cite>
-where n is the number of repeated evaluations along <cite>axis</cite>.</p>
-<p>This function does not support masked arrays and only accepts numpy arrays.</p>
 <p class="rubric">References</p>
-<div class="docutils container" id="id3">
+<div class="docutils container" id="id2">
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="footcite-nadeau1999inference" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
-<p>Claude Nadeau and Yoshua Bengio. Inference for the generalization error. <em>Advances in neural information processing systems</em>, 1999.</p>
+<aside class="footnote brackets" id="footcite-tansey2022holdout" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Wesley Tansey, Victor Veitch, Haoran Zhang, Raul Rabadan, and David M Blei. The holdout randomization test for feature selection in black box models. <em>Journal of Computational and Graphical Statistics</em>, 31(1):151–162, 2022.</p>
 </aside>
 </aside>
 </div>
@@ -611,20 +618,20 @@ where n is the number of repeated evaluations along <cite>axis</cite>.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hidimstat.desparsified_lasso.reid.html"
+       href="hidimstat.statistical_tools.nadeau_bengio_ttest.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">reid</p>
+        <p class="prev-next-title">nadeau_bengio_ttest</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../../user_guide.html"
+       href="../helper_functions/hidimstat.statistical_tools.aggregation.quantile_aggregation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">User guide</p>
+        <p class="prev-next-title">quantile_aggregation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -647,14 +654,14 @@ where n is the number of repeated evaluations along <cite>axis</cite>.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.nadeau_bengio_ttest"><code class="docutils literal notranslate"><span class="pre">nadeau_bengio_ttest()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidimstat.statistical_tools.holdout_randomization_test"><code class="docutils literal notranslate"><span class="pre">holdout_randomization_test()</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../../_sources/generated/api/helper_functions/hidimstat.statistical_tools.nadeau_bengio_ttest.rst.txt">
+    <a href="../../../_sources/generated/api/statistical_tests/hidimstat.statistical_tools.holdout_randomization_test.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
