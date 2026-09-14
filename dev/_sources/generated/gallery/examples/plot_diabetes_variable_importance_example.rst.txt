@@ -118,7 +118,7 @@ and a Lasso regression model combined with a Voting Regressor.
 
  .. code-block:: none
 
-    R2 scores across folds: 0.482 ± 0.096
+    R2 scores across folds: 0.482 ± 0.097
 
 
 .. raw:: html
@@ -700,6 +700,14 @@ and a Lasso regression model combined with a Voting Regressor.
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
     }
 
     .features {
@@ -758,7 +766,6 @@ and a Lasso regression model combined with a Voting Regressor.
     }
 
     .features .features-container {
-      max-width: 15em;
       max-height: 10em;
       overflow: auto;
       scrollbar-width: thin;
@@ -833,10 +840,11 @@ and a Lasso regression model combined with a Voting Regressor.
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy estimators to clipboard"
                      onclick="copyToClipboard('estimators',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-estimators;"
@@ -852,10 +860,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy weights to clipboard"
                      onclick="copyToClipboard('weights',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-weights;"
@@ -871,10 +880,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_jobs to clipboard"
                      onclick="copyToClipboard('n_jobs',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_jobs;"
@@ -890,10 +900,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -919,10 +930,11 @@ and a Lasso regression model combined with a Voting Regressor.
                       <tbody>
                     
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy alphas to clipboard"
                      onclick="copyToClipboard('alphas',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-alphas;"
@@ -938,10 +950,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy fit_intercept to clipboard"
                      onclick="copyToClipboard('fit_intercept',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-fit_intercept;"
@@ -957,10 +970,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy scoring to clipboard"
                      onclick="copyToClipboard('scoring',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-scoring;"
@@ -976,10 +990,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy cv to clipboard"
                      onclick="copyToClipboard('cv',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-cv;"
@@ -995,10 +1010,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy gcv_mode to clipboard"
                      onclick="copyToClipboard('gcv_mode',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-gcv_mode;"
@@ -1014,10 +1030,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy store_cv_results to clipboard"
                      onclick="copyToClipboard('store_cv_results',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-store_cv_results;"
@@ -1033,10 +1050,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy alpha_per_target to clipboard"
                      onclick="copyToClipboard('alpha_per_target',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-alpha_per_target;"
@@ -1062,10 +1080,11 @@ and a Lasso regression model combined with a Voting Regressor.
                       <tbody>
                     
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy loss to clipboard"
                      onclick="copyToClipboard('loss',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-loss;"
@@ -1081,10 +1100,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy quantile to clipboard"
                      onclick="copyToClipboard('quantile',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-quantile;"
@@ -1100,10 +1120,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy learning_rate to clipboard"
                      onclick="copyToClipboard('learning_rate',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-learning_rate;"
@@ -1119,10 +1140,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_iter to clipboard"
                      onclick="copyToClipboard('max_iter',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_iter;"
@@ -1138,10 +1160,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_leaf_nodes to clipboard"
                      onclick="copyToClipboard('max_leaf_nodes',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_leaf_nodes;"
@@ -1157,10 +1180,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_depth to clipboard"
                      onclick="copyToClipboard('max_depth',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_depth;"
@@ -1176,10 +1200,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_samples_leaf to clipboard"
                      onclick="copyToClipboard('min_samples_leaf',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_samples_leaf;"
@@ -1195,10 +1220,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy l2_regularization to clipboard"
                      onclick="copyToClipboard('l2_regularization',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-l2_regularization;"
@@ -1214,10 +1240,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_features to clipboard"
                      onclick="copyToClipboard('max_features',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_features;"
@@ -1233,10 +1260,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_bins to clipboard"
                      onclick="copyToClipboard('max_bins',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_bins;"
@@ -1252,10 +1280,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy categorical_features to clipboard"
                      onclick="copyToClipboard('categorical_features',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-categorical_features;"
@@ -1271,10 +1300,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy monotonic_cst to clipboard"
                      onclick="copyToClipboard('monotonic_cst',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-monotonic_cst;"
@@ -1290,10 +1320,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy interaction_cst to clipboard"
                      onclick="copyToClipboard('interaction_cst',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-interaction_cst;"
@@ -1309,10 +1340,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy warm_start to clipboard"
                      onclick="copyToClipboard('warm_start',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-warm_start;"
@@ -1328,10 +1360,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy early_stopping to clipboard"
                      onclick="copyToClipboard('early_stopping',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-early_stopping;"
@@ -1347,10 +1380,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy scoring to clipboard"
                      onclick="copyToClipboard('scoring',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-scoring;"
@@ -1366,10 +1400,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy validation_fraction to clipboard"
                      onclick="copyToClipboard('validation_fraction',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-validation_fraction;"
@@ -1385,10 +1420,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_iter_no_change to clipboard"
                      onclick="copyToClipboard('n_iter_no_change',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_iter_no_change;"
@@ -1404,10 +1440,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy tol to clipboard"
                      onclick="copyToClipboard('tol',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-tol;"
@@ -1423,10 +1460,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -1442,10 +1480,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -1471,10 +1510,11 @@ and a Lasso regression model combined with a Voting Regressor.
                       <tbody>
                     
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_estimators to clipboard"
                      onclick="copyToClipboard('n_estimators',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_estimators;"
@@ -1490,10 +1530,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy criterion to clipboard"
                      onclick="copyToClipboard('criterion',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-criterion;"
@@ -1509,10 +1550,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_depth to clipboard"
                      onclick="copyToClipboard('max_depth',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_depth;"
@@ -1528,10 +1570,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_samples_split to clipboard"
                      onclick="copyToClipboard('min_samples_split',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_samples_split;"
@@ -1547,10 +1590,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_samples_leaf to clipboard"
                      onclick="copyToClipboard('min_samples_leaf',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_samples_leaf;"
@@ -1566,10 +1610,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_weight_fraction_leaf to clipboard"
                      onclick="copyToClipboard('min_weight_fraction_leaf',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_weight_fraction_leaf;"
@@ -1585,10 +1630,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_features to clipboard"
                      onclick="copyToClipboard('max_features',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_features;"
@@ -1604,10 +1650,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_leaf_nodes to clipboard"
                      onclick="copyToClipboard('max_leaf_nodes',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_leaf_nodes;"
@@ -1623,10 +1670,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy min_impurity_decrease to clipboard"
                      onclick="copyToClipboard('min_impurity_decrease',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-min_impurity_decrease;"
@@ -1642,10 +1690,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy bootstrap to clipboard"
                      onclick="copyToClipboard('bootstrap',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-bootstrap;"
@@ -1661,10 +1710,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy oob_score to clipboard"
                      onclick="copyToClipboard('oob_score',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-oob_score;"
@@ -1680,10 +1730,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_jobs to clipboard"
                      onclick="copyToClipboard('n_jobs',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_jobs;"
@@ -1699,10 +1750,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -1718,10 +1770,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -1737,10 +1790,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy warm_start to clipboard"
                      onclick="copyToClipboard('warm_start',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-warm_start;"
@@ -1756,10 +1810,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy ccp_alpha to clipboard"
                      onclick="copyToClipboard('ccp_alpha',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-ccp_alpha;"
@@ -1775,10 +1830,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_samples to clipboard"
                      onclick="copyToClipboard('max_samples',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_samples;"
@@ -1794,18 +1850,19 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy monotonic_cst to clipboard"
                      onclick="copyToClipboard('monotonic_cst',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-monotonic_cst;"
-                rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.RandomForestRegressor.html#:~:text=monotonic_cst,-array-like%20of%20int%20of%20shape%20%28n_features%29%2C%20default%3DNone">
+                rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.ensemble.RandomForestRegressor.html#:~:text=monotonic_cst,-array-like%20of%20int%20of%20shape%20%28n_features%2C%29%2C%20default%3DNone">
                 monotonic_cst
                 <span class="param-doc-description"
                 style="position-anchor: --doc-link-monotonic_cst;">
-                monotonic_cst: array-like of int of shape (n_features), default=None<br><br>Indicates the monotonicity constraint to enforce on each feature.<br>  - 1: monotonically increasing<br>  - 0: no constraint<br>  - -1: monotonically decreasing<br><br>If monotonic_cst is None, no constraints are applied.<br><br>Monotonicity constraints are not supported for:<br>  - multioutput regressions (i.e. when `n_outputs_ &gt; 1`).<br><br>Read more in the :ref:`User Guide &lt;monotonic_cst_gbdt&gt;`.<br><br>.. versionadded:: 1.4</span>
+                monotonic_cst: array-like of int of shape (n_features,), default=None<br><br>Indicates the monotonicity constraint to enforce on each feature.<br>  - 1: monotonically increasing<br>  - 0: no constraint<br>  - -1: monotonically decreasing<br><br>If monotonic_cst is None, no constraints are applied.<br><br>Monotonicity constraints are not supported for:<br>  - multioutput regressions (i.e. when `n_outputs_ &gt; 1`).<br><br>Read more in the :ref:`User Guide &lt;monotonic_cst_gbdt&gt;`.<br><br>.. versionadded:: 1.4</span>
             </a>
         </td>
                 <td class="value">None</td>
@@ -1823,10 +1880,11 @@ and a Lasso regression model combined with a Voting Regressor.
                       <tbody>
                     
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy eps to clipboard"
                      onclick="copyToClipboard('eps',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-eps;"
@@ -1842,10 +1900,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy alphas to clipboard"
                      onclick="copyToClipboard('alphas',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-alphas;"
@@ -1861,10 +1920,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy fit_intercept to clipboard"
                      onclick="copyToClipboard('fit_intercept',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-fit_intercept;"
@@ -1880,10 +1940,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy precompute to clipboard"
                      onclick="copyToClipboard('precompute',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-precompute;"
@@ -1899,10 +1960,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_iter to clipboard"
                      onclick="copyToClipboard('max_iter',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_iter;"
@@ -1918,10 +1980,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy tol to clipboard"
                      onclick="copyToClipboard('tol',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-tol;"
@@ -1937,10 +2000,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy copy_X to clipboard"
                      onclick="copyToClipboard('copy_X',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-copy_X;"
@@ -1956,10 +2020,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy cv to clipboard"
                      onclick="copyToClipboard('cv',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-cv;"
@@ -1975,10 +2040,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -1994,10 +2060,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy n_jobs to clipboard"
                      onclick="copyToClipboard('n_jobs',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-n_jobs;"
@@ -2013,10 +2080,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy positive to clipboard"
                      onclick="copyToClipboard('positive',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-positive;"
@@ -2032,10 +2100,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -2051,10 +2120,11 @@ and a Lasso regression model combined with a Voting Regressor.
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy selection to clipboard"
                      onclick="copyToClipboard('selection',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-selection;"
@@ -2286,8 +2356,8 @@ estimation to account for the dependency between the test statistics. We use the
 
  .. code-block:: none
 
-    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 1934.29it/s]
-    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 3898.05it/s]
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 1761.13it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 3331.99it/s]
 
 
 
@@ -2320,8 +2390,8 @@ We repeat the same process using the LOCO method.
 
  .. code-block:: none
 
-    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 1889.67it/s]
-    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2909.07it/s]
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 1307.61it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 2254.27it/s]
 
 
 
@@ -2355,8 +2425,8 @@ Finally, we repeat the same process using the PFI method.
 
  .. code-block:: none
 
-    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 430.56it/s]
-    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 3315.66it/s]
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 472.03it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds: 100%|██████████| 5/5 [00:00<00:00, 3681.15it/s]
 
 
 
@@ -2424,7 +2494,7 @@ line indicates the significance threshold at p-value=0.05.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7cf5c984d1d0>
+    <matplotlib.legend.Legend object at 0x72f36be10b90>
 
 
 
@@ -2445,9 +2515,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 41.352 seconds)
+   **Total running time of the script:** (0 minutes 41.906 seconds)
 
-**Estimated memory usage:**  1131 MB
+**Estimated memory usage:**  1035 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_diabetes_variable_importance_example.py:

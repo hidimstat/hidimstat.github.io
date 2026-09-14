@@ -146,9 +146,7 @@ You may choose a subject in [1, 2, 3, 4, 5, 6]. By default subject=2.
 
  .. code-block:: none
 
-    [fetch_haxby] Dataset found in /home/circleci/nilearn_data/haxby2001
-    /home/circleci/project/examples/plot_fmri_data_example.py:77: UserWarning: [NiftiMasker.fit] Generation of a mask has been requested (imgs != None) while a mask was given at masker creation. Given mask will be used.
-      fmri_masked = masker.fit_transform(fmri_filename)
+    [fetch_haxby] Dataset directory found: /home/circleci/nilearn_data/haxby2001
 
 
 
@@ -307,10 +305,8 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:04,  2.16it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:12<00:08,  2.11s/it]/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:787: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
-      warnings.warn(
-    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:22<00:02,  2.69s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:22<00:00,  2.25s/it]
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:00<00:00, 40.39it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 66.82it/s]
+    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:03,  2.84it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:10<00:07,  1.78s/it]    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:20<00:02,  2.49s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:20<00:00,  2.06s/it]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:00<00:00, 40.13it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 66.68it/s]
 
     array([ 4.02271197e-05,  4.02271197e-05,  4.02271197e-05, ...,
            -4.34262336e-04, -4.34262336e-04, -4.34262336e-04], shape=(39912,))
@@ -472,9 +468,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 23.030 seconds)
+   **Total running time of the script:** (1 minutes 7.381 seconds)
 
-**Estimated memory usage:**  1868 MB
+**Estimated memory usage:**  1639 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:

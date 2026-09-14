@@ -111,13 +111,13 @@ coefficients:
 
  .. code-block:: none
 
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2123: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2137: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2150: FutureWarning: The fitted attributes of LogisticRegressionCV will be simplified in scikit-learn 1.10 to remove redundancy. Set`use_legacy_attributes=False` to enable the new behavior now, or set it to `True` to silence this warning during the transition period while keeping the deprecated behavior for the time being. The default value of use_legacy_attributes will change from True to False in scikit-learn 1.10. See the docstring of LogisticRegressionCV for more details.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2129: FutureWarning: The fitted attributes of LogisticRegressionCV will be simplified in scikit-learn 1.10 to remove redundancy. Set`use_legacy_attributes=False` to enable the new behavior now, or set it to `True` to silence this warning during the transition period while keeping the deprecated behavior for the time being. The default value of use_legacy_attributes will change from True to False in scikit-learn 1.10. See the docstring of LogisticRegressionCV for more details.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2187: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
     Accuracy of Lasso on test set: 1.000
     The Lasso selects 8 variables:
@@ -233,13 +233,13 @@ regularization parameter) to the noisy dataset and observe the results:
 
  .. code-block:: none
 
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2123: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2137: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2150: FutureWarning: The fitted attributes of LogisticRegressionCV will be simplified in scikit-learn 1.10 to remove redundancy. Set`use_legacy_attributes=False` to enable the new behavior now, or set it to `True` to silence this warning during the transition period while keeping the deprecated behavior for the time being. The default value of use_legacy_attributes will change from True to False in scikit-learn 1.10. See the docstring of LogisticRegressionCV for more details.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2129: FutureWarning: The fitted attributes of LogisticRegressionCV will be simplified in scikit-learn 1.10 to remove redundancy. Set`use_legacy_attributes=False` to enable the new behavior now, or set it to `True` to silence this warning during the transition period while keeping the deprecated behavior for the time being. The default value of use_legacy_attributes will change from True to False in scikit-learn 1.10. See the docstring of LogisticRegressionCV for more details.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2187: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
     Accuracy of Lasso on test set with noise: 0.965
     The Lasso makes at least 42 False Discoveries!!
@@ -312,13 +312,13 @@ selection of variables is based on the Lasso Coefficient Difference (LCD) statis
       diag_s = np.diag(_s_equi(sigma, tol=self.tol))
     /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
       diag_s = np.diag(_s_equi(sigma, tol=self.tol))
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2123: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2137: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2150: FutureWarning: The fitted attributes of LogisticRegressionCV will be simplified in scikit-learn 1.10 to remove redundancy. Set`use_legacy_attributes=False` to enable the new behavior now, or set it to `True` to silence this warning during the transition period while keeping the deprecated behavior for the time being. The default value of use_legacy_attributes will change from True to False in scikit-learn 1.10. See the docstring of LogisticRegressionCV for more details.
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2129: FutureWarning: The fitted attributes of LogisticRegressionCV will be simplified in scikit-learn 1.10 to remove redundancy. Set`use_legacy_attributes=False` to enable the new behavior now, or set it to `True` to silence this warning during the transition period while keeping the deprecated behavior for the time being. The default value of use_legacy_attributes will change from True to False in scikit-learn 1.10. See the docstring of LogisticRegressionCV for more details.
       warnings.warn(
-    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2187: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
+    /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
     Knockoffs make at least 2 False Discoveries
 
@@ -426,9 +426,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.691 seconds)
+   **Total running time of the script:** (0 minutes 4.704 seconds)
 
-**Estimated memory usage:**  218 MB
+**Estimated memory usage:**  220 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoffs_wisconsin.py:

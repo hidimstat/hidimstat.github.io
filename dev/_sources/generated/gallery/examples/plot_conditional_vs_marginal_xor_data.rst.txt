@@ -660,6 +660,14 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
     }
 
     .features {
@@ -718,7 +726,6 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     }
 
     .features .features-container {
-      max-width: 15em;
       max-height: 10em;
       overflow: auto;
       scrollbar-width: thin;
@@ -790,10 +797,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy random_state to clipboard"
                      onclick="copyToClipboard('random_state',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-random_state;"
@@ -809,10 +817,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy C to clipboard"
                      onclick="copyToClipboard('C',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-C;"
@@ -828,10 +837,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy kernel to clipboard"
                      onclick="copyToClipboard('kernel',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-kernel;"
@@ -847,10 +857,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy degree to clipboard"
                      onclick="copyToClipboard('degree',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-degree;"
@@ -866,10 +877,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy gamma to clipboard"
                      onclick="copyToClipboard('gamma',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-gamma;"
@@ -885,10 +897,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy coef0 to clipboard"
                      onclick="copyToClipboard('coef0',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-coef0;"
@@ -904,10 +917,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy shrinking to clipboard"
                      onclick="copyToClipboard('shrinking',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-shrinking;"
@@ -923,10 +937,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy probability to clipboard"
                      onclick="copyToClipboard('probability',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-probability;"
@@ -942,10 +957,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy tol to clipboard"
                      onclick="copyToClipboard('tol',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-tol;"
@@ -961,10 +977,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy cache_size to clipboard"
                      onclick="copyToClipboard('cache_size',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-cache_size;"
@@ -980,10 +997,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy class_weight to clipboard"
                      onclick="copyToClipboard('class_weight',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-class_weight;"
@@ -999,10 +1017,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy verbose to clipboard"
                      onclick="copyToClipboard('verbose',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-verbose;"
@@ -1018,10 +1037,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy max_iter to clipboard"
                      onclick="copyToClipboard('max_iter',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-max_iter;"
@@ -1037,10 +1057,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy decision_function_shape to clipboard"
                      onclick="copyToClipboard('decision_function_shape',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-decision_function_shape;"
@@ -1056,10 +1077,11 @@ To solve the XOR problem, we will use a Support Vector Classier (SVC) with Radia
     
 
             <tr class="default">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy break_ties to clipboard"
                      onclick="copyToClipboard('break_ties',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
+                ></button></td>
                 <td class="param">
             <a class="param-doc-link"
                 style="anchor-name: --doc-link-break_ties;"
@@ -1721,9 +1743,9 @@ the null hypothesis (importance = 0.0).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.422 seconds)
+   **Total running time of the script:** (0 minutes 6.451 seconds)
 
-**Estimated memory usage:**  218 MB
+**Estimated memory usage:**  220 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_conditional_vs_marginal_xor_data.py:
