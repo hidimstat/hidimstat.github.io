@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=58c65985"></script>
+    <script src="../../../_static/documentation_options.js?v=9f81e878"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -532,13 +532,13 @@ to download the full example code.</p>
 <p>This example demonstrates how to create Partial Dependency Plots (PDPs). This
 visualization method allows you to examine a model’s dependence on a single feature or
 a pair of features. The underlying implementation is built upon
-sklearn.inspection.partial_dependence, which calculates the dependence by taking the
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.inspection.partial_dependence.html#sklearn.inspection.partial_dependence" title="(in scikit-learn v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.inspection.partial_dependence()</span></code></a>, which calculates the dependence by taking the
 average response of an estimator across all possible values of the target feature(s).
 We’ll use the circles dataset to illustrate the basic usage.</p>
 <section id="loading-the-circles-dataset">
 <h2>Loading the circles dataset<a class="headerlink" href="#loading-the-circles-dataset" title="Link to this heading">#</a></h2>
-<p>We start by sampling a synthetic dataset using the <cite>make_circles</cite> function from
-<cite>sklearn.datasets</cite>.</p>
+<p>We start by sampling a synthetic dataset using the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html#sklearn.datasets.make_circles" title="(in scikit-learn v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_circles()</span></code></a> function from
+<a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.datasets.html#module-sklearn.datasets" title="(in scikit-learn v1.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code></a>.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_circles.html#sklearn.datasets.make_circles" title="sklearn.datasets.make_circles" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_circles</span></a>
@@ -563,8 +563,8 @@ We’ll use the circles dataset to illustrate the basic usage.</p>
 <h2>Training a classifier<a class="headerlink" href="#training-a-classifier" title="Link to this heading">#</a></h2>
 <p>Next, we train a model to solve the binary classification task presented by the
 non-linearly separable circles dataset. For this example, we’ll use a gradient
-boosted tree ensemble, specifically the HistGradientBoostingClassifier from
-scikit-learn.</p>
+boosted tree ensemble, specifically the
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">HistGradientBoostingClassifier</span></code></a> from scikit-learn.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingClassifier" class="sphx-glr-backref-module-sklearn-ensemble-_hist_gradient_boosting-gradient_boosting sphx-glr-backref-type-py-class"><span class="n">HistGradientBoostingClassifier</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="sklearn.metrics.roc_auc_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">roc_auc_score</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a>
@@ -589,7 +589,7 @@ scikit-learn.</p>
 <h2>Partial Dependence for an Individual Feature<a class="headerlink" href="#partial-dependence-for-an-individual-feature" title="Link to this heading">#</a></h2>
 <p>Once the model is fitted, we use the Partial Dependency Plot (PDP) to visualize its
 dependence on a single input feature (e.g., the first feature, <span class="math notranslate nohighlight">\(X_0\)</span>).The
-resulting plot shows the average response of the model (on the :math`y`-axis)
+resulting plot shows the average response of the model (on the <span class="math notranslate nohighlight">\(y\)</span>-axis)
 for each possible value of the selected feature (on the <span class="math notranslate nohighlight">\(x\)</span>-axis), with the averaging
 performed over all other features in the dataset.</p>
 <p>The plot also includes the marginal distribution of the feature considered along
@@ -598,7 +598,6 @@ low-density regions in the data. Model predictions and the estimated partial
 dependence can be less reliable or extrapolated in these regions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat.visualization</span><span class="w"> </span><span class="kn">import</span> <a href="../../api/class/hidimstat.visualization.PDP.html#hidimstat.visualization.PDP" title="hidimstat.visualization.PDP" class="sphx-glr-backref-module-hidimstat-visualization sphx-glr-backref-type-py-class"><span class="n">PDP</span></a>
 
-<span class="c1"># sphinx_gallery_thumbnail_number = 2</span>
 <a href="../../api/class/hidimstat.visualization.PDP.html#hidimstat.visualization.PDP" title="hidimstat.visualization.PDP" class="sphx-glr-backref-module-hidimstat-visualization sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pdp</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.visualization.PDP.html#hidimstat.visualization.PDP" title="hidimstat.visualization.PDP" class="sphx-glr-backref-module-hidimstat-visualization sphx-glr-backref-type-py-class"><span class="n">PDP</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingClassifier" class="sphx-glr-backref-module-sklearn-ensemble-_hist_gradient_boosting-gradient_boosting sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model</span></a><span class="p">)</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html#matplotlib.patches.Circle" title="matplotlib.patches.Circle" class="sphx-glr-backref-module-matplotlib-patches sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="../../api/class/hidimstat.visualization.PDP.html#hidimstat.visualization.PDP.plot" title="hidimstat.visualization.PDP.plot" class="sphx-glr-backref-module-hidimstat-visualization sphx-glr-backref-type-py-method"><span class="n">pdp</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -616,8 +615,8 @@ estimated dependence might be unreliable due to a low density of training data.<
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html#matplotlib.patches.Circle" title="matplotlib.patches.Circle" class="sphx-glr-backref-module-matplotlib-patches sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axes</span></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html#matplotlib.patches.Circle" title="matplotlib.patches.Circle" class="sphx-glr-backref-module-matplotlib-patches sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">c1</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../../_images/sphx_glr_plot_partial_dependency_plot_003.png" srcset="../../../_images/sphx_glr_plot_partial_dependency_plot_003.png" alt="plot partial dependency plot" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.811 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  234 MB</p>
+<img src="../../../_images/sphx_glr_plot_partial_dependency_plot_003.png" srcset="../../../_images/sphx_glr_plot_partial_dependency_plot_003.png" alt="plot partial dependency plot" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.719 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  235 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-partial-dependency-plot-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/6cc1ab330e332d2d2064b046dab13bc9/plot_partial_dependency_plot.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_partial_dependency_plot.ipynb</span></code></a></p>

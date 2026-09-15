@@ -305,8 +305,10 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:02,  3.51it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:07<00:05,  1.36s/it]    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:15<00:01,  1.83s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:15<00:00,  1.52s/it]
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:00<00:00, 53.74it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 89.23it/s]
+    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:02,  4.18it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:07<00:05,  1.36s/it]/home/circleci/project/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:787: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+      warnings.warn(
+    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:14<00:01,  1.79s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:14<00:00,  1.49s/it]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:00<00:00, 51.25it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 85.12it/s]
 
     array([ 4.02271197e-05,  4.02271197e-05,  4.02271197e-05, ...,
            -4.34262336e-04, -4.34262336e-04, -4.34262336e-04], shape=(39912,))
@@ -468,9 +470,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 53.315 seconds)
+   **Total running time of the script:** (0 minutes 53.283 seconds)
 
-**Estimated memory usage:**  1638 MB
+**Estimated memory usage:**  1626 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:
