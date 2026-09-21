@@ -40,7 +40,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [:footciteChamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [Chamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier.">
 
 .. only:: html
 
@@ -74,7 +74,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to use Accumulated Local Effects (ALE), as defined by :footciteapley2020accumulatedlocaleffects, to interpret machine learning models within the hidimstat library.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to use Accumulated Local Effects (ALE), as defined by apley2020accumulatedlocaleffects, to interpret machine learning models within the hidimstat library.">
 
 .. only:: html
 
@@ -91,7 +91,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we demonstrate how to measure feature importance using SAGE :footciteCovert2020 on the diabetes dataset. Read more in the User Guide &lt;shapley_additive_global_explanation&gt;. For this example, we use the marginal version of SAGE, which limits the computational cost. To further reduce the computational cost, Shapley values are estimated using a Monte Carlo approximation. Only a subset of all possible feature coalitions is sampled. This is controlled by the n_subsets parameter. Finally, the expectation over the marginal distribution is also approximated using n_permutations.">
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we demonstrate how to measure feature importance using SAGE Covert2020 on the diabetes dataset. Read more in the User Guide. For this example, we use the marginal version of SAGE, which limits the computational cost. To further reduce the computational cost, Shapley values are estimated using a Monte Carlo approximation. Only a subset of all possible feature coalitions is sampled. This is controlled by the n_subsets parameter. Finally, the expectation over the marginal distribution is also approximated using n_permutations.">
 
 .. only:: html
 
@@ -108,7 +108,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to compute p-values with the Holdout Randomization Test (HRT) [:footcitetansey2022holdout]. We simulate a regression problem in which only 10 of the 100 features carry signal, fit a linear model, and test each feature with CFI by passing statistical_test=&quot;hrt&quot;. The resulting p-values are valid in finite samples and make no assumption on the model; we check this on the features that carry no signal.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to compute p-values with the Holdout Randomization Test (HRT) [tansey2022holdout]. We simulate a regression problem in which only 10 of the 100 features carry signal, fit a linear model, and test each feature with CFI by passing statistical_test=&quot;hrt&quot;. The resulting p-values are valid in finite samples and make no assumption on the model; we check this on the features that carry no signal.">
 
 .. only:: html
 
@@ -125,7 +125,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCO feature importance [Williamson_General_2023] across different predictive models on the same regression dataset. LOCO is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCO feature importance they yield.">
 
 .. only:: html
 
@@ -142,7 +142,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCI feature importance [:footciteWilliamson_General_2023] across different predictive models on the same regression dataset. LOCI is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCI feature importance they yield.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to compare LOCI feature importance [Williamson_General_2023] across different predictive models on the same regression dataset. LOCI is model-agnostic and can be applied to any predictive model. Here, we use a linear model, a random forest, a neural network, and a support vector machine. We compare the models based on their predictive performance (R2 score) and the LOCI feature importance they yield.">
 
 .. only:: html
 
@@ -210,7 +210,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the limitations of variable selection methods based on linear models using the circles dataset. We first use the distilled conditional randomization test (d0CRT), which is based on linear models :footciteliu2022fast and then demonstrate how model-agnostic methods, such as Leave-One-Covariate-Out (LOCO), can identify important variables even when classes are not linearly separable.">
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the limitations of variable selection methods based on linear models using the circles dataset. We first use the distilled conditional randomization test (d0CRT), which is based on linear models liu2022fast and then demonstrate how model-agnostic methods, such as Leave-One-Covariate-Out (LOCO), can identify important variables even when classes are not linearly separable.">
 
 .. only:: html
 
@@ -227,7 +227,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The examples shows how to use aggregate model-X Knockoff selections to derandomize inference. The model-X Knockoff introduced by :footcitecandes2018panning allows for variable selection with statistical guarantees on the False Discovery Rate (FDR),">
+    <div class="sphx-glr-thumbcontainer" tooltip="The examples shows how to use aggregate model-X Knockoff selections to derandomize inference. The model-X Knockoff introduced by candes2018panning allows for variable selection with statistical guarantees on the False Discovery Rate (FDR),">
 
 .. only:: html
 
@@ -244,7 +244,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to apply the distilled conditional randomization test (D0CRT) to logistic regression. The hidimstat package implements the decorrelation method described in :footcitenguyen2022conditional, which ensures that the distribution of the test statistic under the null hypothesis closely approximates a standard Gaussian distribution. We illustrate this property by comparing the quantiles of the test statistics obtained using this method (dCRT-logit) with those from the original D0CRT.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to apply the distilled conditional randomization test (D0CRT) to logistic regression. The hidimstat package implements the decorrelation method described in nguyen2022conditional, which ensures that the distribution of the test statistic under the null hypothesis closely approximates a standard Gaussian distribution. We illustrate this property by comparing the quantiles of the test statistics obtained using this method (dCRT-logit) with those from the original D0CRT.">
 
 .. only:: html
 
@@ -278,7 +278,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how to compute de-biased coefficient estimates and confidence intervals using DesparsifiedLasso on the diabetes dataset. This example is inspired by :footcitehastie2015statistical.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how to compute de-biased coefficient estimates and confidence intervals using DesparsifiedLasso on the diabetes dataset. This example is inspired by hastie2015statistical.">
 
 .. only:: html
 
@@ -295,7 +295,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example adapts the experiment presented in :footcitechevalier2020statistical. We show how to identify which cortical sources are activated during a somatosensory task. To do so, we leverage spatially constrained clustering to effectively reduce the dimensionality of the problem while accounting for the spatial structure of the data. We then perform inference with the desparsified multitask Lasso to perform support recovery from spatio-temporal data.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example adapts the experiment presented in chevalier2020statistical. We show how to identify which cortical sources are activated during a somatosensory task. To do so, we leverage spatially constrained clustering to effectively reduce the dimensionality of the problem while accounting for the spatial structure of the data. We then perform inference with the desparsified multitask Lasso to perform support recovery from spatio-temporal data.">
 
 .. only:: html
 
@@ -329,7 +329,7 @@ Examples Gallery
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs :footcitecandes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue.">
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we explore the basics of variable selection and illustrate the need to statistically control the amount of faslely selected variables. We compare two variable selection methods: the Lasso and the Model-X Knockoffs candes2018panning. We show how the Lasso is not robust to the presence of irrelevant variables, while the Knockoffs (KO) method is able to address this issue.">
 
 .. only:: html
 

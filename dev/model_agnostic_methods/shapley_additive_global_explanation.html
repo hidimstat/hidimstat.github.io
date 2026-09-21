@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -44,12 +44,12 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=9f81e878"></script>
+    <script src="../_static/documentation_options.js?v=a492ec74"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=97f0b27d"></script>
+    <script src="../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model_agnostic_methods/shapley_additive_global_explanation';</script>
@@ -447,7 +447,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../concepts/total_sobol_index.html">1.4. Generalized Total Sobol Index</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../slm_methods.html">2. Sparse Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../slm_methods.html">2. Sparse Linear Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../slm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slm_methods/model_x_knockoffs.html">2.2. Model-X Knockoffs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slm_methods/dcrt.html">2.3. Distilled Conditional Randomization Test</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../model_agnostic_methods.html">3. Model-agnostic methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="conditional_feature_importance.html">3.1. Conditional Feature Importance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="permutation_feature_importance.html">3.2. Permutation Feature Importance</a></li>
@@ -461,7 +466,9 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization.html">5. Tools for visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../grouping.html">6. Measuring the importance of feature groups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../high_dimension.html">7. Inference in high dimension</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high_dimension.html">7. Inference in high dimension</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -541,10 +548,6 @@ contribution of features. The definition above can be translated to the
 predictive modeling setting by replacing the notion of “outcome” by the model
 performance measured through a loss function, and the notion of “players” by
 features.</p>
-<figure class="align-center">
-<a class="reference external image-reference" href="../generated/gallery/examples/plot_msage.html"><img alt="../_images/sphx_glr_plot_msage_001.png" src="../_images/sphx_glr_plot_msage_001.png" />
-</a>
-</figure>
 <section id="theoretical-index">
 <h2><span class="section-number">3.3.1. </span>Theoretical index<a class="headerlink" href="#theoretical-index" title="Link to this heading">#</a></h2>
 <p>To quantify feature contributions in a predictive model, SAGE relies on a value
@@ -619,18 +622,18 @@ sampling where the number of subsets is controlled by the parameter
 <section id="regression-example">
 <h2><span class="section-number">3.3.3. </span>Regression example<a class="headerlink" href="#regression-example" title="Link to this heading">#</a></h2>
 <p>The following example illustrates the use of SAGE on a regression task:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_regression</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_regression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAGE</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sage</span> <span class="o">=</span> <span class="n">SAGE</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">imputation</span><span class="o">=</span><span class="s2">"marginal"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sage</span> <span class="o">=</span> <span class="n">SAGE</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">imputation</span><span class="o">=</span><span class="s2">"marginal"</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sage</span> <span class="o">=</span> <span class="n">sage</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">features_importance</span> <span class="o">=</span> <span class="n">sage</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">importance</span> <span class="o">=</span> <span class="n">sage</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -656,7 +659,7 @@ following example illustrates the use of SAGE on a classification task:</p>
 <span class="gp">... </span>    <span class="n">method</span><span class="o">=</span><span class="s2">"predict_proba"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sage</span> <span class="o">=</span> <span class="n">sage</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">features_importance</span> <span class="o">=</span> <span class="n">sage</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">importance</span> <span class="o">=</span> <span class="n">sage</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

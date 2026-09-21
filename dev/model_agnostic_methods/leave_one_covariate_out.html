@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -44,12 +44,12 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=9f81e878"></script>
+    <script src="../_static/documentation_options.js?v=a492ec74"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=97f0b27d"></script>
+    <script src="../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model_agnostic_methods/leave_one_covariate_out';</script>
     <script>
@@ -446,7 +446,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../concepts/total_sobol_index.html">1.4. Generalized Total Sobol Index</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../slm_methods.html">2. Sparse Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../slm_methods.html">2. Sparse Linear Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../slm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slm_methods/model_x_knockoffs.html">2.2. Model-X Knockoffs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slm_methods/dcrt.html">2.3. Distilled Conditional Randomization Test</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../model_agnostic_methods.html">3. Model-agnostic methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="conditional_feature_importance.html">3.1. Conditional Feature Importance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="permutation_feature_importance.html">3.2. Permutation Feature Importance</a></li>
@@ -460,7 +465,9 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization.html">5. Tools for visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../grouping.html">6. Measuring the importance of feature groups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../high_dimension.html">7. Inference in high dimension</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high_dimension.html">7. Inference in high dimension</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -527,6 +534,9 @@
   <section id="leave-one-covariate-out">
 <span id="id1"></span><h1><span class="section-number">3.4. </span>Leave-One-Covariate-Out<a class="headerlink" href="#leave-one-covariate-out" title="Link to this heading">#</a></h1>
 <p>TODO: Write this section.</p>
+<section id="references">
+<h2><span class="section-number">3.4.1. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
 
@@ -567,6 +577,18 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.4.1. References</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=c83e6b79" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -44,12 +44,12 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="_static/documentation_options.js?v=9f81e878"></script>
+    <script src="_static/documentation_options.js?v=a492ec74"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=97f0b27d"></script>
+    <script src="_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'high_dimension';</script>
@@ -447,7 +447,12 @@
 <li class="toctree-l2"><a class="reference internal" href="concepts/total_sobol_index.html">1.4. Generalized Total Sobol Index</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="slm_methods.html">2. Sparse Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="slm_methods.html">2. Sparse Linear Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="slm_methods/desparsified_lasso.html">2.1. Desparsified Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slm_methods/model_x_knockoffs.html">2.2. Model-X Knockoffs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slm_methods/dcrt.html">2.3. Distilled Conditional Randomization Test</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="model_agnostic_methods.html">3. Model-agnostic methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/conditional_feature_importance.html">3.1. Conditional Feature Importance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_agnostic_methods/permutation_feature_importance.html">3.2. Permutation Feature Importance</a></li>
@@ -461,7 +466,9 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization.html">5. Tools for visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grouping.html">6. Measuring the importance of feature groups</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Inference in high dimension</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">7. Inference in high dimension</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -524,6 +531,8 @@
                   
   <section id="inference-in-high-dimension">
 <span id="high-dimension"></span><h1><span class="section-number">7. </span>Inference in high dimension<a class="headerlink" href="#inference-in-high-dimension" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <section id="naive-inference-in-high-dimension-is-ill-posed">
 <h2><span class="section-number">7.1. </span>Naive inference in high dimension is ill-posed<a class="headerlink" href="#naive-inference-in-high-dimension-is-ill-posed" title="Link to this heading">#</a></h2>
 <p>In some cases, data represent high-dimensional measurements of some phenomenon
@@ -541,30 +550,35 @@ conditional inference is ill-posed.</p></li>
 <p>This is illustrated in the above example, where the Desparsified Lasso
 (<a class="reference internal" href="generated/api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.DesparsifiedLasso</span></code></a>) struggles
 to identify relevant features. We need some data to start:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">roi_size</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># size of the edge of the four predictive regions</span>
-
-<span class="go"># generating the data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat._utils.scenario</span><span class="w"> </span><span class="kn">import</span> <span class="n">multivariate_simulation_spatial</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat._utils.scenario</span><span class="w"> </span><span class="kn">import</span> <span class="n">multivariate_simulation_spatial</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># size of the edge of the four predictive regions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">roi_size</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="n">multivariate_simulation_spatial</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_samples</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">roi_size</span><span class="p">,</span> <span class="n">signal_noise_ratio</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">smooth_X</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">n_samples</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">roi_size</span><span class="p">,</span> <span class="n">signal_noise_ratio</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">smooth_X</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then we perform inference on this data using the Desparsified Lasso:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat.desparsified_lasso</span><span class="w"> </span><span class="kn">import</span> <span class="n">DesparsifiedLasso</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat.desparsified_lasso</span><span class="w"> </span><span class="kn">import</span> <span class="n">DesparsifiedLasso</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># compute importance score and associated corrected p-values</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dlasso</span> <span class="o">=</span> <span class="n">DesparsifiedLasso</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dlasso</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># compute importance score and associated</span>
-<span class="go">    corrected p-values</span>
-
-<span class="go"># compute estimated support</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">importance</span> <span class="o">=</span> <span class="n">dlasso</span><span class="o">.</span><span class="n">importance</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># compute estimated support</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">.05</span> <span class="c1"># alpha is the significance level for the statistical test</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># alpha is the significance level for the statistical test</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">.05</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selected_dl</span> <span class="o">=</span> <span class="n">dlasso</span><span class="o">.</span><span class="n">pvalues_</span> <span class="o">&lt;</span> <span class="n">alpha</span> <span class="o">/</span> <span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">true_support</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Desparsified Lasso selected </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">selected_dl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span>
-<span class="go">    features among {np.sum(true_support)} ')</span>
-<span class="go">Desparsified Lasso selected 19 features among 64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Desparsified Lasso selected </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">selected_dl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span><span class="s1"> features among </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="go">Desparsified Lasso selected 6 features among 64</span>
 </pre></div>
 </div>
 </section>
@@ -584,32 +598,33 @@ with such configuration is to take the per-group average of the features:
 this leads to a <em>reduced design</em>. After inference, all the feature in a given
 group obtain the p-value of the group representative. When the inference
 engine is Desparsified Lasso, the resulting method is called Clustered
-Desparsified lasso, or <a class="reference internal" href="generated/api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.CluDL</span></code></a>.</p>
+Desparsified lasso, or <a class="reference internal" href="generated/api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.ClusterImportance</span></code></a>.</p>
 <p>Using the same example as previously, we start by defining a clustering
 method that will perform the grouping. For image data, Ward clustering is a
 good default model, because it takes into account the neighboring structure
 among pixels, which avoids creating overly messy clusters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureAgglomeration</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LassoCV</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connectivity</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">grid_to_graph</span><span class="p">(</span><span class="n">n_x</span><span class="o">=</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_y</span><span class="o">=</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ward</span> <span class="o">=</span> <span class="n">FeatureAgglomeration</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">"ward"</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Equipped with this, we can use CluDL:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">CluDL</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LassoCV</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cludl</span> <span class="o">=</span> <span class="n">CluDL</span><span class="p">(</span>
-<span class="go">    clustering=ward,</span>
-<span class="go">    desparsified_lasso=DesparsifiedLasso(estimator=LassoCV()))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cludl</span><span class="o">.</span><span class="n">fit_importance</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go"># compute estimated support</span>
+<span class="gp">... </span>    <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">"ward"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vim</span> <span class="o">=</span> <span class="n">DesparsifiedLasso</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">LassoCV</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Equipped with this, we can use ClusterImportance:</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClusterImportance</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cludl</span> <span class="o">=</span> <span class="n">ClusterImportance</span><span class="p">(</span><span class="n">clustering</span><span class="o">=</span><span class="n">ward</span><span class="p">,</span> <span class="n">vim</span><span class="o">=</span><span class="n">vim</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cludl</span> <span class="o">=</span> <span class="n">cludl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">importance</span> <span class="o">=</span> <span class="n">cludl</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># compute estimated support</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selected_cdl</span> <span class="o">=</span> <span class="n">cludl</span><span class="o">.</span><span class="n">fwer_selection</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Clustered Desparsified Lasso selected</span>
-<span class="go">    {np.sum(selected_cdl *  true_support)} features among</span>
-<span class="go">    {np.sum(true_support)}')</span>
-<span class="go">Clustered Desparsified Lasso selected 51 features among 64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Clustered Desparsified Lasso selected </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">selected_cdl</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span><span class="s1"> features among </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="go">Clustered Desparsified Lasso selected 52 features among 64</span>
 </pre></div>
 </div>
 <p>Note that inference is also way faster on the compressed representation.</p>
@@ -622,22 +637,16 @@ globally optimal clustering, the wiser solution is to <em>average</em> the resul
 across clusterings. Since it may not be a good idea to average p-values, an
 alternative <em>ensembling</em> or  <em>aggregation</em> strategy is used instead. When the
 inference engine is Desparsified Lasso, the resulting method is called
-Ensemble of Clustered Desparsified lasso, or <a class="reference internal" href="generated/api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.EnCluDL</span></code></a>.</p>
+Ensemble of Clustered Desparsified lasso, or <a class="reference internal" href="generated/api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.EnsembleImportance</span></code></a>.</p>
 <p>The behavior is illustrated here:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnCluDL</span>
-
-<span class="go"># ensemble of clustered desparsified lasso (EnCluDL)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">encludl</span> <span class="o">=</span> <span class="n">EnCluDL</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">clustering</span><span class="o">=</span><span class="n">ward</span><span class="p">,</span>
-<span class="go">        desparsified_lasso=DesparsifiedLasso(estimator=LassoCV()),</span>
-<span class="go">        n_bootstraps=20,</span>
-<span class="go">        random_state=0)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnsembleImportance</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ensemble of clustered desparsified lasso (EnsembleImportance)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encludl</span> <span class="o">=</span> <span class="n">EnsembleImportance</span><span class="p">(</span><span class="n">vim</span><span class="o">=</span><span class="n">cludl</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">importance</span> <span class="o">=</span> <span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span><span class="p">(</span><span class="n">X_init</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selected_ecdl</span> <span class="o">=</span> <span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Ensemble of Clustered Desparsified Lasso selected</span>
-<span class="go">    {np.sum(selected_ecdl *  true_support)} features among</span>
-<span class="go">    {np.sum(true_support)} ')</span>
-<span class="go">Ensemble of Clustered Desparsified Lasso selected 57 features among 64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Ensemble of Clustered Desparsified Lasso selected </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">selected_ecdl</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span><span class="s1"> features among </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_support</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="go">Ensemble of Clustered Desparsified Lasso selected 0 features among 64</span>
 </pre></div>
 </div>
 <aside class="topic">
