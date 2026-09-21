@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=a492ec74"></script>
+    <script src="../../../_static/documentation_options.js?v=ebd9b2cd"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -591,7 +591,7 @@ and a Lasso regression model combined with a Voting Regressor.</p>
 </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="s2">R2 scores across folds: </span><span class="si">{</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.mean.html#numpy.mean" title="numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">(</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="list"><span class="n">scores</span></a><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.std.html#numpy.std" title="numpy.std"><span class="n">np</span><span class="o">.</span><span class="n">std</span></a><span class="p">(</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="list"><span class="n">scores</span></a><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span><a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html#sklearn.ensemble.VotingRegressor" title="sklearn.ensemble.VotingRegressor"><span class="n">regressor</span></a><span class="w">
 </span></pre></div></div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>R2 scores across folds: 0.483 ± 0.095
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>R2 scores across folds: 0.481 ± 0.094
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
@@ -2810,10 +2810,10 @@ estimation to account for the dependency between the test statistics. We use the
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">importances_cfi</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.CFICV.html#hidimstat.CFICV.fit_importance" title="hidimstat.CFICV.fit_importance"><span class="n">cfi_cv</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 1934.64it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 2226.51it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 2205.67it/s]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3949.44it/s]
 </pre></div>
 </div>
 <p>We repeat the same process using the LOCO method.</p>
@@ -2828,10 +2828,10 @@ Computing importance scores over folds: 100%|██████████| 5/5
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">importances_loco</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.LOCOCV.html#hidimstat.LOCOCV.fit_importance" title="hidimstat.LOCOCV.fit_importance"><span class="n">loco_cv</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 1764.69it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 2181.35it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3289.13it/s]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3982.44it/s]
 </pre></div>
 </div>
 <p>Finally, we repeat the same process using the PFI method.</p>
@@ -2847,10 +2847,10 @@ Computing importance scores over folds: 100%|██████████| 5/5
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">importances_pfi</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.PFICV.html#hidimstat.PFICV.fit_importance" title="hidimstat.PFICV.fit_importance"><span class="n">pfi_cv</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 475.85it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 622.23it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 3096.80it/s]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:00&lt;00:00, 2819.51it/s]
 </pre></div>
 </div>
 </section>
@@ -2895,7 +2895,7 @@ line indicates the significance threshold at p-value=0.05.</p>
 </span><a class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel" title="matplotlib.axes.Axes.set_ylabel"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span></a><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="s2">$-</span><span class="s2">\</span><span class="s2">log_</span><span class="si">{10}</span><span class="s2">(</span><span class="s2">\</span><span class="s2">text</span><span class="s2">{</span><span class="s2">p-value})$</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span><a class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html#matplotlib.axes.Axes.legend" title="matplotlib.axes.Axes.legend"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span></a><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">Method</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<img src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" srcset="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" alt="plot diabetes variable importance example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x777d398e6490&gt;
+<img src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" srcset="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_001.png" alt="plot diabetes variable importance example" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x7372531725d0&gt;
 </pre></div>
 </div>
 <p>Several trends can be observed from the results: PFI tends to give smaller p-values
@@ -2914,8 +2914,8 @@ since LOCO tends to suffer from lower statistical power.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 38.636 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1077 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.421 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  1023 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-diabetes-variable-importance-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/d68c10fa637d15e39d9e6788dfcc8381/plot_diabetes_variable_importance_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_diabetes_variable_importance_example.ipynb</span></code></a></p>
