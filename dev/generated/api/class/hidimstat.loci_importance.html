@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=38932b7e"></script>
+    <script src="../../../_static/documentation_options.js?v=23db88c8"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -548,47 +548,52 @@
 <h1>loci_importance<a class="headerlink" href="#loci-importance" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="hidimstat.loci_importance">
-<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">loci_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_statistic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/leave_one_covariate_in.py#L237-L266"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.loci_importance" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">loci_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_statistic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/leave_one_covariate_in.py#L239-L275"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.loci_importance" title="Link to this definition">#</a></dt>
 <dd><p>Leave-One-Covariate-In (LOCI) algorithm</p>
 <p>The model is re-fitted on each single feature/group of features. The importance is
 then computed as the difference between the loss of an empty model (mean for regression,
 and majority vote for classification) and the loss of the model on the single feature/group.
-For more details, see Ewald <em>et al.</em><a class="footnote-reference brackets" href="#footcite-ewald-2024" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
-Parameters
-———-
-estimator : sklearn compatible estimator
-The estimator to use for the prediction.
-method : str, default=”predict”
-The method to use for the prediction. This determines the predictions passed
-to the loss function. Supported methods are “predict”, “predict_proba” or
-“decision_function”.
-loss : callable, default=mean_squared_error
-The loss function to use when comparing the perturbed model to the full
-model.
-statistical_test : callable or str, default=”ttest”
-Statistical test function for computing p-values of importance scores.
-feature_groups: dict or None, default=None
-A dictionary where the keys are the group names and the values are the
-list of column names corresponding to each features group. If None,
-the feature_groups are identified based on the columns of X.
-n_jobs : int, default=1
-The number of jobs to run in parallel. Parallelization is done over the
-variables or groups of variables.
-X : array-like of shape (n_samples, n_features)
-Training data.
-y : array-like of shape (n_samples,)
-Target values.
-k_best : int, default=None
-Selects the top k features based on importance scores.
-percentile : float, default=None
-Selects features based on a specified percentile of importance scores.
-threshold_max : float, default=None
-Selects features with importance scores below the specified maximum threshold.
-threshold_min : float, default=None
-Selects features with importance scores above the specified minimum threshold.</p>
+For more details, see Ewald <em>et al.</em><a class="footnote-reference brackets" href="#footcite-ewald-2024" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.6.0.</span></p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>estimator</strong><span class="classifier">sklearn compatible estimator</span></dt><dd></dd>
+<dt><strong>The estimator to use for the prediction.</strong></dt><dd></dd>
+<dt><strong>method</strong><span class="classifier">str, default=”predict”</span></dt><dd></dd>
+<dt><strong>The method to use for the prediction. This determines the predictions passed</strong></dt><dd></dd>
+<dt><strong>to the loss function. Supported methods are “predict”, “predict_proba” or</strong></dt><dd></dd>
+<dt><strong>“decision_function”.</strong></dt><dd></dd>
+<dt><strong>loss</strong><span class="classifier">callable, default=mean_squared_error</span></dt><dd></dd>
+<dt><strong>The loss function to use when comparing the perturbed model to the full</strong></dt><dd></dd>
+<dt><strong>model.</strong></dt><dd></dd>
+<dt><strong>statistical_test</strong><span class="classifier">callable or str, default=”ttest”</span></dt><dd></dd>
+<dt><strong>Statistical test function for computing p-values of importance scores.</strong></dt><dd></dd>
+<dt><strong>feature_groups: dict or None, default=None</strong></dt><dd></dd>
+<dt><strong>A dictionary where the keys are the group names and the values are the</strong></dt><dd></dd>
+<dt><strong>list of column names corresponding to each features group. If None,</strong></dt><dd></dd>
+<dt><strong>the feature_groups are identified based on the columns of X.</strong></dt><dd></dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd></dd>
+<dt><strong>The number of jobs to run in parallel. Parallelization is done over the</strong></dt><dd></dd>
+<dt><strong>variables or groups of variables.</strong></dt><dd></dd>
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd></dd>
+<dt><strong>Training data.</strong></dt><dd></dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd></dd>
+<dt><strong>Target values.</strong></dt><dd></dd>
+<dt><strong>k_best</strong><span class="classifier">int, default=None</span></dt><dd></dd>
+<dt><strong>Selects the top k features based on importance scores.</strong></dt><dd></dd>
+<dt><strong>percentile</strong><span class="classifier">float, default=None</span></dt><dd></dd>
+<dt><strong>Selects features based on a specified percentile of importance scores.</strong></dt><dd></dd>
+<dt><strong>threshold_max</strong><span class="classifier">float, default=None</span></dt><dd></dd>
+<dt><strong>Selects features with importance scores below the specified maximum threshold.</strong></dt><dd></dd>
+<dt><strong>threshold_min</strong><span class="classifier">float, default=None</span></dt><dd></dd>
+<dt><strong>Selects features with importance scores above the specified minimum threshold.</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt><strong>selection</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd></dd>
 <dt>Boolean array indicating selected feature groups (True = selected).</dt><dd></dd>
 <dt><strong>importances</strong><span class="classifier">ndarray of shape (n_groups,)</span></dt><dd></dd>

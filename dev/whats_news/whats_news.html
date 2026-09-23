@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=38932b7e"></script>
+    <script src="../_static/documentation_options.js?v=23db88c8"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -517,6 +517,8 @@
 <h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Feature</span> Add the holdout randomization test (HRT). As a side effect, <code class="docutils literal notranslate"><span class="pre">nadeau_bengio_ttest</span></code> loses its <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument and now always reduces over the last axis (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/754">#754</a> by <a class="reference external" href="https://github.com/jpaillard">Joseph Paillard</a>).</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger">Fix</span> Removed unnecessary warning in <code class="docutils literal notranslate"><span class="pre">fit_importance</span></code> when (X, y) are passed to estimators that don’t need it to compute importance scores (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/804">#804</a> by <a class="reference external" href="https://github.com/GrituX">Marc Hulcelle</a>).</p></li>
+<li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> Deprecated feature importance functions such as <code class="docutils literal notranslate"><span class="pre">cfi_importance</span></code> to be removed in v0.6 (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/783">#783</a> by <a class="reference external" href="https://github.com/GrituX">Marc Hulcelle</a>).</p></li>
 <li><p><span class="sd-sphinx-override sd-badge sd-bg-warning sd-bg-text-warning">API</span> Removed deprecated classes <code class="docutils literal notranslate"><span class="pre">CluDL</span></code> and <code class="docutils literal notranslate"><span class="pre">EnCluDL</span></code> (<a class="extlink-gh reference external" href="https://github.com/mind-inria/hidimstat/issues/807">#807</a> by <a class="reference external" href="https://github.com/GrituX">Marc Hulcelle</a>).</p></li>
 </ul>
 </section>

@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=38932b7e"></script>
+    <script src="../../../_static/documentation_options.js?v=23db88c8"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -548,7 +548,7 @@
 <h1>d0crt_importance<a class="headerlink" href="#d0crt-importance" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="hidimstat.d0crt_importance">
-<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">d0crt_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimated_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lasso_screening</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(alphas=10,</span> <span class="pre">fit_intercept=False,</span> <span class="pre">random_state=0,</span> <span class="pre">tol=1e-06)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_distillation_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(alphas=10,</span> <span class="pre">n_jobs=1,</span> <span class="pre">random_state=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joblib_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaled_statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_screening_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/distilled_conditional_randomization_test.py#L860-L921"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.d0crt_importance" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">d0crt_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimated_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lasso_screening</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(alphas=10,</span> <span class="pre">fit_intercept=False,</span> <span class="pre">random_state=0,</span> <span class="pre">tol=1e-06)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_distillation_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(alphas=10,</span> <span class="pre">n_jobs=1,</span> <span class="pre">random_state=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joblib_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaled_statistics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_screening_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative_hypothesis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/distilled_conditional_randomization_test.py#L860-L928"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.d0crt_importance" title="Link to this definition">#</a></dt>
 <dd><p>Implements distilled conditional randomization test (dCRT) without interactions.</p>
 <p>This class provides a fast implementation of the Conditional Randomization
 Test Candes <em>et al.</em><a class="footnote-reference brackets" href="#footcite-candes2018panning" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using the distillation process
@@ -557,71 +557,76 @@ by combining Lasso-based screening and residual-based test statistics.
 Based on the original implementation at:
 <a class="github reference external" href="https://github.com/moleibobliu/Distillation-CRT/">moleibobliu/Distillation-CRT</a>
 The y-distillation is based on a given estimator and the x-distillation is
-based on a Lasso estimator.
-Parameters
-———-
-estimator : sklearn estimator
-The base estimator used for y-distillation and prediction
-(e.g., Lasso, RandomForest, …).
-method : str, default=”predict”
-Method of the estimator to use for predictions (“predict”, “predict_proba”,
-“decision_function”).
-estimated_coef : array-like of shape (n_features,) or None, default=None
-Pre-computed feature coefficients. If None, coefficients are estimated via
-Lasso.
-estimated_intercept : float or None, default=None
-Pre-computed intercept. If None, intercept is estimated via Lasso.
-sigma_X : array-like of shape (n_features, n_features) or None, default=None
-Covariance matrix of X. If None, Lasso is used for X distillation.
-lasso_screening : sklearn estimator, default=LassoCV(alphas=10, tol=1e-6, fit_intercept=False)
-Estimator for variable screening (typically LassoCV or Lasso).
-model_distillation_x : sklearn estimator, default=LassoCV(alphas=10)
-Estimator for X distillation (typically LassoCV or Lasso).
-refit : bool, default=False
-Whether to refit the model on selected features after screening.
-screening_threshold : float, default=10
-Percentile threshold for screening (0-100).
-Larger values include more variables at screening.
-(screening_threshold=100 keeps all variables).
-centered : bool, default=True
-Whether to center and scale features using StandardScaler.
-n_jobs : int, default=1
-Number of parallel jobs.
-joblib_verbose : int, default=0
-Verbosity level for parallel jobs.
-fit_y : bool, default=True
-Controls y-distillation behavior:
-- If False and the estimator is linear, the sub-model predicting y from X^{-j}
-is created by simply removing the idx-th coefficient from the full model
-(no fitting is performed).
-- If True, fits a clone of <cite>estimator</cite> on (X^{-j}, y)
-- For non-linear estimators, always fits a clone of <cite>estimator</cite> on (X^{-j}, y)
-regardless of fit_y.
-scaled_statistics : bool, default=False
-Whether to use scaled statistics when computing importance.
-random_state : int, default=None
-Random seed for reproducibility.
-reuse_screening_model: bool, default=True
-Whether to reuse the screening model for y-distillation.
-X : array-like of shape (n_samples, n_features)
-Training data matrix.
-y : array-like of shape (n_samples,)
-Target values.
-cv : None or int, optional (default=None)
-Not used. Included for compatibility. A warning will be issued if provided.
-k_lowest : int, default=None
-Selects the k features with lowest p-values.
-percentile : float, default=None
-Selects features based on a specified percentile of p-values.
-threshold_max : float, default=0.05
-Selects features with p-values below the specified maximum threshold (0 to 1).
-threshold_min : float, default=None
-Selects features with p-values above the specified minimum threshold (0 to 1).
-alternative_hypothesis : bool, default=False
-If True, selects based on 1-pvalues instead of p-values.</p>
+based on a Lasso estimator.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.6.0.</span></p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>estimator</strong><span class="classifier">sklearn estimator</span></dt><dd></dd>
+<dt><strong>The base estimator used for y-distillation and prediction</strong></dt><dd></dd>
+<dt><strong>(e.g., Lasso, RandomForest, …).</strong></dt><dd></dd>
+<dt><strong>method</strong><span class="classifier">str, default=”predict”</span></dt><dd></dd>
+<dt><strong>Method of the estimator to use for predictions (“predict”, “predict_proba”,</strong></dt><dd></dd>
+<dt><strong>“decision_function”).</strong></dt><dd></dd>
+<dt><strong>estimated_coef</strong><span class="classifier">array-like of shape (n_features,) or None, default=None</span></dt><dd></dd>
+<dt><strong>Pre-computed feature coefficients. If None, coefficients are estimated via</strong></dt><dd></dd>
+<dt><strong>Lasso.</strong></dt><dd></dd>
+<dt><strong>estimated_intercept</strong><span class="classifier">float or None, default=None</span></dt><dd></dd>
+<dt><strong>Pre-computed intercept. If None, intercept is estimated via Lasso.</strong></dt><dd></dd>
+<dt><strong>sigma_X</strong><span class="classifier">array-like of shape (n_features, n_features) or None, default=None</span></dt><dd></dd>
+<dt><strong>Covariance matrix of X. If None, Lasso is used for X distillation.</strong></dt><dd></dd>
+<dt><strong>lasso_screening</strong><span class="classifier">sklearn estimator, default=LassoCV(alphas=10, tol=1e-6, fit_intercept=False)</span></dt><dd></dd>
+<dt><strong>Estimator for variable screening (typically LassoCV or Lasso).</strong></dt><dd></dd>
+<dt><strong>model_distillation_x</strong><span class="classifier">sklearn estimator, default=LassoCV(alphas=10)</span></dt><dd></dd>
+<dt><strong>Estimator for X distillation (typically LassoCV or Lasso).</strong></dt><dd></dd>
+<dt><strong>refit</strong><span class="classifier">bool, default=False</span></dt><dd></dd>
+<dt><strong>Whether to refit the model on selected features after screening.</strong></dt><dd></dd>
+<dt><strong>screening_threshold</strong><span class="classifier">float, default=10</span></dt><dd></dd>
+<dt><strong>Percentile threshold for screening (0-100).</strong></dt><dd></dd>
+<dt><strong>Larger values include more variables at screening.</strong></dt><dd></dd>
+<dt><strong>(screening_threshold=100 keeps all variables).</strong></dt><dd></dd>
+<dt><strong>centered</strong><span class="classifier">bool, default=True</span></dt><dd></dd>
+<dt><strong>Whether to center and scale features using StandardScaler.</strong></dt><dd></dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd></dd>
+<dt><strong>Number of parallel jobs.</strong></dt><dd></dd>
+<dt><strong>joblib_verbose</strong><span class="classifier">int, default=0</span></dt><dd></dd>
+<dt><strong>Verbosity level for parallel jobs.</strong></dt><dd></dd>
+<dt><strong>fit_y</strong><span class="classifier">bool, default=True</span></dt><dd></dd>
+<dt><strong>Controls y-distillation behavior:</strong></dt><dd></dd>
+<dt><strong>- If False and the estimator is linear, the sub-model predicting y from X^{-j}</strong></dt><dd></dd>
+<dt><strong>is created by simply removing the idx-th coefficient from the full model</strong></dt><dd></dd>
+<dt><strong>(no fitting is performed).</strong></dt><dd></dd>
+<dt><strong>- If True, fits a clone of `estimator` on (X^{-j}, y)</strong></dt><dd></dd>
+<dt><strong>- For non-linear estimators, always fits a clone of `estimator` on (X^{-j}, y)</strong></dt><dd></dd>
+<dt><strong>regardless of fit_y.</strong></dt><dd></dd>
+<dt><strong>scaled_statistics</strong><span class="classifier">bool, default=False</span></dt><dd></dd>
+<dt><strong>Whether to use scaled statistics when computing importance.</strong></dt><dd></dd>
+<dt><strong>random_state</strong><span class="classifier">int, default=None</span></dt><dd></dd>
+<dt><strong>Random seed for reproducibility.</strong></dt><dd></dd>
+<dt><strong>reuse_screening_model: bool, default=True</strong></dt><dd></dd>
+<dt><strong>Whether to reuse the screening model for y-distillation.</strong></dt><dd></dd>
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd></dd>
+<dt><strong>Training data matrix.</strong></dt><dd></dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd></dd>
+<dt><strong>Target values.</strong></dt><dd></dd>
+<dt><strong>cv</strong><span class="classifier">None or int, optional (default=None)</span></dt><dd></dd>
+<dt><strong>Not used. Included for compatibility. A warning will be issued if provided.</strong></dt><dd></dd>
+<dt><strong>k_lowest</strong><span class="classifier">int, default=None</span></dt><dd></dd>
+<dt><strong>Selects the k features with lowest p-values.</strong></dt><dd></dd>
+<dt><strong>percentile</strong><span class="classifier">float, default=None</span></dt><dd></dd>
+<dt><strong>Selects features based on a specified percentile of p-values.</strong></dt><dd></dd>
+<dt><strong>threshold_max</strong><span class="classifier">float, default=0.05</span></dt><dd></dd>
+<dt><strong>Selects features with p-values below the specified maximum threshold (0 to 1).</strong></dt><dd></dd>
+<dt><strong>threshold_min</strong><span class="classifier">float, default=None</span></dt><dd></dd>
+<dt><strong>Selects features with p-values above the specified minimum threshold (0 to 1).</strong></dt><dd></dd>
+<dt><strong>alternative_hypothesis</strong><span class="classifier">bool, default=False</span></dt><dd></dd>
+<dt><strong>If True, selects based on 1-pvalues instead of p-values.</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt><strong>selection</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
 <dt>Boolean array indicating selected features (True = selected)</dt><dd></dd>
 <dt><strong>importances</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>

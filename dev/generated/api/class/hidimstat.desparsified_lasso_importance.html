@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=38932b7e"></script>
+    <script src="../../../_static/documentation_options.js?v=23db88c8"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -548,80 +548,85 @@
 <h1>desparsified_lasso_importance<a class="headerlink" href="#desparsified-lasso-importance" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="hidimstat.desparsified_lasso_importance">
-<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">desparsified_lasso_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(cv=KFold(n_splits=5,</span> <span class="pre">random_state=0,</span> <span class="pre">shuffle=True),</span> <span class="pre">eps=0.01,</span> <span class="pre">fit_intercept=False,</span> <span class="pre">max_iter=5000,</span> <span class="pre">random_state=0,</span> <span class="pre">tol=0.001)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof_ajdustement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Lasso()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preconfigure_model_x_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_max_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_model_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance_reid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stationary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-14</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chi2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covariance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/desparsified_lasso.py#L551-L620"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.desparsified_lasso_importance" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">desparsified_lasso_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">LassoCV(cv=KFold(n_splits=5,</span> <span class="pre">random_state=0,</span> <span class="pre">shuffle=True),</span> <span class="pre">eps=0.01,</span> <span class="pre">fit_intercept=False,</span> <span class="pre">max_iter=5000,</span> <span class="pre">random_state=0,</span> <span class="pre">tol=0.001)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dof_ajdustement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Lasso()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preconfigure_model_x_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_max_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_model_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance_reid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stationary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon_pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-14</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chi2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covariance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_lowest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/desparsified_lasso.py#L551-L627"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.desparsified_lasso_importance" title="Link to this definition">#</a></dt>
 <dd><p>Desparsified Lasso Estimator (also known as Debiased Lasso)</p>
 <p>Statistical inference in high-dimensional regression using the desparsified Lasso.
 Provides debiased coefficient estimates, confidence intervals and p-values.
 Algorithm based on Algorithm 1 of d-Lasso and d-MTLasso in
-Chevalier<a class="footnote-reference brackets" href="#footcite-chevalier2020statisticalthesis" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
-Parameters
-———-
-estimator : LassoCV or MultiTaskLassoCV instance, default=None
-Initial model for selecting relevant features. Must implement fit and predict.
-For single task use LassoCV, for multi-task use MultiTaskLassoCV.
-Set to LassoCV() if None is passed.
-model_x : Lasso or MultiTaskLasso instance, default=None
-Base model for nodewise regressions.
-Set to Lasso() if None is passed.
-centered : bool, default=True
-Whether to center X and y before fitting.
-dof_ajdustement : bool, default=False
-Whether to apply degrees of freedom adjustment for small samples.
-preconfigure_model_x_path: bool, default=True
-Whether to preconfigure model_x with n_jobs and random_state.
-alpha_max_fraction : float, default=0.01
-Only used if preconfigure_model_x_path is True. Fraction of maximum alpha to
-use when alphas=None.
-random_state : int or RandomState, default=None
-Controls randomization.
-save_model_x : bool, default=False
-Whether to save fitted nodewise regression models.
-tolerance_reid : float, default=1e-4
-Convergence tolerance for noise estimation.
-noise_method : {‘AR’, ‘median’}, default=’AR’
-Method for noise covariance estimation:
-- ‘AR’: Autoregressive model
-- ‘median’: Median correlation
-order : int, default=1
-Order of AR model if noise_method=’AR’.
-stationary : bool, default=True
-Whether to assume stationary noise.
-confidence : float, default=0.95
-Confidence level for intervals.
-distribution : str, default=’norm’
-Distribution for p-values, only ‘norm’ supported.
-epsilon_pvalue : float, default=1e-14
-Small constant to avoid numerical issues.
-test : {‘chi2’, ‘F’}, default=’chi2’
-Test statistic for p-values:
-- ‘chi2’: Chi-squared test (large samples)
-- ‘F’: F-test (small samples)
-covariance : ndarray or None, default=None
-Pre-specified noise covariance matrix.
-n_jobs : int, default=1
-Number of parallel jobs.
-memory : str or Memory, default=None
-Cache for intermediate results.
-verbose : int, default=0
-Verbosity level.
-X : array-like of shape (n_samples, n_features)
-Training data matrix.
-y : array-like of shape (n_samples,) or (n_samples, n_task)
-Target values. For single task, y should be 1D or (n_samples, 1).
-For multi-task, y should be (n_samples, n_task).
-k_lowest : int, default=None
-Selects the k features with lowest p-values.
-percentile : float, default=None
-Selects features based on a specified percentile of p-values.
-threshold_max : float, default=0.05
-Selects features with p-values below the specified maximum threshold (0 to 1).
-threshold_min : float, default=None
-Selects features with p-values above the specified minimum threshold (0 to 1).
-alternative_hypothesis : bool, default=False
-If True, selects based on 1-pvalues instead of p-values.</p>
+Chevalier<a class="footnote-reference brackets" href="#footcite-chevalier2020statisticalthesis" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.6.0.</span></p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>estimator</strong><span class="classifier">LassoCV or MultiTaskLassoCV instance, default=None</span></dt><dd></dd>
+<dt><strong>Initial model for selecting relevant features. Must implement fit and predict.</strong></dt><dd></dd>
+<dt><strong>For single task use LassoCV, for multi-task use MultiTaskLassoCV.</strong></dt><dd></dd>
+<dt><strong>Set to LassoCV() if None is passed.</strong></dt><dd></dd>
+<dt><strong>model_x</strong><span class="classifier">Lasso or MultiTaskLasso instance, default=None</span></dt><dd></dd>
+<dt><strong>Base model for nodewise regressions.</strong></dt><dd></dd>
+<dt><strong>Set to Lasso() if None is passed.</strong></dt><dd></dd>
+<dt><strong>centered</strong><span class="classifier">bool, default=True</span></dt><dd></dd>
+<dt><strong>Whether to center X and y before fitting.</strong></dt><dd></dd>
+<dt><strong>dof_ajdustement</strong><span class="classifier">bool, default=False</span></dt><dd></dd>
+<dt><strong>Whether to apply degrees of freedom adjustment for small samples.</strong></dt><dd></dd>
+<dt><strong>preconfigure_model_x_path: bool, default=True</strong></dt><dd></dd>
+<dt><strong>Whether to preconfigure model_x with n_jobs and random_state.</strong></dt><dd></dd>
+<dt><strong>alpha_max_fraction</strong><span class="classifier">float, default=0.01</span></dt><dd></dd>
+<dt><strong>Only used if preconfigure_model_x_path is True. Fraction of maximum alpha to</strong></dt><dd></dd>
+<dt><strong>use when alphas=None.</strong></dt><dd></dd>
+<dt><strong>random_state</strong><span class="classifier">int or RandomState, default=None</span></dt><dd></dd>
+<dt><strong>Controls randomization.</strong></dt><dd></dd>
+<dt><strong>save_model_x</strong><span class="classifier">bool, default=False</span></dt><dd></dd>
+<dt><strong>Whether to save fitted nodewise regression models.</strong></dt><dd></dd>
+<dt><strong>tolerance_reid</strong><span class="classifier">float, default=1e-4</span></dt><dd></dd>
+<dt><strong>Convergence tolerance for noise estimation.</strong></dt><dd></dd>
+<dt><strong>noise_method</strong><span class="classifier">{‘AR’, ‘median’}, default=’AR’</span></dt><dd></dd>
+<dt><strong>Method for noise covariance estimation:</strong></dt><dd></dd>
+<dt><strong>- ‘AR’: Autoregressive model</strong></dt><dd></dd>
+<dt><strong>- ‘median’: Median correlation</strong></dt><dd></dd>
+<dt><strong>order</strong><span class="classifier">int, default=1</span></dt><dd></dd>
+<dt><strong>Order of AR model if noise_method=’AR’.</strong></dt><dd></dd>
+<dt><strong>stationary</strong><span class="classifier">bool, default=True</span></dt><dd></dd>
+<dt><strong>Whether to assume stationary noise.</strong></dt><dd></dd>
+<dt><strong>confidence</strong><span class="classifier">float, default=0.95</span></dt><dd></dd>
+<dt><strong>Confidence level for intervals.</strong></dt><dd></dd>
+<dt><strong>distribution</strong><span class="classifier">str, default=’norm’</span></dt><dd></dd>
+<dt><strong>Distribution for p-values, only ‘norm’ supported.</strong></dt><dd></dd>
+<dt><strong>epsilon_pvalue</strong><span class="classifier">float, default=1e-14</span></dt><dd></dd>
+<dt><strong>Small constant to avoid numerical issues.</strong></dt><dd></dd>
+<dt><strong>test</strong><span class="classifier">{‘chi2’, ‘F’}, default=’chi2’</span></dt><dd></dd>
+<dt><strong>Test statistic for p-values:</strong></dt><dd></dd>
+<dt><strong>- ‘chi2’: Chi-squared test (large samples)</strong></dt><dd></dd>
+<dt><strong>- ‘F’: F-test (small samples)</strong></dt><dd></dd>
+<dt><strong>covariance</strong><span class="classifier">ndarray or None, default=None</span></dt><dd></dd>
+<dt><strong>Pre-specified noise covariance matrix.</strong></dt><dd></dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=1</span></dt><dd></dd>
+<dt><strong>Number of parallel jobs.</strong></dt><dd></dd>
+<dt><strong>memory</strong><span class="classifier">str or Memory, default=None</span></dt><dd></dd>
+<dt><strong>Cache for intermediate results.</strong></dt><dd></dd>
+<dt><strong>verbose</strong><span class="classifier">int, default=0</span></dt><dd></dd>
+<dt><strong>Verbosity level.</strong></dt><dd></dd>
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd></dd>
+<dt><strong>Training data matrix.</strong></dt><dd></dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_task)</span></dt><dd></dd>
+<dt><strong>Target values. For single task, y should be 1D or (n_samples, 1).</strong></dt><dd></dd>
+<dt><strong>For multi-task, y should be (n_samples, n_task).</strong></dt><dd></dd>
+<dt><strong>k_lowest</strong><span class="classifier">int, default=None</span></dt><dd></dd>
+<dt><strong>Selects the k features with lowest p-values.</strong></dt><dd></dd>
+<dt><strong>percentile</strong><span class="classifier">float, default=None</span></dt><dd></dd>
+<dt><strong>Selects features based on a specified percentile of p-values.</strong></dt><dd></dd>
+<dt><strong>threshold_max</strong><span class="classifier">float, default=0.05</span></dt><dd></dd>
+<dt><strong>Selects features with p-values below the specified maximum threshold (0 to 1).</strong></dt><dd></dd>
+<dt><strong>threshold_min</strong><span class="classifier">float, default=None</span></dt><dd></dd>
+<dt><strong>Selects features with p-values above the specified minimum threshold (0 to 1).</strong></dt><dd></dd>
+<dt><strong>alternative_hypothesis</strong><span class="classifier">bool, default=False</span></dt><dd></dd>
+<dt><strong>If True, selects based on 1-pvalues instead of p-values.</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt><strong>selection</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
 <dt>Boolean array indicating selected features (True = selected)</dt><dd></dd>
 <dt><strong>importances</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd></dd>
