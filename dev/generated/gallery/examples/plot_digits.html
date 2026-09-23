@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=4ec04b00"></script>
+    <script src="../../../_static/documentation_options.js?v=38932b7e"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
-    <link rel="prev" title="Conditional Randomization Test for Sparse Logistic Regression" href="plot_dcrt_logit.html" />
+    <link rel="next" title="Source localization of somatosensory MEG data" href="plot_meg_somato.html" />
+    <link rel="prev" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -453,8 +453,8 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_meg_somato.html">Source localization of somatosensory MEG data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
@@ -640,7 +640,8 @@ visualize the clustering results for four different subsamples of the data.</p>
 <h2>Ensemble Clustered Inference with Desparsified Lasso<a class="headerlink" href="#ensemble-clustered-inference-with-desparsified-lasso" title="Link to this heading">#</a></h2>
 <p>To mitigate the randomness introduced by clustering, we ensemble the results from
 multiple clustered inference procedures. This approach derandomizes the inference
-procedure and produces more stable results. We use the class:<cite>hidimstat.EnCluDL</cite>
+procedure and produces more stable results. We use the classes <a class="reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.EnsembleImportance</span></code></a>,
+<a class="reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.ClusterImportance</span></code></a>, and <a class="reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.DesparsifiedLasso</span></code></a>
 for this purpose with 10 bootstraps. While this approach is more computationally intensive than
 single clustered inference, the procedure can be parallelized across clustering
 repetitions using the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter.</p>
@@ -648,60 +649,58 @@ repetitions using the <code class="docutils literal notranslate"><span class="pr
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">feature_extraction</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><span class="n">LassoCV</span></a><span class="w">
 </span><span class="w">
-</span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="w">
-</span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="nn">.</span><span class="nn">ensemble_clustered_inference</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><span class="n">EnCluDL</span></a><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><span class="n">ClusterImportance</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><span class="n">EnsembleImportance</span></a><span class="w">
 </span><span class="w">
 </span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer</span></a> <span class="o">=</span> <span class="mf">0.1</span><span class="w">
 </span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_jobs</span></a> <span class="o">=</span> <span class="mi">5</span><span class="w">
 </span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_clusters</span></a> <span class="o">=</span> <span class="mi">100</span><span class="w">
 </span><span class="w">
-</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><span class="n">encludl</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><span class="n">EnCluDL</span></a><span class="p">(</span><span class="w">
-</span>    <a class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration"><span class="n">clustering</span></a><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration"><span class="n">clustering</span></a><span class="p">,</span><span class="w">
-</span>    <span class="n">desparsified_lasso</span><span class="o">=</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><span class="n">LassoCV</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
-</span>    <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><span class="n">encludl</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><span class="n">EnsembleImportance</span></a><span class="p">(</span><span class="w">
+</span>    <span class="n">vim</span><span class="o">=</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><span class="n">ClusterImportance</span></a><span class="p">(</span><span class="w">
+</span>        <span class="n">vim</span><span class="o">=</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><span class="n">LassoCV</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>        <a class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration"><span class="n">clustering</span></a><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration"><span class="n">clustering</span></a><span class="p">,</span><span class="w">
+</span>    <span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span>    <span class="n">bootstrap_frac</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_jobs</span></a><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_jobs</span></a><span class="p">,</span><span class="w">
 </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w">
-</span>    <span class="n">cluster_bootstrap_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="w">
 </span><span class="p">)</span><span class="w">
 </span><span class="w">
-</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fit_importance" title="hidimstat.EnCluDL.fit_importance"><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_4_7</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_4_7</span></a><span class="p">)</span><span class="w">
-</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_4_7</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fwer_selection" title="hidimstat.EnCluDL.fwer_selection"><span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="w">
+</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fit_importance" title="hidimstat.EnsembleImportance.fit_importance"><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_4_7</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_4_7</span></a><span class="p">)</span><span class="w">
+</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_4_7</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fwer_selection" title="hidimstat.EnsembleImportance.fwer_selection"><span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer</span></a><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer</span></a><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_clusters</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="w">
 </span><span class="p">)</span><span class="w">
 </span><span class="w">
-</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fit_importance" title="hidimstat.EnCluDL.fit_importance"><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_0_1</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_0_1</span></a><span class="p">)</span><span class="w">
-</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_0_1</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fwer_selection" title="hidimstat.EnCluDL.fwer_selection"><span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="w">
+</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fit_importance" title="hidimstat.EnsembleImportance.fit_importance"><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_0_1</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_0_1</span></a><span class="p">)</span><span class="w">
+</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_0_1</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fwer_selection" title="hidimstat.EnsembleImportance.fwer_selection"><span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer</span></a><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer</span></a><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_clusters</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="w">
 </span><span class="p">)</span><span class="w">
 </span><span class="w">
-</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fit_importance" title="hidimstat.EnCluDL.fit_importance"><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_0_9</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_0_9</span></a><span class="p">)</span><span class="w">
-</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_0_9</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL.fwer_selection" title="hidimstat.EnCluDL.fwer_selection"><span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="w">
+</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fit_importance" title="hidimstat.EnsembleImportance.fit_importance"><span class="n">encludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_0_9</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_0_9</span></a><span class="p">)</span><span class="w">
+</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_0_9</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fwer_selection" title="hidimstat.EnsembleImportance.fwer_selection"><span class="n">encludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer</span></a><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer</span></a><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_clusters</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="w">
 </span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/examples/plot_digits.py:142: FutureWarning: EnCluDL is deprecated and will be removed in version 0.5.0. Please use class EnsembleImportance instead.
-  encludl = EnCluDL(
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting ensemble inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 12.23it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 12.22it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.69it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.68it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 167.89it/s]
+
+Fitting ensemble inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  7.82it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  7.81it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 1017.24it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 169.82it/s]
+
+Fitting ensemble inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  8.62it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  8.62it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.59it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:02&lt;00:00,  4.59it/s]
-
-Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 1359.58it/s]
-
-Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.61it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  5.60it/s]
-
-Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 1579.18it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 157.99it/s]
 </pre></div>
 </div>
 </section>
@@ -738,8 +737,8 @@ statistically significant for the classification tasks. For example, we can dete
 the bottom left portion of the loop when distinguishing between digits 0 and 9, the
 bottom left corner of digit 4 when distinguishing between digits 4 and 7, and the
 central vertical stroke when distinguishing between digits 0 and 1.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 26.788 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  1013 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 21.166 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  989 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-digits-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/75c0e891f7dc9297a5f1b2fc2298b50c/plot_digits.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_digits.ipynb</span></code></a></p>
@@ -766,20 +765,20 @@ central vertical stroke when distinguishing between digits 0 and 1.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_dcrt_logit.html"
+       href="plot_dl_diabetes_confidence.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Conditional Randomization Test for Sparse Logistic Regression</p>
+        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_dl_diabetes_confidence.html"
+       href="plot_meg_somato.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
+        <p class="prev-next-title">Source localization of somatosensory MEG data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

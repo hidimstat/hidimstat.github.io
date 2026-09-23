@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=4ec04b00"></script>
+    <script src="../_static/documentation_options.js?v=38932b7e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -597,9 +597,9 @@ coefficients.</p>
 <h2><span class="section-number">2.1.5. </span>Extensions to spatially structured data<a class="headerlink" href="#extensions-to-spatially-structured-data" title="Link to this heading">#</a></h2>
 <p>When the features have a known spatial structure, <a class="reference internal" href="../generated/api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.DesparsifiedLasso</span></code></a>
 can be suboptimal, identifying scattered elements of the support and making false
-discoveries far from the support. Methods like <a class="reference internal" href="../generated/api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.CluDL</span></code></a> and
-<a class="reference internal" href="../generated/api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.EnCluDL</span></code></a> address this issue by leveraging the spatial structure of the
-data. Read more in the <a class="reference internal" href="../high_dimension.html#high-dimension"><span class="std std-ref">User Guide</span></a>.</p>
+discoveries far from the support. Clustering with <a class="reference internal" href="../generated/api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.ClusterImportance</span></code></a> and
+ensembling with <a class="reference internal" href="../generated/api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.EnsembleImportance</span></code></a> address this issue by leveraging
+the spatial structure of the data. Read more in the <a class="reference internal" href="../high_dimension.html#high-dimension"><span class="std std-ref">User Guide</span></a>.</p>
 </section>
 <section id="examples">
 <h2><span class="section-number">2.1.6. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>

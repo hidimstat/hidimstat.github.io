@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=4ec04b00"></script>
+    <script src="../../../_static/documentation_options.js?v=38932b7e"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Support Recovery on fMRI Data" href="plot_fmri_data_example.html" />
-    <link rel="prev" title="Coefficient estimates with Desparsified Lasso on the diabetes dataset" href="plot_dl_diabetes_confidence.html" />
+    <link rel="prev" title="Pixel-wise inference on digit classification" href="plot_digits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -454,8 +454,8 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Source localization of somatosensory MEG data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
@@ -719,32 +719,32 @@ We then select the clusters that are significant at the target FWER level,
 which is set to 0.1 in this example.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.MultiTaskLassoCV.html#sklearn.linear_model.MultiTaskLassoCV" title="sklearn.linear_model.MultiTaskLassoCV"><span class="n">MultiTaskLassoCV</span></a><span class="w">
 </span><span class="w">
-</span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL"><span class="n">CluDL</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><span class="n">ClusterImportance</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="w">
 </span><span class="w">
 </span><span class="c1"># Setting theoretical FWER target</span><span class="w">
 </span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer_target</span></a> <span class="o">=</span> <span class="mf">0.1</span><span class="w">
 </span><span class="w">
-</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL"><span class="n">cludl</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL" title="hidimstat.CluDL"><span class="n">CluDL</span></a><span class="p">(</span><span class="w">
-</span>    <span class="n">clustering</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration"><span class="n">ward</span></a><span class="p">,</span><span class="w">
-</span>    <span class="n">desparsified_lasso</span><span class="o">=</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.MultiTaskLassoCV.html#sklearn.linear_model.MultiTaskLassoCV" title="sklearn.linear_model.MultiTaskLassoCV"><span class="n">MultiTaskLassoCV</span></a><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
-</span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><span class="n">cludl</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance" title="hidimstat.ClusterImportance"><span class="n">ClusterImportance</span></a><span class="p">(</span><span class="w">
+</span>    <span class="n">vim</span><span class="o">=</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><span class="n">DesparsifiedLasso</span></a><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.MultiTaskLassoCV.html#sklearn.linear_model.MultiTaskLassoCV" title="sklearn.linear_model.MultiTaskLassoCV"><span class="n">MultiTaskLassoCV</span></a><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration" title="sklearn.cluster.FeatureAgglomeration"><span class="n">ward</span></a><span class="w">
 </span><span class="p">)</span><span class="w">
 </span><span class="w">
-</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL.fit_importance" title="hidimstat.CluDL.fit_importance"><span class="n">cludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">gain</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
-</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.CluDL.html#hidimstat.CluDL.fwer_selection" title="hidimstat.CluDL.fwer_selection"><span class="n">cludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer_target</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="w">
+</span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance.fit_importance" title="hidimstat.ClusterImportance.fit_importance"><span class="n">cludl</span><span class="o">.</span><span class="n">fit_importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">gain</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
+</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.ClusterImportance.html#hidimstat.ClusterImportance.fwer_selection" title="hidimstat.ClusterImportance.fwer_selection"><span class="n">cludl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer_target</span></a><span class="p">,</span> <span class="n">two_tailed_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="w">
 </span><span class="c1"># multiplying the -log10(p-value) map by the sign of the estimated coefficients</span><span class="w">
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">log_pvalues</span></a> <span class="o">=</span> <span class="o">-</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">cludl</span><span class="o">.</span><span class="n">pvalues_</span></a><span class="p">)</span> <span class="o">*</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected</span></a><span class="w">
 </span></pre></div></div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/examples/plot_meg_somato.py:155: FutureWarning: CluDL is deprecated and will be removed in version 0.5.0. Please use class ClusterImportance instead.
-  cludl = CluDL(
-/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/cluster/_agglomerative.py:322: UserWarning: the number of connected components of the connectivity matrix is 2 &gt; 1. Completing it to avoid stopping the tree early.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/cluster/_agglomerative.py:322: UserWarning: the number of connected components of the connectivity matrix is 2 &gt; 1. Completing it to avoid stopping the tree early.
   connectivity, n_connected_components = _fix_connectivity(
 Group reid: AR1 cov estimation
+/home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: X won't be used.
+  self.vim_.importance(X_reduced, y)
+/home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: y won't be used.
+  self.vim_.importance(X_reduced, y)
 Using number of clusters for multiple testing correction.
 </pre></div>
 </div>
-<p>We here used CluDL, which relies on a single clustering. Alternatively,
-<a class="reference internal" href="../../api/class/hidimstat.EnCluDL.html#hidimstat.EnCluDL" title="hidimstat.EnCluDL"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnCluDL</span></code></a> can be used, which relies on aggregating the
+<p>We here used ClusterImportance, which relies on a single clustering. Alternatively,
+<a class="reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnsembleImportance</span></code></a> can be used, which relies on aggregating the
 results over multiple clusterings obtained by running the clustering
 algorithm on bootstrapped samples of the data. This can lead to more stable
 results at the cost of a higher computational time.</p>
@@ -825,7 +825,7 @@ Computing morph matrix...
 </span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="list"><span class="n">ax</span><span class="o">.</span><span class="n">_colorbars</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="s2">-log10(p-value)</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span><span class="n">plotting</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<img src="../../../_images/sphx_glr_plot_meg_somato_002.png" srcset="../../../_images/sphx_glr_plot_meg_somato_002.png" alt="rh-lateral view, rh-medial view" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/examples/plot_meg_somato.py:243: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
+<img src="../../../_images/sphx_glr_plot_meg_somato_002.png" srcset="../../../_images/sphx_glr_plot_meg_somato_002.png" alt="rh-lateral view, rh-medial view" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/examples/plot_meg_somato.py:241: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
 No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
 You can fix this by installing a different backend: for example via
         pip install PyQt6
@@ -845,8 +845,8 @@ which is expected for this somatosensory task.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.336 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  3106 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 19.764 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  3141 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-meg-somato-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/91da9746dad432670a90ae64245a7b67/plot_meg_somato.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_meg_somato.ipynb</span></code></a></p>
@@ -873,12 +873,12 @@ which is expected for this somatosensory task.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_dl_diabetes_confidence.html"
+       href="plot_digits.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Coefficient estimates with Desparsified Lasso on the diabetes dataset</p>
+        <p class="prev-next-title">Pixel-wise inference on digit classification</p>
       </div>
     </a>
     <a class="right-next"

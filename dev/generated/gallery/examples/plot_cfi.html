@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../../_static/documentation_options.js?v=4ec04b00"></script>
+    <script src="../../../_static/documentation_options.js?v=38932b7e"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -454,8 +454,8 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_meg_somato.html">Source localization of somatosensory MEG data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_fmri_data_example.html">Support Recovery on fMRI Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoffs_wisconsin.html">Controlled multiple variable selection on the Wisconsin breast cancer dataset</a></li>
@@ -596,7 +596,7 @@ method of our estimator.</p>
 </span>    <span class="n">loss</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss"><span class="n">log_loss</span></a><span class="p">,</span><span class="w">
 </span>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">predict_proba</span><span class="s2">&quot;</span><span class="p">,</span><span class="w">
 </span>    <span class="n">imputation_model_continuous</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="sklearn.linear_model.RidgeCV"><span class="n">RidgeCV</span></a><span class="p">(</span><span class="p">)</span><span class="p">,</span><span class="w">
-</span>    <span class="n">features_groups</span><span class="o">=</span><span class="p">{</span><span class="w">
+</span>    <span class="n">feature_groups</span><span class="o">=</span><span class="p">{</span><span class="w">
 </span>        <span class="n">feat_name</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feat_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine" title="sklearn.datasets.load_wine"><span class="n">load_wine</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span><span class="w">
 </span>    <span class="p">}</span><span class="p">,</span><span class="w">
 </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -636,7 +636,7 @@ total_phenols’ are not picked by CFI, probably due to their high correlation
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.573 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.175 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  204 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-cfi-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

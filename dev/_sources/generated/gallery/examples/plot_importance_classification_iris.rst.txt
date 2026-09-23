@@ -117,7 +117,7 @@ function and use joblib to parallelize the computation.
         train_index,
         test_index,
         vim_name="CFI",
-        features_groups=None,
+        feature_groups=None,
     ):
         model_c = clone(model)
         model_c.fit(X[train_index], y[train_index])
@@ -143,7 +143,7 @@ function and use joblib to parallelize the computation.
                 random_state=2,
                 method=method,
                 loss=loss,
-                features_groups=features_groups,
+                feature_groups=feature_groups,
             )
         elif vim_name == "PFI":
             vim = PFI(
@@ -152,7 +152,7 @@ function and use joblib to parallelize the computation.
                 random_state=3,
                 method=method,
                 loss=loss,
-                features_groups=features_groups,
+                feature_groups=feature_groups,
             )
 
         vim.fit(X[train_index], y[train_index])
@@ -160,7 +160,7 @@ function and use joblib to parallelize the computation.
 
         return pd.DataFrame(
             {
-                "feature": features_groups.keys(),
+                "feature": feature_groups.keys(),
                 "importance": importance,
                 "vim": vim_name,
                 "model": model_name,
@@ -205,7 +205,7 @@ combination, in parallel.
         ),
     ]
     cv = KFold(n_splits=5, shuffle=True, random_state=6)
-    features_groups = {ft: [i] for i, ft in enumerate(dataset.feature_names)}
+    feature_groups = {ft: [i] for i, ft in enumerate(dataset.feature_names)}
     out_list = Parallel(n_jobs=5)(
         delayed(run_one_fold)(
             X,
@@ -214,7 +214,7 @@ combination, in parallel.
             train_index,
             test_index,
             vim_name=vim_name,
-            features_groups=features_groups,
+            feature_groups=feature_groups,
         )
         for train_index, test_index in cv.split(X)
         for model in models
@@ -394,7 +394,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. code-block:: Python
 
-    features_groups = {"sepal features": [0, 1], "petal features": [2, 3, 4]}
+    feature_groups = {"sepal features": [0, 1], "petal features": [2, 3, 4]}
     out_list = Parallel(n_jobs=5)(
         delayed(run_one_fold)(
             X,
@@ -403,7 +403,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
             train_index,
             test_index,
             vim_name=vim_name,
-            features_groups=features_groups,
+            feature_groups=feature_groups,
         )
         for train_index, test_index in cv.split(X)
         for model in models
@@ -428,9 +428,9 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.677 seconds)
+   **Total running time of the script:** (0 minutes 9.756 seconds)
 
-**Estimated memory usage:**  202 MB
+**Estimated memory usage:**  201 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_importance_classification_iris.py:

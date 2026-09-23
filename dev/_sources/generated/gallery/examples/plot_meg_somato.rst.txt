@@ -288,22 +288,20 @@ We can now run the clustered inference using the desparsified multitask Lasso
 We then select the clusters that are significant at the target FWER level,
 which is set to 0.1 in this example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-167
+.. GENERATED FROM PYTHON SOURCE LINES 147-165
 
 .. code-block:: Python
 
 
     from sklearn.linear_model import MultiTaskLassoCV
 
-    from hidimstat import CluDL, DesparsifiedLasso
+    from hidimstat import ClusterImportance, DesparsifiedLasso
 
     # Setting theoretical FWER target
     fwer_target = 0.1
 
-    cludl = CluDL(
-        clustering=ward,
-        desparsified_lasso=DesparsifiedLasso(estimator=MultiTaskLassoCV()),
-        random_state=0,
+    cludl = ClusterImportance(
+        vim=DesparsifiedLasso(estimator=MultiTaskLassoCV()), clustering=ward
     )
 
     cludl.fit_importance(gain, y)
@@ -320,25 +318,27 @@ which is set to 0.1 in this example.
 
  .. code-block:: none
 
-    /home/circleci/project/examples/plot_meg_somato.py:155: FutureWarning: CluDL is deprecated and will be removed in version 0.5.0. Please use class ClusterImportance instead.
-      cludl = CluDL(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/cluster/_agglomerative.py:322: UserWarning: the number of connected components of the connectivity matrix is 2 > 1. Completing it to avoid stopping the tree early.
       connectivity, n_connected_components = _fix_connectivity(
     Group reid: AR1 cov estimation
+    /home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: X won't be used.
+      self.vim_.importance(X_reduced, y)
+    /home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: y won't be used.
+      self.vim_.importance(X_reduced, y)
     Using number of clusters for multiple testing correction.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-173
+.. GENERATED FROM PYTHON SOURCE LINES 166-171
 
-We here used CluDL, which relies on a single clustering. Alternatively,
-:class:`~hidimstat.EnCluDL` can be used, which relies on aggregating the
+We here used ClusterImportance, which relies on a single clustering. Alternatively,
+:class:`~hidimstat.EnsembleImportance` can be used, which relies on aggregating the
 results over multiple clusterings obtained by running the clustering
 algorithm on bootstrapped samples of the data. This can lead to more stable
 results at the cost of a higher computational time.
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-181
+.. GENERATED FROM PYTHON SOURCE LINES 174-179
 
 Visualize the p-value map on the brain surface
 ----------------------------------------------
@@ -346,7 +346,7 @@ We then visualize the identified cortical sources on the brain surface. We
 plot the -log10(p-value) map to which we assign the sign of the estimated
 coefficient in the multitask Lasso model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-214
+.. GENERATED FROM PYTHON SOURCE LINES 179-212
 
 .. code-block:: Python
 
@@ -405,7 +405,7 @@ coefficient in the multitask Lasso model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-244
+.. GENERATED FROM PYTHON SOURCE LINES 213-242
 
 .. code-block:: Python
 
@@ -451,7 +451,7 @@ coefficient in the multitask Lasso model.
 
  .. code-block:: none
 
-    /home/circleci/project/examples/plot_meg_somato.py:243: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
+    /home/circleci/project/examples/plot_meg_somato.py:241: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
     No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
     You can fix this by installing a different backend: for example via
             pip install PyQt6
@@ -460,12 +460,12 @@ coefficient in the multitask Lasso model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 246-248
+.. GENERATED FROM PYTHON SOURCE LINES 244-246
 
 Most of the identified sources are located in the somatosensory cortex,
 which is expected for this somatosensory task.
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-253
+.. GENERATED FROM PYTHON SOURCE LINES 248-251
 
 References
 ----------
@@ -474,9 +474,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 25.336 seconds)
+   **Total running time of the script:** (0 minutes 19.764 seconds)
 
-**Estimated memory usage:**  3106 MB
+**Estimated memory usage:**  3141 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_meg_somato.py:
