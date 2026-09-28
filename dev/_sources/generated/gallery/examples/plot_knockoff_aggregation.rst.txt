@@ -131,12 +131,12 @@ the inference.
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
-      diag_s = np.diag(_s_equi(sigma, tol=self.tol))
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
-      diag_s = np.diag(_s_equi(sigma, tol=self.tol))
-    /home/circleci/project/src/hidimstat/samplers/gaussian_knockoffs.py:89: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
-      diag_s = np.diag(_s_equi(sigma, tol=self.tol))
+    /home/circleci/project/examples/plot_knockoff_aggregation.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-16.
+      model_x_knockoff.fit_importance(X, y)
+    /home/circleci/project/examples/plot_knockoff_aggregation.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-15.
+      model_x_knockoff.fit_importance(X, y)
+    /home/circleci/project/examples/plot_knockoff_aggregation.py:75: UserWarning: The equi-correlated matrix for knockoffs is not positive definite. Reduce the value of distance by 2.220446049250313e-14.
+      model_x_knockoff.fit_importance(X, y)
 
 
 
@@ -318,9 +318,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 45.420 seconds)
+   **Total running time of the script:** (1 minutes 37.446 seconds)
 
-**Estimated memory usage:**  203 MB
+**Estimated memory usage:**  202 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_knockoff_aggregation.py:

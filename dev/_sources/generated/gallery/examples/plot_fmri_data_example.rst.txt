@@ -225,12 +225,11 @@ inadequate since it does not take into account the spatial structure of the data
 Now, the clustered inference algorithm which combines parcellation
 and high-dimensional inference (c.f. References).
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-175
+.. GENERATED FROM PYTHON SOURCE LINES 152-174
 
 .. code-block:: Python
 
 
-    from copy import deepcopy
 
     from sklearn.base import clone
 
@@ -260,17 +259,13 @@ and high-dimensional inference (c.f. References).
 
  .. code-block:: none
 
-    /home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: X won't be used.
-      self.vim_.importance(X_reduced, y)
-    /home/circleci/project/src/hidimstat/cluster_importance.py:104: UserWarning: y won't be used.
-      self.vim_.importance(X_reduced, y)
 
     array([ 1.74719401e-05,  1.74719401e-05,  1.74719401e-05, ...,
            -7.60140480e-04, -7.60140480e-04, -7.60140480e-04], shape=(39912,))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 176-183
+.. GENERATED FROM PYTHON SOURCE LINES 175-182
 
 Below, we run the ensemble clustered inference algorithm which adds a
 randomization step over the clustered inference algorithm (c.f. References).
@@ -280,7 +275,7 @@ then 5 statistical maps are produced and aggregated into one.
 However you might benefit from clustering randomization taking
 `n_bootstraps=25` or `n_bootstraps=100`, also we set `n_jobs=n_jobs`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-196
+.. GENERATED FROM PYTHON SOURCE LINES 182-195
 
 .. code-block:: Python
 
@@ -305,15 +300,15 @@ However you might benefit from clustering randomization taking
 
  .. code-block:: none
 
-    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:02,  3.04it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:09<00:06,  1.57s/it]    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:17<00:02,  2.03s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:17<00:00,  1.70s/it]
-    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences:  60%|██████    | 6/10 [00:00<00:00, 44.68it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 74.11it/s]
+    Fitting ensemble inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting ensemble inferences:  10%|█         | 1/10 [00:00<00:02,  3.07it/s]    Fitting ensemble inferences:  60%|██████    | 6/10 [00:09<00:06,  1.69s/it]    Fitting ensemble inferences:  90%|█████████ | 9/10 [00:18<00:02,  2.27s/it]    Fitting ensemble inferences: 100%|██████████| 10/10 [00:18<00:00,  1.88s/it]
+    Fitting clustered inferences:   0%|          | 0/10 [00:00<?, ?it/s]    Fitting clustered inferences: 100%|██████████| 10/10 [00:00<00:00, 109.73it/s]
 
     array([ 4.02271197e-05,  4.02271197e-05,  4.02271197e-05, ...,
            -4.34262336e-04, -4.34262336e-04, -4.34262336e-04], shape=(39912,))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 197-205
+.. GENERATED FROM PYTHON SOURCE LINES 196-204
 
 Plotting the results
 --------------------
@@ -324,7 +319,7 @@ inverse survival function.
 
 First, we set theoretical FWER target at 10%.
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-212
+.. GENERATED FROM PYTHON SOURCE LINES 204-211
 
 .. code-block:: Python
 
@@ -342,14 +337,14 @@ First, we set theoretical FWER target at 10%.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-217
+.. GENERATED FROM PYTHON SOURCE LINES 212-216
 
 Now, we can plot the thresholded z-score maps by translating the
 p-value maps estimated previously into z-score maps and using the
 suitable threshold. For a better readability, we make a small function
 called `plot_map` that wraps all these steps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-270
+.. GENERATED FROM PYTHON SOURCE LINES 216-269
 
 .. code-block:: Python
 
@@ -433,7 +428,7 @@ called `plot_map` that wraps all these steps.
 
     Using number of clusters for multiple testing correction.
     Using number of features for multiple testing correction.
-    /home/circleci/project/examples/plot_fmri_data_example.py:267: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
+    /home/circleci/project/examples/plot_fmri_data_example.py:266: UserWarning: You are using the 'agg' matplotlib backend that is non-interactive.
     No figure will be plotted when calling matplotlib.pyplot.show() or nilearn.plotting.show().
     You can fix this by installing a different backend: for example via
             pip install PyQt6
@@ -442,7 +437,7 @@ called `plot_map` that wraps all these steps.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 271-285
+.. GENERATED FROM PYTHON SOURCE LINES 270-284
 
 Analysis of the results
 -----------------------
@@ -459,7 +454,7 @@ Finally, the solution provided by the ensemble clustered inference algorithm
 (EnCluDL) seems realistic as we recover the visual cortex and do not make
 spurious discoveries.
 
-.. GENERATED FROM PYTHON SOURCE LINES 288-291
+.. GENERATED FROM PYTHON SOURCE LINES 287-290
 
 References
 ----------
@@ -468,9 +463,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 57.883 seconds)
+   **Total running time of the script:** (1 minutes 4.998 seconds)
 
-**Estimated memory usage:**  1613 MB
+**Estimated memory usage:**  1619 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_fmri_data_example.py:
