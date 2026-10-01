@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../../../_static/documentation_options.js?v=3b5f177a"></script>
+    <script src="../../../_static/documentation_options.js?v=cbcb0c0c"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -452,6 +452,7 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_overview.html">Overview of a feature importance analysis with <cite>hidimstat</cite></a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
@@ -723,13 +724,13 @@ see Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footc
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_ecdl</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fwer_selection" title="hidimstat.EnsembleImportance.fwer_selection"><span class="n">enclu_dl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="n">fwer</span><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer_target</span></a><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_clusters</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting ensemble inferences:   0%|          | 0/20 [00:00&lt;?, ?it/s]
-Fitting ensemble inferences:  50%|█████     | 10/20 [00:00&lt;00:00, 10.72it/s]
-Fitting ensemble inferences:  75%|███████▌  | 15/20 [00:01&lt;00:00,  7.78it/s]
-Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.04it/s]
-Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.56it/s]
+Fitting ensemble inferences:  50%|█████     | 10/20 [00:00&lt;00:00, 11.74it/s]
+Fitting ensemble inferences:  75%|███████▌  | 15/20 [00:01&lt;00:00,  8.46it/s]
+Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.15it/s]
+Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.82it/s]
 
 Fitting clustered inferences:   0%|          | 0/20 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 20/20 [00:00&lt;00:00, 904.70it/s]
+Fitting clustered inferences: 100%|██████████| 20/20 [00:00&lt;00:00, 874.14it/s]
 </pre></div>
 </div>
 <p>Visualizing the support estimated by EnCluDL</p>
@@ -878,7 +879,7 @@ conservative (see Results).</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 24.447 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 21.652 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  219 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-2d-simulation-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

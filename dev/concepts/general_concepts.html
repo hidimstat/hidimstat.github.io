@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../_static/documentation_options.js?v=3b5f177a"></script>
+    <script src="../_static/documentation_options.js?v=cbcb0c0c"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -587,12 +587,12 @@ methods to provide both types of information while preserving their standard
 names.</p>
 </section>
 <section id="types-of-vi-methods">
-<h2><span class="section-number">1.1.4. </span>Types of VI methods<a class="headerlink" href="#types-of-vi-methods" title="Link to this heading">#</a></h2>
+<span id="id3"></span><h2><span class="section-number">1.1.4. </span>Types of VI methods<a class="headerlink" href="#types-of-vi-methods" title="Link to this heading">#</a></h2>
 <p>There are two main types of VI methods implemented in HiDimStat:</p>
 <p>1. <strong>Marginal methods</strong>: these methods provide importance to all the features
 are related with testing if <span class="math notranslate nohighlight">\(X^j\perp\!\!\!\!\perp Y\)</span>.
 An example of such methods is Leave One Covariate In (LOCI,
-<a class="footnote-reference brackets" href="#footcite-ewald-2024" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>).</p>
+<a class="footnote-reference brackets" href="#footcite-ewald-2024" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>).</p>
 <p>2. <strong>Conditional methods</strong>: these methods assign importance only to features that
 i.e., they contribute unique knowledge. They are related to Conditional
 Independence Testing, which consists of testing whether
@@ -612,7 +612,7 @@ distinction between marginal and conditional methods can be more subtle. See
 particularly challenging, as it is difficult to clearly distinguish important
 features from unimportant ones. For such problems, a preliminary filtering step
 can be applied to avoid having duplicate or redundant input features, or
-alternatively, one can consider grouping them <a class="footnote-reference brackets" href="#footcite-chamma-aaai2024" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> .
+alternatively, one can consider grouping them <a class="footnote-reference brackets" href="#footcite-chamma-aaai2024" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> .
 Grouping consists of treating together features that represent the same
 underlying concept. This approach extends naturally to many methods,
 for example <a class="reference internal" href="../generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-class docutils literal notranslate"><span class="pre">hidimstat.CFI</span></code></a>.</p>
@@ -627,7 +627,7 @@ This step is directly related to the task of Variable Selection.</p>
 </section>
 <section id="references">
 <h2><span class="section-number">1.1.7. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id5">
+<div class="docutils container" id="id6">
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="footcite-covert2020" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
@@ -638,11 +638,11 @@ This step is directly related to the task of Variable Selection.</p>
 <p>Angel Reyero-Lobo, Pierre Neuvial, and Bertrand Thirion. A principled approach for comparing variable importance. 2025. URL: <a class="reference external" href="https://arxiv.org/abs/2507.17306">https://arxiv.org/abs/2507.17306</a>, <a class="reference external" href="https://arxiv.org/abs/2507.17306">arXiv:2507.17306</a>.</p>
 </aside>
 <aside class="footnote brackets" id="footcite-ewald-2024" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>Fiona Katharina Ewald, Ludwig Bothmann, Marvin N. Wright, Bernd Bischl, Giuseppe Casalicchio, and Gunnar König. A guide to feature importance methods for scientific inference. In Luca Longo, Sebastian Lapuschkin, and Christin Seifert, editors, <em>Explainable Artificial Intelligence</em>, 440–464. Cham, 2024. Springer Nature Switzerland.</p>
 </aside>
 <aside class="footnote brackets" id="footcite-chamma-aaai2024" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>Ahmad Chamma, Bertrand Thirion, and Denis Engemann. Variable importance in high-dimensional settings requires grouping. <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>, 38(10):11195–11203, 2024. <a class="reference external" href="https://doi.org/10.1609/aaai.v38i10.28997">doi:10.1609/aaai.v38i10.28997</a>.</p>
 </aside>
 </aside>
