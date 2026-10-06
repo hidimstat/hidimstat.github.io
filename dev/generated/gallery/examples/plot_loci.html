@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../../../_static/documentation_options.js?v=0a884db6"></script>
+    <script src="../../../_static/documentation_options.js?v=14a48054"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -438,8 +438,8 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_comparison_pdp_ale.html">Model Interpretation: PDP vs ALE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_accumulated_local_effects.html">Visualization with Accumulated Local Effects (ALE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_msage.html">Shapley Additive Global Importance (SAGE) example</a></li>
@@ -578,7 +578,6 @@ Beware on the choice of hyperparameters of certain models to avoid over-fitting.
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><span class="n">RandomForestRegressor</span></a><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="sklearn.linear_model.RidgeCV"><span class="n">RidgeCV</span></a><span class="w">
-</span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">metrics</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="sklearn.metrics.mean_squared_error"><span class="n">mean_squared_error</span></a><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">neural_network</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-neural_network sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor" title="sklearn.neural_network.MLPRegressor"><span class="n">MLPRegressor</span></a><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">svm</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html#sklearn.svm.SVR" title="sklearn.svm.SVR"><span class="n">SVR</span></a><span class="w">
 </span><span class="w">
@@ -602,7 +601,7 @@ Beware on the choice of hyperparameters of certain models to avoid over-fitting.
 </span><span class="k">for</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><span class="n">model</span></a> <span class="ow">in</span> <a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="list"><span class="n">models_list</span></a><span class="p">:</span><span class="w">
 </span>    <span class="c1"># Fit the full model</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><span class="n">model</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-method reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor.fit" title="sklearn.ensemble.RandomForestRegressor.fit"><span class="n">model</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_train</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_train</span></a><span class="p">)</span><span class="w">
-</span>    <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.LOCI.html#hidimstat.LOCI" title="hidimstat.LOCI"><span class="n">loci</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.LOCI.html#hidimstat.LOCI" title="hidimstat.LOCI"><span class="n">LOCI</span></a><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><span class="n">model</span></a><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">predict</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="sklearn.metrics.mean_squared_error"><span class="n">mean_squared_error</span></a><span class="p">)</span><span class="w">
+</span>    <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.LOCI.html#hidimstat.LOCI" title="hidimstat.LOCI"><span class="n">loci</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.LOCI.html#hidimstat.LOCI" title="hidimstat.LOCI"><span class="n">LOCI</span></a><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><span class="n">model</span></a><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">mean_squared_error</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span>    <span class="c1"># Refit the model on a single feature / group of feature, and compute LOCI</span><span class="w">
 </span>    <span class="c1"># importance. This process is repeated for all features / groups of features to assess</span><span class="w">
 </span>    <span class="c1"># their individual contributions.</span><span class="w">
@@ -619,6 +618,24 @@ Beware on the choice of hyperparameters of certain models to avoid over-fitting.
 </span>        <span class="p">)</span><span class="w">
 </span>    <span class="p">)</span><span class="w">
 </span></pre></div></div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+</pre></div>
+</div>
 <p>The predictive performance of the models can be compared using their R2 scores.
 This helps assess how effectively each model captures the underlying data-generating
 process.</p>
@@ -729,7 +746,7 @@ use LOCICV which can reduce noise for high-variance or unregularized models.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.666 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.477 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  201 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-loci-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

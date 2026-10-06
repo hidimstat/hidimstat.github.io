@@ -52,7 +52,7 @@ To briefly summarize the two methods:
     from sklearn.base import clone
     from sklearn.datasets import load_iris
     from sklearn.linear_model import LogisticRegressionCV, RidgeCV
-    from sklearn.metrics import balanced_accuracy_score, hinge_loss, log_loss
+    from sklearn.metrics import balanced_accuracy_score, hinge_loss, make_scorer
     from sklearn.model_selection import GridSearchCV, KFold
     from sklearn.svm import SVC
 
@@ -106,7 +106,7 @@ require a K-fold cross-fitting. Computing the importance for each fold is
 embarrassingly parallel. For this reason, we encapsulate the main computations in a
 function and use joblib to parallelize the computation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-127
+.. GENERATED FROM PYTHON SOURCE LINES 65-123
 
 .. code-block:: Python
 
@@ -124,12 +124,10 @@ function and use joblib to parallelize the computation.
         y_pred = model_c.predict(X[test_index])
 
         if isinstance(model_c, LogisticRegressionCV):
-            method = "predict_proba"
-            loss = log_loss
+            scoring = "log_loss"
             model_name = "LogReg"
         else:
-            method = "decision_function"
-            loss = hinge_loss
+            scoring = make_scorer(hinge_loss, response_method="decision_function")
             model_name = "SVC"
 
         if vim_name == "CFI":
@@ -141,8 +139,7 @@ function and use joblib to parallelize the computation.
                 ),
                 n_permutations=50,
                 random_state=2,
-                method=method,
-                loss=loss,
+                scoring=scoring,
                 feature_groups=feature_groups,
             )
         elif vim_name == "PFI":
@@ -150,8 +147,7 @@ function and use joblib to parallelize the computation.
                 estimator=model_c,
                 n_permutations=50,
                 random_state=3,
-                method=method,
-                loss=loss,
+                scoring=scoring,
                 feature_groups=feature_groups,
             )
 
@@ -179,13 +175,13 @@ function and use joblib to parallelize the computation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-131
+.. GENERATED FROM PYTHON SOURCE LINES 124-127
 
 We use two different classifiers: LR with cross-validation and SVC with a RBF kernel. We
 then compute the importance for each (importance method, classifier, fold)
 combination, in parallel.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-165
+.. GENERATED FROM PYTHON SOURCE LINES 127-161
 
 .. code-block:: Python
 
@@ -230,13 +226,13 @@ combination, in parallel.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-169
+.. GENERATED FROM PYTHON SOURCE LINES 162-165
 
 Using the importance values, we can compute the p-value of each feature. As we will
 see, the p-values computed with `PFI` are not valid since the method
 does not provide type-1 error control.
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-201
+.. GENERATED FROM PYTHON SOURCE LINES 165-197
 
 .. code-block:: Python
 
@@ -279,12 +275,12 @@ does not provide type-1 error control.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-204
+.. GENERATED FROM PYTHON SOURCE LINES 198-200
 
 Visualization of the results
 ----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 204-270
+.. GENERATED FROM PYTHON SOURCE LINES 200-266
 
 .. code-block:: Python
 
@@ -366,7 +362,7 @@ Visualization of the results
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 271-280
+.. GENERATED FROM PYTHON SOURCE LINES 267-276
 
 The boxplot shows the importance of each feature, with colors indicating the
 classifier used. A star marks the features that have a p-value (computed with a
@@ -378,7 +374,7 @@ additional flexibility of the SVC model. The SVC model could benefit from a more
 extensive hyperparameter search, especially optimizing the gamma parameter of the RBF
 kernel, which would be feasible with more data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 283-292
+.. GENERATED FROM PYTHON SOURCE LINES 279-288
 
 Measuring the importance of groups of features
 ----------------------------------------------
@@ -390,7 +386,7 @@ mitigate this issue, we can group correlated features together and measure the
 importance of these feature groups. For instance, we can group 'sepal width' with
 'sepal length' and 'petal length' with 'petal width' and the spurious feature.
 
-.. GENERATED FROM PYTHON SOURCE LINES 292-311
+.. GENERATED FROM PYTHON SOURCE LINES 288-307
 
 .. code-block:: Python
 
@@ -428,7 +424,7 @@ importance of these feature groups. For instance, we can group 'sepal width' wit
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 14.448 seconds)
+   **Total running time of the script:** (0 minutes 13.759 seconds)
 
 **Estimated memory usage:**  201 MB
 

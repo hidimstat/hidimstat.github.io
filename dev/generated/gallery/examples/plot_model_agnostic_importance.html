@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../../../_static/documentation_options.js?v=0a884db6"></script>
+    <script src="../../../_static/documentation_options.js?v=14a48054"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -439,8 +439,8 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_comparison_pdp_ale.html">Model Interpretation: PDP vs ALE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_accumulated_local_effects.html">Visualization with Accumulated Local Effects (ALE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_msage.html">Shapley Additive Global Importance (SAGE) example</a></li>
@@ -633,7 +633,7 @@ with a linear, and then a non-linear model. When using a
 misspecified model, such as a linear model for this dataset, LOCO fails to reject the null
 similarly to d0CRT. However, when using a non-linear model (SVC), LOCO is able to
 identify the important variables.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">metrics</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><span class="n">hinge_loss</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss"><span class="n">log_loss</span></a><span class="w">
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">metrics</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><span class="n">hinge_loss</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="sklearn.metrics.make_scorer"><span class="n">make_scorer</span></a><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold" title="sklearn.model_selection.KFold"><span class="n">KFold</span></a><span class="w">
 </span><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><span class="n">LOCO</span></a><span class="w">
@@ -650,14 +650,12 @@ identify the important variables.</p>
 </span><span class="w">
 </span>    <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><span class="n">vim_linear</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><span class="n">LOCO</span></a><span class="p">(</span><span class="w">
 </span>        <span class="n">estimator</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV" title="sklearn.linear_model.LogisticRegressionCV"><span class="n">linear_model_</span></a><span class="p">,</span><span class="w">
-</span>        <span class="n">loss</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss"><span class="n">log_loss</span></a><span class="p">,</span><span class="w">
-</span>        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">predict_proba</span><span class="s2">&quot;</span><span class="p">,</span><span class="w">
+</span>        <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">log_loss</span><span class="s2">&quot;</span><span class="p">,</span><span class="w">
 </span>        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w">
 </span>    <span class="p">)</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><span class="n">vim_non_linear</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><span class="n">LOCO</span></a><span class="p">(</span><span class="w">
 </span>        <span class="n">estimator</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><span class="n">non_linear_model_</span></a><span class="p">,</span><span class="w">
-</span>        <span class="n">loss</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><span class="n">hinge_loss</span></a><span class="p">,</span><span class="w">
-</span>        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">decision_function</span><span class="s2">&quot;</span><span class="p">,</span><span class="w">
+</span>        <span class="n">scoring</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="sklearn.metrics.make_scorer"><span class="n">make_scorer</span></a><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><span class="n">hinge_loss</span></a><span class="p">,</span> <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">decision_function</span><span class="s2">&quot;</span><span class="p">)</span><span class="p">,</span><span class="w">
 </span>        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w">
 </span>    <span class="p">)</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.LOCO.html#hidimstat.LOCO.fit" title="hidimstat.LOCO.fit"><span class="n">vim_linear</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X</span></a><span class="p">[</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">train</span></a><span class="p">]</span><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">[</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">train</span></a><span class="p">]</span><span class="p">)</span><span class="w">
@@ -674,6 +672,14 @@ identify the important variables.</p>
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
   warnings.warn(
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -682,6 +688,14 @@ identify the important variables.</p>
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
   warnings.warn(
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -690,6 +704,14 @@ identify the important variables.</p>
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
   warnings.warn(
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -698,6 +720,14 @@ identify the important variables.</p>
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
   warnings.warn(
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -706,6 +736,14 @@ identify the important variables.</p>
   warnings.warn(
 /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
   warnings.warn(
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+  var *= (n / (n-ddof))  # to avoid error on division by zero
+/home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+  var *= (n / (n-ddof))  # to avoid error on division by zero
 </pre></div>
 </div>
 <p>To select variables using LOCO, we compute the p-values using a t-test over the
@@ -725,7 +763,7 @@ importance scores.</p>
 </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">pval_linear</span></a><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">pval_non_linear</span></a><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pval_linear=array([0.79044424, 0.39558648])
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>pval_linear=array([0.79044377, 0.39557872])
 pval_non_linear=array([9.45765879e-05, 6.55666251e-04])
 </pre></div>
 </div>
@@ -796,7 +834,7 @@ restricts it from capturing variable interactions.</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.203 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.649 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  201 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-model-agnostic-importance-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

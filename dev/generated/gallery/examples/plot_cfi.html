@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../../../_static/documentation_options.js?v=0a884db6"></script>
+    <script src="../../../_static/documentation_options.js?v=14a48054"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Model Interpretation: PDP vs ALE" href="plot_comparison_pdp_ale.html" />
-    <link rel="prev" title="Visualization with Partial Dependency Plots" href="plot_partial_dependency_plot.html" />
+    <link rel="next" title="Visualization with Partial Dependency Plots" href="plot_partial_dependency_plot.html" />
+    <link rel="prev" title="Examples Gallery" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -439,8 +439,8 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Conditional Feature Importance (CFI) on the wine dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_comparison_pdp_ale.html">Model Interpretation: PDP vs ALE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_accumulated_local_effects.html">Visualization with Accumulated Local Effects (ALE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_msage.html">Shapley Additive Global Importance (SAGE) example</a></li>
@@ -587,14 +587,12 @@ model to estimate the conditional expectation <span class="math notranslate nohi
 Since this is a classification task, we use log_loss and specify the “predict_proba”
 method of our estimator.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="sklearn.linear_model.RidgeCV"><span class="n">RidgeCV</span></a><span class="w">
-</span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">metrics</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss"><span class="n">log_loss</span></a><span class="w">
 </span><span class="w">
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><span class="n">CFI</span></a><span class="w">
 </span><span class="w">
 </span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><span class="n">cfi</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><span class="n">CFI</span></a><span class="p">(</span><span class="w">
 </span>    <span class="n">estimator</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline"><span class="n">clf</span></a><span class="p">,</span><span class="w">
-</span>    <span class="n">loss</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss"><span class="n">log_loss</span></a><span class="p">,</span><span class="w">
-</span>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">predict_proba</span><span class="s2">&quot;</span><span class="p">,</span><span class="w">
+</span>    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">log_loss</span><span class="s2">&quot;</span><span class="p">,</span><span class="w">
 </span>    <span class="n">imputation_model_continuous</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="sklearn.linear_model.RidgeCV"><span class="n">RidgeCV</span></a><span class="p">(</span><span class="p">)</span><span class="p">,</span><span class="w">
 </span>    <span class="n">feature_groups</span><span class="o">=</span><span class="p">{</span><span class="w">
 </span>        <span class="n">feat_name</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feat_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html#sklearn.datasets.load_wine" title="sklearn.datasets.load_wine"><span class="n">load_wine</span></a><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span><span class="w">
@@ -636,8 +634,8 @@ total_phenols’ are not picked by CFI, probably due to their high correlation
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.368 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  203 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.249 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  212 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-cfi-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/12837b0baf6fb6881f8e58fb77568bb6/plot_cfi.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_cfi.ipynb</span></code></a></p>
@@ -664,20 +662,20 @@ total_phenols’ are not picked by CFI, probably due to their high correlation
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_partial_dependency_plot.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Visualization with Partial Dependency Plots</p>
+        <p class="prev-next-title">Examples Gallery</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_comparison_pdp_ale.html"
+       href="plot_partial_dependency_plot.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model Interpretation: PDP vs ALE</p>
+        <p class="prev-next-title">Visualization with Partial Dependency Plots</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

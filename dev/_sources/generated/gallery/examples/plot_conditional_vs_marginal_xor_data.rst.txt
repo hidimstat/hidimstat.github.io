@@ -34,7 +34,7 @@ Conditional Feature Importance (CFI) class and the marginal importance is comput
     import seaborn as sns
     from sklearn.base import clone
     from sklearn.linear_model import RidgeCV
-    from sklearn.metrics import hinge_loss
+    from sklearn.metrics import hinge_loss, make_scorer
     from sklearn.model_selection import KFold, train_test_split
     from sklearn.svm import SVC
 
@@ -1647,7 +1647,7 @@ Compute marginal importance using univariate models.
 
 Compute the conditional importance using the CFI class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-139
+.. GENERATED FROM PYTHON SOURCE LINES 117-138
 
 .. code-block:: Python
 
@@ -1661,8 +1661,7 @@ Compute the conditional importance using the CFI class.
 
         vim = CFI(
             estimator=clf_c,
-            method="decision_function",
-            loss=hinge_loss,
+            scoring=make_scorer(hinge_loss, response_method="decision_function"),
             imputation_model_continuous=RidgeCV(np.logspace(-3, 3, 10)),
             n_permutations=50,
             random_state=0,
@@ -1680,13 +1679,13 @@ Compute the conditional importance using the CFI class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-143
+.. GENERATED FROM PYTHON SOURCE LINES 139-142
 
 Visualizing the importance scores
 ---------------------------------
 We will use boxplots to visualize the distribution of the importance scores.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-174
+.. GENERATED FROM PYTHON SOURCE LINES 142-173
 
 .. code-block:: Python
 
@@ -1733,7 +1732,7 @@ We will use boxplots to visualize the distribution of the importance scores.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-179
+.. GENERATED FROM PYTHON SOURCE LINES 174-178
 
 On the left, we can see that both features are not marginally important, since the
 boxplots overlap with the chance level (accuracy = 0.5). On the right, we can see that
@@ -1743,7 +1742,7 @@ the null hypothesis (importance = 0.0).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.673 seconds)
+   **Total running time of the script:** (0 minutes 5.438 seconds)
 
 **Estimated memory usage:**  201 MB
 

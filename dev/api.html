@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="_static/documentation_options.js?v=0a884db6"></script>
+    <script src="_static/documentation_options.js?v=14a48054"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -549,7 +549,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.BaseVariableImportance.html#hidimstat.base_variable_importance.BaseVariableImportance" title="hidimstat.base_variable_importance.BaseVariableImportance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code></a>()</p></td>
 <td><p>Base class for variable importance methods.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation" title="hidimstat.base_perturbation.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a>([estimator, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html#hidimstat.base_perturbation.BasePerturbation" title="hidimstat.base_perturbation.BasePerturbation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbation</span></code></a>([estimator, scoring, ...])</p></td>
 <td><p>Abstract base class for model-agnostic variable importance measures using perturbation techniques.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbationCV.html#hidimstat.base_perturbation.BasePerturbationCV" title="hidimstat.base_perturbation.BasePerturbationCV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePerturbationCV</span></code></a>([estimators, cv, ...])</p></td>
@@ -566,19 +566,19 @@
 <span id="id1"></span><h2>Feature Importance Classes<a class="headerlink" href="#feature-importance-classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCI.html#hidimstat.LOCI" title="hidimstat.LOCI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCI</span></code></a>(estimator, method, loss[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCI.html#hidimstat.LOCI" title="hidimstat.LOCI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCI</span></code></a>(estimator[, scoring, method, loss, ...])</p></td>
 <td><p>Leave-One-Covariate-In (LOCI) algorithm</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCICV.html#hidimstat.LOCICV" title="hidimstat.LOCICV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCICV</span></code></a>(estimators, cv[, statistical_test, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCICV.html#hidimstat.LOCICV" title="hidimstat.LOCICV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCICV</span></code></a>(estimators, cv[, scoring, method, ...])</p></td>
 <td><p>Leave-One-Covariate-IN (LOCI) algorithm with Cross-Validation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator, method, loss[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCO.html#hidimstat.LOCO" title="hidimstat.LOCO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCO</span></code></a>(estimator[, scoring, method, loss, ...])</p></td>
 <td><p>Leave-One-Covariate-Out (LOCO) algorithm</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCOCV.html#hidimstat.LOCOCV" title="hidimstat.LOCOCV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCOCV</span></code></a>(estimators, cv[, statistical_test, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.LOCOCV.html#hidimstat.LOCOCV" title="hidimstat.LOCOCV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCOCV</span></code></a>(estimators, cv[, scoring, method, ...])</p></td>
 <td><p>Leave-One-Covariate-Out (LOCO) algorithm with Cross-Validation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFI</span></code></a>(estimator, method, loss, n_permutations)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFI.html#hidimstat.CFI" title="hidimstat.CFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFI</span></code></a>(estimator[, scoring, method, loss, ...])</p></td>
 <td><p>Conditional Feature Importance (CFI) algorithm.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFICV</span></code></a>(estimators, cv[, statistical_test, ...])</p></td>
@@ -590,13 +590,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance" title="hidimstat.EnsembleImportance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EnsembleImportance</span></code></a>(vim[, n_repeats, ...])</p></td>
 <td><p>Ensemble inference with arbitrary variable importance measure.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>([estimator, statistical_test, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFI.html#hidimstat.PFI" title="hidimstat.PFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFI</span></code></a>([estimator, scoring, method, loss, ...])</p></td>
 <td><p>Permutation Feature Importance algorithm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.PFICV.html#hidimstat.PFICV" title="hidimstat.PFICV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PFICV</span></code></a>([estimators, cv, statistical_test, ...])</p></td>
 <td><p>Permutation Feature Importance (PFI) algorithm with Cross-Validation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.SAGE.html#hidimstat.SAGE" title="hidimstat.SAGE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SAGE</span></code></a>(estimator[, method, loss, imputation, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.SAGE.html#hidimstat.SAGE" title="hidimstat.SAGE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SAGE</span></code></a>(estimator[, scoring, method, loss, ...])</p></td>
 <td><p>Shapley Additive Global Importance (SAGE) values for feature importance.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html#hidimstat.D0CRT" title="hidimstat.D0CRT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D0CRT</span></code></a>(estimator[, method, estimated_coef, ...])</p></td>
@@ -616,7 +616,7 @@
 <h2>Feature Importance functions<a class="headerlink" href="#feature-importance-functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html#hidimstat.cfi_importance" title="hidimstat.cfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfi_importance</span></code></a>(estimator, X, y, method, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html#hidimstat.cfi_importance" title="hidimstat.cfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cfi_importance</span></code></a>(estimator, X, y[, scoring, ...])</p></td>
 <td><p>Conditional Feature Importance (CFI) algorithm.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.d0crt_importance.html#hidimstat.d0crt_importance" title="hidimstat.d0crt_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">d0crt_importance</span></code></a>(estimator, X, y[, cv, ...])</p></td>
@@ -628,13 +628,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.model_x_knockoff_importance.html#hidimstat.model_x_knockoff_importance" title="hidimstat.model_x_knockoff_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_x_knockoff_importance</span></code></a>(X, y[, ...])</p></td>
 <td><p>Model-X Knockoff</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loci_importance.html#hidimstat.loci_importance" title="hidimstat.loci_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loci_importance</span></code></a>(estimator, X, y, method, loss)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loci_importance.html#hidimstat.loci_importance" title="hidimstat.loci_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loci_importance</span></code></a>(estimator, X, y[, scoring, ...])</p></td>
 <td><p>Leave-One-Covariate-In (LOCI) algorithm</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html#hidimstat.loco_importance" title="hidimstat.loco_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loco_importance</span></code></a>(estimator, X, y, method, loss)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.loco_importance.html#hidimstat.loco_importance" title="hidimstat.loco_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loco_importance</span></code></a>(estimator, X, y[, scoring, ...])</p></td>
 <td><p>Leave-One-Covariate-Out (LOCO) algorithm</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.pfi_importance.html#hidimstat.pfi_importance" title="hidimstat.pfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pfi_importance</span></code></a>(estimator, X, y, method, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.pfi_importance.html#hidimstat.pfi_importance" title="hidimstat.pfi_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pfi_importance</span></code></a>(estimator, X, y[, scoring, ...])</p></td>
 <td><p>Permutation Feature Importance algorithm</p></td>
 </tr>
 </tbody>

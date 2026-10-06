@@ -113,20 +113,18 @@ model to estimate the conditional expectation :math:`\mathbb{E}[X^j | X^{-j}]`.
 Since this is a classification task, we use log_loss and specify the "predict_proba"
 method of our estimator.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-87
+.. GENERATED FROM PYTHON SOURCE LINES 64-85
 
 .. code-block:: Python
 
 
     from sklearn.linear_model import RidgeCV
-    from sklearn.metrics import log_loss
 
     from hidimstat import CFI
 
     cfi = CFI(
         estimator=clf,
-        loss=log_loss,
-        method="predict_proba",
+        scoring="log_loss",
         imputation_model_continuous=RidgeCV(),
         feature_groups={
             feat_name: [i] for i, feat_name in enumerate(load_wine().feature_names)
@@ -147,13 +145,13 @@ method of our estimator.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-91
+.. GENERATED FROM PYTHON SOURCE LINES 86-89
 
 Visualization of CFI feature importance
 ----------------------------------------
 Finally, we visualize the importance of each feature using a bar plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-100
+.. GENERATED FROM PYTHON SOURCE LINES 89-98
 
 .. code-block:: Python
 
@@ -178,7 +176,7 @@ Finally, we visualize the importance of each feature using a bar plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-107
+.. GENERATED FROM PYTHON SOURCE LINES 99-105
 
 Variable importance analysis is meant to help scientific understanding, in particular
 to identify which features are important to differentiate Barolo, Grignolino, and
@@ -187,7 +185,7 @@ Note: Despite very large marginal importance, the features 'flavanoids' and '
 total_phenols' are not picked by CFI, probably due to their high correlation
 (0.86 between these two) and their redundancy with other features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-113
+.. GENERATED FROM PYTHON SOURCE LINES 108-111
 
 References
 ----------
@@ -196,9 +194,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.368 seconds)
+   **Total running time of the script:** (0 minutes 3.249 seconds)
 
-**Estimated memory usage:**  203 MB
+**Estimated memory usage:**  212 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_cfi.py:

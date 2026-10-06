@@ -183,12 +183,12 @@ misspecified model, such as a linear model for this dataset, LOCO fails to rejec
 similarly to d0CRT. However, when using a non-linear model (SVC), LOCO is able to
 identify the important variables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-142
+.. GENERATED FROM PYTHON SOURCE LINES 107-140
 
 .. code-block:: Python
 
 
-    from sklearn.metrics import hinge_loss, log_loss
+    from sklearn.metrics import hinge_loss, make_scorer
     from sklearn.model_selection import KFold
 
     from hidimstat import LOCO
@@ -205,14 +205,12 @@ identify the important variables.
 
         vim_linear = LOCO(
             estimator=linear_model_,
-            loss=log_loss,
-            method="predict_proba",
+            scoring="log_loss",
             n_jobs=2,
         )
         vim_non_linear = LOCO(
             estimator=non_linear_model_,
-            loss=hinge_loss,
-            method="decision_function",
+            scoring=make_scorer(hinge_loss, response_method="decision_function"),
             n_jobs=2,
         )
         vim_linear.fit(X[train], y[train])
@@ -238,6 +236,14 @@ identify the important variables.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -246,6 +252,14 @@ identify the important variables.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -254,6 +268,14 @@ identify the important variables.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -262,6 +284,14 @@ identify the important variables.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2102: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratios' and 'Cs' instead. Use l1_ratios=(0,) instead of penalty='l2', l1_ratios=(1,) instead of penalty='l1', l1_ratios set to floats between 0 and 1 instead of penalty='elasticnet', and Cs=(np.inf,) instead of penalty=None.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2116: FutureWarning: The default value of the parameter 'scoring' will change from None, i.e. accuracy, to 'neg_log_loss' in version 1.11. To silence this warning, explicitly set the scoring parameter: scoring='neg_log_loss' for the new, scoring='accuracy' or scoring=None for the old default.
@@ -270,16 +300,24 @@ identify the important variables.
       warnings.warn(
     /home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/linear_model/_logistic.py:2166: UserWarning: l1_ratios parameter is only used when penalty is 'elasticnet'. Got (penalty=l1)
       warnings.warn(
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-145
+.. GENERATED FROM PYTHON SOURCE LINES 141-143
 
 To select variables using LOCO, we compute the p-values using a t-test over the
 importance scores.
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-162
+.. GENERATED FROM PYTHON SOURCE LINES 143-160
 
 .. code-block:: Python
 
@@ -308,18 +346,18 @@ importance scores.
 
  .. code-block:: none
 
-    pval_linear=array([0.79044424, 0.39558648])
+    pval_linear=array([0.79044377, 0.39557872])
     pval_non_linear=array([9.45765879e-05, 6.55666251e-04])
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-165
+.. GENERATED FROM PYTHON SOURCE LINES 161-163
 
 Plot the :math:`-log_{10}(pval)` for each method and variable
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-188
+.. GENERATED FROM PYTHON SOURCE LINES 163-186
 
 .. code-block:: Python
 
@@ -353,12 +391,12 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 189-191
+.. GENERATED FROM PYTHON SOURCE LINES 187-189
 
 Plot the :math:`-log_{10}(pval)` for each method and variable
 -------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-214
+.. GENERATED FROM PYTHON SOURCE LINES 189-212
 
 .. code-block:: Python
 
@@ -397,7 +435,7 @@ Plot the :math:`-log_{10}(pval)` for each method and variable
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-220
+.. GENERATED FROM PYTHON SOURCE LINES 213-218
 
 As expected, when using linear models (d0CRT and LOCO-linear) that are misspecified,
 the variables are not selected. This highlights the benefit of using model-agnostic
@@ -405,7 +443,7 @@ methods such as LOCO, which allows for the use of models that are expressive eno
 to explain the data. While d0CRT can use any estimator, its distillation step
 restricts it from capturing variable interactions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-226
+.. GENERATED FROM PYTHON SOURCE LINES 221-224
 
 References
 ----------
@@ -414,7 +452,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.203 seconds)
+   **Total running time of the script:** (0 minutes 7.649 seconds)
 
 **Estimated memory usage:**  201 MB
 

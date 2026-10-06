@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../../../_static/documentation_options.js?v=0a884db6"></script>
+    <script src="../../../_static/documentation_options.js?v=14a48054"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -547,12 +547,12 @@
 <h1>LOCOCV<a class="headerlink" href="#lococv" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">LOCOCV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nb-ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/leave_one_covariate_out.py#L276-L344"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.</span></span><span class="sig-name descname"><span class="pre">LOCOCV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nb-ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/leave_one_covariate_out.py#L224-L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base/hidimstat.base_perturbation.BasePerturbationCV.html#hidimstat.base_perturbation.BasePerturbationCV" title="hidimstat.base_perturbation.BasePerturbationCV"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePerturbationCV</span></code></a></p>
 <p>Leave-One-Covariate-Out (LOCO) algorithm with Cross-Validation.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>estimators: list of sklearn estimators or single sklearn estimator</strong></dt><dd><p>Can be a list of fitted sklearn estimators (one per fold) or a single sklearn
 estimator that will then be cloned and fitted on each fold.</p>
 </dd>
@@ -560,12 +560,21 @@ estimator that will then be cloned and fitted on each fold.</p>
 </dd>
 <dt><strong>statistical_test</strong><span class="classifier">callable or str, default=”nb-ttest”</span></dt><dd><p>Statistical test function for computing p-values from importance scores.</p>
 </dd>
-<dt><strong>method</strong><span class="classifier">str, default=”predict”</span></dt><dd><p>The method to use for the prediction. This determines the predictions passed
-to the loss function. Supported methods are “predict”, “predict_proba” or
-“decision_function”.</p>
+<dt><strong>scoring</strong><span class="classifier">srt, callable</span></dt><dd><p>Strategy to evaluate the performance of the estimator to compute
+importance scores. Based on <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.check_scoring.html#sklearn.metrics.check_scoring" title="(in scikit-learn v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.metrics.check_scoring()</span></code></a>.</p>
 </dd>
-<dt><strong>loss</strong><span class="classifier">callable, default=mean_squared_error</span></dt><dd><p>The loss function to use when comparing the perturbed model to the full
-model.</p>
+<dt><strong>method</strong><span class="classifier">str, default=None</span></dt><dd><p>The method used for making predictions. This determines the predictions
+passed to the loss function. Supported methods are “predict”,
+“predict_proba”, “decision_function”, “transform”.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.5.0: </span>Will be removed in 0.6.0. Please use parameter ‘scoring’ instead.</p>
+</div>
+</dd>
+<dt><strong>loss</strong><span class="classifier">callable, default=None</span></dt><dd><p>The function to compute the loss when comparing the perturbed model
+to the original model.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.5.0: </span>Will be removed in 0.6.0. Please use parameter ‘scoring’ instead.</p>
+</div>
 </dd>
 <dt><strong>feature_groups: dict or None, default=None</strong></dt><dd><p>A dictionary where the keys are the group names and the values are the
 list of column names corresponding to each features group. If None,
@@ -594,7 +603,7 @@ Higher values indicate greater importance.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nb-ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">mean_squared_error&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/leave_one_covariate_out.py#L319-L332"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nb-ttest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/leave_one_covariate_out.py#L276-L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -641,13 +650,13 @@ of the effect is determined from the sign of the importance scores.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L439-L472"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L466-L499"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fit" title="Link to this definition">#</a></dt>
 <dd><p>Fit the importance estimators on each fold of the cross-validation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.fit_importance">
-<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L524-L528"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fit_importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L551-L555"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.fit_importance" title="Link to this definition">#</a></dt>
 <dd><p>Fit the model to the data and computes feature importance scores.</p>
 </dd></dl>
 
@@ -723,7 +732,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.LOCOCV.importance">
-<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L482-L522"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.importance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_perturbation.py#L509-L549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.LOCOCV.importance" title="Link to this definition">#</a></dt>
 <dd><p>Compute the importance scores using cross-validation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

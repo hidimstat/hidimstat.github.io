@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../../../_static/documentation_options.js?v=0a884db6"></script>
+    <script src="../../../_static/documentation_options.js?v=14a48054"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Visualization with Partial Dependency Plots" href="plot_partial_dependency_plot.html" />
+    <link rel="next" title="Conditional Feature Importance (CFI) on the wine dataset" href="plot_cfi.html" />
     <link rel="prev" title="7. Inference in high dimension" href="../../../high_dimension.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -438,8 +438,8 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_comparison_pdp_ale.html">Model Interpretation: PDP vs ALE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_accumulated_local_effects.html">Visualization with Accumulated Local Effects (ALE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_msage.html">Shapley Additive Global Importance (SAGE) example</a></li>
@@ -520,12 +520,12 @@
                   
   <section id="examples-gallery">
 <span id="general-examples"></span><h1>Examples Gallery<a class="headerlink" href="#examples-gallery" title="Link to this heading">#</a></h1>
-<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to create Partial Dependency Plots (PDPs). This visualization method allows you to examine a model&#x27;s dependence on a single feature or a pair of features. The underlying implementation is built upon sklearn.inspection.partial_dependence, which calculates the dependence by taking the average response of an estimator across all possible values of the target feature(s). We&#x27;ll use the circles dataset to illustrate the basic usage."><img alt="" src="../../../_images/sphx_glr_plot_partial_dependency_plot_thumb.png" />
-<p><a class="reference internal" href="plot_partial_dependency_plot.html"><span class="doc">Visualization with Partial Dependency Plots</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Visualization with Partial Dependency Plots</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [Chamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier."><img alt="" src="../../../_images/sphx_glr_plot_cfi_thumb.png" />
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to measure feature importance using CFI [Chamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem. In this example, we show how to use CFI to identify which variables are most important for solving the classification task with a neural network classifier."><img alt="" src="../../../_images/sphx_glr_plot_cfi_thumb.png" />
 <p><a class="reference internal" href="plot_cfi.html"><span class="doc">Conditional Feature Importance (CFI) on the wine dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional Feature Importance (CFI) on the wine dataset</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to create Partial Dependency Plots (PDPs). This visualization method allows you to examine a model&#x27;s dependence on a single feature or a pair of features. The underlying implementation is built upon sklearn.inspection.partial_dependence, which calculates the dependence by taking the average response of an estimator across all possible values of the target feature(s). We&#x27;ll use the circles dataset to illustrate the basic usage."><img alt="" src="../../../_images/sphx_glr_plot_partial_dependency_plot_thumb.png" />
+<p><a class="reference internal" href="plot_partial_dependency_plot.html"><span class="doc">Visualization with Partial Dependency Plots</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Visualization with Partial Dependency Plots</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this notebook, we compare Partial Dependence Plots (PDP) and Accumulated Local Effects (ALE)."><img alt="" src="../../../_images/sphx_glr_plot_comparison_pdp_ale_thumb.png" />
 <p><a class="reference internal" href="plot_comparison_pdp_ale.html"><span class="doc">Model Interpretation: PDP vs ALE</span></a></p>
   <div class="sphx-glr-thumbnail-title">Model Interpretation: PDP vs ALE</div>
@@ -622,11 +622,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="plot_partial_dependency_plot.html"
+       href="plot_cfi.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualization with Partial Dependency Plots</p>
+        <p class="prev-next-title">Conditional Feature Importance (CFI) on the wine dataset</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

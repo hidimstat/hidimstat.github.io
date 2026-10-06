@@ -86,7 +86,7 @@ each model on the training data, compute the LOCI feature importance on the test
 data, and store the results in a DataFrame for comparison.
 Beware on the choice of hyperparameters of certain models to avoid over-fitting.
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-102
+.. GENERATED FROM PYTHON SOURCE LINES 56-101
 
 .. code-block:: Python
 
@@ -94,7 +94,6 @@ Beware on the choice of hyperparameters of certain models to avoid over-fitting.
     import pandas as pd
     from sklearn.ensemble import RandomForestRegressor
     from sklearn.linear_model import RidgeCV
-    from sklearn.metrics import mean_squared_error
     from sklearn.neural_network import MLPRegressor
     from sklearn.svm import SVR
 
@@ -118,7 +117,7 @@ Beware on the choice of hyperparameters of certain models to avoid over-fitting.
     for model in models_list:
         # Fit the full model
         model = model.fit(X_train, y_train)
-        loci = LOCI(model, method="predict", loss=mean_squared_error)
+        loci = LOCI(model, scoring="mean_squared_error")
         # Refit the model on a single feature / group of feature, and compute LOCI
         # importance. This process is repeated for all features / groups of features to assess
         # their individual contributions.
@@ -140,16 +139,37 @@ Beware on the choice of hyperparameters of certain models to avoid over-fitting.
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide
+      var *= (n / (n-ddof))  # to avoid error on division by zero
+    /home/circleci/project/.venv/lib/python3.13/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply
+      var *= (n / (n-ddof))  # to avoid error on division by zero
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-106
+
+.. GENERATED FROM PYTHON SOURCE LINES 102-105
 
 The predictive performance of the models can be compared using their R2 scores.
 This helps assess how effectively each model captures the underlying data-generating
 process.
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-110
+.. GENERATED FROM PYTHON SOURCE LINES 105-109
 
 .. code-block:: Python
 
@@ -214,7 +234,7 @@ process.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-116
+.. GENERATED FROM PYTHON SOURCE LINES 110-115
 
 Visualization of LOCI feature importance
 ----------------------------------------
@@ -222,7 +242,7 @@ Finally, we visualize the LOCI feature importance for each model using a horizon
 bar plot. The true support features are highlighted in the plot with a green shaded
 background.
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-143
+.. GENERATED FROM PYTHON SOURCE LINES 115-142
 
 .. code-block:: Python
 
@@ -265,7 +285,7 @@ background.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-149
+.. GENERATED FROM PYTHON SOURCE LINES 143-148
 
 The plot shows that the different models all identify the true support features and
 assign them higher importance scores. However, the magnitude of the importance scores
@@ -273,7 +293,7 @@ varies across models. It can be observed that models with a greater predictive
 performance (higher R2 score) tend to assign higher importance scores to the true
 support features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-158
+.. GENERATED FROM PYTHON SOURCE LINES 150-157
 
 Conclusion
 ----------
@@ -283,7 +303,7 @@ Please keep in mind that models are fit on single features, which can lead to
 overfitting depending on the hyperparameters. One way to counteract this is to
 use LOCICV which can reduce noise for high-variance or unregularized models.
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-163
+.. GENERATED FROM PYTHON SOURCE LINES 159-162
 
 References
 ----------
@@ -292,7 +312,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.666 seconds)
+   **Total running time of the script:** (0 minutes 2.477 seconds)
 
 **Estimated memory usage:**  201 MB
 

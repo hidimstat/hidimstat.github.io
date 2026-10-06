@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
 
-    <script src="../_static/documentation_options.js?v=0a884db6"></script>
+    <script src="../_static/documentation_options.js?v=14a48054"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -661,8 +661,7 @@ of CFI on a classification task:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cfi</span> <span class="o">=</span> <span class="n">CFI</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">imputation_model_continuous</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">(),</span>
-<span class="gp">... </span>    <span class="n">loss</span><span class="o">=</span><span class="n">log_loss</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">method</span><span class="o">=</span><span class="s2">"predict_proba"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">scoring</span><span class="o">=</span><span class="s2">"log_loss"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cfi</span> <span class="o">=</span> <span class="n">cfi</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">importance</span> <span class="o">=</span> <span class="n">cfi</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
