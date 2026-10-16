@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../../../_static/documentation_options.js?v=e0457cf5"></script>
+    <script src="../../../_static/documentation_options.js?v=c67a765c"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -548,7 +548,7 @@
 <h1>GroupVariableImportanceMixin<a class="headerlink" href="#groupvariableimportancemixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.base_variable_importance.</span></span><span class="sig-name descname"><span class="pre">GroupVariableImportanceMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L501-L650"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.base_variable_importance.</span></span><span class="sig-name descname"><span class="pre">GroupVariableImportanceMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L501-L664"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Mixin class for adding group functionality to variable importance methods.
 This class provides functionality for handling grouped features in variable
@@ -576,7 +576,10 @@ If None, each feature is treated as its own group.</p>
 <tr class="row-odd"><td><p><strong>fit(X, y=None)</strong></p></td>
 <td><p>Identifies feature groups and validates input data structure.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>_check_compatibility(X)</strong></p></td>
+<tr class="row-even"><td><p><strong>_check_fit()</strong></p></td>
+<td><p>Verifies if the instance has been fitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_check_compatibility(X)</strong></p></td>
 <td><p>Validates compatibility between input data and fitted groups.</p></td>
 </tr>
 </tbody>
@@ -584,12 +587,12 @@ If None, each feature is treated as its own group.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L528-L530"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L530-L532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L532-L582"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L534-L584"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit" title="Link to this definition">#</a></dt>
 <dd><p>Base fit method for perturbation-based methods. Identifies the groups.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
