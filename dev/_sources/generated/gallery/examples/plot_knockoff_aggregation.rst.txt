@@ -95,7 +95,7 @@ observe the variability of the selections induced by the knockoff lottery. Then,
 compare the possible solutions to aggregate the selections in order to derandomize
 the inference.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-89
+.. GENERATED FROM PYTHON SOURCE LINES 65-90
 
 .. code-block:: Python
 
@@ -114,7 +114,8 @@ the inference.
     fdp_individual = []
     power_individual = []
 
-    for ko_statistics in model_x_knockoff.importances_:
+    for i in range(model_x_knockoff.importances_.shape[0]):
+        ko_statistics = model_x_knockoff.importances_[i]
         threshold = model_x_knockoff.knockoff_threshold(ko_statistics, fdr=fdr)
         ko_selection = ko_statistics > threshold
 
@@ -141,7 +142,7 @@ the inference.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-95
+.. GENERATED FROM PYTHON SOURCE LINES 91-96
 
 Visualize the results of the individual selections
 --------------------------------------------------
@@ -149,7 +150,7 @@ We first visualize the results of the individual selections to observe the
 variability induced by the knockoff lottery. We plot the False Discovery Proportion
 (FDP) for each run along with the desired FDR level (red dashed line) and the statistical
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-137
+.. GENERATED FROM PYTHON SOURCE LINES 96-138
 
 .. code-block:: Python
 
@@ -207,7 +208,7 @@ variability induced by the knockoff lottery. We plot the False Discovery Proport
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-144
+.. GENERATED FROM PYTHON SOURCE LINES 139-145
 
 Aggregation procedures
 ----------------------
@@ -216,7 +217,7 @@ We now compute the aggregation using both the p-values aggregation procedure fro
 :footcite:t:`Ren_2023`. We then compare the results of both procedures in terms of
 FDP and power.
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-216
+.. GENERATED FROM PYTHON SOURCE LINES 145-217
 
 .. code-block:: Python
 
@@ -304,12 +305,12 @@ FDP and power.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-220
+.. GENERATED FROM PYTHON SOURCE LINES 219-221
 
 It appears that both aggregation procedures successfully lowers the false discovery
 proportion while maintaining a good statistical power.
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-226
+.. GENERATED FROM PYTHON SOURCE LINES 224-227
 
 References
 ----------
@@ -318,7 +319,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 45.319 seconds)
+   **Total running time of the script:** (1 minutes 35.234 seconds)
 
 **Estimated memory usage:**  202 MB
 
