@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../../../_static/documentation_options.js?v=249cb36d"></script>
+    <script src="../../../_static/documentation_options.js?v=49f823c7"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -440,12 +440,12 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_comparison_pdp_ale.html">Model Interpretation: PDP vs ALE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_accumulated_local_effects.html">Visualization with Accumulated Local Effects (ALE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_msage.html">Shapley Additive Global Importance (SAGE) example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_holdout_randomization_test.html">Feature selection with the Holdout Randomization Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loci.html">Leave-One-Covariate-In (LOCI) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
@@ -614,24 +614,24 @@ threshold of <span class="math notranslate nohighlight">\(p&lt;0.05\)</span>.</p
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_transformed</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat-feature_selection sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.feature_selection.PValueSelect.html#hidimstat.feature_selection.PValueSelect.fit_transform" title="hidimstat.feature_selection.PValueSelect.fit_transform"><span class="n">selector</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  5.84it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.98it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  5.84it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.78it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.71it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.77it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  5.85it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.85it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  5.63it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.44it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.44it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.53it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 34.42it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 34.43it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 28.82it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 28.81it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.47s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:07,  2.41s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:07&lt;00:04,  2.39s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.36s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.34s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.36s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.45s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:07,  2.45s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:07&lt;00:04,  2.46s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.48s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:12&lt;00:00,  2.47s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:12&lt;00:00,  2.47s/it]
 </pre></div>
 </div>
 <p>We can now inspect how many features were selected, and which ones:</p>
@@ -696,108 +696,108 @@ The pipeline is therefore constructed as follows:</p>
 </span>    <a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="list"><span class="n">initial_scores</span></a><span class="o">.</span><span class="n">append</span><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-method reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.score" title="sklearn.pipeline.Pipeline.score"><span class="n">clf</span><span class="o">.</span><span class="n">score</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_test</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_test</span></a><span class="p">)</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.16it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.79it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.17it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.70it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.22it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.51it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.35it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.99it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.06it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.19it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.25it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.19it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 27.21it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 25.94it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 27.98it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 27.72it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.48s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:05&lt;00:07,  2.50s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:07&lt;00:04,  2.34s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.25s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.31s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.34s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.15s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.16s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.16s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:08&lt;00:02,  2.16s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.17s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.16s/it]
 
 Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.22it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.14it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.01it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.66it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.77it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.84it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.84it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.39it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.45it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.50it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.46it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.48it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 27.54it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 27.27it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 28.69it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 28.78it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.45s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.30s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:07&lt;00:04,  2.43s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.49s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.38s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.40s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.12s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.12s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.10s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:08&lt;00:02,  2.11s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.13s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.12s/it]
+
+Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.50it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.21it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.42it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.08it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.02it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.12it/s]
+
+Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 31.69it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 31.69it/s]
+
+Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.12s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.14s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.16s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:08&lt;00:02,  2.16s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.15s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.15s/it]
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
+  warnings.warn(
+
+Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.39it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.38it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.56it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.25it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.21it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.28it/s]
+
+Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 29.01it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 29.18it/s]
+
+Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.11s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.10s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.09s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:08&lt;00:02,  2.07s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.08s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.08s/it]
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
+  warnings.warn(
 
 Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
 Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.20it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.13it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.22it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.99it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.86it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.97it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.25it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.27it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.14it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.08it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.13it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 33.62it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 33.88it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 29.04it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 28.78it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.17s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.28s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.32s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.34s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.34s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.32s/it]
-/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
-  warnings.warn(
-
-Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.54it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.13it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.03it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.99it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.65it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.84it/s]
-
-Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 32.30it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 31.98it/s]
-
-Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.17s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.25s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.22s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:08&lt;00:02,  2.21s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.20s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.21s/it]
-/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
-  warnings.warn(
-
-Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  5.94it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.01it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.20it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.07it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.73it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.87it/s]
-
-Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 28.89it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 30.28it/s]
-
-Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.35s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:07,  2.38s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:07&lt;00:04,  2.39s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.34s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.29s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.32s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.07s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.09s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.06s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:08&lt;00:02,  2.09s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.17s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.13s/it]
 </pre></div>
 </div>
 <p>Now that we have computed scores from the initial pipeline without feature selection,
@@ -811,7 +811,7 @@ their distributions.</p>
 </span><a class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html#matplotlib.axes.Axes.set_ylim" title="matplotlib.axes.Axes.set_ylim"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span><span class="w">
 </span><a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">(</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<img src="../../../_images/sphx_glr_plot_selector_001.png" srcset="../../../_images/sphx_glr_plot_selector_001.png" alt="plot selector" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 20.150 seconds)</p>
+<img src="../../../_images/sphx_glr_plot_selector_001.png" srcset="../../../_images/sphx_glr_plot_selector_001.png" alt="plot selector" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 16.014 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  202 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-selector-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">

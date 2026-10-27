@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../../../_static/documentation_options.js?v=249cb36d"></script>
+    <script src="../../../_static/documentation_options.js?v=49f823c7"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -440,12 +440,12 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_partial_dependency_plot.html">Visualization with Partial Dependency Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_comparison_pdp_ale.html">Model Interpretation: PDP vs ALE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_accumulated_local_effects.html">Visualization with Accumulated Local Effects (ALE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_msage.html">Shapley Additive Global Importance (SAGE) example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_holdout_randomization_test.html">Feature selection with the Holdout Randomization Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_cfi.html">Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loco.html">Leave-One-Covariate-Out (LOCO) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_loci.html">Leave-One-Covariate-In (LOCI) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
@@ -726,13 +726,13 @@ see Chevalier <em>et al.</em><a class="footnote-reference brackets" href="#footc
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">selected_ecdl</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.EnsembleImportance.html#hidimstat.EnsembleImportance.fwer_selection" title="hidimstat.EnsembleImportance.fwer_selection"><span class="n">enclu_dl</span><span class="o">.</span><span class="n">fwer_selection</span></a><span class="p">(</span><span class="n">fwer</span><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">fwer_target</span></a><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">n_clusters</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting ensemble inferences:   0%|          | 0/20 [00:00&lt;?, ?it/s]
-Fitting ensemble inferences:  50%|█████     | 10/20 [00:00&lt;00:00, 10.71it/s]
-Fitting ensemble inferences:  75%|███████▌  | 15/20 [00:01&lt;00:00,  8.01it/s]
-Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.00it/s]
-Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.56it/s]
+Fitting ensemble inferences:  50%|█████     | 10/20 [00:00&lt;00:00, 11.94it/s]
+Fitting ensemble inferences:  75%|███████▌  | 15/20 [00:01&lt;00:00,  8.23it/s]
+Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.24it/s]
+Fitting ensemble inferences: 100%|██████████| 20/20 [00:02&lt;00:00,  7.87it/s]
 
 Fitting clustered inferences:   0%|          | 0/20 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 20/20 [00:00&lt;00:00, 840.88it/s]
+Fitting clustered inferences: 100%|██████████| 20/20 [00:00&lt;00:00, 875.49it/s]
 </pre></div>
 </div>
 <p>Visualizing the support estimated by EnCluDL</p>
@@ -881,8 +881,8 @@ conservative (see Results).</p>
 </aside>
 </aside>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.921 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  219 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 23.316 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  218 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-2d-simulation-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/59b9ef2de24bb63af60069439f8c75cd/plot_2D_simulation_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_2D_simulation_example.ipynb</span></code></a></p>

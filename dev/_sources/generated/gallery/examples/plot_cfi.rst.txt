@@ -38,7 +38,7 @@ The CFI method measures the importance of a feature by generating perturbations
 through sampling from the conditional distribution :math:`p(X^j | X^{-j})`,
 which is estimated on the training set.
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-36
+.. GENERATED FROM PYTHON SOURCE LINES 21-41
 
 .. code-block:: Python
 
@@ -47,6 +47,11 @@ which is estimated on the training set.
     from sklearn.model_selection import train_test_split
 
     X, y = load_wine(return_X_y=True)
+    feature_names = load_wine().feature_names
+    # Renaming "od280/od315_of_diluted_wines" as "dilution" for readability reasons.
+    feature_names[11] = "dilution"
+
+    print(f"Feature names: {feature_names}")
 
     X_train, X_test, y_train, y_test = train_test_split(
         X,
@@ -61,10 +66,16 @@ which is estimated on the training set.
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Feature names: ['alcohol', 'malic_acid', 'ash', 'alcalinity_of_ash', 'magnesium', 'total_phenols', 'flavanoids', 'nonflavanoid_phenols', 'proanthocyanins', 'color_intensity', 'hue', 'dilution', 'proline']
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-42
+
+.. GENERATED FROM PYTHON SOURCE LINES 42-47
 
 Fitting the model and computing CFI feature importance
 ------------------------------------------------------
@@ -72,7 +83,7 @@ To solve the classification task, we use a pipeline that first standardizes the 
 followed by a neural network (MLPClassifier) with one hidden layer of 100 neurons.
 Before measuring feature importance, we evaluate the estimator's performance by reporting its accuracy score.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-59
+.. GENERATED FROM PYTHON SOURCE LINES 47-65
 
 .. code-block:: Python
 
@@ -97,6 +108,7 @@ Before measuring feature importance, we evaluate the estimator's performance by 
 
 
 
+
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
@@ -106,14 +118,14 @@ Before measuring feature importance, we evaluate the estimator's performance by 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-64
+.. GENERATED FROM PYTHON SOURCE LINES 66-70
 
 Next, we use the CFI class to measure feature importance. Here, we use a RidgeCV
 model to estimate the conditional expectation :math:`\mathbb{E}[X^j | X^{-j}]`.
 Since this is a classification task, we use log_loss and specify the "predict_proba"
 method of our estimator.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-85
+.. GENERATED FROM PYTHON SOURCE LINES 70-91
 
 .. code-block:: Python
 
@@ -127,7 +139,7 @@ method of our estimator.
         scoring="log_loss",
         imputation_model_continuous=RidgeCV(),
         feature_groups={
-            feat_name: [i] for i, feat_name in enumerate(load_wine().feature_names)
+            feat_name: [i] for i, feat_name in enumerate(feature_names)
         },
         random_state=0,
     )
@@ -145,24 +157,26 @@ method of our estimator.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-89
+.. GENERATED FROM PYTHON SOURCE LINES 92-95
 
 Visualization of CFI feature importance
 ----------------------------------------
 Finally, we visualize the importance of each feature using a bar plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-98
+.. GENERATED FROM PYTHON SOURCE LINES 95-106
 
 .. code-block:: Python
 
 
     import matplotlib.pyplot as plt
 
-    _, ax = plt.subplots(figsize=(6, 3))
-    ax = cfi.plot_importance(ax=ax)
-    ax.set_xlabel("Feature Importance")
+    _, axes = plt.subplots(1, 2, figsize=(6, 3))
+    ax = cfi.plot_importance(ax=axes[0])
+    ax.set_xlabel("Feature\nImportance")
+    ax = cfi.plot_feature_predictability(ax=axes[1])
+    ax.axvline(x=1.0, color="r")
+    ax.set_xlabel("Feature\npredictability")
     plt.tight_layout()
-    plt.show()
 
 
 
@@ -176,16 +190,65 @@ Finally, we visualize the importance of each feature using a bar plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-105
+.. GENERATED FROM PYTHON SOURCE LINES 107-113
 
 Variable importance analysis is meant to help scientific understanding, in particular
 to identify which features are important to differentiate Barolo, Grignolino, and
 Barbera wine types.
-Note: Despite very large marginal importance, the features 'flavanoids' and '
-total_phenols' are not picked by CFI, probably due to their high correlation
+Note: Despite very large marginal importance, the features 'flavanoids' and
+'total_phenols' are not picked by CFI, probably due to their high correlation
 (0.86 between these two) and their redundancy with other features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-111
+.. GENERATED FROM PYTHON SOURCE LINES 116-119
+
+Group feature importance
+------------------------
+Feature importance can be computed also by grouping them together as follows:
+
+.. GENERATED FROM PYTHON SOURCE LINES 119-146
+
+.. code-block:: Python
+
+
+    cfi = CFI(
+        estimator=clf,
+        scoring="log_loss",
+        imputation_model_continuous=RidgeCV(),
+        feature_groups={
+            "ripeness": [0, 12],
+            "minerals": [1, 2, 3, 4],
+            "phenolics_and_color": [5, 6, 7, 8, 9, 10, 11],
+        },
+        random_state=0,
+    )
+    cfi.fit(
+        X_train,
+        y_train,
+    )
+    importances = cfi.importance(X_test, y_test)
+
+    _, axes = plt.subplots(1, 2, figsize=(6, 3))
+    ax = cfi.plot_importance(ax=axes[0])
+    ax.set_xlabel("Feature\nImportance")
+    ax = cfi.plot_feature_predictability(ax=axes[1])
+    ax.axvline(x=1.0, color="r")
+    ax.set_xlabel("Feature\npredictability")
+    plt.tight_layout()
+    plt.show()
+
+
+
+
+.. image-sg:: /generated/gallery/examples/images/sphx_glr_plot_cfi_002.png
+   :alt: plot cfi
+   :srcset: /generated/gallery/examples/images/sphx_glr_plot_cfi_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 147-150
 
 References
 ----------
@@ -194,9 +257,9 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.812 seconds)
+   **Total running time of the script:** (0 minutes 4.053 seconds)
 
-**Estimated memory usage:**  213 MB
+**Estimated memory usage:**  202 MB
 
 
 .. _sphx_glr_download_generated_gallery_examples_plot_cfi.py:
