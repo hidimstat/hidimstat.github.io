@@ -249,19 +249,17 @@ classification problem, we use the log-loss. Finally, to make use of all the
 available data, we repeat this procedure in a cross-validated manner with the
 :class:`~hidimstat.CFICV` class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-193
+.. GENERATED FROM PYTHON SOURCE LINES 177-191
 
 .. code-block:: Python
 
 
-    from sklearn.metrics import log_loss
 
     from hidimstat import CFICV
 
     vim = CFICV(
         estimators=HistGradientBoostingClassifier(random_state=0),
-        method="predict_proba",  # log-loss is computed on predicted probabilities
-        loss=log_loss,
+        scoring="log_loss",
         cv=cv,
         random_state=0,
     )
@@ -277,14 +275,14 @@ available data, we repeat this procedure in a cross-validated manner with the
 
  .. code-block:: none
 
-    Fitting estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting estimators for each fold:  20%|██        | 1/5 [00:00<00:01,  3.15it/s]    Fitting estimators for each fold:  40%|████      | 2/5 [00:00<00:00,  3.48it/s]    Fitting estimators for each fold:  60%|██████    | 3/5 [00:00<00:00,  3.67it/s]    Fitting estimators for each fold:  80%|████████  | 4/5 [00:01<00:00,  3.69it/s]    Fitting estimators for each fold: 100%|██████████| 5/5 [00:01<00:00,  3.70it/s]    Fitting estimators for each fold: 100%|██████████| 5/5 [00:01<00:00,  3.63it/s]
-    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold:  40%|████      | 2/5 [00:00<00:00, 18.77it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 20.33it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 20.10it/s]
-    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds:  20%|██        | 1/5 [00:02<00:11,  2.94s/it]    Computing importance scores over folds:  40%|████      | 2/5 [00:05<00:08,  2.99s/it]    Computing importance scores over folds:  60%|██████    | 3/5 [00:09<00:06,  3.06s/it]    Computing importance scores over folds:  80%|████████  | 4/5 [00:12<00:03,  3.02s/it]    Computing importance scores over folds: 100%|██████████| 5/5 [00:15<00:00,  3.01s/it]    Computing importance scores over folds: 100%|██████████| 5/5 [00:15<00:00,  3.01s/it]
+    Fitting estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting estimators for each fold:  20%|██        | 1/5 [00:00<00:01,  3.82it/s]    Fitting estimators for each fold:  40%|████      | 2/5 [00:00<00:00,  3.47it/s]    Fitting estimators for each fold:  60%|██████    | 3/5 [00:00<00:00,  3.63it/s]    Fitting estimators for each fold:  80%|████████  | 4/5 [00:01<00:00,  3.56it/s]    Fitting estimators for each fold: 100%|██████████| 5/5 [00:01<00:00,  3.41it/s]    Fitting estimators for each fold: 100%|██████████| 5/5 [00:01<00:00,  3.48it/s]
+    Fitting importance estimators for each fold:   0%|          | 0/5 [00:00<?, ?it/s]    Fitting importance estimators for each fold:  40%|████      | 2/5 [00:00<00:00, 18.90it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 20.06it/s]    Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00<00:00, 19.88it/s]
+    Computing importance scores over folds:   0%|          | 0/5 [00:00<?, ?it/s]    Computing importance scores over folds:  20%|██        | 1/5 [00:05<00:20,  5.08s/it]    Computing importance scores over folds:  40%|████      | 2/5 [00:10<00:15,  5.17s/it]    Computing importance scores over folds:  60%|██████    | 3/5 [00:15<00:10,  5.17s/it]    Computing importance scores over folds:  80%|████████  | 4/5 [00:20<00:05,  5.13s/it]    Computing importance scores over folds: 100%|██████████| 5/5 [00:25<00:00,  4.99s/it]    Computing importance scores over folds: 100%|██████████| 5/5 [00:25<00:00,  5.06s/it]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 194-202
+.. GENERATED FROM PYTHON SOURCE LINES 192-200
 
 Visualizing the importance
 --------------------------
@@ -295,7 +293,7 @@ display the first ten features. The
 :meth:`~hidimstat.CFICV.plot_importance` method offers a ready-made summary
 plot of all features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-210
+.. GENERATED FROM PYTHON SOURCE LINES 200-208
 
 .. code-block:: Python
 
@@ -319,13 +317,13 @@ plot of all features.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 211-214
+.. GENERATED FROM PYTHON SOURCE LINES 209-212
 
 Only :math:`X_0` and :math:`X_1` stand out: perturbing them degrades the
 log-loss, whereas perturbing the uninformative features leaves it unchanged,
 with importance scores fluctuating around zero.
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-223
+.. GENERATED FROM PYTHON SOURCE LINES 215-221
 
 Feature selection
 -----------------
@@ -334,7 +332,7 @@ rate (FDR) using the
 :meth:`~hidimstat.CFICV.fdr_selection` method, which applies the
 Benjamini-Hochberg procedure to the p-values computed by CFI.
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-232
+.. GENERATED FROM PYTHON SOURCE LINES 221-230
 
 .. code-block:: Python
 
@@ -361,7 +359,7 @@ Benjamini-Hochberg procedure to the p-values computed by CFI.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 233-241
+.. GENERATED FROM PYTHON SOURCE LINES 231-239
 
 .. note::
     **Other selection criteria.** The same fitted object also provides
@@ -372,7 +370,7 @@ Benjamini-Hochberg procedure to the p-values computed by CFI.
     guarantee is needed (top-k features, percentile, or a threshold on the
     scores). These error rates are defined in :ref:`statistical_guarantees`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 244-250
+.. GENERATED FROM PYTHON SOURCE LINES 242-248
 
 Visualizing the dependencies
 ----------------------------
@@ -381,7 +379,7 @@ prediction. Visualization methods answer the latter question. Here we use
 accumulated local effects (:class:`~hidimstat.visualization.ALE`); the
 alternatives are presented in :ref:`visualization`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-261
+.. GENERATED FROM PYTHON SOURCE LINES 248-259
 
 .. code-block:: Python
 
@@ -403,11 +401,11 @@ alternatives are presented in :ref:`visualization`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 262-263
+.. GENERATED FROM PYTHON SOURCE LINES 260-261
 
 We plot the two selected features side by side.
 
-.. GENERATED FROM PYTHON SOURCE LINES 263-272
+.. GENERATED FROM PYTHON SOURCE LINES 261-270
 
 .. code-block:: Python
 
@@ -444,7 +442,7 @@ We plot the two selected features side by side.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 273-278
+.. GENERATED FROM PYTHON SOURCE LINES 271-276
 
 These plots show how the prediction of the model changes with the value of
 each selected feature: class 0 (the outer circle) is predicted for low and
@@ -452,7 +450,7 @@ high values of :math:`X_0` and :math:`X_1`, whereas class 1 (the inner circle)
 is predicted for intermediate values. Both features act symmetrically, as
 expected from the radial structure of the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 281-305
+.. GENERATED FROM PYTHON SOURCE LINES 279-303
 
 Going further
 -------------
@@ -482,7 +480,7 @@ publication it implements.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 22.057 seconds)
+   **Total running time of the script:** (0 minutes 32.845 seconds)
 
 **Estimated memory usage:**  202 MB
 

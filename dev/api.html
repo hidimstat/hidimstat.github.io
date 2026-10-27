@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=fc8bbdc3"></script>
+    <script src="_static/documentation_options.js?v=249cb36d"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -443,6 +443,7 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbation.html">BasePerturbation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_perturbation.BasePerturbationCV.html">BasePerturbationCV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html">GroupVariableImportanceMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/base/hidimstat.feature_selection.selector.SelectorMixin.html">SelectorMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.LOCI.html">LOCI</a></li>
@@ -459,6 +460,12 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.D0CRT.html">D0CRT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.FDRSelect.html">FDRSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.FWERSelect.html">FWERSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.PValueSelect.html">PValueSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.SelectTopK.html">SelectTopK</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/api/class/hidimstat.cfi_importance.html">cfi_importance</a></li>
@@ -559,6 +566,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/base/hidimstat.base_variable_importance.GroupVariableImportanceMixin.html#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="hidimstat.base_variable_importance.GroupVariableImportanceMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupVariableImportanceMixin</span></code></a>([feature_groups])</p></td>
 <td><p>Mixin class for adding group functionality to variable importance methods.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/base/hidimstat.feature_selection.selector.SelectorMixin.html#hidimstat.feature_selection.selector.SelectorMixin" title="hidimstat.feature_selection.selector.SelectorMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelectorMixin</span></code></a>(estimator)</p></td>
+<td><p>Mixin class for feature selection based on different strategies.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -608,6 +618,26 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.DesparsifiedLasso.html#hidimstat.DesparsifiedLasso" title="hidimstat.DesparsifiedLasso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DesparsifiedLasso</span></code></a>([estimator, centered, ...])</p></td>
 <td><p>Desparsified Lasso Estimator (also known as Debiased Lasso)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="feature-selection-classes">
+<h2>Feature Selection Classes<a class="headerlink" href="#feature-selection-classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.FDRSelect.html#hidimstat.feature_selection.FDRSelect" title="hidimstat.feature_selection.FDRSelect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FDRSelect</span></code></a>(estimator, fdr[, fdr_control, ...])</p></td>
+<td><p>Feature selection class from False Discovery Rate (FDR) control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.FWERSelect.html#hidimstat.feature_selection.FWERSelect" title="hidimstat.feature_selection.FWERSelect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FWERSelect</span></code></a>(estimator, fwer[, procedure, ...])</p></td>
+<td><p>Feature selection class from Family-Wise Error Rate (FWER) control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.PValueSelect.html#hidimstat.feature_selection.PValueSelect" title="hidimstat.feature_selection.PValueSelect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PValueSelect</span></code></a>(estimator[, k_lowest, ...])</p></td>
+<td><p>Feature selection class from k-lowest p-values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/api/class/hidimstat.feature_selection.SelectTopK.html#hidimstat.feature_selection.SelectTopK" title="hidimstat.feature_selection.SelectTopK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelectTopK</span></code></a>(estimator[, k_best])</p></td>
+<td><p>Feature selection class from top-k most important features.</p></td>
 </tr>
 </tbody>
 </table>
@@ -749,6 +779,7 @@
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-classes">Base Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-classes">Feature Importance Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection-classes">Feature Selection Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-functions">Feature Importance functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samplers">Samplers</a></li>

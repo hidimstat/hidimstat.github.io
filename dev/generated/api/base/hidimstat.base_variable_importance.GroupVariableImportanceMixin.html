@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../../../_static/documentation_options.js?v=fc8bbdc3"></script>
+    <script src="../../../_static/documentation_options.js?v=249cb36d"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="LOCI" href="../class/hidimstat.LOCI.html" />
+    <link rel="next" title="SelectorMixin" href="hidimstat.feature_selection.selector.SelectorMixin.html" />
     <link rel="prev" title="BasePerturbationCV" href="hidimstat.base_perturbation.BasePerturbationCV.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -443,6 +443,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.base_perturbation.BasePerturbation.html">BasePerturbation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hidimstat.base_perturbation.BasePerturbationCV.html">BasePerturbationCV</a></li>
 <li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">GroupVariableImportanceMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hidimstat.feature_selection.selector.SelectorMixin.html">SelectorMixin</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.LOCI.html">LOCI</a></li>
@@ -459,6 +460,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.D0CRT.html">D0CRT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.ModelXKnockoff.html">ModelXKnockoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.DesparsifiedLasso.html">DesparsifiedLasso</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.feature_selection.FDRSelect.html">FDRSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.feature_selection.FWERSelect.html">FWERSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.feature_selection.PValueSelect.html">PValueSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.feature_selection.SelectTopK.html">SelectTopK</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../class/hidimstat.cfi_importance.html">cfi_importance</a></li>
@@ -548,7 +555,7 @@
 <h1>GroupVariableImportanceMixin<a class="headerlink" href="#groupvariableimportancemixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.base_variable_importance.</span></span><span class="sig-name descname"><span class="pre">GroupVariableImportanceMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L499-L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hidimstat.base_variable_importance.</span></span><span class="sig-name descname"><span class="pre">GroupVariableImportanceMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L383-L542"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Mixin class for adding group functionality to variable importance methods.
 This class provides functionality for handling grouped features in variable
@@ -584,12 +591,12 @@ If None, each feature is treated as its own group.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L526-L527"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L410-L411"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L538-L587"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/mind-inria/hidimstat/blob/main/src/hidimstat/base_variable_importance.py#L422-L471"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hidimstat.base_variable_importance.GroupVariableImportanceMixin.fit" title="Link to this definition">#</a></dt>
 <dd><p>Base fit method for perturbation-based methods. Identifies the groups.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -663,11 +670,11 @@ If None, each feature is treated as its own group.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../class/hidimstat.LOCI.html"
+       href="hidimstat.feature_selection.selector.SelectorMixin.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LOCI</p>
+        <p class="prev-next-title">SelectorMixin</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

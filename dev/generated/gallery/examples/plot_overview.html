@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../../../_static/documentation_options.js?v=fc8bbdc3"></script>
+    <script src="../../../_static/documentation_options.js?v=249cb36d"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Conditional Randomization Test for Sparse Logistic Regression" href="plot_dcrt_logit.html" />
-    <link rel="prev" title="Knockoff aggregation" href="plot_knockoff_aggregation.html" />
+    <link rel="next" title="Knockoff aggregation" href="plot_knockoff_aggregation.html" />
+    <link rel="prev" title="Variable Selection Under Model Misspecification" href="plot_model_agnostic_importance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -450,10 +450,11 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_loci.html">Leave-One-Covariate-In (LOCI) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Feature Importance on diabetes dataset using cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_selector.html">Feature selection pipeline with Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Overview of a feature importance analysis with <cite>hidimstat</cite></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
@@ -689,14 +690,11 @@ from its conditional distribution given the other features (see
 classification problem, we use the log-loss. Finally, to make use of all the
 available data, we repeat this procedure in a cross-validated manner with the
 <a class="reference internal" href="../../api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFICV</span></code></a> class.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="nn">.</span><span class="nn">metrics</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss"><span class="n">log_loss</span></a><span class="w">
-</span><span class="w">
-</span><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><span class="n">CFICV</span></a><span class="w">
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">hidimstat</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><span class="n">CFICV</span></a><span class="w">
 </span><span class="w">
 </span><a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../../api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><span class="n">vim</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-class reference internal" href="../../api/class/hidimstat.CFICV.html#hidimstat.CFICV" title="hidimstat.CFICV"><span class="n">CFICV</span></a><span class="p">(</span><span class="w">
 </span>    <span class="n">estimators</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-ensemble-_hist_gradient_boosting-gradient_boosting sphx-glr-backref-type-py-class reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingClassifier"><span class="n">HistGradientBoostingClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="p">,</span><span class="w">
-</span>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">predict_proba</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># log-loss is computed on predicted probabilities</span><span class="w">
-</span>    <span class="n">loss</span><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss" title="sklearn.metrics.log_loss"><span class="n">log_loss</span></a><span class="p">,</span><span class="w">
+</span>    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">log_loss</span><span class="s2">&quot;</span><span class="p">,</span><span class="w">
 </span>    <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold" title="sklearn.model_selection.KFold"><span class="n">cv</span></a><span class="o">=</span><a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold" title="sklearn.model_selection.KFold"><span class="n">cv</span></a><span class="p">,</span><span class="w">
 </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w">
 </span><span class="p">)</span><span class="w">
@@ -704,25 +702,25 @@ available data, we repeat this procedure in a cross-validated manner with the
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">importances</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.CFICV.html#hidimstat.CFICV.importance" title="hidimstat.CFICV.importance"><span class="n">vim</span><span class="o">.</span><span class="n">importance</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:01,  3.15it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  3.48it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  3.67it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:01&lt;00:00,  3.69it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:01&lt;00:00,  3.70it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:01&lt;00:00,  3.63it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:01,  3.82it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  3.47it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  3.63it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:01&lt;00:00,  3.56it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:01&lt;00:00,  3.41it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:01&lt;00:00,  3.48it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00, 18.77it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 20.33it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 20.10it/s]
+Fitting importance estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00, 18.90it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 20.06it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 19.88it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:11,  2.94s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:05&lt;00:08,  2.99s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:09&lt;00:06,  3.06s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:12&lt;00:03,  3.02s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:15&lt;00:00,  3.01s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:15&lt;00:00,  3.01s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:05&lt;00:20,  5.08s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:10&lt;00:15,  5.17s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:15&lt;00:10,  5.17s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:20&lt;00:05,  5.13s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:25&lt;00:00,  4.99s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:25&lt;00:00,  5.06s/it]
 </pre></div>
 </div>
 </section>
@@ -833,7 +831,7 @@ the scores, as described in <a class="reference internal" href="../../../concept
 <p>The <a class="reference internal" href="../../../user_guide.html#user-guide"><span class="std std-ref">user guide</span></a> covers these choices in depth, and each
 class in the <a class="reference internal" href="../../../api.html#api-documentation"><span class="std std-ref">API documentation</span></a> points to the
 publication it implements.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.057 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.845 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  202 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-overview-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -861,20 +859,20 @@ publication it implements.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_knockoff_aggregation.html"
+       href="plot_model_agnostic_importance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Knockoff aggregation</p>
+        <p class="prev-next-title">Variable Selection Under Model Misspecification</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_dcrt_logit.html"
+       href="plot_knockoff_aggregation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Conditional Randomization Test for Sparse Logistic Regression</p>
+        <p class="prev-next-title">Knockoff aggregation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

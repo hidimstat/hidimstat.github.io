@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../../../_static/documentation_options.js?v=fc8bbdc3"></script>
+    <script src="../../../_static/documentation_options.js?v=249cb36d"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -449,10 +449,11 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_loci.html">Leave-One-Covariate-In (LOCI) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Feature Importance on diabetes dataset using cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_selector.html">Feature selection pipeline with Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_overview.html">Overview of a feature importance analysis with <cite>hidimstat</cite></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
 <li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Pixel-wise inference on digit classification</a></li>
@@ -683,25 +684,25 @@ repetitions using the <code class="docutils literal notranslate"><span class="pr
 </span><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting ensemble inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  9.98it/s]
-Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  9.98it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  9.44it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  9.44it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 338.97it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 356.30it/s]
 
 Fitting ensemble inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.37it/s]
-Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.37it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.77it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.77it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 339.78it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 353.23it/s]
 
 Fitting ensemble inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.86it/s]
-Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  6.86it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  7.74it/s]
+Fitting ensemble inferences: 100%|██████████| 10/10 [00:01&lt;00:00,  7.74it/s]
 
 Fitting clustered inferences:   0%|          | 0/10 [00:00&lt;?, ?it/s]
-Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 352.18it/s]
+Fitting clustered inferences: 100%|██████████| 10/10 [00:00&lt;00:00, 296.02it/s]
 </pre></div>
 </div>
 </section>
@@ -738,8 +739,8 @@ statistically significant for the classification tasks. For example, we can dete
 the bottom left portion of the loop when distinguishing between digits 0 and 9, the
 bottom left corner of digit 4 when distinguishing between digits 4 and 7, and the
 central vertical stroke when distinguishing between digits 0 and 1.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 33.697 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  983 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.456 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  999 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-digits-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/75c0e891f7dc9297a5f1b2fc2298b50c/plot_digits.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_digits.ipynb</span></code></a></p>

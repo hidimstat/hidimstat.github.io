@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="../../../_static/documentation_options.js?v=fc8bbdc3"></script>
+    <script src="../../../_static/documentation_options.js?v=249cb36d"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -449,10 +449,11 @@
 <li class="toctree-l1"><a class="reference internal" href="plot_loci.html">Leave-One-Covariate-In (LOCI) feature importance with different regression models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_example.html">Distilled Conditional Randomization Test (dCRT) using Lasso vs Random Forest learners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_diabetes_variable_importance_example.html">Feature Importance on diabetes dataset using cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_selector.html">Feature selection pipeline with Conditional Feature Importance (CFI) on the wine dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html">Conditional vs Marginal Importance on the XOR dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_model_agnostic_importance.html">Variable Selection Under Model Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_overview.html">Overview of a feature importance analysis with <cite>hidimstat</cite></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_knockoff_aggregation.html">Knockoff aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dcrt_logit.html">Conditional Randomization Test for Sparse Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_dl_diabetes_confidence.html">Coefficient estimates with Desparsified Lasso on the diabetes dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_digits.html">Pixel-wise inference on digit classification</a></li>
@@ -551,18 +552,21 @@
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to compute variable importance using Permutation Feature Importance (PFI), Leave-One-Covariate-Out (LOCO), and Conditional Feature Importance (CFI) on the diabetes dataset. This example also showcases the use how to measure feature importance in a K-Fold cross-validation setting in order to use all the data available."><img alt="" src="../../../_images/sphx_glr_plot_diabetes_variable_importance_example_thumb.png" />
 <p><a class="reference internal" href="plot_diabetes_variable_importance_example.html"><span class="doc">Feature Importance on diabetes dataset using cross-validation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Feature Importance on diabetes dataset using cross-validation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to perform feature selection from one of Hidimstat&#x27;s selectors, through feature importance measures using CFI [Chamma_NeurIPS2023] on the wine dataset. The data are the results of chemical analyses of wines grown in the same region in Italy, derived from three different cultivars. Thirteen features are used to predict three types of wine, making this a 3-class classification problem."><img alt="" src="../../../_images/sphx_glr_plot_selector_thumb.png" />
+<p><a class="reference internal" href="plot_selector.html"><span class="doc">Feature selection pipeline with Conditional Feature Importance (CFI) on the wine dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Feature selection pipeline with Conditional Feature Importance (CFI) on the wine dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates on XOR data that variables can be conditionally important even if they are not marginally important. The conditional importance is computed using the Conditional Feature Importance (CFI) class and the marginal importance is computed using univariate models."><img alt="" src="../../../_images/sphx_glr_plot_conditional_vs_marginal_xor_data_thumb.png" />
 <p><a class="reference internal" href="plot_conditional_vs_marginal_xor_data.html"><span class="doc">Conditional vs Marginal Importance on the XOR dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional vs Marginal Importance on the XOR dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we illustrate the limitations of variable selection methods based on linear models using the circles dataset. We first use the distilled conditional randomization test (d0CRT), which is based on linear models liu2022fast and then demonstrate how model-agnostic methods, such as Leave-One-Covariate-Out (LOCO), can identify important variables even when classes are not linearly separable."><img alt="" src="../../../_images/sphx_glr_plot_model_agnostic_importance_thumb.png" />
 <p><a class="reference internal" href="plot_model_agnostic_importance.html"><span class="doc">Variable Selection Under Model Misspecification</span></a></p>
   <div class="sphx-glr-thumbnail-title">Variable Selection Under Model Misspecification</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The examples shows how to use aggregate model-X Knockoff selections to derandomize inference. The model-X Knockoff introduced by candes2018panning allows for variable selection with statistical guarantees on the False Discovery Rate (FDR),"><img alt="" src="../../../_images/sphx_glr_plot_knockoff_aggregation_thumb.png" />
-<p><a class="reference internal" href="plot_knockoff_aggregation.html"><span class="doc">Knockoff aggregation</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Knockoff aggregation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example walks through a complete feature importance analysis: selecting a predictive model, analyzing the correlation structure of the features, measuring the importance of each feature, selecting features with statistical guarantees, and visualizing the importance and the effects of the selected features."><img alt="" src="../../../_images/sphx_glr_plot_overview_thumb.png" />
 <p><a class="reference internal" href="plot_overview.html"><span class="doc">Overview of a feature importance analysis with hidimstat</span></a></p>
   <div class="sphx-glr-thumbnail-title">Overview of a feature importance analysis with hidimstat</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The examples shows how to use aggregate model-X Knockoff selections to derandomize inference. The model-X Knockoff introduced by candes2018panning allows for variable selection with statistical guarantees on the False Discovery Rate (FDR),"><img alt="" src="../../../_images/sphx_glr_plot_knockoff_aggregation_thumb.png" />
+<p><a class="reference internal" href="plot_knockoff_aggregation.html"><span class="doc">Knockoff aggregation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Knockoff aggregation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to apply the distilled conditional randomization test (D0CRT) to logistic regression. The hidimstat package implements the decorrelation method described in nguyen2022conditional, which ensures that the distribution of the test statistic under the null hypothesis closely approximates a standard Gaussian distribution. We illustrate this property by comparing the quantiles of the test statistics obtained using this method (dCRT-logit) with those from the original D0CRT."><img alt="" src="../../../_images/sphx_glr_plot_dcrt_logit_thumb.png" />
 <p><a class="reference internal" href="plot_dcrt_logit.html"><span class="doc">Conditional Randomization Test for Sparse Logistic Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Conditional Randomization Test for Sparse Logistic Regression</div>
