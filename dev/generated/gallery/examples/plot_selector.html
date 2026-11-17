@@ -26,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -35,25 +35,25 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=6a604523" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../../_static/documentation_options.js?v=b8003e71"></script>
+    <script src="../../../_static/documentation_options.js?v=9f2cc8d4"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=eaa0aa5c"></script>
-    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../../_static/design-tabs.js?v=fcb327ea"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/gallery/examples/plot_selector';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/mind-inria/hidimstat/refs/heads/main/docs/tools/version.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0.dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -115,7 +115,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -249,14 +249,14 @@
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
       
@@ -291,7 +291,7 @@
   
 
   
-    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page" aria-expanded="false" aria-controls="pst-secondary-sidebar-modal">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -305,7 +305,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
@@ -396,14 +396,14 @@
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
         
@@ -501,7 +501,7 @@
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../index.html" class="nav-link" aria-label="Home">
-        <i class="fa-solid fa-home"></i>
+        <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
@@ -614,24 +614,24 @@ threshold of <span class="math notranslate nohighlight">\(p&lt;0.05\)</span>.</p
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_transformed</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-hidimstat-feature_selection sphx-glr-backref-type-py-method reference internal" href="../../api/class/hidimstat.feature_selection.PValueSelect.html#hidimstat.feature_selection.PValueSelect.fit_transform" title="hidimstat.feature_selection.PValueSelect.fit_transform"><span class="n">selector</span><span class="o">.</span><span class="n">fit_transform</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y</span></a><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  5.89it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.85it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  5.47it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.43it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.41it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.49it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  5.35it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.30it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  4.92it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.01it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.09it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.09it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 28.66it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 28.02it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 27.68it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 27.80it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.37s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:07,  2.34s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.31s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.35s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.39s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.37s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:11,  2.80s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:05&lt;00:08,  2.77s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:08&lt;00:05,  2.68s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:10&lt;00:02,  2.57s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:12&lt;00:00,  2.53s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:12&lt;00:00,  2.60s/it]
 </pre></div>
 </div>
 <p>We can now inspect how many features were selected, and which ones:</p>
@@ -696,108 +696,108 @@ The pipeline is therefore constructed as follows:</p>
 </span>    <a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="list"><span class="n">initial_scores</span></a><span class="o">.</span><span class="n">append</span><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-method reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.score" title="sklearn.pipeline.Pipeline.score"><span class="n">clf</span><span class="o">.</span><span class="n">score</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">X_test</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">y_test</span></a><span class="p">)</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  7.34it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  7.18it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  7.09it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  7.10it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  7.08it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  7.10it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.99it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.81it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.62it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.62it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.49it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.58it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 30.74it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 30.77it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 28.39it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 28.37it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:01&lt;00:07,  1.96s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:03&lt;00:05,  1.96s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:05&lt;00:03,  1.94s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:07&lt;00:01,  1.95s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:09&lt;00:00,  1.94s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:09&lt;00:00,  1.95s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.26s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:07,  2.33s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:07&lt;00:04,  2.35s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.42s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.36s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.36s/it]
 
 Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  7.19it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.96it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.88it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.94it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.89it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.92it/s]
-
-Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 30.67it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 30.91it/s]
-
-Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:01&lt;00:07,  1.91s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:03&lt;00:05,  1.93s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:05&lt;00:03,  1.92s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:07&lt;00:01,  1.94s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:09&lt;00:00,  1.92s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:09&lt;00:00,  1.92s/it]
-
-Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  7.09it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  7.12it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  7.20it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.94it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.75it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.89it/s]
-
-Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 33.11it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 33.03it/s]
-
-Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:01&lt;00:07,  1.86s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:03&lt;00:05,  1.86s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:05&lt;00:03,  1.86s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:07&lt;00:01,  1.87s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:09&lt;00:00,  1.87s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:09&lt;00:00,  1.87s/it]
-/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
-  warnings.warn(
-
-Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  7.19it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  7.02it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  7.02it/s]
-Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.85it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.69it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  6.81it/s]
-
-Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00, 32.26it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 32.32it/s]
-
-Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.22s/it]
-Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.27s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.29s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.31s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.31s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.30s/it]
-/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
-  warnings.warn(
-
-Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.18it/s]
-Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.09it/s]
-Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.13it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.15it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.27it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  6.11it/s]
 Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  6.02it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.87it/s]
-Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.96it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.38it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.68it/s]
 
 Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 26.21it/s]
-Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 26.20it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 23.71it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 25.04it/s]
 
 Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
-Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.31s/it]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:11,  2.78s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:05&lt;00:07,  2.61s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:07&lt;00:05,  2.58s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:10&lt;00:02,  2.58s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:13&lt;00:00,  2.60s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:13&lt;00:00,  2.60s/it]
+
+Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  5.58it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.74it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  5.89it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.45it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.47it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.55it/s]
+
+Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 26.94it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 27.85it/s]
+
+Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.30s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.31s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.29s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.26s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.26s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.27s/it]
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
+  warnings.warn(
+
+Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  5.98it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  5.92it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  5.44it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.33it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.04it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.26it/s]
+
+Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 27.65it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 28.24it/s]
+
+Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:09,  2.34s/it]
 Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.32s/it]
-Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.33s/it]
-Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.32s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.32s/it]
-Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.32s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.26s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:09&lt;00:02,  2.26s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.22s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:11&lt;00:00,  2.25s/it]
+/home/circleci/project/.venv/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
+  warnings.warn(
+
+Fitting estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting estimators for each fold:  20%|██        | 1/5 [00:00&lt;00:00,  6.52it/s]
+Fitting estimators for each fold:  40%|████      | 2/5 [00:00&lt;00:00,  6.32it/s]
+Fitting estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00,  5.94it/s]
+Fitting estimators for each fold:  80%|████████  | 4/5 [00:00&lt;00:00,  5.36it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  4.89it/s]
+Fitting estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00,  5.28it/s]
+
+Fitting importance estimators for each fold:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Fitting importance estimators for each fold:  60%|██████    | 3/5 [00:00&lt;00:00, 22.01it/s]
+Fitting importance estimators for each fold: 100%|██████████| 5/5 [00:00&lt;00:00, 24.48it/s]
+
+Computing importance scores over folds:   0%|          | 0/5 [00:00&lt;?, ?it/s]
+Computing importance scores over folds:  20%|██        | 1/5 [00:02&lt;00:08,  2.23s/it]
+Computing importance scores over folds:  40%|████      | 2/5 [00:04&lt;00:06,  2.22s/it]
+Computing importance scores over folds:  60%|██████    | 3/5 [00:06&lt;00:04,  2.16s/it]
+Computing importance scores over folds:  80%|████████  | 4/5 [00:08&lt;00:02,  2.18s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.17s/it]
+Computing importance scores over folds: 100%|██████████| 5/5 [00:10&lt;00:00,  2.18s/it]
 </pre></div>
 </div>
 <p>Now that we have computed scores from the initial pipeline without feature selection,
@@ -811,7 +811,7 @@ their distributions.</p>
 </span><a class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html#matplotlib.axes.Axes.set_ylim" title="matplotlib.axes.Axes.set_ylim"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span><span class="w">
 </span><a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">(</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<img src="../../../_images/sphx_glr_plot_selector_001.png" srcset="../../../_images/sphx_glr_plot_selector_001.png" alt="plot selector" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 13.448 seconds)</p>
+<img src="../../../_images/sphx_glr_plot_selector_001.png" srcset="../../../_images/sphx_glr_plot_selector_001.png" alt="plot selector" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 22.401 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  202 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-gallery-examples-plot-selector-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -863,7 +863,7 @@ their distributions.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
@@ -902,8 +902,8 @@ their distributions.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -936,7 +936,7 @@ their distributions.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.24.0.
 </p></div>
       
     </div>
