@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quick start for contributing &#8212; HiDimStat</title>
+    <title>How to contribute to Hidimstat &#8212; HiDimStat</title>
   
   
   
@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../_static/documentation_options.js?v=52a1d762"></script>
+    <script src="../_static/documentation_options.js?v=b69a774e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -439,12 +439,10 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Quick start for contributing</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">How to contribute to Hidimstat</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="maintainer_onboarding.html">Onboarding For New Maintainers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how_to_contribute.html">How to contribute to HiDimStat?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_suite.html">The Test Suite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="building_documentation.html">Building the documentation</a></li>
 
@@ -502,7 +500,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Developer Documentation</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quick start for contributing</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How to contribute to Hidimstat</span></li>
   </ul>
 </nav>
 </div>
@@ -519,17 +517,54 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="quick-start-for-contributing">
-<h1>Quick start for contributing<a class="headerlink" href="#quick-start-for-contributing" title="Link to this heading">#</a></h1>
+  <span class="target" id="dev-contributing"></span><section id="how-to-contribute-to-hidimstat">
+<h1>How to contribute to Hidimstat<a class="headerlink" href="#how-to-contribute-to-hidimstat" title="Link to this heading">#</a></h1>
+<nav class="contents local" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#quick-start-for-contributing" id="id3">Quick start for contributing</a></p>
+<ul>
+<li><p><a class="reference internal" href="#source-code" id="id4">Source code</a></p></li>
+<li><p><a class="reference internal" href="#test-suite" id="id5">Test suite</a></p></li>
+<li><p><a class="reference internal" href="#style-guide" id="id6">Style guide</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id7">Examples</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id8">Documentation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#github-repository-guidelines" id="id9">Github repository guidelines</a></p>
+<ul>
+<li><p><a class="reference internal" href="#issues" id="id10">Issues</a></p></li>
+<li><p><a class="reference internal" href="#pull-requests" id="id11">Pull-requests</a></p></li>
+<li><p><a class="reference internal" href="#repository-folder-architecture" id="id12">Repository folder architecture</a></p></li>
+<li><p><a class="reference internal" href="#ai-assisted-tools" id="id13">AI-assisted tools</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#code-writing-conventions" id="id14">Code Writing Conventions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#naming" id="id15">Naming</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id16">Classes</a></p></li>
+<li><p><a class="reference internal" href="#citations" id="id17">Citations</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reproducibility-and-randomness" id="id18">Reproducibility and Randomness</a></p>
+<ul>
+<li><p><a class="reference internal" href="#design-choice-numpy-random-generator" id="id19">Design choice: <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.Generator" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.random.Generator</span></code></a></a></p></li>
+<li><p><a class="reference internal" href="#the-random-state-parameter" id="id20">The random_state Parameter</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="quick-start-for-contributing">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Quick start for contributing</a><a class="headerlink" href="#quick-start-for-contributing" title="Link to this heading">#</a></h2>
 <section id="source-code">
-<h2>Source code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h2>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Source code</a><a class="headerlink" href="#source-code" title="Link to this heading">#</a></h3>
 <p>You can check out the latest sources with the command:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mind-inria/hidimstat.git
 </pre></div>
 </div>
 </section>
 <section id="test-suite">
-<h2>Test suite<a class="headerlink" href="#test-suite" title="Link to this heading">#</a></h2>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Test suite</a><a class="headerlink" href="#test-suite" title="Link to this heading">#</a></h3>
 <p>For testing, we recommend you install the test dependencies with pip:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[test]'</span>
 </pre></div>
@@ -543,7 +578,7 @@
 </div>
 </section>
 <section id="style-guide">
-<h2>Style guide<a class="headerlink" href="#style-guide" title="Link to this heading">#</a></h2>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Style guide</a><a class="headerlink" href="#style-guide" title="Link to this heading">#</a></h3>
 <p>The code is formatted and linted with with <a class="reference external" href="https://github.com/astral-sh/ruff">ruff</a>.</p>
 <p>Spelling is checked using <a class="reference external" href="https://github.com/codespell-project/codespell">codespell</a>.</p>
 <p>To apply the required dependencies and style your code:</p>
@@ -555,7 +590,7 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <p>To run the examples, we recommend you install the example dependencies with pip:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[example]'</span>
 </pre></div>
@@ -568,7 +603,7 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
 </div>
 </section>
 <section id="id2">
-<h2>Documentation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Documentation</a><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>The documentation is built with Sphinx. We recommend you install the documentation dependencies with pip:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[doc]'</span>
 </pre></div>
@@ -578,6 +613,178 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
 </pre></div>
 </div>
 <p><strong>For more information</strong>, look at the <a class="reference external" href="https://hidimstat.github.io/dev/dev/index.html">developer documentation</a></p>
+</section>
+</section>
+<section id="github-repository-guidelines">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Github repository guidelines</a><a class="headerlink" href="#github-repository-guidelines" title="Link to this heading">#</a></h2>
+<section id="issues">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Issues</a><a class="headerlink" href="#issues" title="Link to this heading">#</a></h3>
+<p>One way of starting to contribute to the hidimstat project is by opening up issues on the Github about
+new feature ideas, documentation improvement, or bug fixes. Please check beforehand that no similar
+issue exists. If so, please feel free to contribute to the existing discussion while respecting our
+<a class="reference internal" href="developer_code_of_conduct.html#dev-code-of-conduct"><span class="std std-ref">code of conduct</span></a>.</p>
+<p>When opening issues, we recommend that you include a tag at the beginning of the title
+so that contributors may quickly identify the nature of the issue. Here are the currently
+used tags:</p>
+<ul class="simple">
+<li><p>[DOC]: for documentation needs</p></li>
+<li><p>[FEAT]: to request a new feature</p></li>
+<li><p>[BUG]: to report a bug</p></li>
+<li><p>[ENH]: to suggest enhancements, improvements of existing code</p></li>
+<li><p>[TEST]: to discuss about tests</p></li>
+<li><p>[VIS]: to suggest improvements for visualization</p></li>
+<li><p>[MAINT]: for maintenance needs</p></li>
+</ul>
+</section>
+<section id="pull-requests">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Pull-requests</a><a class="headerlink" href="#pull-requests" title="Link to this heading">#</a></h3>
+<p>Another way of contributing is by submitting changes to the project via Github pull-requests.
+Pull-requests should only be open to suggest changes according to existing issues. If you don’t know
+how to do so, please check the Github explanations on <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue">pull requests linked to issues</a>.
+Please create a new branch to work on the changes before opening the pull-request. Two reviewers will
+examine the submitted changes, and approve or discuss modifications. The changes can be merged to the main
+branch after the approval by two reviewers, and after all tests automatically launched by the <a class="reference internal" href="CI_documentation.html#developer-documentation-ci"><span class="std std-ref">Continuous
+Integration</span></a> processes have passed.</p>
+<p>Pull-requests’ titles should follow the same naming convention as issues.</p>
+<p>To help us keep track of all changes from a version to another, we recommend that developers fill the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.rst</span></code> file
+with their changes before opening the pull-request, and fill in their information in the <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> file if it has not
+been done yet.</p>
+</section>
+<section id="repository-folder-architecture">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Repository folder architecture</a><a class="headerlink" href="#repository-folder-architecture" title="Link to this heading">#</a></h3>
+<p>Here is the general organization of the repository`s folders:</p>
+<blockquote>
+<div><div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>Folder name</strong></p></td>
+<td><p><strong>What the folder contains</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>.circleci</p></td>
+<td><p>The configuration file for the <a class="reference internal" href="CI_documentation.html#developer-documentation-ci"><span class="std std-ref">Continuous Integration</span></a> tool CircleCI.</p></td>
+</tr>
+<tr class="row-odd"><td><p>.github</p></td>
+<td><p>All configuration files for <a class="reference external" href="https://github.com/mind-inria/hidimstat/actions">Github Actions</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>docs</p></td>
+<td><p>All files about the API, User guide, the examples gallery, glossary and notations.</p></td>
+</tr>
+<tr class="row-odd"><td><p>examples</p></td>
+<td><p>Python files that run for the examples gallery.</p></td>
+</tr>
+<tr class="row-even"><td><p>src/hidimstat</p></td>
+<td><p>The Python files of the HiDimStat library.</p></td>
+</tr>
+<tr class="row-odd"><td><p>test</p></td>
+<td><p>The Python files that run tests on the library.</p></td>
+</tr>
+<tr class="row-even"><td><p>tools</p></td>
+<td><p>The developer documentation files.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></blockquote>
+<p>We give more details about the organization of the src/hidimstat folder:</p>
+<blockquote>
+<div><div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>Folder name</strong></p></td>
+<td><p><strong>What the folder contains</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>base</p></td>
+<td><p>Base variable importance (VI) and perturbation classes, all derived VI and perturbation methods as classes, as well as inference classes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>samplers</p></td>
+<td><p>Sampling classes.</p></td>
+</tr>
+<tr class="row-even"><td><p>statistical_tools</p></td>
+<td><p>Statistical tools for tests, compute p-values, aggregation methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p>visualization</p></td>
+<td><p>Visualization methods to produce graphs.</p></td>
+</tr>
+<tr class="row-even"><td><p>_utils</p></td>
+<td><p>Private folder that contains utility functions and classes for internal usage only.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></blockquote>
+</section>
+<section id="ai-assisted-tools">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">AI-assisted tools</a><a class="headerlink" href="#ai-assisted-tools" title="Link to this heading">#</a></h3>
+<p>While we understand the benefits of using AI-assisted tools to write code, we kindly ask you to
+double check the code, and be prepared to explain it upon request during review. If the submitted code
+was written with the assistance of AI, we also request that you state it in your PR, and certify that
+you have read and understood it. We also kindly ask you to refrain from using AI tools to generate
+comments on issues or PRs.</p>
+</section>
+</section>
+<section id="code-writing-conventions">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Code Writing Conventions</a><a class="headerlink" href="#code-writing-conventions" title="Link to this heading">#</a></h2>
+<section id="naming">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Naming</a><a class="headerlink" href="#naming" title="Link to this heading">#</a></h3>
+<p>Files should follow the <a class="reference external" href="https://en.wikipedia.org/wiki/Snake_case">snake case</a> convention,
+and classes should follow the <a class="reference external" href="https://en.wikipedia.org/wiki/Camel_case">upper camel case</a>
+convention. Names should not contain acronyms and should instead include the full version,
+except for really long names, such as Distilled Conditional Randomization Test
+abbreviated as D0CRT, or names that are standard in the scientific community, such as
+LOCO which stands for Leave One Covariate Out. Functions should be written in snake case,
+and should not contain acronyms similarly to classes.</p>
+</section>
+<section id="classes">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Classes</a><a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
+<p>While we do not provide any template for the classes, we try to follow the conventions on
+<a class="reference external" href="https://scikit-learn.org/stable/developers/develop.html">developing scikit-learn estimators</a>.
+We recommend that you follow the general style of the <code class="docutils literal notranslate"><span class="pre">BaseVariableImportance</span></code> class when
+implementing other classes. The main addition from scikit-learn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code></a> is the
+addition of importance and selection methods that allow the selection of variables based on
+different criteria.</p>
+</section>
+<section id="citations">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Citations</a><a class="headerlink" href="#citations" title="Link to this heading">#</a></h3>
+<p>When introducing citations in code documentation, please use the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># :footcite:t: \`nameofthecitation\`</span>
+</pre></div>
+</div>
+<p>Make sure that the citation name is included in the bibliography and that it is listed in alphabetical order.</p>
+</section>
+</section>
+<section id="reproducibility-and-randomness">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Reproducibility and Randomness</a><a class="headerlink" href="#reproducibility-and-randomness" title="Link to this heading">#</a></h2>
+<section id="design-choice-numpy-random-generator">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Design choice: <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.Generator" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.random.Generator</span></code></a></a><a class="headerlink" href="#design-choice-numpy-random-generator" title="Link to this heading">#</a></h3>
+<p>Hidimstat uses numpy.random.Generator for all randomness because it provides a reliable
+way to manage separate, reproducible streams of random numbers. The key benefit is the
+ability to spawn new, independent Generator instances from a single parent.</p>
+<p>This is particularly useful for our methods that employ parallel samplers or other
+algorithms requiring multiple, distinct random streams. Spawning ensures that each
+parallel process has its own unique sequence of random numbers, preventing interference
+and guaranteeing that the overall result remains reproducible.</p>
+<p>The Generator object for any given method is instantiated by the internal
+<code class="docutils literal notranslate"><span class="pre">check_random_state</span></code> utility function, which handles the logic based on the user’s
+input.</p>
+</section>
+<section id="the-random-state-parameter">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">The random_state Parameter</a><a class="headerlink" href="#the-random-state-parameter" title="Link to this heading">#</a></h3>
+<p>The behavior of a method’s randomness is exclusively controlled by the random_state
+parameter. It accepts three types of input:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>:
+An integer input ensures both <strong>reproducibility</strong>: running the script twice
+produces identical results, and <strong>repeatability</strong>: calling the method twice within the
+same script, such as <code class="docutils literal notranslate"><span class="pre">&lt;method&gt;.importance()</span></code>, yields the exact same output.</p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.Generator" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.random.Generator</span></code></a>:
+Passing a Generator object provides reproducibility but not
+repeatability. The stream of random numbers is reproducible if the user seeds their
+Generator object, but subsequent calls to the method will advance the generator’s
+state, leading to different results.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>:
+This input provides neither reproducibility nor repeatability. The random
+numbers are generated from a non-deterministic source, resulting in different outcomes
+on each run and each call.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -628,11 +835,32 @@ codespell<span class="w"> </span>--toml<span class="w"> </span>pyproject.toml
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">Source code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-suite">Test suite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-guide">Style guide</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start-for-contributing">Quick start for contributing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">Source code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-suite">Test suite</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style-guide">Style guide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Documentation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository-guidelines">Github repository guidelines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-requests">Pull-requests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-folder-architecture">Repository folder architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-assisted-tools">AI-assisted tools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-writing-conventions">Code Writing Conventions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming">Naming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility-and-randomness">Reproducibility and Randomness</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-choice-numpy-random-generator">Design choice: <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.random.Generator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-random-state-parameter">The random_state Parameter</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
